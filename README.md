@@ -7,16 +7,7 @@
 <a href="https://laravel.com/"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About TrackMyShipment
-
-### Partners
-Final Projek MSIB5 - Group 2 (Kelompok 3)
-
-- **[Khoirul Huda](https://github.com/khoirulhuda07)**
-- **[Michail](https://github.com/michailtjhang)**
-- **[Devia Fitri N](https://github.com/deviafnopiani)**
-- **[Angelina Yulfaningtyas](https://github.com/angelin00)**
-- **[Achbar Wahyudhi](https://github.com/achbar2001)**
+# About TrackMyShipment
 
 ## Setup
 - buka direktori project di terminal anda.
@@ -29,3 +20,25 @@ Lalu ketik command dibawah ini
 - php artisan key:generate (generate app key)
 - php artisan migrate (migrasi database)
 - php artisan db:seed 
+
+## Login
+Email : rahmat@example.com
+Password : password
+
+## Fitur
+### Front / Depan
+- Home (Halaman home) 
+
+### user
+
+### admin
+- Halaman Dashboard
+
+## Author / Partners
+Final Projek MSIB5 - Group 2 (Kelompok 3)
+
+- **[Khoirul Huda](https://github.com/khoirulhuda07)**
+- **[Michail](https://github.com/michailtjhang)**
+- **[Devia Fitri N](https://github.com/deviafnopiani)**
+- **[Angelina Yulfaningtyas](https://github.com/angelin00)**
+- **[Achbar Wahyudhi](https://github.com/achbar2001)**
