@@ -9,6 +9,10 @@
 
 # About TrackMyShipment
 
+## Instalasi
+- download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">disini</a> 
+- atau clone : git clone https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3.git
+
 ## Setup
 - buka direktori project di terminal anda.
 - ketikan command : cp .env.example .env (copy paste file .env.example)
@@ -26,7 +30,7 @@ Email : rahmat@example.com
 Password : password
 
 ## Fitur
-### Front / Depan
+### Front End
 - Home (Halaman home) 
 
 ### user
@@ -34,7 +38,7 @@ Password : password
 ### admin
 - Halaman Dashboard
 
-## Author / Partners
+## Author
 Final Projek MSIB5 - Group 2 (Kelompok 3)
 
 - **[Khoirul Huda](https://github.com/khoirulhuda07)**
