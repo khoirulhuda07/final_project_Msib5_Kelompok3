@@ -12,11 +12,11 @@
 ### Partners
 Final Projek MSIB5 - Group 2 (Kelompok 3)
 
-- Khoirul Huda (khoirulhuda07)
-- Michail (michailtjhang)
-- Devia (deviafnopiani)
-- Angelina Yulfaningtyas (angelin00)
-- achbar Wahyudhi (achbar2001)
+- **[Khoirul Huda](https://github.com/khoirulhuda07)**
+- **[Michail](https://github.com/michailtjhang)**
+- **[Devia Fitri N](https://github.com/deviafnopiani)**
+- **[Angelina Yulfaningtyas](https://github.com/angelin00)**
+- **[Achbar Wahyudhi](https://github.com/achbar2001)**
 
 ## Setup
 - buka direktori project di terminal anda.
