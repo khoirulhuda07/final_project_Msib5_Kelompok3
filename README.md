@@ -10,8 +10,12 @@
 # About TrackMyShipment
 
 ## Instalasi
-- download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">disini</a> 
-- atau clone : git clone https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3.git
+- download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">Klik</a> 
+- atau clone di terminal :
+    ```bash
+    git clone https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3.git
+    ```
+  
 
 ## Setup
 - buka direktori project di terminal anda.
