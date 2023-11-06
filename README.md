@@ -15,19 +15,37 @@
     ```bash
     git clone https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3.git
     ```
-  
 
 ## Setup
 - buka direktori project di terminal anda.
-- ketikan command : cp .env.example .env (copy paste file .env.example)
-- buat database 
-
-Lalu ketik command dibawah ini
-- composer install
-- php artisan optimize:clear 
-- php artisan key:generate (generate app key)
-- php artisan migrate (migrasi database)
-- php artisan db:seed 
+- ketikan command di terminal :
+  ```bash
+  copy .env.example .env
+  ```
+  untuk Linuk, ketikan command :
+  ```bash
+  cp .env.example .env
+  ```
+- instal package-package di laravel, ketikan command :
+  ```bash
+  composer install
+  ```
+- Generate app key, ketikan command :
+  ```bash
+  php artisan key:generate
+  ```
+- buatlah nama database baru. Lalu sesuaikan nama database, username, dan password database di file `.env`, ketikan command :
+  ```bash
+  php artisan migrate
+  ```
+- memasukkan data table ke database, ketikan command :
+  ```bash
+  php artisan db:seed
+  ```
+- menjalankan laravel di website, ketikan command :
+  ```bash
+  php artisan serve
+  ```
 
 ## Login
 Email : rahmat@example.com
