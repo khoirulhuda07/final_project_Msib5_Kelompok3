@@ -1,7 +1,17 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+
+//Admin Namespace
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AkunController;
+use App\Http\Controllers\Admin\DompetController;
+use App\Http\Controllers\Admin\KurirController;
+use App\Http\Controllers\Admin\LayananController;
+use App\Http\Controllers\Admin\PaketController;
+use App\Http\Controllers\Admin\PembayaranController;
+use App\Http\Controllers\Admin\PenerimaController;
+use App\Http\Controllers\Admin\PengirimanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +28,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// routing ke halaman admin
+// Admin
 Route::get('/dashboard', [DashboardController::class,'index']);
