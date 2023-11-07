@@ -67,7 +67,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-table me-2"></i>Data</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="Pages/Kirim/dtKirim" class="dropdown-item">Pengiriman</a>
+                            <a href="{{route('pengiriman.index')}}" class="dropdown-item">Pengiriman</a>
                             <a href="{{route('paket.index')}}" class="dropdown-item">Paket</a>
                             <a href="{{route('penerima.index')}}" class="dropdown-item">Penerima</a>
                             <a href="{{route('pembayaran.index')}}" class="dropdown-item">Pembayaran</a>

@@ -39,5 +39,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('paket', PaketController::class);
     Route::resource('penerima', PenerimaController::class);
     Route::resource('pembayaran', PembayaranController::class);
+    Route::resource('pengiriman', PengirimanController::class);
 
 });

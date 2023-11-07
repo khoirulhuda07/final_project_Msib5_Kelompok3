@@ -15,7 +15,7 @@ class PengirimanController extends Controller
     public function index()
     {
         $pengiriman = Pengiriman::all();
-        return view("admin.pengiriman.index", compact("pengiriman"));
+        return view("admin.pengiriman.index", ['pengiriman'=> $pengiriman]);
     }
 
     /**
