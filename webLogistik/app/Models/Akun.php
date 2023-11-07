@@ -17,7 +17,7 @@ class Akun extends Model
     }
 
     public function dompet() {
-        return $this->hasOne(Dompet::class);
+        return $this->belongsTo(Dompet::class);
     }
 
     public function pembayaran() {

@@ -29,10 +29,15 @@ Route::get('/', function () {
 });
 
 // Admin
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::resource('akun', AkunController::class);
+Route::prefix('admin')->group(function () {
+    
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::resource('akun', AkunController::class);
+    Route::resource('kurir', KurirController::class);
+    Route::resource('dompet', DompetController::class);
+    Route::resource('layanan', LayananController::class);
+    Route::resource('paket', PaketController::class);
+    Route::resource('penerima', PenerimaController::class);
+    Route::resource('pembayaran', PembayaranController::class);
 
-Route::get('/kurir', [KurirController::class, 'index']);
-Route::get('/dompet', [DompetController::class, 'index']);
-Route::get('/layanan', [LayananController::class, 'index']);
-Route::get('/paket', [PaketController::class, 'index']);
+});

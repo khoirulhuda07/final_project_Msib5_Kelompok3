@@ -68,15 +68,13 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-table me-2"></i>Data</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="Pages/Kirim/dtKirim" class="dropdown-item">Pengiriman</a>
-                            <a href="Pages/barang/dtbarang" class="dropdown-item">Barang</a>
-                            <a href="Pages/detail_penerima/dtdetail_penerima" class="dropdown-item">Penerima</a>
-                            <a href="Pages/pembayaran/dtpembayaran" class="dropdown-item">Pembayaran</a>
-                            <a href="Pages/pembayaran/dtlayanan" class="dropdown-item">Layanan</a>
-                            <a href="Pages/pembayaran/dtpaket" class="dropdown-item">Paket</a>
-                            <a href="Pages/pembayaran/dtpembayaran" class="dropdown-item">Pembayaran</a>
-                            <a href="Pages/kurir/dtkurir" class="dropdown-item">Kurir</a>
-                            <a href="Pages/user/user_form" class="dropdown-item">Form Pelanggan</a>
-                            <a href="Pages/user/dtUser" class="dropdown-item">Pelanggan</a>
+                            <a href="{{route('paket.index')}}" class="dropdown-item">Paket</a>
+                            <a href="{{route('penerima.index')}}" class="dropdown-item">Penerima</a>
+                            <a href="{{route('pembayaran.index')}}" class="dropdown-item">Pembayaran</a>
+                            <a href="{{route('layanan.index')}}" class="dropdown-item">Layanan</a>
+                            <a href="{{route('akun.index')}}" class="dropdown-item">Akun</a>
+                            <a href="{{route('kurir.index')}}" class="dropdown-item">Kurir</a>
+                            <a href="{{route('dompet.index')}}" class="dropdown-item">Dompet</a>
                         </div>
                     </div>
                     <a href="Pages/Kirim/dtKirim" class="nav-item nav-link"><i class="fa-solid fa-truck-ramp-box me-2"></i>Pengiriman</a>
