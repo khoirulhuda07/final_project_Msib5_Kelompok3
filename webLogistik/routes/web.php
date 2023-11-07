@@ -30,3 +30,4 @@ Route::get('/', function () {
 
 // Admin
 Route::get('/dashboard', [DashboardController::class,'index']);
+Route::resource('akun', AkunController::class);
