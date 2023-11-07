@@ -36,3 +36,4 @@ Route::get('/kurir', [KurirController::class, 'index']);
 Route::get('/dompet', [DompetController::class, 'index']);
 Route::get('/layanan', [LayananController::class, 'index']);
 Route::get('/paket', [PaketController::class, 'index']);
+Route::get('/pengiriman', [PengirimanController::class, 'index']);
