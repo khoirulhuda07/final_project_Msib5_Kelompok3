@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="container-fluid pt-4 px-4">
-    <h1 class="mt-4">Akun</h1>
+    <h1 class="mt-4">Layanan</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
-        <li class="breadcrumb-item active">Akun</li>
+        <li class="breadcrumb-item active">Layanan</li>
     </ol>
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Table Akun</h6>
+                <h6 class="mb-4">Table Layanan</h6>
                 <a href="#>
                     <button type=" button" class="btn btn-primary btn-sm mb-3">Tambah</button>
                 </a>
