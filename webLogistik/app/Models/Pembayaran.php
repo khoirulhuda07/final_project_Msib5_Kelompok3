@@ -13,10 +13,10 @@ class Pembayaran extends Model
     protected $fillable = ['metode', 'harga_total', 'keterangan', 'pengiriman_id', 'akun_id'] ;
 
     public function pengiriman() {
-        return $this->hasOne(Pengiriman::class) ;
+        return $this->belongsTo(Pengiriman::class) ;
     }
 
     public function akun() {
-        return $this->hasOne(Akun::class) ;
+        return $this->belongsTo(Akun::class) ;
     }
 }

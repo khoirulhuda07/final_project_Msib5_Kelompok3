@@ -26,7 +26,7 @@
                                 <th class="text-bold" scope="col">Password</th>
                                 <th class="text-bold" scope="col">Level</th>
                                 <th class="text-bold" scope="col">Alamat</th>
-                                <th class="text-bold" scope="col">Dompet Id</th>
+                                <th class="text-bold" scope="col">Saldo Dompet</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +39,7 @@
                                     <td>{{$user->password}}</td>
                                     <td>{{$user->level}}</td>
                                     <td>{{$user->alamat}}</td>
-                                    <td>{{$user->dompet_id}}</td>
+                                    <td>{{$user->dompet->saldo}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -21,10 +21,10 @@
                             <tr>
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Metode</th>
-                                <th class="text-bold" scope="col">Harga_Total</th>
+                                <th class="text-bold" scope="col">Harga Total</th>
                                 <th class="text-bold" scope="col">Keterangan</th>
-                                <th class="text-bold" scope="col">Pengiriman_id</th>
-                                <th class="text-bold" scope="col">Akun_id</th>
+                                <th class="text-bold" scope="col">Kode Pengiriman</th>
+                                <th class="text-bold" scope="col">Username</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,8 +34,8 @@
                                 <td>{{$pyr->metode}}</td>
                                 <td>{{$pyr->harga_total}}</td>
                                 <td>{{$pyr->keterangan}}</td>
-                                <td>{{$pyr->pengiriman_id}}</td>
-                                <td>{{$pyr->akun_id}}</td>
+                                <td>{{$pyr->pengiriman->kode}}</td>
+                                <td>{{$pyr->akun->username}}</td>
                             </tr>
                             @endforeach
                         </tbody>
