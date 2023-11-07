@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -70,6 +70,9 @@
                             <a href="Pages/Kirim/dtKirim" class="dropdown-item">Pengiriman</a>
                             <a href="Pages/barang/dtbarang" class="dropdown-item">Barang</a>
                             <a href="Pages/detail_penerima/dtdetail_penerima" class="dropdown-item">Penerima</a>
+                            <a href="Pages/pembayaran/dtpembayaran" class="dropdown-item">Pembayaran</a>
+                            <a href="Pages/pembayaran/dtlayanan" class="dropdown-item">Layanan</a>
+                            <a href="Pages/pembayaran/dtpaket" class="dropdown-item">Paket</a>
                             <a href="Pages/pembayaran/dtpembayaran" class="dropdown-item">Pembayaran</a>
                             <a href="Pages/kurir/dtkurir" class="dropdown-item">Kurir</a>
                             <a href="Pages/user/user_form" class="dropdown-item">Form Pelanggan</a>

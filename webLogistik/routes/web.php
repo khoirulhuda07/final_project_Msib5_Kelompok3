@@ -29,8 +29,10 @@ Route::get('/', function () {
 });
 
 // Admin
-Route::get('/dashboard', [DashboardController::class,'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('akun', AkunController::class);
 
-Route::get('/kurir',[KurirController::class, 'index']);
+Route::get('/kurir', [KurirController::class, 'index']);
 Route::get('/dompet', [DompetController::class, 'index']);
+Route::get('/layanan', [LayananController::class, 'index']);
+Route::get('/paket', [PaketController::class, 'index']);
