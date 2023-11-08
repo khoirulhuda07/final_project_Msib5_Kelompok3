@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Table Paket</h6>
-                <a href="{{url('admin/paket/create')}}">
+                <a href="{{route('paket.create')}}">
                     <button type=" button" class="btn btn-primary btn-sm mb-3">Tambah</button>
                 </a>
                 <div class="table-responsive">

@@ -23,7 +23,7 @@ class PenerimaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.penerima.create');
     }
 
     /**
@@ -31,7 +31,12 @@ class PenerimaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $penerima = new Penerima;
+        $penerima->nama = $request->nama;
+        $penerima->nomor_telepon = $request->nomor_telepon;
+        $penerima->save();
+
+        return redirect('admin/penerima');
     }
 
     /**

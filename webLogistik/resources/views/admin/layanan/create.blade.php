@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{url('admin/layanan/store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('layanan.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="col-sm-12 col-xl-9">
   <div class="bg-light rounded h-100 p-4">

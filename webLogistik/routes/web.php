@@ -32,22 +32,16 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
+    // Resource Controller
     Route::resource('akun', AkunController::class);
-    Route::get('/kurir',[KurirController::class, 'index']);
-    Route::get('/kurir/create',[KurirController::class, 'create']);
-    Route::post('/kurir/store',[KurirController::class, 'store']);
-    Route::get('/dompet',[DompetController::class, 'index']);
-    Route::get('/dompet/create',[DompetController::class, 'create']);
-    Route::post('/dompet/store',[DompetController::class, 'store']);
-    Route::get('/layanan',[LayananController::class, 'index']);
-    Route::get('/layanan/create',[LayananController::class, 'create']);
-    Route::post('/layanan/store',[LayananController::class, 'store']);
     Route::resource('paket', PaketController::class);
-    Route::get('/paket',[PaketController::class, 'index']);
-    Route::get('/paket/create',[PaketController::class, 'create']);
-    Route::post('/paket/store',[PaketController::class, 'store']);
     Route::resource('penerima', PenerimaController::class);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('pengiriman', PengirimanController::class);
+    Route::resource('kurir', KurirController::class);
+    Route::resource('dompet', DompetController::class);
+    Route::resource('layanan', LayananController::class);
+    Route::resource('paket', PaketController::class);
 
 });

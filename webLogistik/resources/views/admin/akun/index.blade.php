@@ -12,7 +12,7 @@
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Table Akun</h6>
-                <a href="#>
+                <a href="{{route('akun.create')}}">
                     <button type="button" class="btn btn-primary btn-sm mb-3">Tambah</button>
                 </a>
                 <div class="table-responsive">
@@ -24,7 +24,7 @@
                                 <th class="text-bold" scope="col">Username</th>
                                 <th class="text-bold" scope="col">Email</th>
                                 <th class="text-bold" scope="col">Password</th>
-                                <th class="text-bold" scope="col">Level</th>
+                                <th class="text-bold" scope="col">Jabatan</th>
                                 <th class="text-bold" scope="col">Alamat</th>
                                 <th class="text-bold" scope="col">Saldo Dompet</th>
                             </tr>
