@@ -24,6 +24,7 @@ class KurirController extends Controller
     public function create()
     {
         //
+        return view('admin.kurir.create');
     }
 
     /**
@@ -32,6 +33,12 @@ class KurirController extends Controller
     public function store(Request $request)
     {
         //
+        $kurir = new kurir;
+        $kurir->nama_kurir = $request->nama;
+        $kurir->nomor_telepon =  $request->no_tlp;
+        $kurir->jadwal = $request->jadwal;
+        $kurir->save();
+        return redirect('admin/kurir');
     }
 
     /**

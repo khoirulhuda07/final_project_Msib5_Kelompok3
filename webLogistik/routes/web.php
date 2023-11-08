@@ -33,7 +33,12 @@ Route::prefix('admin')->group(function () {
     
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('akun', AkunController::class);
-    Route::resource('kurir', KurirController::class);
+    Route::get('/kurir',[KurirController::class, 'index']);
+    Route::get('/kurir/create',[KurirController::class, 'create']);
+    Route::post('/kurir/store',[KurirController::class, 'store']);
+    Route::get('/dompet',[DompetController::class, 'index']);
+    Route::get('/dompet/create',[DompetController::class, 'create']);
+    Route::post('/dompet/store',[DompetController::class, 'store']);
     Route::resource('dompet', DompetController::class);
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
