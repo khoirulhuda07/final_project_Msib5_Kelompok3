@@ -13,23 +13,23 @@ class Pengiriman extends Model
     protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'] ;
 
     public function paket() {
-        return $this->hasOne(paket::class) ;
+        return $this->belongsTo(paket::class) ;
     }
 
     public function layanan() {
-        return $this->hasOne(Layanan::class) ;
+        return $this->belongsTo(Layanan::class) ;
     }
 
     public function kurir() {
-        return $this->hasOne(Kurir::class) ;
+        return $this->belongsTo(Kurir::class) ;
     }
 
     public function akun() {
-        return $this->hasOne(Akun::class) ;
+        return $this->belongsTo(Akun::class) ;
     }
 
     public function penerima() {
-        return $this->hasOne(Penerima::class) ;
+        return $this->belongsTo(Penerima::class) ;
     }
 
     public function pembayaran() {
