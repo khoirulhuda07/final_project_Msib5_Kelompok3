@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,9 @@ use App\Http\Controllers\Admin\PengirimanController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// User
+Route::get('/user', [UserController::class, 'index']);
 
 // Admin
 Route::prefix('admin')->group(function () {
@@ -49,5 +53,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('penerima', PenerimaController::class);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('pengiriman', PengirimanController::class);
+
 
 });
