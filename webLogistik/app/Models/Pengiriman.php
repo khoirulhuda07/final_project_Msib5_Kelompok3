@@ -10,6 +10,8 @@ class Pengiriman extends Model
     use HasFactory;
 
     protected $table = 'pengiriman';
+    public $timestamps = false;
+
     protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'] ;
 
     public function paket() {

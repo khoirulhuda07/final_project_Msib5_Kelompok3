@@ -10,8 +10,9 @@ class Layanan extends Model
     use HasFactory;
 
     protected $table = 'layanan';
-    protected $fillable = ['nama_layanan', 'biaya'] ;
     public $timestamps = false;
+    
+    protected $fillable = ['nama_layanan', 'biaya'] ;
     public function pengiriman() {
         return $this->hasMany(Pengiriman::class, 'layanan_id');
     }

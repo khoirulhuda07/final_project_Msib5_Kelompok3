@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Akun;
+use App\Models\Dompet;
 
 class AkunController extends Controller
 {
@@ -23,7 +24,9 @@ class AkunController extends Controller
      */
     public function create()
     {
-        //
+        $dompet = Dompet::all();
+        $jabatan = ['user', 'admin'];
+        return view('admin.akun.create', compact('dompet', 'jabatan'));
     }
 
     /**
@@ -31,7 +34,19 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $akun = new Akun;
+        $akun->fullname = $request->fullname;
+        $akun->username = $request->username;
+        $akun->email = $request->email;
+        $akun->password = $request->password;
+        $akun->level = $request->level;
+        $akun->alamat = $request->alamat;
+        $akun->dompet_id = $request->dompet_id;
+        $akun->save();
+
+        return redirect('admin/akun');
+
     }
 
     /**

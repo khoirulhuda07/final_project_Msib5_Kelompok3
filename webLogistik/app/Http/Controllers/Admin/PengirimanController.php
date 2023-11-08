@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Akun;
+use App\Models\Kurir;
+use App\Models\Layanan;
+use App\Models\Paket;
+use App\Models\Penerima;
 use Illuminate\Http\Request;
 
 use App\Models\Pengiriman;
@@ -23,7 +28,12 @@ class PengirimanController extends Controller
      */
     public function create()
     {
-        //
+        $paket = Paket::all();
+        $layanan = Layanan::all();
+        $penerima = Penerima::all();
+        $akun = Akun::all();
+        $kurir = Kurir::all();
+        return view('admin.pengiriman.create', compact('paket', 'layanan', 'penerima', 'akun', 'kurir'));
     }
 
     /**
@@ -31,7 +41,18 @@ class PengirimanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pengiriman = new Pengiriman;
+        $pengiriman->kode = $request->kode;
+        $pengiriman->tanggal = $request->tanggal;
+        $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
+        $pengiriman->paket_id = $request->paket_id;
+        $pengiriman->layanan_id = $request->layanan_id;
+        $pengiriman->penerima_id = $request->penerima_id;
+        $pengiriman->akun_id = $request->akun_id;
+        $pengiriman->kurir_id = $request->kurir_id;
+        $pengiriman->save();
+
+        return redirect('admin/pengiriman');
     }
 
     /**

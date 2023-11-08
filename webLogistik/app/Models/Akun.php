@@ -10,6 +10,8 @@ class Akun extends Model
     use HasFactory;
 
     protected $table = 'akun';
+    public $timestamps = false;
+    
     protected $fillable = ['fullname', 'username', 'email', 'password', 'level', 'alamat', 'dompet_id'] ;
 
     public function pengiriman() {

@@ -10,8 +10,9 @@ class Dompet extends Model
     use HasFactory;
 
     protected $table = 'dompet';
-    protected $fillable = ['saldo', 'bonus'] ;
     public $timestamps = false;
+    
+    protected $fillable = ['saldo', 'bonus'] ;
     public function akun() {
         return $this->hasOne(Akun::class);
     }
