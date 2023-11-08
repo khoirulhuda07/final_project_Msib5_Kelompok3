@@ -73,8 +73,8 @@
                             <a href="{{route('pembayaran.index')}}" class="dropdown-item">Pembayaran</a>
                             <a href="{{route('layanan.index')}}" class="dropdown-item">Layanan</a>
                             <a href="{{route('akun.index')}}" class="dropdown-item">Akun</a>
-                            <a href="{{route('kurir.index')}}" class="dropdown-item">Kurir</a>
-                            <a href="{{route('dompet.index')}}" class="dropdown-item">Dompet</a>
+                            <a href="{{url('admin/kurir')}}" class="dropdown-item">Kurir</a>
+                            <a href="{{url('admin/dompet')}}" class="dropdown-item">Dompet</a>
                         </div>
                     </div>
                     <a href="Pages/Kirim/dtKirim" class="nav-item nav-link"><i class="fa-solid fa-truck-ramp-box me-2"></i>Pengiriman</a>
