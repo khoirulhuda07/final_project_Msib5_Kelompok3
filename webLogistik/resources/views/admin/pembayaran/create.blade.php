@@ -5,7 +5,7 @@
 <form action="{{route('pembayaran.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="container-fluid pt-4 px-4">
-        <h6 class="mb-4">Tambah Data Pengiriman</h6>
+        <h6 class="mb-4">Tambah Data Pembayaran</h6>
         <div class="row g-4">
             <div class="col-sm-12 col-xl-6">
               <div class="bg-light rounded h-100 p-4">

@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +30,12 @@ Route::get('/', function () {
 });
 
 // User
-Route::get('/user', [UserController::class, 'index']);
+Route::prefix('user')->group(function () {
+    
+    // Route::get('/home', [HomeController::class, 'index']);
+
+});
+
 
 // Admin
 Route::prefix('admin')->group(function () {
@@ -47,6 +52,5 @@ Route::prefix('admin')->group(function () {
     Route::resource('dompet', DompetController::class);
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
-
 
 });
