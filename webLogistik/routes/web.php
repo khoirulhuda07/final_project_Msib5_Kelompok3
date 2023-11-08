@@ -39,9 +39,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/dompet',[DompetController::class, 'index']);
     Route::get('/dompet/create',[DompetController::class, 'create']);
     Route::post('/dompet/store',[DompetController::class, 'store']);
-    Route::resource('dompet', DompetController::class);
-    Route::resource('layanan', LayananController::class);
+    Route::get('/layanan',[LayananController::class, 'index']);
+    Route::get('/layanan/create',[LayananController::class, 'create']);
+    Route::post('/layanan/store',[LayananController::class, 'store']);
     Route::resource('paket', PaketController::class);
+    Route::get('/paket',[PaketController::class, 'index']);
+    Route::get('/paket/create',[PaketController::class, 'create']);
+    Route::post('/paket/store',[PaketController::class, 'store']);
     Route::resource('penerima', PenerimaController::class);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('pengiriman', PengirimanController::class);

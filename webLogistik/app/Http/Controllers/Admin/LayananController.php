@@ -24,6 +24,7 @@ class LayananController extends Controller
     public function create()
     {
         //
+        return view ('admin.layanan.create');
     }
 
     /**
@@ -32,6 +33,11 @@ class LayananController extends Controller
     public function store(Request $request)
     {
         //
+        $layanan = new layanan;
+        $layanan->nama_layanan = $request->nama;
+        $layanan->biaya = $request->biaya;
+        $layanan->save();
+        return redirect('admin/layanan');
     }
 
     /**
