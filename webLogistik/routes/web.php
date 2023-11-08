@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::get('/', function () {
 // Admin
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::resource('akun', AkunController::class);
+Route::get('/user', [UserController::class, 'index']);
 
 Route::get('/kurir', [KurirController::class, 'index']);
 Route::get('/dompet', [DompetController::class, 'index']);
