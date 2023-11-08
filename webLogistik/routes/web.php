@@ -54,3 +54,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('paket', PaketController::class);
 
 });
+//user
+Route::prefix('user')->group(function(){
+    Route::get('/dashboard',[HomeController::class, 'index']);
+});

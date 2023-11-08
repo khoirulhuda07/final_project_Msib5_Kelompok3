@@ -6,5 +6,6 @@
         @yield('content')
     </div>
 </div>
+</div>
 
 @include('user.template.footer')
