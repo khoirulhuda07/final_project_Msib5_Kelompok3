@@ -14,8 +14,8 @@ class AkunController extends Controller
      */
     public function index()
     {
-        $Akun = Akun::all();
-        return view("admin.akun.index", compact("akun"));
+        $akun = Akun::all();
+        return view("admin.akun.index", ['akun' => $akun]);
     }
 
     /**

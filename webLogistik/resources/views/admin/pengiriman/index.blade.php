@@ -23,11 +23,11 @@
                                 <th class="text-bold" scope="col">Kode</th>
                                 <th class="text-bold" scope="col">Tanggal</th>
                                 <th class="text-bold" scope="col">Lokasi Tujuan</th>
-                                <th class="text-bold" scope="col">Paket</th>
+                                <th class="text-bold" scope="col">Id Paket</th>
                                 <th class="text-bold" scope="col">Layanan</th>
-                                <th class="text-bold" scope="col">Penerima</th>
-                                <th class="text-bold" scope="col">Akun</th>
-                                <th class="text-bold" scope="col">Kurir</th>
+                                <th class="text-bold" scope="col">Nama Penerima</th>
+                                <th class="text-bold" scope="col">Username</th>
+                                <th class="text-bold" scope="col">Nama Kurir</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,11 +37,11 @@
                                 <td>{{$pn->kode}}</td>
                                 <td>{{$pn->tanggal}}</td>
                                 <td>{{$pn->lokasi_tujuan}}</td>
-                                <td>{{$pn->paket_id}}</td>
-                                <td>{{$pn->layanan_id}}</td>
-                                <td>{{$pn->penerima_id}}</td>
-                                <td>{{$pn->akun_id}}</td>
-                                <td>{{$pn->kurir_id}}</td>
+                                <td>{{$pn->paket->id}}</td>
+                                <td>{{$pn->layanan->nama_layanan}}</td>
+                                <td>{{$pn->penerima->nama}}</td>
+                                <td>{{$pn->akun->username}}</td>
+                                <td>{{$pn->kurir->nama_kurir}}</td>
                             </tr>
                             @endforeach
                         </tbody>

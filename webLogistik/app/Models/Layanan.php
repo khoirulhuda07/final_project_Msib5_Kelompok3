@@ -11,7 +11,7 @@ class Layanan extends Model
 
     protected $table = 'layanan';
     protected $fillable = ['nama_layanan', 'biaya'] ;
-
+    public $timestamps = false;
     public function pengiriman() {
         return $this->hasMany(Pengiriman::class, 'layanan_id');
     }

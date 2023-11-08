@@ -24,6 +24,7 @@ class DompetController extends Controller
     public function create()
     {
         //
+        return view ('admin.dompet.create');
     }
 
     /**
@@ -32,6 +33,11 @@ class DompetController extends Controller
     public function store(Request $request)
     {
         //
+        $dompet = new dompet;
+        $dompet->saldo = $request->saldo;
+        $dompet->bonus = $request->bonus;
+        $dompet->save();
+        return redirect('admin/dompet');
     }
 
     /**

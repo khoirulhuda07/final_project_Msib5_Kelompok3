@@ -24,6 +24,7 @@ class PaketController extends Controller
     public function create()
     {
         //
+        return view('admin.paket.create');
     }
 
     /**
@@ -32,6 +33,11 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         //
+        $paket =  new paket;
+        $paket->berat = $request->berat;
+        $paket->deskripsi = $request->deskripsi;
+        $paket->save();
+        return redirect('admin/paket');
     }
 
     /**

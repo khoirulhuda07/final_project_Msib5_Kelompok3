@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Nov 2023 pada 12.06
+-- Waktu pembuatan: 08 Nov 2023 pada 01.25
 -- Versi server: 10.4.25-MariaDB
 -- Versi PHP: 8.1.10
 
@@ -55,7 +55,7 @@ INSERT INTO `akun` (`id`, `fullname`, `username`, `email`, `password`, `level`, 
 
 CREATE TABLE `dompet` (
   `id` int(11) NOT NULL,
-  `saldo` double NOT NULL,
+  `saldo` varchar(20) NOT NULL,
   `bonus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -64,9 +64,9 @@ CREATE TABLE `dompet` (
 --
 
 INSERT INTO `dompet` (`id`, `saldo`, `bonus`) VALUES
-(1, 50, 50),
-(2, 50, 50),
-(3, 50, 50);
+(1, '50.000', 5000),
+(2, '50.000', 5000),
+(3, '50.000', 5000);
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,14 @@ CREATE TABLE `paket` (
 INSERT INTO `paket` (`id`, `berat`, `deskripsi`) VALUES
 (1, 2, 'paket elektronik'),
 (2, 2, 'paket alat rumah tangga'),
-(3, 1, 'paket elektronik');
+(3, 1, 'paket elektronik'),
+(4, 1, 'paket peternakan'),
+(5, 1, 'makanan'),
+(6, 1, 'minuman'),
+(7, 3, 'magicom'),
+(8, 2, 'perkakas'),
+(9, 5, 'mesin'),
+(10, 1, 'mesin');
 
 -- --------------------------------------------------------
 
@@ -154,7 +161,14 @@ CREATE TABLE `pembayaran` (
 INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengiriman_id`, `akun_id`) VALUES
 (1, 'BRI', 400, 'Lunas', 1, 1),
 (2, 'BCA', 200, 'Lunas', 2, 2),
-(3, 'BNI', 50, 'lunas', 3, 3);
+(3, 'BNI', 50, 'lunas', 3, 3),
+(4, 'BCA', 500000, 'Lunas', 9, 1),
+(5, 'MANDIRI', 200000, 'Lunas', 12, 1),
+(6, 'BNI', 400000, 'Lunas', 13, 2),
+(7, 'BRI', 200000, 'Lunas', 14, 2),
+(8, 'BNI', 100000, 'Lunas', 15, 1),
+(10, 'BRI', 100000, 'Lunas', 16, 1),
+(11, 'MANDIRI', 200000, 'Lunas', 17, 2);
 
 -- --------------------------------------------------------
 
@@ -200,9 +214,16 @@ CREATE TABLE `pengiriman` (
 --
 
 INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `paket_id`, `layanan_id`, `penerima_id`, `akun_id`, `kurir_id`) VALUES
-(1, 'BBA1', '2023-11-23', 'jakarta', 2, 3, 2, 1, 1),
+(1, 'BBA1', '2023-11-23', 'jakarta', 1, 3, 1, 1, 1),
 (2, 'BBA2', '2023-11-01', 'Lamongan', 2, 2, 1, 2, 2),
-(3, 'BBA4', '2023-11-10', 'jakarta', 3, 2, 3, 3, 1);
+(3, 'BBA4', '2023-11-10', 'jakarta', 3, 2, 3, 3, 1),
+(9, 'BBA5', '2023-11-23', 'jakarta', 4, 2, 2, 3, 2),
+(12, 'BBA6', '2023-11-15', 'jakarta', 5, 2, 3, 2, 2),
+(13, 'BBA7', '2023-08-16', 'jakarta', 6, 1, 1, 2, 2),
+(14, 'BBA8', '2022-10-21', 'jakarta', 7, 2, 1, 3, 2),
+(15, 'BBA9', '2023-02-09', 'semarang', 8, 1, 2, 3, 3),
+(16, 'BBA10', '2023-11-09', 'depok', 9, 1, 2, 2, 2),
+(17, 'BBA11', '2020-11-07', 'denpasar', 10, 2, 2, 2, 1);
 
 --
 -- Indexes for dumped tables
@@ -296,13 +317,13 @@ ALTER TABLE `layanan`
 -- AUTO_INCREMENT untuk tabel `paket`
 --
 ALTER TABLE `paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `penerima`
@@ -314,7 +335,7 @@ ALTER TABLE `penerima`
 -- AUTO_INCREMENT untuk tabel `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
