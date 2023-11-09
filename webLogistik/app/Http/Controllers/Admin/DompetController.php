@@ -54,6 +54,8 @@ class DompetController extends Controller
     public function edit(string $id)
     {
         //
+        $dompet= dompet::all()->where('id',$id);
+        return view ('admin.dompet.update', compact('dompet'));
     }
 
     /**
@@ -62,6 +64,12 @@ class DompetController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $dompet = dompet::find($request->id);
+        $dompet->saldo = $request->saldo;
+        $dompet->bonus = $request->bonus;
+        $dompet->save();
+        return redirect('admin.dompet');
+        
     }
 
     /**
@@ -70,5 +78,7 @@ class DompetController extends Controller
     public function destroy(string $id)
     {
         //
+        $dompet = dompet::find($id)->delete();
+        return redirect('admin.dompet');
     }
 }
