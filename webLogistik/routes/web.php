@@ -32,7 +32,7 @@ Route::get('/', function () {
 // User
 Route::prefix('user')->group(function () {
     
-    // Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/home',[HomeController::class, 'index']);
 
 });
 
@@ -43,18 +43,23 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
     // Resource Controller
-    Route::resource('akun', AkunController::class);
+    Route::resource('akun', AkunController::class)->except(['update', 'destroy']);
+    Route::resource('pengiriman', PengirimanController::class)->except(['update', 'destroy']);
     Route::resource('paket', PaketController::class);
     Route::resource('penerima', PenerimaController::class);
     Route::resource('pembayaran', PembayaranController::class);
-    Route::resource('pengiriman', PengirimanController::class);
     Route::resource('kurir', KurirController::class);
     Route::resource('dompet', DompetController::class);
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
 
-});
-//user
-Route::prefix('user')->group(function(){
-    Route::get('/dashboard',[HomeController::class, 'index']);
+    // Route Update & Delete
+    // Akun
+    Route::post('/akun/update/{id}', [AkunController::class,'update']);
+    Route::get('/akun/delete/{id}', [AkunController::class,'destroy']);
+
+    // Pengiriman
+    Route::post('/pengiriman/update/{id}', [PengirimanController::class,'update']);
+    Route::get('/pengiriman/delete/{id}', [PengirimanController::class,'destroy']);
+
 });

@@ -4,7 +4,7 @@
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Akun</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Akun</li>
     </ol>
@@ -27,6 +27,7 @@
                                 <th class="text-bold" scope="col">Jabatan</th>
                                 <th class="text-bold" scope="col">Alamat</th>
                                 <th class="text-bold" scope="col">Saldo Dompet</th>
+                                <th class="text-bold" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,6 +41,11 @@
                                     <td>{{$user->level}}</td>
                                     <td>{{$user->alamat}}</td>
                                     <td>{{$user->dompet->saldo}}</td>
+                                    <td>
+                                        <a href="{{route('akun.show',$user->id)}}"><button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button></a>
+                                        <a href="{{route('akun.edit',$user->id)}}"><button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button></a>
+                                        <a href="{{url('admin/akun/delete/'.$user->id)}}"><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

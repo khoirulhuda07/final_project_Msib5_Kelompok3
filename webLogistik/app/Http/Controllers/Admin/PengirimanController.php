@@ -60,7 +60,8 @@ class PengirimanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $pengiriman = Pengiriman::all()->where('id', $id);
+        // return view("admin.pengiriman.index", ['pengiriman'=> $pengiriman]);
     }
 
     /**
@@ -68,7 +69,13 @@ class PengirimanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pengiriman = Pengiriman::all()->where('id', $id);
+        $paket = Paket::all();
+        $layanan = Layanan::all();
+        $penerima = Penerima::all();
+        $akun = Akun::all();
+        $kurir = Kurir::all();
+        return view('admin.pengiriman.edit', ['pengiriman'=> $pengiriman], compact('paket', 'layanan', 'penerima', 'akun', 'kurir'));
     }
 
     /**
@@ -76,7 +83,18 @@ class PengirimanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pengiriman = Pengiriman::find( $request->id );
+        $pengiriman->kode = $request->kode;
+        $pengiriman->tanggal = $request->tanggal;
+        $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
+        $pengiriman->paket_id = $request->paket_id;
+        $pengiriman->layanan_id = $request->layanan_id;
+        $pengiriman->penerima_id = $request->penerima_id;
+        $pengiriman->akun_id = $request->akun_id;
+        $pengiriman->kurir_id = $request->kurir_id;
+        $pengiriman->save();
+
+        return redirect('admin/pengiriman');
     }
 
     /**
@@ -84,6 +102,7 @@ class PengirimanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Pengiriman::find($id)->delete();
+        return redirect('admin/pengiriman');
     }
 }
