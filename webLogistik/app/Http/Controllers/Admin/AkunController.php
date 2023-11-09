@@ -54,8 +54,8 @@ class AkunController extends Controller
      */
     public function show(string $id)
     {
-        // $akun = Akun::all()->where('id', $id);
-        // return view('admin.akun.detail', ['akun'=> $akun]);
+        $akun = Akun::all()->where('id', $id);
+        return view('admin.akun.detail', ['akun'=> $akun]);
     }
 
     /**
@@ -74,7 +74,7 @@ class AkunController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $akun = Akun::find( $request->id );
+        $akun = Akun::find( $id );
         $akun->fullname = $request->fullname;
         $akun->username = $request->username;
         $akun->email = $request->email;

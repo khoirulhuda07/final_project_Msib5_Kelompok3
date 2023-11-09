@@ -44,9 +44,13 @@
                                 <td>{{$pn->akun->username}}</td>
                                 <td>{{$pn->kurir->nama_kurir}}</td>
                                 <td>
-                                    <a href="{{route('pengiriman.show',$pn->id)}}"><button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button></a>
-                                    <a href="{{route('pengiriman.edit',$pn->id)}}"><button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button></a>
-                                    <a href="{{url('admin/pengiriman/delete/'.$pn->id)}}"><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></a>
+                                    <form action="{{route('pengiriman.destroy',$pn->id)}}" method="post">
+                                        <a href="{{route('pengiriman.show',$pn->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="{{route('pengiriman.edit',$pn->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

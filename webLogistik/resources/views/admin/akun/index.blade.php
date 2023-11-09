@@ -42,9 +42,13 @@
                                     <td>{{$user->alamat}}</td>
                                     <td>{{$user->dompet->saldo}}</td>
                                     <td>
-                                        <a href="{{route('akun.show',$user->id)}}"><button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button></a>
-                                        <a href="{{route('akun.edit',$user->id)}}"><button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button></a>
-                                        <a href="{{url('admin/akun/delete/'.$user->id)}}"><button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></a>
+                                        <form action="{{route('akun.destroy',$user->id)}}" method="POST">
+                                        <a href="{{route('akun.show',$user->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="{{route('akun.edit',$user->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
