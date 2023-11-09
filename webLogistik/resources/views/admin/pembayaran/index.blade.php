@@ -1,6 +1,7 @@
 @extends('admin.template.appadmin')
 
 @section('content')
+
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Pembayaran</h1>
     <ol class="breadcrumb mb-4">

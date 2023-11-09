@@ -53,6 +53,25 @@ buttons: ['', '', '', '', { extend:'print', className: 'btn btn-primary'}],
 
 });
 </script>
+<script>
+    function Hapus() {
+    Swal.fire({
+        title: 'Konfirmasi',
+        text: 'Apakah Anda yakin ingin menghapus data ini?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Ya, hapus!',
+        cancelButtonText: 'Batal'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Logika penghapusan data disini
+            Swal.fire('Berhasil!', 'Data berhasil dihapus.', 'success');
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire('Batal', 'Penghapusan data dibatalkan.', 'info');
+        }
+    });
+}
+</script>
 </body>
 
 </html>

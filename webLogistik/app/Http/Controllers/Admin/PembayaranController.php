@@ -62,7 +62,10 @@ class PembayaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // $akun = Akun::all();
+        $pengiriman = Pengiriman::all();
+        $bayar = ['BCA', 'BRI', 'Mandiri'];
+        return view('admin.pembayaran.edit', compact('akun', 'pengiriman', 'bayar'));
     }
 
     /**

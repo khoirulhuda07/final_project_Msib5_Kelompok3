@@ -46,7 +46,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('akun', AkunController::class)->except(['update', 'destroy']);
     Route::resource('pengiriman', PengirimanController::class)->except(['update', 'destroy']);
     Route::resource('paket', PaketController::class);
-    Route::resource('penerima', PenerimaController::class);
+    Route::resource('penerima', PenerimaController::class)->except(['update','destroy']);
     Route::resource('pembayaran', PembayaranController::class);
     Route::resource('kurir', KurirController::class);
     Route::resource('dompet', DompetController::class);
@@ -62,4 +62,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/pengiriman/update/{id}', [PengirimanController::class,'update']);
     Route::get('/pengiriman/delete/{id}', [PengirimanController::class,'destroy']);
 
+    //penerima
+    Route::post('/penerima/update/{id}',[PenerimaController::class,'update']);
+    Route::get('/penerima/delete/{id}',[PenerimaController::class,'destroy']);
 });
