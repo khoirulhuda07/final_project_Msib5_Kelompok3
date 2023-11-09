@@ -29,7 +29,7 @@
       
                 <!-- input ke empat -->
                 <div class="form-floating mb-3">
-                  <input type="text" name="password" class="form-control" id="floatingPass" placeholder="Masukkan Password">
+                  <input type="password" name="password" class="form-control" id="floatingPass" placeholder="Masukkan Password">
                   <label for="floatingPass">Password</label>
                 </div>
                 

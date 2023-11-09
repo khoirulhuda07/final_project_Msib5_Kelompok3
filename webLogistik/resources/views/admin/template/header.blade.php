@@ -62,8 +62,8 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="Pages/Kirim/form_kirim" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Form</a>
+                    <a href="{{url('admin/dashboard')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{route('pengiriman.create')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Form</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-table me-2"></i>Data</a>
                         <div class="dropdown-menu bg-transparent border-0">

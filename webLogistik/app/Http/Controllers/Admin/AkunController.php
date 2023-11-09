@@ -54,7 +54,8 @@ class AkunController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // $akun = Akun::all()->where('id', $id);
+        // return view('admin.akun.detail', ['akun'=> $akun]);
     }
 
     /**
@@ -62,7 +63,10 @@ class AkunController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $akun = Akun::all()->where('id', $id);
+        $dompet = Dompet::all();
+        $jabatan = ['user', 'admin'];
+        return view('admin.akun.edit', ['akun'=> $akun], compact('jabatan','dompet'));
     }
 
     /**
@@ -70,7 +74,17 @@ class AkunController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $akun = Akun::find( $request->id );
+        $akun->fullname = $request->fullname;
+        $akun->username = $request->username;
+        $akun->email = $request->email;
+        $akun->password = $request->password;
+        $akun->level = $request->level;
+        $akun->alamat = $request->alamat;
+        $akun->dompet_id = $request->dompet_id;
+        $akun->save();
+
+        return redirect('admin/akun');
     }
 
     /**
@@ -78,6 +92,7 @@ class AkunController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Akun::find($id)->delete();
+        return redirect('admin/akun');
     }
 }
