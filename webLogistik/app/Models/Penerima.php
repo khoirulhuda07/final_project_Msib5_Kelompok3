@@ -10,6 +10,8 @@ class Penerima extends Model
     use HasFactory;
 
     protected $table = 'penerima';
+    public $timestamps = false;
+
     protected $fillable = ['nama', 'nomor_telepon'] ;
 
     public function pengiriman() {

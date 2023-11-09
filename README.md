@@ -48,8 +48,8 @@
   ```
 
 ## Login
-Email : rahmat@example.com
-Password : password
+Username : admin 
+Password : admin
 
 ## Fitur
 ### Front End

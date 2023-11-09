@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form action="{{url('admin/paket/store')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('paket.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="col-sm-12 col-xl-9">
   <div class="bg-light rounded h-100 p-4">

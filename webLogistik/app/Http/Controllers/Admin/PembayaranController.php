@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Pembayaran;
+use App\Models\Akun;
+use App\Models\Pengiriman;
 
 class PembayaranController extends Controller
 {
@@ -23,7 +25,10 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        //
+        $akun = Akun::all();
+        $pengiriman = Pengiriman::all();
+        $bayar = ['BCA', 'BRI', 'Mandiri'];
+        return view('admin.pembayaran.create', compact('akun', 'pengiriman', 'bayar'));
     }
 
     /**
@@ -31,7 +36,17 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $pembayaran = new Pembayaran;
+        $pembayaran->metode = $request->metode;
+        $pembayaran->harga_total = $request->harga_total;
+        $pembayaran->keterangan = $request->keterangan;
+        $pembayaran->pengiriman_id = $request->pengiriman_id;
+        $pembayaran->akun_id = $request->akun_id;
+        $pembayaran->save();
+
+        return redirect('admin/pembayaran');
+
     }
 
     /**
