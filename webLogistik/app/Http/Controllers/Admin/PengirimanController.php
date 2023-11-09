@@ -60,8 +60,8 @@ class PengirimanController extends Controller
      */
     public function show(string $id)
     {
-        // $pengiriman = Pengiriman::all()->where('id', $id);
-        // return view("admin.pengiriman.index", ['pengiriman'=> $pengiriman]);
+        $pengiriman = Pengiriman::all()->where('id', $id);
+        return view("admin.pengiriman.detail", ['pengiriman'=> $pengiriman]);
     }
 
     /**
@@ -83,7 +83,7 @@ class PengirimanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $pengiriman = Pengiriman::find( $request->id );
+        $pengiriman = Pengiriman::find( $id );
         $pengiriman->kode = $request->kode;
         $pengiriman->tanggal = $request->tanggal;
         $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
