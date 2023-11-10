@@ -22,6 +22,7 @@
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Nama Layanan</th>
                                 <th class="text-bold" scope="col">Biaya</th>
+                                <th class="text-bold" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,13 @@
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$lyn->nama_layanan}}</td>
                                 <td>{{$lyn->biaya}}</td>
+                                <td>
+                                <a href="{{route('layanan.show',$lyn->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                <a href="{{route('layanan.edit',$lyn->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

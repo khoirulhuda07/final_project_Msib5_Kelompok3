@@ -46,6 +46,9 @@ class PaketController extends Controller
     public function show(string $id)
     {
         //
+        $paket = Paket::all()
+        ->where('id', $id);
+        return view("admin.paket.detail", ['paket'=> $paket], compact("paket"));
     }
 
     /**
@@ -54,6 +57,9 @@ class PaketController extends Controller
     public function edit(string $id)
     {
         //
+        $paket = Paket::all()
+        ->where('id', $id);
+        return view("admin.paket.edit", compact("paket"));
     }
 
     /**
@@ -62,6 +68,11 @@ class PaketController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $paket = Paket::find($id);
+        $paket->berat = $request->berat;
+        $paket->deskripsi = $request->deskripsi;
+        $paket->save();
+        return redirect('admin/paket');
     }
 
     /**
@@ -70,5 +81,7 @@ class PaketController extends Controller
     public function destroy(string $id)
     {
         //
+        Paket::find($id)->delete();
+        return redirect('admin/paket');
     }
 }

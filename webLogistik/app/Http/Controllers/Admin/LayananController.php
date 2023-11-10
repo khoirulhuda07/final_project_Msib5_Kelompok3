@@ -46,6 +46,9 @@ class LayananController extends Controller
     public function show(string $id)
     {
         //
+        $layanan = layanan::all()
+        ->where('id', $id);
+        return view("admin.layanan.detail", ['layanan'=> $layanan]);
     }
 
     /**
@@ -54,6 +57,9 @@ class LayananController extends Controller
     public function edit(string $id)
     {
         //
+        $layanan = layanan::all()
+        ->where('id', $id);
+        return view("admin.layanan.edit", compact("layanan"));
     }
 
     /**
@@ -62,6 +68,11 @@ class LayananController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $layanan = layanan::find($id);
+        $layanan->nama_layanan = $request->nama;
+        $layanan->biaya = $request->biaya;
+        $layanan->save();
+        return redirect('admin/layanan');
     }
 
     /**
@@ -70,5 +81,7 @@ class LayananController extends Controller
     public function destroy(string $id)
     {
         //
+        layanan::find($id)->delete();
+        return redirect('admin/layanan');
     }
 }
