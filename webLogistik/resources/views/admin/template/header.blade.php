@@ -77,7 +77,7 @@
                             <a href="{{route('dompet.index')}}" class="dropdown-item">Dompet</a>
                         </div>
                     </div>
-                    <a href="Pages/Kirim/dtKirim" class="nav-item nav-link"><i class="fa-solid fa-truck-ramp-box me-2"></i>Pengiriman</a>
+                    <a href="{{route('pengiriman.index')}}" class="nav-item nav-link"><i class="fa-solid fa-truck-ramp-box me-2"></i>Pengiriman</a>
                     <a href="Pages/laporan/laporan" class="nav-item nav-link"><i class="fa-solid fa-book-open-reader me-2"></i>Laporan</a>
                 </div>
             </nav>

@@ -22,6 +22,7 @@
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Berat</th>
                                 <th class="text-bold" scope="col">Deskripsi</th>
+                                <th class="text-bold" scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,13 @@
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$pk->berat}}</td>
                                 <td>{{$pk->deskripsi}}</td>
+                                <td>
+                                    <a href="{{route('paket.show',$pk->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="{{route('paket.edit',$pk->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
