@@ -33,6 +33,15 @@
                                     <td>{{$k->nama_kurir}}</td>
                                     <td>{{$k->nomor_telepon}}</td>
                                     <td>{{$k->jadwal}}</td>
+                                    <td>
+                                    <form action="{{route('kurir.destroy',$k->id)}}" method="POST">
+                                    <a href="{{route('kurir.show',$k->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="{{route('kurir.edit',$k->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                    </td>
                                   
                                 </tr>
                             @endforeach

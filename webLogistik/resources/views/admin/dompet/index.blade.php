@@ -22,7 +22,7 @@
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Saldo</th>
                                 <th class="text-bold" scope="col">Diskon</th>
-                                <th class="text-bold" scope="col">aksi</th>
+                                <th class="text-bold" scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,7 +31,16 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$d->saldo}}</td>
                                     <td>{{$d->bonus}}</td>
-                                
+                                    <td>
+                                    <form action="{{route('dompet.destroy',$d->id)}}" method="POST">
+                                    <a href="{{route('dompet.show',$d->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                    <a href="{{route('dompet.edit',$d->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
