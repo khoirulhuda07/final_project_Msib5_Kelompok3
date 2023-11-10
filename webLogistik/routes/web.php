@@ -12,7 +12,12 @@ use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
+use App\Http\Controllers\Admin\ProfileController;
+
+//User Namespace
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\ProfileuController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +36,15 @@ Route::get('/', function () {
 
 // User
 Route::prefix('user')->group(function () {
-    
-    Route::get('/home',[HomeController::class, 'index']);
 
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::resource('profile', ProfileuController::class);
 });
 
 
 // Admin
 Route::prefix('admin')->group(function () {
-    
+
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
     // Resource Controller
@@ -52,4 +57,5 @@ Route::prefix('admin')->group(function () {
     Route::resource('dompet', DompetController::class);
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
+    Route::resource('profile', ProfileController::class);
 });
