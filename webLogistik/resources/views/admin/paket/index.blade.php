@@ -32,11 +32,13 @@
                                 <td>{{$pk->berat}}</td>
                                 <td>{{$pk->deskripsi}}</td>
                                 <td>
+                                <form action="{{route('paket.destroy',$pk->id)}}" method="post">
                                     <a href="{{route('paket.show',$pk->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                     <a href="{{route('paket.edit',$pk->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                     @csrf
                                     @method('DELETE')
                                         <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                </form>
                                 </td>
                             </tr>
                             @endforeach
