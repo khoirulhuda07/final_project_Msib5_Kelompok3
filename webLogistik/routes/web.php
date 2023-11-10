@@ -52,5 +52,4 @@ Route::prefix('admin')->group(function () {
     Route::resource('dompet', DompetController::class);
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
-
 });

@@ -22,6 +22,7 @@
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Saldo</th>
                                 <th class="text-bold" scope="col">Diskon</th>
+                                <th class="text-bold" scope="col">aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -30,6 +31,7 @@
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$d->saldo}}</td>
                                     <td>{{$d->bonus}}</td>
+                                
                                 </tr>
                             @endforeach
                         </tbody>

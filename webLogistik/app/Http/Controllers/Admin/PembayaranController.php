@@ -55,6 +55,8 @@ class PembayaranController extends Controller
     public function show(string $id)
     {
         //
+        $pembayaran = pembayaran::all()->where('id', $id);
+        return view('admin.pembayaran.detail', ['pembayaran'=> $pembayaran]);
     }
 
     /**
@@ -62,7 +64,12 @@ class PembayaranController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // 
+        $akun = Akun::all();
+        $pembayaran = pembayaran::all()->where('id',$id);
+        $pengiriman = Pengiriman::all();
+        $bayar = ['BCA', 'BRI', 'Mandiri'];
+        return view('admin.pembayaran.edit', compact('akun','pembayaran', 'pengiriman', 'bayar'));
     }
 
     /**
@@ -71,6 +78,16 @@ class PembayaranController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $pembayaran = pembayaran::find($id);
+        $pembayaran->metode = $request->metode;
+        $pembayaran->harga_total = $request->harga_total;
+        $pembayaran->keterangan = $request->keterangan;
+        $pembayaran->pengiriman_id = $request->pengiriman_id;
+        $pembayaran->akun_id = $request->akun_id;
+        $pembayaran->save();
+
+        return redirect('admin/pembayaran');
+
     }
 
     /**
@@ -79,5 +96,7 @@ class PembayaranController extends Controller
     public function destroy(string $id)
     {
         //
+        pembayaran::find($id)->delete();
+        return redirect('admin/pembayaran');
     }
 }
