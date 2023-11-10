@@ -3,8 +3,9 @@
 <!-- form start -->
 @section('content')
 @foreach ($pengiriman as $pn)
-<form action="{{url('admin/pengiriman/store'.$pn->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('pengiriman.update',$pn->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PATCH')
     <div class="container-fluid pt-4 px-4">
         <h6 class="mb-4">Tambah Data Pengiriman</h6>
         <div class="row g-4">
@@ -92,7 +93,7 @@
                     <label for="kurir">Nama Kurir</label>
                   </div> 
                   <br>
-                    <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>
+                    <button name="proses" value="save" type="submit" class="btn btn-warning">Update</button>
               </div>
             </div>
         </div>

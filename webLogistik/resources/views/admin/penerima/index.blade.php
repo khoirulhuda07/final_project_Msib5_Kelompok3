@@ -32,9 +32,13 @@
                                 <td>{{$pnr->nama}}</td>
                                 <td>{{$pnr->nomor_telepon}}</td>
                                 <td>
-                                    <a href="{{route('penerima.show',$pnr->id)}}"><button class="btn btn-sm btn-info"><i class="fas fa-eye"></i></button></a>
-                                    <a href="{{route('penerima.edit',$pnr->id)}}"><button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></button></a>
-                                    <a onclick="return Hapus()" href="{{url('admin/penerima/delete/'.$pnr->id)}}"><button  class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button></a>
+                                    <form action="{{route('penerima.destroy',$pnr->id)}}" method="POST">
+                                        <a href="{{route('penerima.show',$pnr->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="{{route('penerima.edit',$pnr->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
                                 </td>
                             </tr>
                             @endforeach

@@ -26,6 +26,7 @@
                                 <th class="text-bold" scope="col">Keterangan</th>
                                 <th class="text-bold" scope="col">Kode Pengiriman</th>
                                 <th class="text-bold" scope="col">Username</th>
+                                <th class="text-bold" scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -37,6 +38,15 @@
                                 <td>{{$pyr->keterangan}}</td>
                                 <td>{{$pyr->pengiriman->kode}}</td>
                                 <td>{{$pyr->akun->username}}</td>
+                                <td>
+                                    <form action="{{route('pembayaran.destroy',$pyr->id)}}" method="POST">
+                                        <a href="{{route('pembayaran.show',$pyr->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
+                                        <a href="{{route('pembayaran.edit',$pyr->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                                        </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

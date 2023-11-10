@@ -45,6 +45,8 @@ class PenerimaController extends Controller
     public function show(string $id)
     {
         //
+        $penerima= penerima::all()->where('id', $id);
+        return view('admin.penerima.detail', ['penerima'=> $penerima]);
     }
 
     /**
@@ -63,7 +65,7 @@ class PenerimaController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        $penerima = penerima::find($request->id);
+        $penerima = penerima::find($id);
         $penerima->nama = $request->nama;
         $penerima->nomor_telepon = $request->no_tlp;
         $penerima->save();

@@ -4,8 +4,9 @@
 @section('content')
 @foreach ($akun as $user)
     
-    <form action="{{url('admin/akun/update/'.$user->id)}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('akun.update',$user->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
         <div class="container-fluid pt-4 px-4">
             <h6 class="mb-4">Tambah Data Akun</h6>
             <div class="row g-4">
