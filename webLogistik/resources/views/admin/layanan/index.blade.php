@@ -32,11 +32,13 @@
                                 <td>{{$lyn->nama_layanan}}</td>
                                 <td>{{$lyn->biaya}}</td>
                                 <td>
+                                <form action="{{route('layanan.destroy',$lyn->id)}}" method="post">
                                 <a href="{{route('layanan.show',$lyn->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                 <a href="{{route('layanan.edit',$lyn->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-sm btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                                </form>
                                 </td>
                             </tr>
                             @endforeach
