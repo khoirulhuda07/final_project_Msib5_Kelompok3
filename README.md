@@ -34,6 +34,10 @@
   ```bash
   php artisan key:generate
   ```
+- menjalankan storage di website, ketikan command :
+  ```bash
+  php artisan storage:link
+  ```
 - buatlah nama database baru. Lalu sesuaikan nama database, username, dan password database di file `.env`, ketikan command :
   ```bash
   php artisan migrate
@@ -48,8 +52,8 @@
   ```
 
 ## Login
-Username : admin 
-Password : admin
+Username : admin  & Password : admin
+Username : user   & password : user
 
 ## Fitur
 ### Front End

@@ -12,7 +12,7 @@ class Akun extends Model
     protected $table = 'akun';
     public $timestamps = false;
     
-    protected $fillable = ['fullname', 'username', 'email', 'password', 'level', 'alamat', 'dompet_id'] ;
+    protected $fillable = ['fullname', 'username', 'email', 'password', 'level', 'alamat', 'foto', 'dompet_id'] ;
 
     public function pengiriman() {
         return $this->hasMany(Pengiriman::class);
