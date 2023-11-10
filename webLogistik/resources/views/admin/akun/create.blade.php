@@ -53,8 +53,14 @@
                     <input type="text" name="alamat" class="form-control" id="floatingAlamat" placeholder="Masukkan Alamat">
                     <label for="floatingAlamat">Alamat</label>
                   </div>
-              
+
                   <!-- input ke tujuh -->
+                  <div class="form-floating mb-3">
+                    <input type="file" name="foto" class="form-control" id="floatingfoto">
+                    <label for="floatingfoto">Foto Profile</label>
+                  </div>
+              
+                  <!-- input ke delapan -->
                   <div class="form-floating mb-3">
                     <select class="form-select" name="dompet_id"id="saldo" aria-label="Floating label select example">
                         <option selected>--- Saldo Dompet ---</option>

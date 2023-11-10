@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 
-class ProfileuController extends Controller
+class ProfileAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class ProfileuController extends Controller
     {
         //
         // $profile = Profile::all();
-        return view("user.profile.index");
+        return view("admin.profile.index");
     }
 
     /**

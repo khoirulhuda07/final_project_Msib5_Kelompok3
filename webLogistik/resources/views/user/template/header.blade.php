@@ -222,7 +222,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('profile.index')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{url('user/profile')}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -272,7 +272,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="{{url('user/dashboard')}}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
