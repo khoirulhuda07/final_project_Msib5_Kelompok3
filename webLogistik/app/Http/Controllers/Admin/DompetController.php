@@ -15,7 +15,7 @@ class DompetController extends Controller
     public function index()
     {
         $dompet = Dompet::all();
-        return view("admin.dompet.index", compact("dompet"));
+        return view("admin.dompet.index", ['dompet' => $dompet]);
     }
 
     /**
@@ -33,7 +33,7 @@ class DompetController extends Controller
     public function store(Request $request)
     {
         //
-        $dompet = new dompet;
+        $dompet = new Dompet;
         $dompet->saldo = $request->saldo;
         $dompet->bonus = $request->bonus;
         $dompet->save();
@@ -46,6 +46,9 @@ class DompetController extends Controller
     public function show(string $id)
     {
         //
+        $dompet = dompet::all()
+        ->where('id', $id);
+        return view("admin.dompet.detail", compact("dompet"));
     }
 
     /**
@@ -54,7 +57,9 @@ class DompetController extends Controller
     public function edit(string $id)
     {
         //
-        
+        $dompet = Dompet::all()
+        ->where('id', $id);
+        return view("admin.dompet.edit", compact("dompet"));
     }
     /**
      * Update the specified resource in storage.
@@ -62,7 +67,11 @@ class DompetController extends Controller
     public function update(Request $request, string $id)
     {
         //
-        
+        $dompet = dompet ::find($id);
+        $dompet->saldo = $request->saldo;
+        $dompet->bonus = $request->bonus;
+        $dompet->save();
+        return redirect('admin/dompet');
     }
 
     /**
@@ -71,5 +80,7 @@ class DompetController extends Controller
     public function destroy(string $id)
     {
         //
+        dompet::find($id)->delete();
+        return redirect('admin/dompet');
     }
 }
