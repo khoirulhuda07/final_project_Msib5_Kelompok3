@@ -96,7 +96,8 @@ class PembayaranController extends Controller
     public function destroy(string $id)
     {
         //
-        pembayaran::find($id)->delete();
+        $pembayaran = pembayaran::find($id);
+        $pembayaran->delete();
         return redirect('admin/pembayaran');
     }
 }
