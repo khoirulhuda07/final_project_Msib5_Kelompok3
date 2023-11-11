@@ -32,13 +32,36 @@
                                 <td>{{$pnr->nama}}</td>
                                 <td>{{$pnr->nomor_telepon}}</td>
                                 <td>
-                                    <form action="{{route('penerima.destroy',$pnr->id)}}" method="POST">
                                         <a href="{{route('penerima.show',$pnr->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                         <a href="{{route('penerima.edit',$pnr->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                             @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                                        </form>
+                                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal{{$pnr->id}}">
+                                                <i class="fas fa-trash"></i>
+                                                </button>     
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{$pnr->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    Apakah anda yakin akan menghapus data {{$pnr->nama}} ?
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <form action="{{route('penerima.destroy',$pnr->id)}}" method="POST">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
                                 </td>
                             </tr>
                             @endforeach

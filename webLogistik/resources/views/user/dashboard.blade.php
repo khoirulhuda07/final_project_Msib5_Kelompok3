@@ -3,7 +3,7 @@
 @section('content')
 <main id="main" class="main">
 
-<<<<<<< HEAD
+
 <section class="section dashboard">
     <div class="row">
 
