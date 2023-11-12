@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Pengiriman</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb mb-4 bg-white">
         <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Pengiriman</li>

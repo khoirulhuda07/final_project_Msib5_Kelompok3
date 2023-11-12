@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Akun</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb mb-4 bg-white">
         <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Akun</li>
@@ -21,9 +21,7 @@
                             <tr>
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Nama Lengkap</th>
-                                <th class="text-bold" scope="col">Username</th>
                                 <th class="text-bold" scope="col">Email</th>
-                                <th class="text-bold" scope="col">Password</th>
                                 <th class="text-bold" scope="col">Jabatan</th>
                                 <th class="text-bold" scope="col">Alamat</th>
                                 <th class="text-bold" scope="col">Saldo Dompet</th>
@@ -35,9 +33,7 @@
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
                                     <td>{{$user->fullname}}</td>
-                                    <td>{{$user->username}}</td>
                                     <td>{{$user->email}}</td>
-                                    <td>{{$user->password}}</td>
                                     <td>{{$user->level}}</td>
                                     <td>{{$user->alamat}}</td>
                                     <td>{{$user->dompet->saldo}}</td>
@@ -58,15 +54,15 @@
                                                 </button>
                                               </div>
                                               <div class="modal-body">
-                                                Apakah anda yakin akan menghapus data {{$user->id}} ?
+                                                Apakah anda yakin akan menghapus data {{$user->fullname}} ?
                                               </div>
                                               <div class="modal-footer">
                                                 <form action="{{route('akun.destroy',$user->id)}}" method="POST">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
-                                            </form>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                </form>
                                               </div>
                                             </div>
                                           </div>

@@ -11,18 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class AkunController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $akun = Akun::all();
         return view("admin.akun.index", ['akun' => $akun]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $dompet = Dompet::all();
@@ -30,9 +24,6 @@ class AkunController extends Controller
         return view('admin.akun.create', compact('dompet', 'jabatan'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
 
@@ -57,18 +48,12 @@ class AkunController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $akun = Akun::all()->where('id', $id);
         return view('admin.akun.detail', ['akun'=> $akun]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $akun = Akun::all()->where('id', $id);
@@ -77,9 +62,6 @@ class AkunController extends Controller
         return view('admin.akun.edit', ['akun'=> $akun], compact('jabatan','dompet'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         $akun = Akun::find( $id );
@@ -109,9 +91,6 @@ class AkunController extends Controller
         return redirect('admin/akun');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         Akun::find($id)->delete();

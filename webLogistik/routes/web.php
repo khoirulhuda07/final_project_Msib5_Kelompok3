@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Admin Namespace
+// Admin Namespace
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
@@ -14,7 +14,8 @@ use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 
-//User Namespace
+// User Namespace
+use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileUserController;
 
@@ -39,6 +40,10 @@ Route::prefix('user')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/profile', [ProfileUserController::class,'index']);
+
+    // Resource Controller
+    Route::resource('Transaksi', transaksiController::class);
+
 });
 
 
