@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\homepage\LacakController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/lacak', [LacakController::class, 'index']);
+Route::get('/lacak/{kode}', [LacakController::class, 'show']);
+// Route::get('/lacak', function(){
+//     dd('test api');
+// });

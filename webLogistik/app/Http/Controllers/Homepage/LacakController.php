@@ -5,17 +5,35 @@ namespace App\Http\Controllers\Homepage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
-
+use App\Models\Pengiriman;
+use App\Models\Akun;
+use App\Models\Kurir;
+use App\Models\Layanan;
+use App\Models\Paket;
+use App\Models\Penerima;
+use App\Models\Pembayaran;
+use App\Http\Resources\LacakResource;
+use App\Http\Resources\DetailLacakResource;
 class LacakController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function index1(){
+        return view("homepage.lacakpaket.index");
+    }
     public function index()
     {
         //
-        // $profile = Profile::all();
-        return view("homepage.lacakpaket.index");
+        $pengiriman = Pengiriman::all();
+        $akun = akun::all();
+        $kurir = kurir::all();
+        $penerima = penerima::all();
+        $pembayaran = pembayaran::all();
+        $layanan = layanan::all();
+        // return view("homepage.lacakpaket.index");
+        //  return response()->json($pengiriman);
+        return LacakResource::collection($pengiriman,$akun,$kurir,$penerima,$pembayaran,$layanan);
     }
 
     /**
@@ -37,9 +55,13 @@ class LacakController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $kode)
     {
         //
+        $pengiriman = pengiriman::find($kode);
+        $akun = akun::all();
+        $kurir = kurir::all();
+        return new DetailLacakResource($pengiriman, $akun, $kurir);
     }
 
     /**

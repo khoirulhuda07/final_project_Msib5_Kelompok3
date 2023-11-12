@@ -47,7 +47,7 @@ Route::prefix('homepage')->group(function () {
 
     Route::get('/home', [HomepageController::class, 'index']);
     Route::resource('login', LoginController::class);
-    Route::resource('lacakpaket', LacakController::class);
+    Route::get('/lacakpaket', [LacakController::class, 'index1']);
 });
 
 
