@@ -13,11 +13,11 @@ class DompetSeeder extends Seeder
         DB::table("dompet")->insert([
             [
                 'saldo' => '100000',
-                'bonus'=> '200',
+                'bonus'=> '10',
             ],
             [
-                'saldo' => '25000',
-                'bonus'=> '15',
+                'saldo' => '30000',
+                'bonus'=> '3',
             ],
         ]);
     }

@@ -27,7 +27,7 @@ class PembayaranController extends Controller
     {
         $akun = Akun::all();
         $pengiriman = Pengiriman::all();
-        $bayar = ['BCA', 'BRI', 'Mandiri'];
+        $bayar = ['Dompetku', 'COD'];
         return view('admin.pembayaran.create', compact('akun', 'pengiriman', 'bayar'));
     }
 
@@ -68,7 +68,7 @@ class PembayaranController extends Controller
         $akun = Akun::all();
         $pembayaran = pembayaran::all()->where('id',$id);
         $pengiriman = Pengiriman::all();
-        $bayar = ['BCA', 'BRI', 'Mandiri'];
+        $bayar = ['Dompetku', 'COD'];
         return view('admin.pembayaran.edit', compact('akun','pembayaran', 'pengiriman', 'bayar'));
     }
 
