@@ -19,6 +19,13 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileuController;
 
 
+// homepae namaspace
+use App\Http\Controllers\Homepage\HomepageController;
+use App\Http\Controllers\Homepage\LacakController;
+use App\Http\Controllers\Homepage\LoginController;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +40,15 @@ use App\Http\Controllers\User\ProfileuController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::prefix('homepage')->group(function () {
+
+    Route::get('/home', [HomepageController::class, 'index']);
+    Route::resource('login', LoginController::class);
+    Route::resource('lacakpaket', LacakController::class);
+});
+
 
 // User
 Route::prefix('user')->group(function () {
