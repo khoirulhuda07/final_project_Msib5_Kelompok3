@@ -41,6 +41,34 @@ class PengirimanController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'kode'=> 'required | max:45 | unique:pengiriman',
+            'tanggal'=> 'required',
+            'lokasi_tujuan'=> 'required | max:45',
+            'paket_id'=> 'required | numeric',
+            'layanan_id'=> 'required | numeric',
+            'penerima_id'=> 'required | numeric',
+            'akun_id'=> 'required | numeric',
+            'kurir_id'=> 'required | numeric',
+        ],
+        [
+            'kode.required' => 'Wajib diisi', 
+            'tanggal.required' => 'Wajib diisi', 
+            'lokasi_tujuan.required' => 'Wajib diisi', 
+
+            'paket_id.numeric' => 'Wajib dipilih', 
+            'layanan_id.numeric' => 'Wajib dipilih', 
+            'penerima_id.numeric' => 'Wajib dipilih', 
+            'akun_id.numeric' => 'Wajib dipilih', 
+            'kurir_id.numeric' => 'Wajib dipilih', 
+
+            'kode.max' => 'Maksimal 45 Karakter',
+            'lokasi_tujuan.max' => 'Maksimal 45 Karakter',
+            
+            'kode.unique' => 'Data Sudah Ada',
+        ]
+        );
+
         $pengiriman = new Pengiriman;
         $pengiriman->kode = $request->kode;
         $pengiriman->tanggal = $request->tanggal;
@@ -83,6 +111,32 @@ class PengirimanController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'kode'=> 'required | max:45',
+            'tanggal'=> 'required',
+            'lokasi_tujuan'=> 'required | max:45',
+            'paket_id'=> 'required | numeric',
+            'layanan_id'=> 'required | numeric',
+            'penerima_id'=> 'required | numeric',
+            'akun_id'=> 'required | numeric',
+            'kurir_id'=> 'required | numeric',
+        ],
+        [
+            'kode.required' => 'Wajib diisi', 
+            'tanggal.required' => 'Wajib diisi', 
+            'lokasi_tujuan.required' => 'Wajib diisi', 
+
+            'paket_id.numeric' => 'Wajib dipilih', 
+            'layanan_id.numeric' => 'Wajib dipilih', 
+            'penerima_id.numeric' => 'Wajib dipilih', 
+            'akun_id.numeric' => 'Wajib dipilih', 
+            'kurir_id.numeric' => 'Wajib dipilih', 
+
+            'kode.max' => 'Maksimal 45 Karakter',
+            'lokasi_tujuan.max' => 'Maksimal 45 Karakter',
+        ]
+        );
+
         $pengiriman = Pengiriman::find( $id );
         $pengiriman->kode = $request->kode;
         $pengiriman->tanggal = $request->tanggal;
