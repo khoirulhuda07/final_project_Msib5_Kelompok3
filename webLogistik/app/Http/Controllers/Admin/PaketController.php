@@ -32,6 +32,14 @@ class PaketController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'berat' => 'required|integer',
+            'deskripsi' => 'required|string|max:255',
+        ],
+        [
+            'berat.required' => 'Berat barang harus diisi',
+            'deskripsi.required' => 'Deskripsi harus diisi',
+        ]);
         //
         $paket =  new paket;
         $paket->berat = $request->berat;
@@ -67,6 +75,14 @@ class PaketController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'berat' => 'required|integer',
+            'deskripsi' => 'required|string|max:255',
+        ],
+        [
+            'berat.required' => 'Berat barang harus diisi',
+            'deskripsi.required' => 'Deskripsi harus diisi',
+        ]);
         //
         $paket = Paket::find($id);
         $paket->berat = $request->berat;

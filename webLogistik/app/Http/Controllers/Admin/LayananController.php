@@ -32,6 +32,14 @@ class LayananController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required|max:45',
+            'biaya' => 'required|double',
+        ],
+        [
+            'nama.required' => 'Layanan barang harus diisi',
+            'biaya.required' => 'Biaya Layanan harus diisi',
+        ]);
         //
         $layanan = new layanan;
         $layanan->nama_layanan = $request->nama;
@@ -67,6 +75,14 @@ class LayananController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'nama' => 'required|max:45',
+            'biaya' => 'required|double',
+        ],
+        [
+            'nama.required' => 'Layanan barang harus diisi',
+            'biaya.required' => 'Biaya Layanan harus diisi',
+        ]);
         //
         $layanan = layanan::find($id);
         $layanan->nama_layanan = $request->nama;
