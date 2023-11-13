@@ -36,7 +36,25 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $request->validate([
+            'metode'=> 'required',
+            'harga_total'=> 'required|numeric',
+            'keterangan'=> 'required|max:45',
+            'pengiriman_id'=> 'required|integer',
+            'akun_id'=> 'required|integer',
+        ],
+        [
+            'metode.required'=> 'data wajib diisi',
+            'harga_total.required'=>'data wajib diisi',
+            'harga_total.numeric'=>'data wajib dipilih',
+            'keterangan.required '=>'data wajib diisi',
+            'keterangan.max'=> 'maksimal 45 karakter',
+            'pengiriman_id.required'=>'data wajib diisi',
+            'pengiriman_id.integer'=>'data wajib dipilih',
+            'akun_id.required'=>'data wajib diisi',
+            'akun_id.integer'=>'data wajib dipilih',
+        ]
+        );
         $pembayaran = new Pembayaran;
         $pembayaran->metode = $request->metode;
         $pembayaran->harga_total = $request->harga_total;
