@@ -31,6 +31,17 @@ class PenerimaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'nama' => 'required|max:45',
+                'nomor_telepon' => 'required|max:45',
+            ],
+            [
+                'nama.required' => 'Wajib diisi',
+                'nomor_telepon.required' => 'wajib diisi',
+            ]
+        );
+
         $penerima = new Penerima;
         $penerima->nama = $request->nama;
         $penerima->nomor_telepon = $request->nomor_telepon;
@@ -45,8 +56,8 @@ class PenerimaController extends Controller
     public function show(string $id)
     {
         //
-        $penerima= penerima::all()->where('id', $id);
-        return view('admin.penerima.detail', ['penerima'=> $penerima]);
+        $penerima = penerima::all()->where('id', $id);
+        return view('admin.penerima.detail', ['penerima' => $penerima]);
     }
 
     /**
@@ -55,8 +66,8 @@ class PenerimaController extends Controller
     public function edit(string $id)
     {
         //
-        $penerima = penerima::all()->where('id',$id);
-        return view('admin.penerima.edit',compact('penerima'));
+        $penerima = penerima::all()->where('id', $id);
+        return view('admin.penerima.edit', compact('penerima'));
     }
 
     /**
