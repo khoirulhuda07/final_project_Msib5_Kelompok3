@@ -9,12 +9,22 @@
     <!-- input pertama -->
     <h6 class="mb-4">Data Layanan</h6>
     <div class="form-floating mb-3">
-      <input type="text" name="nama" class="form-control" id="floatingKode" placeholder="Masukkan nama kurir" >
-      <label for="floatingKode">Nama</label>
+      <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Nama Layanan" >
+      <label for="floatingKode">Nama Layanan</label>
+      @error('nama')
+      <div classs="invalid-feedback">
+        {{$message}}
+      </div>
+      @enderror
     </div>
     <div class="form-floating mb-3">
-      <input type="text" name="biaya" class="form-control" id="floatingKode" placeholder="Masukkan nomor telepon">
+      <input type="text" name="biaya" class="form-control @error('biaya') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Biaya Layanan">
       <label for="floatingKode">Biaya</label>
+      @error('biaya')
+      <div classs="invalid-feedback">
+        {{$message}}
+      </div>
+      @enderror
     </div>
      <br>
       <button name="proses" value="simpan" type="submit" class="btn btn-primary">Submit</button>
