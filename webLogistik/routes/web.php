@@ -39,16 +39,13 @@ use App\Http\Controllers\Homepage\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage.dashboardhome');
 });
 
 
-Route::prefix('homepage')->group(function () {
-
-    Route::get('/home', [HomepageController::class, 'index']);
-    Route::resource('login', LoginController::class);
-    Route::get('/lacakpaket', [LacakController::class, 'index1']);
-});
+Route::get('/home', [HomepageController::class, 'index']);
+Route::resource('login', LoginController::class);
+Route::get('/lacakpaket', [LacakController::class, 'index1']);
 
 
 // User
