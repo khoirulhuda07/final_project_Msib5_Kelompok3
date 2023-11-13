@@ -26,9 +26,39 @@ class AkunController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'fullname'=> 'required | max:45',
+            'username'=> 'required | max:45',
+            'email'=> 'required | email | unique:akun',
+            'password'=> 'required',
+            'level'=> 'required | numeric',
+            'alamat'=> 'required | max:45',
+            'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
+            'dompet_id'=> 'nullable | numeric',
+        ],
+        [
+            'fullname.required' => 'Wajib diisi', 
+            'username.required' => 'Wajib diisi', 
+            'email.required' => 'Wajib diisi', 
+            'password.required' => 'Wajib diisi', 
+            'level.required' => 'Wajib dipilih', 
+            'alamat.required' => 'Wajib diisi', 
+            'dompet_id.numeric' => 'Wajib dipilih', 
+
+            'fullname.max' => 'Maksimal 45 Karakter',
+            'username.max' => 'Maksimal 45 Karakter',
+            'alamat.max' => 'Maksimal 45 Karakter',
+            
+            'email.unique' => 'Email Sudah Terdaftar',
+            'email.email' => 'Format harus "nama@gmail.com"',
+            'foto.max' => 'Maksimal 2 MB',
+            'foto.image' => 'File ekstensi harus jpg, jpeg, gif, png, svg',
+        ]
+        );
 
         $photo = $request->file('foto');
-        $fileName = date('Y-m-d').$photo->getClientOriginalName();
+        $extension = $photo->getClientOriginalExtension();
+        $fileName = time() . '.' . $extension;
         $path = 'photo-user/'.$fileName;
 
         Storage::disk('public')->put($path, file_get_contents($photo));
@@ -64,15 +94,45 @@ class AkunController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate([
+            'fullname'=> 'required | max:45',
+            'username'=> 'required | max:45',
+            'email'=> 'required | email',
+            'password'=> 'required',
+            'level'=> 'required | numeric',
+            'alamat'=> 'required | max:45',
+            'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
+            'dompet_id'=> 'nullable | numeric',
+        ],
+        [
+            'fullname.required' => 'Wajib diisi', 
+            'username.required' => 'Wajib diisi', 
+            'email.required' => 'Wajib diisi', 
+            'password.required' => 'Wajib diisi', 
+            'level.required' => 'Wajib dipilih', 
+            'alamat.required' => 'Wajib diisi', 
+            'dompet_id.numeric' => 'Wajib dipilih', 
+
+            'fullname.max' => 'Maksimal 45 Karakter',
+            'username.max' => 'Maksimal 45 Karakter',
+            'alamat.max' => 'Maksimal 45 Karakter',
+            
+            'email.email' => 'Format harus "nama@gmail.com"',
+            'foto.max' => 'Maksimal 2 MB',
+            'foto.image' => 'File ekstensi harus jpg, jpeg, gif, png, svg',
+        ]
+        );
+        
         $akun = Akun::find( $id );
 
         if ($request->hasFile('foto')) {
-            $path = storage_path('app/public/photo-user'.$akun->foto);
+            $path = storage_path('app/public/photo-user/'.$akun->foto);
             if (file_exists($path)) {
                 Storage::delete($akun->foto);
             }
             $photo = $request->file('foto');
-            $fileName = date('Y-m-d').$photo->getClientOriginalName();
+            $extension = $photo->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
 
             $photo->move(storage_path('app/public/photo-user'), $fileName);
 

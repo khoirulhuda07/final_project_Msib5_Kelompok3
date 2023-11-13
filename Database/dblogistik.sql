@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Nov 2023 pada 13.21
+-- Waktu pembuatan: 13 Nov 2023 pada 07.03
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -35,6 +35,7 @@ CREATE TABLE `akun` (
   `password` varchar(45) NOT NULL,
   `level` enum('user','admin') NOT NULL,
   `alamat` varchar(45) NOT NULL,
+  `foto` varchar(50) DEFAULT NULL,
   `dompet_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -42,9 +43,9 @@ CREATE TABLE `akun` (
 -- Dumping data untuk tabel `akun`
 --
 
-INSERT INTO `akun` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `dompet_id`) VALUES
-(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', 1),
-(2, 'User', 'user', 'user@gmail.com', 'user', 'user', 'Indonesia', 2);
+INSERT INTO `akun` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `foto`, `dompet_id`) VALUES
+(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', NULL, 1),
+(2, 'User', 'user', 'user@gmail.com', 'user', 'user', 'Indonesia', NULL, 2);
 
 --
 -- Trigger `akun`
@@ -277,6 +278,7 @@ DELIMITER ;
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_akun_dompet1_idx` (`dompet_id`);
 
 --
@@ -295,7 +297,8 @@ ALTER TABLE `kurir`
 -- Indeks untuk tabel `layanan`
 --
 ALTER TABLE `layanan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nama_layanan` (`nama_layanan`);
 
 --
 -- Indeks untuk tabel `paket`
@@ -322,6 +325,7 @@ ALTER TABLE `penerima`
 --
 ALTER TABLE `pengiriman`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `kode` (`kode`),
   ADD KEY `fk_pengiriman_paket_idx` (`paket_id`),
   ADD KEY `fk_pengiriman_layanan1_idx` (`layanan_id`),
   ADD KEY `fk_pengiriman_penerima1_idx` (`penerima_id`),

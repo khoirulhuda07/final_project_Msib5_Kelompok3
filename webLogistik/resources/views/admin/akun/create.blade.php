@@ -11,26 +11,38 @@
               <div class="bg-light rounded h-100 p-4">
                 <!-- input pertama -->
                 <div class="form-floating mb-3">
-                  <input type="text" name="fullname" class="form-control" id="floatingKode" placeholder="Masukkan nama lengkap">
+                  <input type="text" name="fullname" class="form-control @error('fullname') is-invalid @enderror" id="floatingKode" placeholder="Masukkan nama lengkap">
                   <label for="floatingKode">Nama Lengkap</label>
+                  @error('fullname')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
         
                 <!-- input kedua -->
                 <div class="form-floating mb-3">
-                  <input type="text" name="username" class="form-control" id="floatingKategori" placeholder="Masukkan Username">
+                  <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Username">
                   <label for="floatingKategori">Username</label>
+                  @error('username')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
         
                 <!-- input ke tiga -->
                 <div class="form-floating mb-3">
-                  <input type="text" name="email" class="form-control" id="floatingDeskripsi" placeholder="Masukkan Email">
+                  <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Email">
                   <label for="floatingDeskripsi">Email</label>
+                  @error('email')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
       
                 <!-- input ke empat -->
                 <div class="form-floating mb-3">
-                  <input type="password" name="password" class="form-control" id="floatingPass" placeholder="Masukkan Password">
+                  <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="floatingPass" placeholder="Masukkan Password">
                   <label for="floatingPass">Password</label>
+                  @error('password')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
                 </div>
                 
               </div>
@@ -41,33 +53,45 @@
                   <label>Jabatan</label>
                   <div class="form-floating mb-3">
                     @foreach ($jabatan as $jb)
-                      <div class="form-check form-check-inline">
+                      <div class="form-check form-check-inline @error('level') is-invalid @enderror">
                         <input class="form-check-input" type="radio" name="level" id="floatingLevel_{{$loop->iteration}}" value="{{$jb}}">
                         <label class="form-check-label" for="floatingLevel">{{$jb}}</label>
                       </div>
                       @endforeach
+                      @error('level')
+                      <div class="invalid-feedback">{{$message}}</div>
+                      @enderror
                   </div>
               
                   <!-- input ke enam -->
                   <div class="form-floating mb-3">
-                    <input type="text" name="alamat" class="form-control" id="floatingAlamat" placeholder="Masukkan Alamat">
+                    <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="floatingAlamat" placeholder="Masukkan Alamat">
                     <label for="floatingAlamat">Alamat</label>
+                    @error('alamat')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                   </div>
 
                   <!-- input ke tujuh -->
                   <div class="form-floating mb-3">
-                    <input type="file" name="foto" class="form-control" id="floatingfoto">
+                    <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" id="floatingfoto">
                     <label for="floatingfoto">Foto Profile</label>
+                    @error('foto')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                   </div>
               
                   <!-- input ke delapan -->
                   <div class="form-floating mb-3">
-                    <select class="form-select" name="dompet_id"id="saldo" aria-label="Floating label select example">
+                    <select class="form-select @error('dompet_id') is-invalid @enderror" name="dompet_id" id="saldo" aria-label="Floating label select example">
                         <option selected>--- Saldo Dompet ---</option>
                         @foreach ($dompet as $dom)
                             <option value="{{$dom->id}}">{{$dom->saldo}}</option>
                         @endforeach
                     </select>
+                    @error('dompet_id')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
                     <label for="saldo">Saldo</label>
                   </div> 
                   <br>
