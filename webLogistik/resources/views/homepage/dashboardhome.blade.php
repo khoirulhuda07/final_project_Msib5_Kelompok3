@@ -31,6 +31,14 @@
     <!-- ======= About Section ======= -->
     <section id="about">
         <div class="container" data-aos="fade-right">
+            <div class="section-header">
+                <h2>About</h2>
+                <p>
+                    Kami di Logistik, dengan bangga menyajikan solusi kirim yang cepat, handal, dan aman untuk memenuhi
+                    kebutuhan pengiriman Anda. Sebagai pemimpin dalam industri logistik, kami berkomitmen untuk
+                    memberikan pengalaman pengiriman yang tak tertandingi kepada pelanggan kami.
+                </p>
+            </div>
             <div class="row">
                 <div class="col-lg-6 about-img">
                     <img src="{{asset('homepage/img/about/16.png')}}" alt="">
