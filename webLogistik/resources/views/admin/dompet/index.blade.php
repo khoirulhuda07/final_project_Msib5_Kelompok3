@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Dompet</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb mb-4 bg-white">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Dompet</li>
@@ -21,7 +21,7 @@
                             <tr>
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Saldo</th>
-                                <th class="text-bold" scope="col">Diskon</th>
+                                <th class="text-bold" scope="col">Bonus Poin</th>
                                 <th class="text-bold" scope="col">Aksi</th>
                             </tr>
                         </thead>
@@ -29,8 +29,8 @@
                             @foreach ($dompet as $d)
                                 <tr>
                                     <th scope="row">{{$loop->iteration}}</th>
-                                    <td>{{$d->saldo}}</td>
-                                    <td>{{$d->bonus}}</td>
+                                    <td>Rp. {{$d->saldo}}</td>
+                                    <td>{{$d->bonus}} Poin</td>
                                     <td>
                                     <a href="{{route('dompet.show',$d->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                     <a href="{{route('dompet.edit',$d->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>

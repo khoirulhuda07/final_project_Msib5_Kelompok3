@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Layanan</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb mb-4 bg-white">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Layanan</li>
@@ -30,7 +30,7 @@
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$lyn->nama_layanan}}</td>
-                                <td>{{$lyn->biaya}}</td>
+                                <td>Rp. {{$lyn->biaya}} / Kg</td>
                                 <td>
                                 <a href="{{route('layanan.show',$lyn->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                 <a href="{{route('layanan.edit',$lyn->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
@@ -48,7 +48,7 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                        Apakah anda yakin akan menghapus data {{$lyn->id}} ?
+                                        Apakah anda yakin akan menghapus data {{$lyn->nama_layanan}} ?
                                       </div>
                                       <div class="modal-footer">
                                         <form action="{{route('layanan.destroy',$lyn->id)}}" method="POST">

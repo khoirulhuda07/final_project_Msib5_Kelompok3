@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Paket</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb mb-4 bg-white">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Paket</li>
@@ -29,7 +29,7 @@
                             @foreach ($paket as $pk)
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
-                                <td>{{$pk->berat}}</td>
+                                <td>{{$pk->berat}} Kg</td>
                                 <td>{{$pk->deskripsi}}</td>
                                 <td>
                             

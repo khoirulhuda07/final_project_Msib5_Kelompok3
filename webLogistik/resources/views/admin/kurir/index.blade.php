@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Kurir</h1>
-    <ol class="breadcrumb mb-4">
+    <ol class="breadcrumb mb-4 bg-white">
         <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
         <li class="breadcrumb-item active">Data Table</li>
         <li class="breadcrumb-item active">Kurir</li>
@@ -21,8 +21,8 @@
                             <tr>
                                 <th class="text-bold" scope="col">No</th>
                                 <th class="text-bold" scope="col">Nama</th>
-                                <th class="text-bold" scope="col">nomor tpl</th>
-                                <th class="text-bold" scope="col">jadwal</th>
+                                <th class="text-bold" scope="col">Nomor HP</th>
+                                <th class="text-bold" scope="col">Jadwal</th>
                                 <th class="text-bold" scope="col">Aksi</th>
                                 
                             </tr>

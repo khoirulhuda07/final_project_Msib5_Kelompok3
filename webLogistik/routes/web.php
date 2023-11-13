@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-//Admin Namespace
+// Admin Namespace
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
@@ -14,9 +14,17 @@ use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 
-//User Namespace
+// User Namespace
+use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileUserController;
+
+
+// homepae namaspace
+use App\Http\Controllers\Homepage\HomepageController;
+use App\Http\Controllers\Homepage\LacakController;
+use App\Http\Controllers\Homepage\LoginController;
+
 
 
 /*
@@ -31,14 +39,24 @@ use App\Http\Controllers\User\ProfileUserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('homepage.dashboardhome');
 });
+
+
+Route::get('/home', [HomepageController::class, 'index']);
+Route::resource('login', LoginController::class);
+Route::get('/lacakpaket', [LacakController::class, 'index1']);
+
 
 // User
 Route::prefix('user')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/profile', [ProfileUserController::class,'index']);
+
+    // Resource Controller
+    Route::resource('Transaksi', transaksiController::class);
+
 });
 
 

@@ -49,8 +49,8 @@
         {{-- sizebar start--}}
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
-                <a href="index.html" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-truck me-2"></i>TrackMyShip</h3>
+                <a href="{{url('admin/dashboard')}}" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-truck me-2"></i>Logistik</h3>
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
@@ -68,7 +68,6 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-table me-2"></i>Data</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{route('pengiriman.index')}}" class="dropdown-item">Pengiriman</a>
                             <a href="{{route('paket.index')}}" class="dropdown-item">Paket</a>
                             <a href="{{route('penerima.index')}}" class="dropdown-item">Penerima</a>
                             <a href="{{route('pembayaran.index')}}" class="dropdown-item">Pembayaran</a>
