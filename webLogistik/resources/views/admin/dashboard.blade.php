@@ -74,68 +74,32 @@
 <div class="container-fluid pt-4 px-4">
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Recent Salse</h6>
-            <a href="">Show All</a>
+            <h6 class="mb-0">Data Pengiriman</h6>
+            <a href="{{route('pengiriman.index')}}">Show All</a>
         </div>
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
                     <tr class="text-dark">
-                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Invoice</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Status</th>
+                        <th scope="col">#</th>
+                        <th scope="col">Kode</th>
+                        <th scope="col">Lokasi Tujuan</th>
+                        <th scope="col">Nama Penerima</th>
+                        <th scope="col">Layanan</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>01 Jan 2045</td>
-                        <td>INV-0123</td>
-                        <td>Jhon Doe</td>
-                        <td>$123</td>
-                        <td>Paid</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>01 Jan 2045</td>
-                        <td>INV-0123</td>
-                        <td>Jhon Doe</td>
-                        <td>$123</td>
-                        <td>Paid</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>01 Jan 2045</td>
-                        <td>INV-0123</td>
-                        <td>Jhon Doe</td>
-                        <td>$123</td>
-                        <td>Paid</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>01 Jan 2045</td>
-                        <td>INV-0123</td>
-                        <td>Jhon Doe</td>
-                        <td>$123</td>
-                        <td>Paid</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                    </tr>
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>01 Jan 2045</td>
-                        <td>INV-0123</td>
-                        <td>Jhon Doe</td>
-                        <td>$123</td>
-                        <td>Paid</td>
-                        <td><a class="btn btn-sm btn-primary" href="">Detail</a></td>
-                    </tr>
+                    @foreach ($pengiriman as $pn)
+                        <tr>
+                            <td>{{$loop->iteration}}</td>
+                            <td>{{$pn->kode}}</td>
+                            <td>{{$pn->lokasi_tujuan}}</td>
+                            <td>{{$pn->username}}</td>
+                            <td>{{$pn->namaLayanan}}</td>
+                            <td><a class="btn btn-sm btn-primary" href="{{route('pengiriman.show',$pn->id)}}">Detail</a></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -144,62 +108,14 @@
 <!-- Recent Sales End -->
 
 
-<!-- Widgets Start -->
+
+<!-- Mini Data  Start -->
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="h-100 bg-light rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-2">
-                    <h6 class="mb-0">Messages</h6>
-                    <a href="">Show All</a>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                    <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                    <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-3">
-                    <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center pt-3">
-                    <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h6 class="mb-0">Jhon Doe</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                        <span>Short message goes here...</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-light rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Calender</h6>
-                    <a href="">Show All</a>
+                    <h6 class="mb-0">Kalender</h6>
                 </div>
                 <div id="calender"></div>
             </div>
@@ -207,57 +123,56 @@
         <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="h-100 bg-light rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">To Do List</h6>
-                    <a href="">Show All</a>
+                    <h6 class="mb-0">Data layanan</h6>
+                    <a href="{{route('layanan.index')}}">Show All</a>
                 </div>
-                <div class="d-flex mb-2">
-                    <input class="form-control bg-transparent" type="text" placeholder="Enter task">
-                    <button type="button" class="btn btn-primary ms-2">Add</button>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                            <tr class="text-dark">
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Layanan</th>
+                                <th scope="col">Biaya</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($layanan as $lyn)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$lyn->nama_layanan}}</td>
+                                    <td>Rp. {{$lyn->biaya}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                    <input class="form-check-input m-0" type="checkbox">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <span>Short task goes here...</span>
-                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6 col-xl-4">
+            <div class="h-100 bg-light rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Data paket</h6>
+                    <a href="{{route('kurir.index')}}">Show All</a>
                 </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                    <input class="form-check-input m-0" type="checkbox">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <span>Short task goes here...</span>
-                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                    <input class="form-check-input m-0" type="checkbox" checked>
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <span><del>Short task goes here...</del></span>
-                            <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center border-bottom py-2">
-                    <input class="form-check-input m-0" type="checkbox">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <span>Short task goes here...</span>
-                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex align-items-center pt-2">
-                    <input class="form-check-input m-0" type="checkbox">
-                    <div class="w-100 ms-3">
-                        <div class="d-flex w-100 align-items-center justify-content-between">
-                            <span>Short task goes here...</span>
-                            <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                            <tr class="text-dark">
+                                <th scope="col">#</th>
+                                <th scope="col">Nama Kurir</th>
+                                <th scope="col">Nomor Hp</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($kurir as $kr)
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>{{$kr->nama_kurir}}</td>
+                                    <td>{{$kr->nomor_telepon}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
