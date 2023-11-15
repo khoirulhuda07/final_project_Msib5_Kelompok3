@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Penerima;
 
@@ -47,7 +47,7 @@ class PenerimaController extends Controller
         $penerima->nomor_telepon = $request->nomor_telepon;
         $penerima->save();
 
-        return redirect('admin/penerima');
+        return redirect('admin/penerima')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -81,7 +81,7 @@ class PenerimaController extends Controller
         $penerima->nomor_telepon = $request->no_tlp;
         $penerima->save();
 
-        return redirect('admin/penerima');
+        return redirect('admin/penerima')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -91,6 +91,6 @@ class PenerimaController extends Controller
     {
         //
         penerima::find($id)->delete();
-        return redirect('admin/penerima');
+        return redirect('admin/penerima')->with('success','Data Berhasil Dihapus!!');
     }
 }

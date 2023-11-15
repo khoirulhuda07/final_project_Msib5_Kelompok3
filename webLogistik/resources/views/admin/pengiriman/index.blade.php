@@ -64,7 +64,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
                                               </div>
                                             </div>

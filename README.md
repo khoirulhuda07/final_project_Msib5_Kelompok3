@@ -2,12 +2,17 @@
 
 <p align="center">
 <a href="https://laravel.com/docs/10.x/testing"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://laravel.com/docs/10.x/installation"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://laravel.com/docs/10.x/starter-kits#laravel-breeze"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://laravel.com/"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://laravel.com/docs/10.x/installation"><img src="https://img.shields.io/badge/download-5-green" alt="Total Downloads"></a>
+<a href="https://laravel.com/docs/10.x/starter-kits#laravel-breeze"><img src="https://img.shields.io/badge/packagist-v1.0.1-blue" alt="Latest Stable Version"></a>
+<a href="https://laravel.com/"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
 </p>
 
-# About TrackMyShipment
+# About Logistik
+Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasuk pengiriman yang efisien, pengiriman yang cepat, dan tarif pengiriman yang mudah. Aplikasi ini adalah pilihan yang tepat untuk Anda yang ingin mengirim barang dengan mudah, cepat, dan efisien.
+
+## Requirements
+<a href="https://laravel.com/docs/10.x/releases"><img src="https://img.shields.io/badge/laravel-v10-blue" alt="version laravel"></a>
+<a href="https://www.php.net/releases/8.2/en.php"><img src="https://img.shields.io/badge/PHP-v8.2.4-blue" alt="version php"></a>
 
 ## Instalasi
 - download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">Klik</a> 
@@ -55,12 +60,11 @@
   php artisan serve
   ```
 
-<h3>Akun Admin</h3>
-- Username : admin
-- Password : admin
-
-<h3>Akun User</h3>
-- Username : user 
+## Akun Login
+- username : admin
+- password : admin
+  
+- username : user
 - password : user
 
 ## Fitur
