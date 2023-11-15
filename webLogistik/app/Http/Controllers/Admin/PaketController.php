@@ -45,7 +45,7 @@ class PaketController extends Controller
         $paket->berat = $request->berat;
         $paket->deskripsi = $request->deskripsi;
         $paket->save();
-        return redirect('admin/paket');
+        return redirect('admin/paket')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -88,7 +88,7 @@ class PaketController extends Controller
         $paket->berat = $request->berat;
         $paket->deskripsi = $request->deskripsi;
         $paket->save();
-        return redirect('admin/paket');
+        return redirect('admin/paket')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -98,6 +98,6 @@ class PaketController extends Controller
     {
         //
         Paket::find($id)->delete();
-        return redirect('admin/paket');
+        return redirect('admin/paket')->with('success','Data Berhasil Dihapus!!');
     }
 }

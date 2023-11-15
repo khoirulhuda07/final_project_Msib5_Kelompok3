@@ -45,7 +45,7 @@ class LayananController extends Controller
         $layanan->nama_layanan = $request->nama;
         $layanan->biaya = $request->biaya;
         $layanan->save();
-        return redirect('admin/layanan');
+        return redirect('admin/layanan')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -88,7 +88,7 @@ class LayananController extends Controller
         $layanan->nama_layanan = $request->nama;
         $layanan->biaya = $request->biaya;
         $layanan->save();
-        return redirect('admin/layanan');
+        return redirect('admin/layanan')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -98,6 +98,6 @@ class LayananController extends Controller
     {
         //
         layanan::find($id)->delete();
-        return redirect('admin/layanan');
+        return redirect('admin/layanan')->with('success','Data Berhasil Dihapus!!');
     }
 }

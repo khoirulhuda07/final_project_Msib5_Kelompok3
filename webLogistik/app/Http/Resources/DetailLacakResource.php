@@ -17,6 +17,7 @@ class DetailLacakResource extends JsonResource
         return [
             'kode'=>$this->kode,
             'nama'=>$this->akun->fullname,
+            ''
         ];
     }
 }
