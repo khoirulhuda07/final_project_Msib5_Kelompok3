@@ -13,8 +13,7 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 ## Requirements
 
 * <a href="https://laravel.com/docs/10.x/releases"><img src="https://img.shields.io/badge/laravel-v10-blue" alt="version laravel"></a>
-<a href="https://www.php.net/releases/8.2/en.php"><img src="https://img.shields.io/badge/PHP-v8.2.4-blue" alt="version php"></a>
-* PHP version : 8.1 - 8.2
+* <a href="https://www.php.net/releases/8.2/en.php"><img src="https://img.shields.io/badge/PHP-v8.2.4-blue" alt="version php"></a>
 
 ## Instalasi
 - download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">Klik</a> 
