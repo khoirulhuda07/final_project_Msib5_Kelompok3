@@ -62,7 +62,6 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```
 
 ## Akun Login
-
 - username : admin
 - password : admin
 
