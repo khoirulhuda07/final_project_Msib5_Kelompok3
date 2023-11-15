@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Akun;
 use App\Models\Dompet;
-use Illuminate\Support\Facades\Storage;
 
 class AkunController extends Controller
 {
@@ -74,7 +75,7 @@ class AkunController extends Controller
         $akun->dompet_id = $request->dompet_id;
         $akun->save();
 
-        return redirect('admin/akun');
+        return redirect('admin/akun')->with('success','Data Berhasil Ditambahkan!!');
 
     }
 
@@ -148,12 +149,12 @@ class AkunController extends Controller
         $akun->dompet_id = $request->dompet_id;
         $akun->save();
 
-        return redirect('admin/akun');
+        return redirect('admin/akun')->with('success','Data Berhasil Diubah!!');
     }
 
     public function destroy(string $id)
     {
         Akun::find($id)->delete();
-        return redirect('admin/akun');
+        return redirect('admin/akun')->with('success','Data Berhasil Dihapus!!');
     }
 }
