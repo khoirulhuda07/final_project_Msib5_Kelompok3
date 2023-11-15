@@ -37,7 +37,7 @@ class DompetController extends Controller
         $dompet->saldo = $request->saldo;
         $dompet->bonus = $request->bonus;
         $dompet->save();
-        return redirect('admin/dompet');
+        return redirect('admin/dompet')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -71,7 +71,7 @@ class DompetController extends Controller
         $dompet->saldo = $request->saldo;
         $dompet->bonus = $request->bonus;
         $dompet->save();
-        return redirect('admin/dompet');
+        return redirect('admin/dompet')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -81,6 +81,6 @@ class DompetController extends Controller
     {
         //
         dompet::find($id)->delete();
-        return redirect('admin/dompet');
+        return redirect('admin/dompet')->with('success','Data Berhasil Dihapus!!');
     }
 }

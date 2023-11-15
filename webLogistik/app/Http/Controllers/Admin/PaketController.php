@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
+
 use App\Models\Paket;
 
 class PaketController extends Controller
@@ -45,8 +45,7 @@ class PaketController extends Controller
         $paket->berat = $request->berat;
         $paket->deskripsi = $request->deskripsi;
         $paket->save();
-        alert()->success('Success','Data berhasil ditambah');
-        return redirect('admin/paket');
+        return redirect('admin/paket')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -89,7 +88,7 @@ class PaketController extends Controller
         $paket->berat = $request->berat;
         $paket->deskripsi = $request->deskripsi;
         $paket->save();
-        return redirect('admin/paket');
+        return redirect('admin/paket')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -99,7 +98,6 @@ class PaketController extends Controller
     {
         //
         Paket::find($id)->delete();
-        alert()->success('Success','Data berhasil dihapus');
-        return redirect('admin/paket');
+        return redirect('admin/paket')->with('success','Data Berhasil Dihapus!!');
     }
 }

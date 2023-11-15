@@ -38,7 +38,7 @@ class KurirController extends Controller
         $kurir->nomor_telepon =  $request->no_tlp;
         $kurir->jadwal = $request->jadwal;
         $kurir->save();
-        return redirect('admin/kurir');
+        return redirect('admin/kurir')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -74,7 +74,7 @@ class KurirController extends Controller
         $kurir->nomor_telepon =  $request->no_tlp;
         $kurir->jadwal = $request->jadwal;
         $kurir->save();
-        return redirect('admin/kurir');
+        return redirect('admin/kurir')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -84,6 +84,6 @@ class KurirController extends Controller
     {
         //
         kurir::find($id)->delete();
-        return redirect('admin/kurir');
+        return redirect('admin/kurir')->with('success','Data Berhasil Dihapus!!');
     }
     }
