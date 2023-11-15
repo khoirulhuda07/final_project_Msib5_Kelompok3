@@ -326,7 +326,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="500">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/team-3.jpg')}}" alt=""></div>
+                        <div class="pic"><img src="{{asset('homepage/img/Author/achbar.png')}}" alt=""></div>
                         <div class="details">
                             <h4>Achbar Wahyudhi</h4>
                             <span> Front End Developer</span>

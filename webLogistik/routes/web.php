@@ -18,6 +18,9 @@ use App\Http\Controllers\Admin\ProfileAdminController;
 use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileUserController;
+use App\Http\Controllers\User\PengirimanUserController;
+use App\Http\Controllers\User\PembayaranUserController;
+
 
 
 // homepae namaspace
@@ -52,11 +55,13 @@ Route::get('/lacakpaket', [LacakController::class, 'index1']);
 Route::prefix('user')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index']);
-    Route::get('/profile', [ProfileUserController::class,'index']);
+    Route::get('/profile', [ProfileUserController::class, 'index']);
+    Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
+    Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+
 
     // Resource Controller
     Route::resource('Transaksi', transaksiController::class);
-
 });
 
 
