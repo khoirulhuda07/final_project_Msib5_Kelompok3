@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 use App\Models\Akun;
 use App\Models\Kurir;
 use App\Models\Layanan;
 use App\Models\Paket;
 use App\Models\Penerima;
-use Illuminate\Http\Request;
-
 use App\Models\Pengiriman;
 
 class PengirimanController extends Controller
@@ -80,7 +81,7 @@ class PengirimanController extends Controller
         $pengiriman->kurir_id = $request->kurir_id;
         $pengiriman->save();
 
-        return redirect('admin/pengiriman');
+        return redirect('admin/pengiriman')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     /**
@@ -148,7 +149,7 @@ class PengirimanController extends Controller
         $pengiriman->kurir_id = $request->kurir_id;
         $pengiriman->save();
 
-        return redirect('admin/pengiriman');
+        return redirect('admin/pengiriman')->with('success','Data Berhasil Diubah!!');
     }
 
     /**
@@ -157,6 +158,6 @@ class PengirimanController extends Controller
     public function destroy(string $id)
     {
         Pengiriman::find($id)->delete();
-        return redirect('admin/pengiriman');
+        return redirect('admin/pengiriman')->with('success','Data Berhasil Dihapus!!');
     }
 }
