@@ -1,10 +1,10 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![MIT License][license-shield]][license-url]
+<a href="https://laravel.com/docs/10.x/testing"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://laravel.com/docs/10.x/installation"><img src="https://img.shields.io/badge/download-5-green" alt="Total Downloads"></a>
+<a href="https://laravel.com/docs/10.x/starter-kits#laravel-breeze"><img src="https://img.shields.io/badge/packagist-v1.0.1-blue" alt="Latest Stable Version"></a>
+<a href="https://laravel.com/"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
 </p>
 
 # About Logistik
@@ -12,7 +12,8 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 
 ## Requirements
 
-* [![Laravel][Laravel.com]][Laravel-url]
+* <a href="https://laravel.com/docs/10.x/releases"><img src="https://img.shields.io/badge/laravel-v10-blue" alt="version laravel"></a>
+<a href="https://www.php.net/releases/8.2/en.php"><img src="https://img.shields.io/badge/PHP-v8.2.4-blue" alt="version php"></a>
 * PHP version : 8.1 - 8.2
 
 ## Instalasi
@@ -64,8 +65,8 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 ## Akun Login
 - username : admin
 - password : admin
-
-- username : user 
+  
+- username : user
 - password : user
 
 ## Fitur
