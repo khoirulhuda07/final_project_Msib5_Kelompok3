@@ -8,6 +8,11 @@
 </p>
 
 # About TrackMyShipment
+Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasuk pengiriman yang efisien, pengiriman yang cepat, dan tarif pengiriman yang mudah. Aplikasi ini adalah pilihan yang tepat untuk Anda yang ingin mengirim barang dengan mudah, cepat, dan efisien.
+
+## Requirements
+Laravel version 10
+PHP version : 8.1 - 8.2
 
 ## Instalasi
 - download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">Klik</a> 
@@ -55,12 +60,13 @@
   php artisan serve
   ```
 
+## Akun Login
 <h3>Akun Admin</h3>
-- Username : admin
-- Password : admin
+- username : admin
+- password : admin
 
 <h3>Akun User</h3>
-- Username : user 
+- username : user 
 - password : user
 
 ## Fitur
