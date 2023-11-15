@@ -55,13 +55,12 @@
   php artisan serve
   ```
 
-## Login
 <h3>Akun Admin</h3>
-- Username : admin  
+- Username : admin
 - Password : admin
 
 <h3>Akun User</h3>
-- Username : user  
+- Username : user 
 - password : user
 
 ## Fitur
