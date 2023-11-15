@@ -38,6 +38,10 @@
   ```bash
   php artisan storage:link
   ```
+- menjalankan sweetalert untuk publish the package assets, ketikkan command :
+  ```bash
+  php artisan sweetalert:publish
+  ```
 - buatlah nama database baru. Lalu sesuaikan nama database, username, dan password database di file `.env`, ketikan command :
   ```bash
   php artisan migrate
@@ -52,8 +56,13 @@
   ```
 
 ## Login
-Username : admin  & Password : admin
-Username : user   & password : user
+<h3>Akun Admin</h3>
+- Username : admin  
+- Password : admin
+
+<h3>Akun User</h3>
+- Username : user  
+- password : user
 
 ## Fitur
 ### Front End
