@@ -31,7 +31,7 @@ class DompetController extends Controller
                 'saldo.required' => 'Wajib diisi', 
                 'bonus.required' => 'Wajib diisi', 
 
-                'salod.numeric' => 'Harus Angka',
+                'saldo.numeric' => 'Harus Angka',
                 'bonus.numeric' => 'Harus Angka',
             ]
         );
@@ -68,7 +68,7 @@ class DompetController extends Controller
                 'saldo.required' => 'Wajib diisi', 
                 'bonus.required' => 'Wajib diisi', 
 
-                'salod.numeric' => 'Harus Angka',
+                'saldo.numeric' => 'Harus Angka',
                 'bonus.numeric' => 'Harus Angka',
             ]
         );

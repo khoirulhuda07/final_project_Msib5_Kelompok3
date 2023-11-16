@@ -21,8 +21,7 @@ use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Controllers\User\PengirimanUserController;
 use App\Http\Controllers\User\PembayaranUserController;
-
-
+use App\Http\Controllers\User\TopUpController;
 
 // homepae namaspace
 use App\Http\Controllers\Homepage\HomepageController;
@@ -59,10 +58,13 @@ Route::prefix('user')->group(function () {
     Route::get('/profile', [ProfileUserController::class, 'index']);
     Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
     Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
-
+    Route::get('/dompetku', [TopUpController::class, 'index']);
 
     // Resource Controller
-    Route::resource('Transaksi', transaksiController::class);
+    Route::resource('transaksi', transaksiController::class);
+
+    // Laporan Controller
+    Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
 });
 
 
