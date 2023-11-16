@@ -22,6 +22,24 @@ class KurirController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'nama_kurir'=> 'required | unique:kurir | max:45',
+                'nomor_telepon'=> 'required | numeric',
+                'jadwal'=> 'required | max:45',
+            ],
+            [
+                'nama_kurir.required' => 'Wajib diisi', 
+                'nomor_telepon.required' => 'Wajib diisi', 
+                'jadwal.required' => 'Wajib diisi', 
+
+                'nomor_telepon.numeric' => 'Harus Angka',
+                'nama_kurir.unique' => 'Nama Sudah Terdaftar',
+                'nama_kurir.max' => 'Maksimal 45 Karakter',
+                'jadwal.max' => 'Maksimal 45 Karakter',
+            ]
+        );
+
         $kurir = new kurir;
         $kurir->nama_kurir = $request->nama;
         $kurir->nomor_telepon =  $request->no_tlp;
@@ -46,6 +64,23 @@ class KurirController extends Controller
 
     public function update(Request $request, string $id)
     {
+        $request->validate(
+            [
+                'nama_kurir'=> 'required | max:45',
+                'nomor_telepon'=> 'required | numeric',
+                'jadwal'=> 'required | max:45',
+            ],
+            [
+                'nama_kurir.required' => 'Wajib diisi', 
+                'nomor_telepon.required' => 'Wajib diisi', 
+                'jadwal.required' => 'Wajib diisi', 
+
+                'nomor_telepon.numeric' => 'Harus Angka',
+                'nama_kurir.max' => 'Maksimal 45 Karakter',
+                'jadwal.max' => 'Maksimal 45 Karakter',
+            ]
+        );
+
         $kurir = kurir ::find($id);
         $kurir->nama_kurir = $request->nama;
         $kurir->nomor_telepon =  $request->no_tlp;

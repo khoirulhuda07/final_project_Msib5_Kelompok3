@@ -57,11 +57,11 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```
 
 ## Akun Login
-* username : admin
-* password : admin
+- username : admin
+- password : admin
   
-* username : user
-* password : user
+- username : user
+- password : user
 
 ## Fitur
 ### Front End

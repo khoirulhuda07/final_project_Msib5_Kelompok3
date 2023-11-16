@@ -44,9 +44,7 @@
     <div class="d-flex align-items-center justify-content-between">
 
       <a href="{{url('user/home')}}" class="logo d-flex align-items-center">
-      <img src="{{asset('user/img/logo.png')}}" alt="">
         <span class="d-none d-lg-block"><i class="fa fa-truck me-2"></i>Logistik</span>
-
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -113,8 +111,8 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item mb-3">
-        <a href="#" 
-          class="nav-item nav-link text-white bg-primary" style="pointer-events: none">
+        <a href="{{url('user/dompetku')}}" 
+          class="nav-item nav-link text-white bg-primary" style="hover: none">
           <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000
         </a>
       </li><!-- End saldo Nav -->
