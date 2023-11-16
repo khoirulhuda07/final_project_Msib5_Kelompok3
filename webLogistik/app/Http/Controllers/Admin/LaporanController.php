@@ -15,7 +15,7 @@ class LaporanController extends Controller
     }
 
     public function exportPDF() {
-        $saveName = 'Laporan Pengiriman (' . date('y-m-d') . ').pdf';
+        $saveName = 'Laporan Pengiriman ' . date('y-m-d') . '.pdf';
         $pengiriman = Pengiriman::all();
         $pdf = PDF::loadview('admin.laporanKirim.laporanPDF', ['laporanKirim'=> $pengiriman])->setPaper('a4', 'landscape');
 
