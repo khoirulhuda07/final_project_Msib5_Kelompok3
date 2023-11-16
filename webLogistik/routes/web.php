@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
 use App\Http\Controllers\Admin\KurirController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
@@ -81,4 +82,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
     Route::resource('profile', ProfileAdminController::class);
+
+    // Laporan Controller
+    Route::get('/laporan', [LaporanController::class,'index']);
+    Route::get('/laporan/laporanPDF', [LaporanController::class, 'exportPDF']);
 });
