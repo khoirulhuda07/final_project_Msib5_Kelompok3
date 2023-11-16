@@ -59,6 +59,7 @@ Route::prefix('user')->group(function () {
     Route::get('/profile', [ProfileUserController::class, 'index']);
     Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
     Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+    Route::post('/pembayaran/update/{id}',[PengirimanUserController::class, 'update']);
 
 
     // Resource Controller
