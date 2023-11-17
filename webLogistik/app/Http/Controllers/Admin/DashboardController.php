@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Pengiriman;
 use App\Models\Layanan;
 use App\Models\Kurir;
-use App\Models\Penerima;
-use App\Models\Paket;
-use App\Models\Dompet;
-
+use App\Models\Pembayaran;
 
 class DashboardController extends Controller
 {
@@ -21,14 +18,19 @@ class DashboardController extends Controller
         $pengiriman = Pengiriman::count();
         $layanan = Layanan::count();
         $kurir = Kurir::count();
-        $penerima = Penerima::all();
-        $paket = Paket::all();
-        $saldo = DB::table('dompet')
-        ->sum('saldo');
-        $jkurir = DB::table('pengiriman')
-        ->join('kurir', 'pengiriman.kurir_id', '=', 'kurir.id')
-        ->selectRaw('kurir_id, kurir.nama_kurir as nama_kurir, COUNT(kurir_id) as jumlah')
-        ->groupBy('kurir_id', 'kurir.nama_kurir')
+        $pembayaran = Pembayaran::count();
+        $saldo = DB::table('dompet')->sum('saldo');
+
+        $tbpengiriman = Pengiriman::join("paket", "pengiriman.paket_id", "=", "paket.id")
+        ->select('pengiriman.*', 'paket.berat AS paket_berat', 'paket.deskripsi AS paket_deskripsi')
+        ->limit('5')
+        ->get();
+        $tbkurir = Kurir::all();
+        $tblayanan = Layanan::all();
+
+        $jpembayaran = DB::table('pembayaran')
+        ->selectRaw('metode, COUNT(metode) as jumlah')
+        ->groupBy('metode')
         ->get();
         $jlayanan = DB::table('pengiriman')
         ->join('layanan', 'pengiriman.layanan_id', '=', 'layanan.id')
@@ -38,6 +40,6 @@ class DashboardController extends Controller
       
        
         return view("admin.dashboard", 
-        compact('pengiriman', 'layanan', 'kurir', 'penerima', 'paket', 'saldo', 'jkurir', 'jlayanan'));
+        compact('pengiriman', 'layanan', 'kurir', 'pembayaran', 'tbpengiriman', 'tbkurir', 'tblayanan', 'saldo', 'jpembayaran', 'jlayanan'));
     }
 }

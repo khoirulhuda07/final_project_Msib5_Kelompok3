@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+
+use Illuminate\Support\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\LaporanExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 use App\Models\Pengiriman;
 
@@ -20,5 +24,9 @@ class LaporanController extends Controller
         $pdf = PDF::loadview('admin.laporanKirim.laporanPDF', ['laporanKirim'=> $pengiriman])->setPaper('a4', 'landscape');
 
         return $pdf->download($saveName);
+    }
+
+    public function exportPengiriman() {
+        return Excel::download(new LaporanExport, 'Laporan '.Carbon::now()->timestamp.'.xlsx');
     }
 }

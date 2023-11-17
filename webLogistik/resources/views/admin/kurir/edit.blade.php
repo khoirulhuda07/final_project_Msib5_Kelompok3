@@ -3,7 +3,7 @@
 <!-- form start -->
 @section('content')
 @foreach($kurir as $k)
-<form action="{{route('penerima.update',$pn->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('penerima.update',$k->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div class="container-fluid pt-4 px-4">
@@ -13,7 +13,7 @@
               <div class="bg-light rounded h-100 p-4">
                 <!-- input pertama -->
                 <div class="form-floating mb-3">
-                  <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama" value="{{$k->nama}}">
+                  <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama" value="{{$k->nama_kurir}}">
                   <label for="floatingKode">Nama</label>
                 </div>
         

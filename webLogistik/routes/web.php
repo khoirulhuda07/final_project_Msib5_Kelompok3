@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
+use App\Http\Controllers\Admin\ImportKurirController;
 use App\Http\Controllers\Admin\KurirController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\LayananController;
@@ -56,15 +57,19 @@ Route::prefix('user')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/profile', [ProfileUserController::class, 'index']);
-    Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
-    Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
-    Route::get('/dompetku', [TopUpController::class, 'index']);
 
+    // Pengiriman Controller
+    Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
+    
+    // Pembayaran Controller
+    Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+    Route::post('/pembayaran/update/{id}',[PengirimanUserController::class, 'update']);
 
     // Resource Controller
     Route::resource('transaksi', transaksiController::class);
-
-    // Laporan Controller
+    
+    // Dompetku Controller
+    Route::get('/dompetku', [TopUpController::class, 'index']);
     Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
 });
 
@@ -89,4 +94,8 @@ Route::prefix('admin')->group(function () {
     // Laporan Controller
     Route::get('/laporan', [LaporanController::class,'index']);
     Route::get('/laporan/laporanPDF', [LaporanController::class, 'exportPDF']);
+    Route::get('/laporan/laporanExcel', [LaporanController::class, 'exportPengiriman']);
+
+    // import excel
+    Route::post('/kurir/importKurir', [ImportKurirController::class, 'importKurir']);
 });
