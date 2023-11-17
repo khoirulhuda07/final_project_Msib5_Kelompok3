@@ -57,7 +57,7 @@ class KurirController extends Controller
 
     public function edit(string $id)
     {
-        $dompet = kurir::all()
+        $kurir = kurir::all()
         ->where('id', $id);
         return view("admin.kurir.edit", compact("kurir"));
     }

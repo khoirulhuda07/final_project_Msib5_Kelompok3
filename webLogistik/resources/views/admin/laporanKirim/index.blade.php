@@ -12,6 +12,7 @@
             <div class="bg-light rounded overflow-hidden h-100 p-4">
                 <h6 class="mb-4">Table Laporan Pengiriman</h6>
                 <a href="{{url('admin/laporan/laporanPDF')}}" class="btn btn-outline-primary mb-3">Download <i class="fa-solid fa-download"></i></a>
+                <a href="{{url('admin/laporan/laporanExcel')}}" class="btn btn-outline-success mb-3 ml-1">Excel <i class="fa-solid fa-file-excel"></i></a>
                 <div class="table-responsive">
                     <table id="datapegawai" class="table">
                         <thead>
