@@ -12,8 +12,7 @@
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
                 <h6 class="mb-4">Table Layanan</h6>
-                <a href="{{route('layanan.create')}}">
-                    <button type=" button" class="btn btn-primary btn-sm mb-3">Tambah</button>
+                <a href="{{ route('layanan.create') }}" class="btn btn-primary mb-3">Tambah <i class="fa-solid fa-plus"></i></a>
                 </a>
                 <div class="table-responsive">
                     <table id="datapegawai" class="table">
@@ -55,7 +54,7 @@
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
                                       </div>
                                     </div>

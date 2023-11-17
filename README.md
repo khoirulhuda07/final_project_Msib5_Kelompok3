@@ -15,7 +15,7 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 <a href="https://www.php.net/releases/8.2/en.php"><img src="https://img.shields.io/badge/PHP-v8.2.4-blue" alt="version php"></a>
 
 ## Instalasi
-- download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">Klik</a> 
+- download zip <a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip">Klik disini</a> 
 - atau clone di terminal :
     ```bash
     git clone https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3.git
@@ -43,10 +43,6 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```bash
   php artisan storage:link
   ```
-- menjalankan sweetalert untuk publish the package assets, ketikkan command :
-  ```bash
-  php artisan sweetalert:publish
-  ```
 - buatlah nama database baru. Lalu sesuaikan nama database, username, dan password database di file `.env`, ketikan command :
   ```bash
   php artisan migrate
@@ -69,12 +65,20 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 
 ## Fitur
 ### Front End
-- Home (Halaman home) 
+- Home (Halaman home, about, ulasan, partner, team, contact, map) 
+- Lacak pengiriman
+- Cek ongkos Kirim
+- Login & Register
 
 ### user
+- Halaman Dashboard
+- Form Pengiriman & metode pembayaran
+- Top Up Saldo 
 
 ### admin
 - Halaman Dashboard
+- Data table (Nama Layanan, Jadwal Kurir, Pengiriman Paket)
+- Eksport laporan pengiriman
 
 ## Author
 Final Projek MSIB5 - Group 2 (Kelompok 3)

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Pembayaran;
 use App\Models\Akun;
@@ -63,7 +63,7 @@ class PembayaranController extends Controller
         $pembayaran->akun_id = $request->akun_id;
         $pembayaran->save();
 
-        return redirect('admin/pembayaran');
+        return redirect('admin/pembayaran')->with('success','Data Berhasil Ditambahkan!!');
 
     }
 
@@ -104,7 +104,7 @@ class PembayaranController extends Controller
         $pembayaran->akun_id = $request->akun_id;
         $pembayaran->save();
 
-        return redirect('admin/pembayaran');
+        return redirect('admin/pembayaran')->with('success','Data Berhasil Diubah!!');
 
     }
 
@@ -116,6 +116,6 @@ class PembayaranController extends Controller
         //
         $pembayaran = pembayaran::find($id);
         $pembayaran->delete();
-        return redirect('admin/pembayaran');
+        return redirect('admin/pembayaran')->with('success','Data Berhasil Dihapus!!');
     }
 }

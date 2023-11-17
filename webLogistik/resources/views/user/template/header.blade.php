@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="{{asset('user/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('user/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
     <link href="{{asset('user/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
@@ -27,6 +28,7 @@
 
     <!-- Template Main CSS File -->
     <link href="{{asset('user/css/style.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- =======================================================
     * Template Name: NiceAdmin
@@ -40,9 +42,9 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{asset('user/img/logo.png')}}" alt="">
-        <span class="d-none d-lg-block">Logistik</span>
+
+      <a href="{{url('user/home')}}" class="logo d-flex align-items-center">
+        <span class="d-none d-lg-block"><i class="fa fa-truck me-2"></i>Logistik</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -88,7 +90,6 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-box-arrow-right"></i>
@@ -110,18 +111,70 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item mb-3">
-        <a href="#" 
-          class="nav-item nav-link text-white bg-primary" style="pointer-events: none">
+        <a href="{{url('user/dompetku')}}" 
+          class="nav-item nav-link text-white bg-primary" style="hover: none">
           <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000
         </a>
       </li><!-- End saldo Nav -->
 
       <li class="nav-item">
-        <a class="nav-link " href="{{url('user/home')}}">
+
+        <a class="nav-link collapsed" href="{{url('user/home')}}">
+
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="users-profile.html">
+          <i class="bi bi-person"></i>
+          <span>Profile</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-faq.html">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-contact.html">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-register.html">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="pages-login.html">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('user/pembayaranUser')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Pembayaran</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('user/pengirimanUser')}}">
+          <i class="bi bi-file-earmark"></i>
+          <span>Pengiriman</span>
+        </a>
+      </li><!-- End Blank Page Nav -->
+
 
     </ul>
 

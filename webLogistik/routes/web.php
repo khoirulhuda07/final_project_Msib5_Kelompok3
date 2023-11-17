@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
 use App\Http\Controllers\Admin\KurirController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
@@ -18,7 +19,9 @@ use App\Http\Controllers\Admin\ProfileAdminController;
 use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\ProfileUserController;
-
+use App\Http\Controllers\User\PengirimanUserController;
+use App\Http\Controllers\User\PembayaranUserController;
+use App\Http\Controllers\User\TopUpController;
 
 // homepae namaspace
 use App\Http\Controllers\Homepage\HomepageController;
@@ -52,11 +55,17 @@ Route::get('/lacakpaket', [LacakController::class, 'index1']);
 Route::prefix('user')->group(function () {
 
     Route::get('/home', [HomeController::class, 'index']);
-    Route::get('/profile', [ProfileUserController::class,'index']);
+    Route::get('/profile', [ProfileUserController::class, 'index']);
+    Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
+    Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+    Route::get('/dompetku', [TopUpController::class, 'index']);
+
 
     // Resource Controller
-    Route::resource('Transaksi', transaksiController::class);
+    Route::resource('transaksi', transaksiController::class);
 
+    // Laporan Controller
+    Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
 });
 
 
@@ -76,4 +85,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('layanan', LayananController::class);
     Route::resource('paket', PaketController::class);
     Route::resource('profile', ProfileAdminController::class);
+
+    // Laporan Controller
+    Route::get('/laporan', [LaporanController::class,'index']);
+    Route::get('/laporan/laporanPDF', [LaporanController::class, 'exportPDF']);
 });
