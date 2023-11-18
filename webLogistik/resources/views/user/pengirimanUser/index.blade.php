@@ -4,27 +4,21 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1 class="fs-2 text-center">Riwayat Pengiriman Anda</h1>
       <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
-        </ol>
+        <h3></h3>
       </nav>
     </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
-
+              <a href="{{url('user/pengirimanUser/create')}}" class="btn btn-primary mt-3 mb-2">buat pengiriman paket &nbsp;<i class="fa-solid fa-plus"></i></a>
+            </a>
               <!-- Table with stripped rows -->
-              <table class=" datatable table">
+              <table class=" table-responsive datatable table">
                 <thead>
                   <tr>
                     <th scope="col">NO</th>
@@ -33,9 +27,8 @@
                     <th scope="col">tanggal</th>
                     <th scope="col">lokasi Tujuan</th>
                     <th scope="col">Berat paket</th>
-                    {{-- <th scope="col">deskripsi</th> --}}
+                    <th scope="col">deskripsi</th>
                     <th scope="col">status</th>
-                    <th scope="col">akun</th>
                     
                   </tr>
                 </thead>
@@ -53,8 +46,14 @@
                     <td>{{$p->tanggal}}</td>
                     <td>{{$p->lokasi_tujuan}}</td>
                     <td>{{$p->paket->berat}} .Kg</td>
-                    {{-- <td>{{$p->paket->deskripsi}}</td> --}}
-                    <td>{{$p->akun->fullname}}</td>
+                    <td>{{$p->paket->deskripsi}}</td>
+                    {{-- <td>{{$d['kode']}}</td>
+                    <td>{{$d['tanggal']}}</td>
+                    <td>{{$d['nama']}}</td>
+                    <td>{{$d['tujuan']}}</td>
+                    <td>{{$d['berat']}} .Kg</td>
+                    <td>{{$d['kurir']}}</td> --}}
+                    {{-- <td>{{$p->akun->fullname}}</td> --}}
                     <td> @if(in_array($p->id , $pp))
                         <button class="btn btn-primary">sudah dibayar</button>
                         @else
@@ -70,56 +69,70 @@
                                   </button>
                                 </div>
                                 <div class="modal-body bg-secondary-light">
-                                    <form action="{{url('pembayaran/update')}}" method="POST" enctype="multipart/form-data">
+                                    <form action="" method="POST">
                                         @csrf
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="bg-light rounded h-100 p-4">
                                                         <!-- input pertama -->
-                                                        <div class="form-floating mb-3">
+                                                        <div class="form-floating mb-3  @error('metode') is-invalid @enderror">
                                                             <select class="form-select " name="metode" id="layanan{{$p->id}}" aria-label="Floating label select example" onchange="pilih('{{$p->id}}')">
                                                                 <option>--- pilih Metode ---</option>
-                                                                <option value="dompet">dompetku</option>
-                                                                <option value="cod">COD</option>                                                               
+                                                                <option value="Dompetku">dompetku</option>
+                                                                <option value="COD">COD</option>                                                               
                                                             </select>
                                                             <label for="layanan">metode</label>
+                                                            @error('metode')
+                                                            <div classs="invalid-feedback">
+                                                              {{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
-                                                        <input type="text" name="keterangan" value="{{$p->deskripsi}}">
-                                                        <div class="d-none" id="dompet{{$p->id}}">
+                                                         <input type="text" name="akun_id" value="{{$p->akun->dompet->id}}" hidden>
+                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" hidden>
+                                                        <input type="text" name="id" value="{{$p->akun->dompet->id}}" hidden>
+                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" hidden>
+                                                        <div class="d-none" id="Dompetku{{$p->id}}">
                                                           <div class="form-floating mb-3">
-                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="{{$p->akun->dompet->saldo}}" readonly>
+                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$p->akun->dompet->saldo}}" readonly>
                                                             <label for="floatingKode">Saldo anda</label>
                                                         </div>
                                                         <div class="form-floating mb-3">
-                                                            <input type="text" name="harga_bayar" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                                            <input type="number" name="harga_bayar" class="form-control  @error('harga_bayar') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
                                                             <label for="floatingKode">harga bayar</label>
+                                                            @error('harga_bayar')
+                                                            <div classs="invalid-feedback">
+                                                              {{$message}}
+                                                            </div>
+                                                            @enderror
                                                         </div>
                                                         </div>
-                                                        <div class="d-none" id="cod{{$p->id}}">
+                                                        <div class="d-none" id="COD{{$p->id}}">
                                                             <div class="form-floating mb-3" >
-                                                                <input type="text" name="harga_bayar" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$p->akun->dompet->saldo}}">
+                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$p->akun->dompet->saldo}}">
                                                                 <label for="floatingKode">harga yang harus dibayar</label>
                                                             </div>
                                                     </div>
+                                                    <button name="proses" value="simpan" type="submit" class="btn btn-primary ml-auto">Submit</button>
+                                </form>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                 </div>
                                 <div class="modal-footer badge-info">
+                                 
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <input class="btn btn-danger" name="proses" value="simpan" type="submit">
-                                  </form>
-                                  
+                            
                                 </div>
                               </div>
                             </div>
                           </div>
                           <script>
                             function pilih(id){
-                              var dompetElement = document.getElementById("dompet" + id);
-                              var codElement = document.getElementById("cod" + id);
+                              var dompetElement = document.getElementById("Dompetku" + id);
+                              var codElement = document.getElementById("COD" + id);
 
                               // Periksa apakah elemen ditemukan sebelum manipulasi
                               if (dompetElement && codElement) {
@@ -131,9 +144,9 @@
                                   var selectedLayanan = layananSelect.options[layananSelect.selectedIndex].value;
 
                                   // Tampilkan elemen input yang sesuai dengan opsi yang dipilih
-                                  if (selectedLayanan === "dompet") {
+                                  if (selectedLayanan === "Dompetku") {
                                       dompetElement.classList.remove("d-none");
-                                  } else if (selectedLayanan === "cod") {
+                                  } else if (selectedLayanan === "COD") {
                                       codElement.classList.remove("d-none");
                                   }
                               }
