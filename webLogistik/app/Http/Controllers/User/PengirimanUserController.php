@@ -42,16 +42,16 @@ class PengirimanUserController extends Controller
         $resquest->validate(
             [
                 'metode' => 'required',
-                'harga_total' => 'required',
+                'harga_bayar' => 'required',
 
             ],
             [
                 'metode.required' => 'data wajib diisi',
-                'harga_total.required' => 'data wajib diisi',
+                'harga_bayar.required' => 'data wajib diisi',
             ]
         );
         $id = $resquest->id;
-        $dompet1 = Dompet::find($id);
+        $dompet1 = dompet::find($id);
         $bayar = $resquest->harga_bayar;
         $sisaSaldo = $dompet1->saldo - $bayar;
 
@@ -71,6 +71,7 @@ class PengirimanUserController extends Controller
 
     public function create()
     {
+
         $pengiriman = pengiriman::all();
         $akun = akun::all();
         $kurir = kurir::all();
@@ -81,6 +82,31 @@ class PengirimanUserController extends Controller
     }
     public function pul(Request $request)
     {
+        $request->validate(
+            [
+                'berat' => 'required',
+                'deskripsi' => 'required',
+                'penerima' => 'required',
+                'no_tlp' => 'required',
+                'tanggal' => 'required',
+                'lokasi_tujuan' => 'required',
+                'layanan' => 'required',
+                'akun' => ' required',
+                'kurir' => 'required',
+            ],
+            [
+                'berat.required' => 'data harus di isi',
+                'deskripsi.required' => 'data harus diisi',
+                'penerima.required' => 'data harus diisi',
+                'no_tlp.required' => 'data harus diisi',
+                'tanggal.required' => 'data harus diisi',
+                'lokasi_tujuan.required' => 'data harus diisi',
+                'layanan.required' => 'data harus diisi',
+                'akun.required' => 'data harus diisi',
+                'kurir.required' => 'data harus diisi',
+
+            ]
+        );
         $kode = $this->generateUniqueCode();
         $paket = paket::create(
             [

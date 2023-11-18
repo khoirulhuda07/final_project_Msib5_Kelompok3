@@ -162,19 +162,18 @@
       </li><!-- End Login Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{url('user/pembayaranUser')}}">
-          <i class="bi bi-dash-circle"></i>
-          <span>Pembayaran</span>
-        </a>
-      </li><!-- End Error 404 Page Nav -->
-
-      <li class="nav-item">
         <a class="nav-link collapsed" href="{{url('user/pengirimanUser')}}">
           <i class="bi bi-file-earmark"></i>
           <span>Pengiriman</span>
         </a>
       </li><!-- End Blank Page Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('user/pembayaranUser')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Riwayat Pembayaran</span>
+        </a>
+      </li><!-- End Error 404 Page Nav -->
 
     </ul>
 

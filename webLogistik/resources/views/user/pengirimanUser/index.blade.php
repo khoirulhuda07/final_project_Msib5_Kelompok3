@@ -76,7 +76,7 @@
                                                 <div class="col-12">
                                                     <div class="bg-light rounded h-100 p-4">
                                                         <!-- input pertama -->
-                                                        <div class="form-floating mb-3  @error('nama') is-invalid @enderror">
+                                                        <div class="form-floating mb-3  @error('metode') is-invalid @enderror">
                                                             <select class="form-select " name="metode" id="layanan{{$p->id}}" aria-label="Floating label select example" onchange="pilih('{{$p->id}}')">
                                                                 <option>--- pilih Metode ---</option>
                                                                 <option value="Dompetku">dompetku</option>
@@ -91,7 +91,7 @@
                                                         </div>
                                                          <input type="text" name="akun_id" value="{{$p->akun->dompet->id}}" hidden>
                                                         <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" hidden>
-                                                        <input type="text" name="id" value="{{$p->akun->id}}" hidden>
+                                                        <input type="text" name="id" value="{{$p->akun->dompet->id}}" hidden>
                                                         <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" hidden>
                                                         <div class="d-none" id="Dompetku{{$p->id}}">
                                                           <div class="form-floating mb-3">
@@ -99,9 +99,9 @@
                                                             <label for="floatingKode">Saldo anda</label>
                                                         </div>
                                                         <div class="form-floating mb-3">
-                                                            <input type="number" name="harga_bayar" class="form-control  @error('nama') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                                            <input type="number" name="harga_bayar" class="form-control  @error('harga_bayar') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
                                                             <label for="floatingKode">harga bayar</label>
-                                                            @error('harga_total')
+                                                            @error('harga_bayar')
                                                             <div classs="invalid-feedback">
                                                               {{$message}}
                                                             </div>
@@ -110,7 +110,7 @@
                                                         </div>
                                                         <div class="d-none" id="COD{{$p->id}}">
                                                             <div class="form-floating mb-3" >
-                                                                <input type="number" name="harga_bayar" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$p->akun->dompet->saldo}}">
+                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$p->akun->dompet->saldo}}">
                                                                 <label for="floatingKode">harga yang harus dibayar</label>
                                                             </div>
                                                     </div>
