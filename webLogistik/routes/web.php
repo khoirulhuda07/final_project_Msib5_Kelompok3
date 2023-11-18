@@ -57,8 +57,11 @@ Route::prefix('user')->group(function () {
     Route::get('/home', [HomeController::class, 'index']);
     Route::get('/profile', [ProfileUserController::class, 'index']);
     Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
+    Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
     Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
     Route::get('/dompetku', [TopUpController::class, 'index']);
+    Route::get('/pengirimanUser/create', [PengirimanUserController::class, 'create']);
+    Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
 
 
     // Resource Controller
@@ -87,6 +90,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('profile', ProfileAdminController::class);
 
     // Laporan Controller
-    Route::get('/laporan', [LaporanController::class,'index']);
+    Route::get('/laporan', [LaporanController::class, 'index']);
     Route::get('/laporan/laporanPDF', [LaporanController::class, 'exportPDF']);
 });
