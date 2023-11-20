@@ -276,7 +276,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/team-2.jpg')}}" alt=""></div>
+                        <div class="pic"><img src="{{asset('homepage/img/Author/devia.png')}}" alt=""></div>
                         <div class="details">
                             <h4>Devia Fitri N</h4>
                             <span>Frond End Developer</span>
@@ -292,7 +292,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/michail.png')}}" alt=""></div>
+                        <div class="pic"><img src="{{asset('homepage/img/Author/michail2.png')}}" alt=""></div>
                         <div class="details">
                             <h4>Michail</h4>
                             <span>Back End Developer</span>
@@ -310,7 +310,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="400">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/team-4.jpg')}}" alt=""></div>
+                        <div class="pic"><img src="{{asset('homepage/img/Author/angel.png')}}" alt=""></div>
                         <div class="details">
                             <h4>Angelina Yulfaningtyas</h4>
                             <span>Front End Developer</span>
@@ -333,8 +333,8 @@
                             <div class="social">
                                 <a href=""><i class="bi bi-twitter"></i></a>
                                 <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
+                                <a href="https://instagram.com/achbar.w?igshid=YTQwZjQ0NmI0OA=="><i class="bi bi-instagram"></i></a>
+                                <a href="https://www.linkedin.com/in/achbar-w-750897131/"><i class="bi bi-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
