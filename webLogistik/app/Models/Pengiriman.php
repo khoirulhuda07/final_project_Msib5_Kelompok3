@@ -12,7 +12,7 @@ class Pengiriman extends Model
     protected $table = 'pengiriman';
     public $timestamps = false;
 
-    protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'] ;
+    protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'status','paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'] ;
 
     public function paket() {
         return $this->belongsTo(paket::class) ;
@@ -20,10 +20,6 @@ class Pengiriman extends Model
 
     public function layanan() {
         return $this->belongsTo(Layanan::class) ;
-    }
-
-    public function kurir() {
-        return $this->belongsTo(Kurir::class) ;
     }
 
     public function akun() {
@@ -35,6 +31,6 @@ class Pengiriman extends Model
     }
 
     public function pembayaran() {
-        return $this->hasMany(pembayaran::class) ;
+        return $this->hasMany(pembayaran::class, 'pengiriman_id') ;
     }
 }

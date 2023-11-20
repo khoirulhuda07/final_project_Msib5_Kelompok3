@@ -5,26 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Kurir;
 use App\Models\Layanan;
 
 class LayananController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $layanan = Layanan::all();
-        return view("admin.layanan.index", compact("layanan"));
+        return view("admin.layanan.index", ["layanan"=> $layanan]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
-        return view ('admin.layanan.create');
+        $kurir = Kurir::all();
+        return view ('admin.layanan.create', compact('kurir'));
     }
 
     /**
@@ -35,15 +30,18 @@ class LayananController extends Controller
         $request->validate([
             'nama' => 'required|max:45',
             'biaya' => 'required|double',
+            'kurir_id' => 'required|numeric',
         ],
         [
             'nama.required' => 'Layanan barang harus diisi',
             'biaya.required' => 'Biaya Layanan harus diisi',
+            'kurir_id.numeric'=> 'Wajib Dipilih',
         ]);
         //
         $layanan = new layanan;
         $layanan->nama_layanan = $request->nama;
         $layanan->biaya = $request->biaya;
+        $layanan->kurir_id = $request->kurir_id;
         $layanan->save();
         return redirect('admin/layanan')->with('success','Data Berhasil Ditambahkan!!');
     }
@@ -67,7 +65,8 @@ class LayananController extends Controller
         //
         $layanan = layanan::all()
         ->where('id', $id);
-        return view("admin.layanan.edit", compact("layanan"));
+        $kurir = Kurir::all();
+        return view("admin.layanan.edit", compact("layanan", "kurir"));
     }
 
     /**
@@ -78,15 +77,18 @@ class LayananController extends Controller
         $request->validate([
             'nama' => 'required|max:45',
             'biaya' => 'required|double',
+            'kurir_id' => 'required|numeric',
         ],
         [
             'nama.required' => 'Layanan barang harus diisi',
             'biaya.required' => 'Biaya Layanan harus diisi',
+            'kurir_id.numeric'=> 'Wajib Dipilih',
         ]);
         //
         $layanan = layanan::find($id);
         $layanan->nama_layanan = $request->nama;
         $layanan->biaya = $request->biaya;
+        $layanan->kurir_id = $request->kurir_id;
         $layanan->save();
         return redirect('admin/layanan')->with('success','Data Berhasil Diubah!!');
     }
