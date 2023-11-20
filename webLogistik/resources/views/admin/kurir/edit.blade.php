@@ -3,7 +3,7 @@
 <!-- form start -->
 @section('content')
 @foreach($kurir as $k)
-<form action="{{route('penerima.update',$k->id)}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('kurir.update',$k->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div class="container-fluid pt-4 px-4">

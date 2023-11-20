@@ -131,20 +131,6 @@
                                 @enderror 
                             </div>
                             <!-- input ke delapan -->
-                            <div class="form-floating mb-3  ">
-                                <select class="form-select @error('kurir') is-invalid @enderror" name="kurir" id="kurir" aria-label="Floating label select example">
-                                    <option selected>--- Nama Kurir ---</option>
-                                    @foreach($kurir as $kr)
-                                    <option value="{{$kr->id}}">{{$kr->nama_kurir}}</option>
-                                    @endforeach
-                                </select>
-                                <label for="kurir">Nama Kurir</label>
-                                @error('kurir')
-                                <div classs="invalid-feedback">
-                                {{$message}}
-                                </div>
-                                @enderror 
-                            </div>
                             <br>
                             <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>
                         </form>
