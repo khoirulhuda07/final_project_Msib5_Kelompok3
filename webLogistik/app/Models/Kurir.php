@@ -13,7 +13,7 @@ class Kurir extends Model
     public $timestamps = false;
     
     protected $fillable = ['nama_kurir', 'nomor_telepon', 'jadwal'] ;
-    public function pengiriman() {
-        return $this->hasMany(Pengiriman::class, 'kurir_id');
+    public function layanan() {
+        return $this->hasMany(Layanan::class, 'kurir_id');
     }
 }

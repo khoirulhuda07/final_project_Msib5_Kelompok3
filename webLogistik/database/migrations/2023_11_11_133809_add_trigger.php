@@ -21,13 +21,22 @@ return new class extends Migration
             END
         ');
 
-        DB::unprepared('CREATE TRIGGER tambah_saldo_akun BEFORE INSERT ON akun
-                FOR EACH ROW BEGIN
+        DB::unprepared('CREATE TRIGGER tambah_saldo_akun BEFORE INSERT ON akun FOR EACH ROW 
+            BEGIN
                 INSERT INTO dompet (saldo, bonus) VALUES (`10000`, `1`);
             
                 SET @dompet_id = LAST_INSERT_ID();
             
                 SET NEW.dompet_id = @dompet_id;
+            END
+        ');
+
+        DB::unprepared('CREATE TRIGGER create_item_kurir AFTER INSERT ON akun FOR EACH ROW
+            BEGIN
+                IF NEW.level = `kurir`
+                THEN
+                    INSERT INTO kurir (nama_kurir) VALUES (NEW.fullname);
+                END IF;
             END
         ');
     }

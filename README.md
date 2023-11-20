@@ -2,9 +2,9 @@
 
 <p align="center">
 <a href="https://laravel.com/docs/10.x/testing"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://laravel.com/docs/10.x/installation"><img src="https://img.shields.io/badge/download-5-green" alt="Total Downloads"></a>
-<a href="https://laravel.com/docs/10.x/starter-kits#laravel-breeze"><img src="https://img.shields.io/badge/packagist-v1.0.1-blue" alt="Latest Stable Version"></a>
-<a href="https://laravel.com/"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+<a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip"><img src="https://img.shields.io/badge/download-5-green" alt="Total Downloads"></a>
+<img src="https://img.shields.io/badge/packagist-v1.0.1-blue" alt="Latest Stable Version">
+<img src="https://img.shields.io/badge/license-MIT-green" alt="License">
 </p>
 
 # About Logistik

@@ -35,13 +35,27 @@
                   <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
-      
+
                 <!-- input ke empat -->
+                <label>Status Pengiriman</label>
+                  <div class="form-floating mb-3">
+                    @foreach ($status as $item)
+                      <div class="form-check form-check-inline @error('status') is-invalid @enderror">
+                        <input class="form-check-input" type="radio" name="status" id="floatingstatus_{{$loop->iteration}}" value="{{$item}}">
+                        <label class="form-check-label" for="floatingstatus">{{$item}}</label>
+                      </div>
+                      @endforeach
+                      @error('status')
+                      <div class="invalid-feedback">{{$message}}</div>
+                      @enderror
+                  </div>
+      
+                <!-- input ke lima -->
                 <div class="form-floating mb-3">
                     <select class="form-select @error('paket_id') is-invalid @enderror" name="paket_id" id="Deskirpsi" aria-label="Floating label select example">
                         <option selected>--- Deskirpsi Paket ---</option>
-                        @foreach ($paket as $pkt)
-                            <option value="{{$pkt->id}}">{{$pkt->deskripsi}}</option>
+                        @foreach ($paket as $items)
+                            <option value="{{$items->id}}">{{$items->deskripsi}}</option>
                         @endforeach
                     </select>
                     @error('paket_id')
@@ -49,13 +63,16 @@
                     @enderror
                     <label for="Deskirpsi">Deskirpsi Paket</label>
                   </div> 
-                
-                <!-- input ke lima -->
+                </div>
+              </div>
+              <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
+                <!-- input ke enam -->
                 <div class="form-floating mb-3">
                     <select class="form-select @error('layanan_id') is-invalid @enderror" name="layanan_id" id="layanan" aria-label="Floating label select example">
                         <option selected>--- Nama Layanan ---</option>
-                        @foreach ($layanan as $lyn)
-                            <option value="{{$lyn->id}}">{{$lyn->nama_layanan}}</option>
+                        @foreach ($layanan as $items)
+                            <option value="{{$items->id}}">{{$items->nama_layanan}}</option>
                         @endforeach
                     </select>
                     @error('layanan_id')
@@ -64,16 +81,12 @@
                     <label for="layanan">Nama Layanan</label>
                   </div> 
 
-              </div>
-          </div>
-          <div class="col-sm-12 col-xl-6">
-              <div class="bg-light rounded h-100 p-4">
-                  <!-- input ke enam -->
+                  <!-- input ke tujuh -->
                   <div class="form-floating mb-3">
                     <select class="form-select @error('penerima_id') is-invalid @enderror" name="penerima_id" id="nama" aria-label="Floating label select example">
                         <option selected>--- Nama Penerima ---</option>
-                        @foreach ($penerima as $terima)
-                            <option value="{{$terima->id}}">{{$terima->nama}}</option>
+                        @foreach ($penerima as $items)
+                            <option value="{{$items->id}}">{{$items->nama}}</option>
                         @endforeach
                     </select>
                     @error('penerima_id')
@@ -82,32 +95,18 @@
                     <label for="nama">Nama Penerima</label>
                   </div> 
               
-                  <!-- input ke tujuh -->
+                  <!-- input ke delapan -->
                   <div class="form-floating mb-3">
                     <select class="form-select @error('akun_id') is-invalid @enderror" name="akun_id" id="akun" aria-label="Floating label select example">
                         <option selected>--- Username ---</option>
-                        @foreach ($akun as $user)
-                            <option value="{{$user->id}}">{{$user->username}}</option>
+                        @foreach ($akun as $items)
+                            <option value="{{$items->id}}">{{$items->username}}</option>
                         @endforeach
                     </select>
                       @error('akun_id')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                     <label for="saldo">Username</label>
-                  </div> 
-
-                  <!-- input ke delapan -->
-                  <div class="form-floating mb-3">
-                    <select class="form-select @error('kurir_id') is-invalid @enderror" name="kurir_id" id="kurir" aria-label="Floating label select example">
-                        <option selected>--- Nama Kurir ---</option>
-                        @foreach ($kurir as $kr)
-                            <option value="{{$kr->id}}">{{$kr->nama_kurir}}</option>
-                        @endforeach
-                    </select>
-                    @error('kurir_id')
-                    <div class="invalid-feedback">{{$message}}</div>
-                    @enderror
-                    <label for="kurir">Nama Kurir</label>
                   </div> 
                   <br>
                     <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>

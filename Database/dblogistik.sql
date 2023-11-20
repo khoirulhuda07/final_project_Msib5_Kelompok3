@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Nov 2023 pada 07.03
+-- Waktu pembuatan: 20 Nov 2023 pada 12.16
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -33,19 +33,19 @@ CREATE TABLE `akun` (
   `username` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
-  `level` enum('user','admin') NOT NULL,
+  `level` enum('user','admin','kurir') NOT NULL,
   `alamat` varchar(45) NOT NULL,
-  `foto` varchar(50) DEFAULT NULL,
-  `dompet_id` int(11) DEFAULT NULL
+  `dompet_id` int(11) DEFAULT NULL,
+  `foto` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `akun`
 --
 
-INSERT INTO `akun` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `foto`, `dompet_id`) VALUES
-(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', NULL, 1),
-(2, 'User', 'user', 'user@gmail.com', 'user', 'user', 'Indonesia', NULL, 2);
+INSERT INTO `akun` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `dompet_id`, `foto`) VALUES
+(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', 3, NULL),
+(2, 'User', 'user', 'user@gmail.com', 'user', 'user', 'Indonesia', 4, NULL);
 
 --
 -- Trigger `akun`
@@ -82,7 +82,9 @@ CREATE TABLE `dompet` (
 
 INSERT INTO `dompet` (`id`, `saldo`, `bonus`) VALUES
 (1, 100000, 10),
-(2, 30000, 3);
+(2, 30000, 3),
+(3, 10000, 1),
+(4, 10000, 1);
 
 -- --------------------------------------------------------
 
@@ -93,8 +95,8 @@ INSERT INTO `dompet` (`id`, `saldo`, `bonus`) VALUES
 CREATE TABLE `kurir` (
   `id` int(11) NOT NULL,
   `nama_kurir` varchar(45) NOT NULL,
-  `nomor_telepon` varchar(45) NOT NULL,
-  `jadwal` varchar(45) NOT NULL
+  `nomor_telepon` varchar(45) DEFAULT NULL,
+  `jadwal` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -115,17 +117,18 @@ INSERT INTO `kurir` (`id`, `nama_kurir`, `nomor_telepon`, `jadwal`) VALUES
 CREATE TABLE `layanan` (
   `id` int(11) NOT NULL,
   `nama_layanan` varchar(45) NOT NULL,
-  `biaya` double NOT NULL
+  `biaya` double NOT NULL,
+  `kurir_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `layanan`
 --
 
-INSERT INTO `layanan` (`id`, `nama_layanan`, `biaya`) VALUES
-(1, 'Reguler', 5000),
-(2, 'Express', 10000),
-(3, 'Same Day', 20000);
+INSERT INTO `layanan` (`id`, `nama_layanan`, `biaya`, `kurir_id`) VALUES
+(1, 'Reguler', 5000, 1),
+(2, 'Express', 10000, 2),
+(3, 'Same Day', 20000, 3);
 
 -- --------------------------------------------------------
 
@@ -163,7 +166,7 @@ INSERT INTO `paket` (`id`, `berat`, `deskripsi`) VALUES
 
 CREATE TABLE `pembayaran` (
   `id` int(11) NOT NULL,
-  `metode` enum('Dompetku','COD') NOT NULL,
+  `metode` enum('dompetku','COD') NOT NULL,
   `harga_total` double NOT NULL,
   `keterangan` varchar(45) NOT NULL,
   `pengiriman_id` int(11) NOT NULL,
@@ -175,16 +178,16 @@ CREATE TABLE `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengiriman_id`, `akun_id`) VALUES
-(21, 'Dompetku', 5000, 'Pembayaran untuk paket buku tulis', 1, 1),
-(22, 'Dompetku', 10000, 'Pembayaran untuk paket buku pelajaran', 2, 1),
-(23, 'COD', 15000, 'Pembayaran untuk paket barang elektronik', 3, 2),
-(24, 'COD', 20000, 'Pembayaran untuk paket makanan', 4, 2),
-(25, 'COD', 25000, 'Pembayaran untuk paket pakaian', 5, 2),
-(26, 'Dompetku', 120000, 'Pembayaran untuk paket dokumen', 6, 1),
-(27, 'Dompetku', 70000, 'Pembayaran untuk paket mainan', 7, 1),
-(28, 'Dompetku', 80000, 'Pembayaran untuk paket tanaman', 8, 1),
-(29, 'COD', 180000, 'Pembayaran untuk paket hewan peliharaan', 9, 2),
-(30, 'COD', 100000, 'Pembayaran untuk paket body motor', 10, 2);
+(1, 'dompetku', 5000, 'Pembayaran untuk paket buku tulis', 1, 1),
+(2, 'dompetku', 10000, 'Pembayaran untuk paket buku pelajaran', 2, 1),
+(3, 'COD', 15000, 'Pembayaran untuk paket barang elektronik', 3, 2),
+(4, 'COD', 20000, 'Pembayaran untuk paket makanan', 4, 2),
+(5, 'COD', 25000, 'Pembayaran untuk paket pakaian', 5, 2),
+(6, 'dompetku', 120000, 'Pembayaran untuk paket dokumen', 6, 1),
+(7, 'dompetku', 70000, 'Pembayaran untuk paket mainan', 7, 1),
+(8, 'dompetku', 80000, 'Pembayaran untuk paket tanaman', 8, 1),
+(9, 'COD', 180000, 'Pembayaran untuk paket hewan peliharaan', 9, 2),
+(10, 'COD', 100000, 'Pembayaran untuk paket body motor', 10, 2);
 
 -- --------------------------------------------------------
 
@@ -218,28 +221,28 @@ CREATE TABLE `pengiriman` (
   `kode` varchar(45) NOT NULL,
   `tanggal` date NOT NULL,
   `lokasi_tujuan` varchar(255) NOT NULL,
+  `status` enum('penjemputan','pengiriman','terkirim') NOT NULL,
   `paket_id` int(11) NOT NULL,
   `layanan_id` int(11) NOT NULL,
   `penerima_id` int(11) NOT NULL,
-  `akun_id` int(11) NOT NULL,
-  `kurir_id` int(11) NOT NULL
+  `akun_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `paket_id`, `layanan_id`, `penerima_id`, `akun_id`, `kurir_id`) VALUES
-(1, '1234567890', '2023-11-12', 'Jakarta', 1, 1, 1, 1, 1),
-(2, '9876543210', '2023-11-13', 'Bandung', 2, 1, 2, 1, 2),
-(3, '0987654321', '2023-11-14', 'Semarang', 3, 1, 2, 2, 3),
-(4, '1987654320', '2023-11-15', 'Surabaya', 4, 1, 1, 2, 1),
-(5, '0198765432', '2023-11-16', 'Yogyakarta', 5, 1, 3, 2, 3),
-(6, '1098765432', '2023-11-17', 'Medan', 6, 3, 1, 1, 1),
-(7, '0098765432', '2023-11-18', 'Bali', 7, 2, 2, 1, 3),
-(8, '1198765432', '2023-11-19', 'Makassar', 8, 2, 2, 1, 2),
-(9, '0012345678', '2023-11-20', 'Palembang', 9, 3, 3, 2, 2),
-(10, '0283728373', '2023-11-21', 'Padang', 10, 2, 3, 2, 2);
+INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `paket_id`, `layanan_id`, `penerima_id`, `akun_id`) VALUES
+(1, '1234567890', '2023-11-12', 'Jakarta', 'penjemputan', 1, 1, 1, 1),
+(2, '9876543210', '2023-11-13', 'Bandung', 'pengiriman', 2, 1, 2, 1),
+(3, '0987654321', '2023-11-14', 'Semarang', 'pengiriman', 3, 1, 2, 2),
+(4, '1987654320', '2023-11-15', 'Surabaya', 'terkirim', 4, 1, 1, 2),
+(5, '0198765432', '2023-11-16', 'Yogyakarta', 'penjemputan', 5, 1, 3, 2),
+(6, '1098765432', '2023-11-17', 'Medan', 'terkirim', 6, 3, 1, 1),
+(7, '0098765432', '2023-11-18', 'Bali', 'pengiriman', 7, 2, 2, 1),
+(8, '1198765432', '2023-11-19', 'Makassar', 'terkirim', 8, 2, 2, 1),
+(9, '0012345678', '2023-11-20', 'Palembang', 'penjemputan', 9, 3, 3, 2),
+(10, '0283728373', '2023-11-21', 'Padang', 'pengiriman', 10, 2, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -278,7 +281,7 @@ DELIMITER ;
 --
 ALTER TABLE `akun`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username_UNIQUE` (`username`),
   ADD KEY `fk_akun_dompet1_idx` (`dompet_id`);
 
 --
@@ -298,7 +301,8 @@ ALTER TABLE `kurir`
 --
 ALTER TABLE `layanan`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nama_layanan` (`nama_layanan`);
+  ADD UNIQUE KEY `nama_layanan_UNIQUE` (`nama_layanan`),
+  ADD KEY `fk_layanan_kurir1_idx` (`kurir_id`);
 
 --
 -- Indeks untuk tabel `paket`
@@ -325,12 +329,11 @@ ALTER TABLE `penerima`
 --
 ALTER TABLE `pengiriman`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `kode` (`kode`),
+  ADD UNIQUE KEY `kode_UNIQUE` (`kode`),
   ADD KEY `fk_pengiriman_paket_idx` (`paket_id`),
   ADD KEY `fk_pengiriman_layanan1_idx` (`layanan_id`),
   ADD KEY `fk_pengiriman_penerima1_idx` (`penerima_id`),
-  ADD KEY `fk_pengiriman_akun1_idx` (`akun_id`),
-  ADD KEY `fk_pengiriman_kurir1_idx` (`kurir_id`);
+  ADD KEY `fk_pengiriman_akun1_idx` (`akun_id`);
 
 --
 -- Indeks untuk tabel `topup`
@@ -353,7 +356,7 @@ ALTER TABLE `akun`
 -- AUTO_INCREMENT untuk tabel `dompet`
 --
 ALTER TABLE `dompet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `kurir`
@@ -377,7 +380,7 @@ ALTER TABLE `paket`
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `penerima`
@@ -408,6 +411,12 @@ ALTER TABLE `akun`
   ADD CONSTRAINT `fk_akun_dompet1` FOREIGN KEY (`dompet_id`) REFERENCES `dompet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Ketidakleluasaan untuk tabel `layanan`
+--
+ALTER TABLE `layanan`
+  ADD CONSTRAINT `fk_layanan_kurir1` FOREIGN KEY (`kurir_id`) REFERENCES `kurir` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
@@ -419,7 +428,6 @@ ALTER TABLE `pembayaran`
 --
 ALTER TABLE `pengiriman`
   ADD CONSTRAINT `fk_pengiriman_akun1` FOREIGN KEY (`akun_id`) REFERENCES `akun` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pengiriman_kurir1` FOREIGN KEY (`kurir_id`) REFERENCES `kurir` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_layanan1` FOREIGN KEY (`layanan_id`) REFERENCES `layanan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_paket` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_penerima1` FOREIGN KEY (`penerima_id`) REFERENCES `penerima` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

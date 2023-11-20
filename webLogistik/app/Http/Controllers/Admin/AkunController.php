@@ -21,7 +21,7 @@ class AkunController extends Controller
     public function create()
     {
         $dompet = Dompet::all();
-        $jabatan = ['user', 'admin'];
+        $jabatan = ['user', 'admin', 'kurir'];
         return view('admin.akun.create', compact('dompet', 'jabatan'));
     }
 
@@ -32,7 +32,7 @@ class AkunController extends Controller
             'username'=> 'required | max:45',
             'email'=> 'required | email | unique:akun',
             'password'=> 'required',
-            'level'=> 'required | numeric',
+            'level'=> 'required ',
             'alamat'=> 'required | max:45',
             'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
             'dompet_id'=> 'nullable | numeric',
@@ -89,7 +89,7 @@ class AkunController extends Controller
     {
         $akun = Akun::all()->where('id', $id);
         $dompet = Dompet::all();
-        $jabatan = ['user', 'admin'];
+        $jabatan = ['user', 'admin', 'kurir'];
         return view('admin.akun.edit', ['akun'=> $akun], compact('jabatan','dompet'));
     }
 
@@ -100,7 +100,7 @@ class AkunController extends Controller
             'username'=> 'required | max:45',
             'email'=> 'required | email',
             'password'=> 'required',
-            'level'=> 'required | numeric',
+            'level'=> 'required',
             'alamat'=> 'required | max:45',
             'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
             'dompet_id'=> 'nullable | numeric',
