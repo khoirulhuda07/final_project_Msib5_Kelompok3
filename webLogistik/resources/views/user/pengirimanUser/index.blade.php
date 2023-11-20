@@ -89,10 +89,10 @@
                                                             </div>
                                                             @enderror
                                                         </div>
-                                                         <input type="text" name="akun_id" value="{{$p->akun->dompet->id}}" hidden>
-                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" hidden>
-                                                        <input type="text" name="id" value="{{$p->akun->dompet->id}}" hidden>
-                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" hidden>
+                                                         <input type="text" name="akun_id" value="{{$p->akun->id}}" >
+                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" >
+                                                        <input type="text" name="id" value="{{$p->akun->dompet->id}}" >
+                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" >
                                                         <div class="d-none" id="Dompetku{{$p->id}}">
                                                           <div class="form-floating mb-3">
                                                             <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$p->akun->dompet->saldo}}" readonly>
@@ -110,7 +110,7 @@
                                                         </div>
                                                         <div class="d-none" id="COD{{$p->id}}">
                                                             <div class="form-floating mb-3" >
-                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$p->akun->dompet->saldo}}">
+                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
                                                                 <label for="floatingKode">harga yang harus dibayar</label>
                                                             </div>
                                                     </div>

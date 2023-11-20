@@ -50,23 +50,27 @@ class PengirimanUserController extends Controller
                 'harga_bayar.required' => 'data wajib diisi',
             ]
         );
-        $id = $resquest->id;
-        $dompet1 = dompet::find($id);
-        $bayar = $resquest->harga_bayar;
-        $sisaSaldo = $dompet1->saldo - $bayar;
+        try {
+            $id = $resquest->id;
+            $dompet1 = dompet::find($id);
+            $bayar = $resquest->harga_bayar;
+            $sisaSaldo = $dompet1->saldo - $bayar;
 
-        $pembayaran = new pembayaran;
-        $pembayaran->metode = $resquest->metode;
-        $pembayaran->harga_total = $resquest->harga_bayar;
-        $pembayaran->keterangan = $resquest->keterangan;
-        $pembayaran->pengiriman_id = $resquest->pengiriman_id;
-        $pembayaran->akun_id = $resquest->akun_id;
-        $pembayaran->save();
+            $pembayaran = new pembayaran;
+            $pembayaran->metode = $resquest->metode;
+            $pembayaran->harga_total = $resquest->harga_bayar;
+            $pembayaran->keterangan = $resquest->keterangan;
+            $pembayaran->pengiriman_id = $resquest->pengiriman_id;
+            $pembayaran->akun_id = $resquest->akun_id;
+            $pembayaran->save();
 
-        $dompet = dompet::find($id);
-        $dompet->saldo = $sisaSaldo;
-        $dompet->save();
-        return redirect('user/pengirimanUser');
+            $dompet = dompet::find($id);
+            $dompet->saldo = $sisaSaldo;
+            $dompet->save();
+            return redirect('user/pengirimanUser');
+        } catch (\Exception $e) {
+            echo 'input :' . $e->getMessage();
+        };
     }
 
     public function create()
@@ -92,7 +96,7 @@ class PengirimanUserController extends Controller
                 'lokasi_tujuan' => 'required',
                 'layanan' => 'required',
                 'akun' => ' required',
-                'kurir' => 'required',
+
             ],
             [
                 'berat.required' => 'data harus di isi',
@@ -103,7 +107,7 @@ class PengirimanUserController extends Controller
                 'lokasi_tujuan.required' => 'data harus diisi',
                 'layanan.required' => 'data harus diisi',
                 'akun.required' => 'data harus diisi',
-                'kurir.required' => 'data harus diisi',
+
 
             ]
         );
@@ -128,7 +132,6 @@ class PengirimanUserController extends Controller
             'layanan_id' => $request->layanan,
             'penerima_id' => $penerima->id,
             'akun_id' => $request->akun,
-            'kurir_id' => $request->kurir,
 
         ]);
         return redirect('user/pengirimanUser');

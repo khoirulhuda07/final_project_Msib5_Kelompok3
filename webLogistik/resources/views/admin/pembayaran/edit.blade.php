@@ -17,7 +17,7 @@
                         @foreach ($bayar as $byr)
                          @php $sel = ($byr == $pm->metode) ? 'checked' : ''; @endphp
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="metode" id="floatingLevel_{{$loop->iteration}}" value="{{$byr}}" {{$sel}}>
+                            <input class="form-check-input" type="radio" name="metode" id="floatingLevel_{{$loop->iteration}}" value="{{$byr}}"{{ $sel}}>
                             <label class="form-check-label" for="floatingLevel">{{$byr}}</label>
                           </div>
                           @endforeach
