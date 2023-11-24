@@ -57,11 +57,7 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```
 
 ## Akun Login
-- username : admin
-- password : admin
-  
-- username : user
-- password : user
+
 
 ## Fitur
 ### Front End
@@ -70,15 +66,18 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 - Cek ongkos Kirim
 - Login & Register
 
-### user
+### User
 - Halaman Dashboard
 - Form Pengiriman & metode pembayaran
 - Top Up Saldo 
 
-### admin
+### Admin
 - Halaman Dashboard
 - Data table (Nama Layanan, Jadwal Kurir, Pengiriman Paket)
 - Eksport laporan pengiriman
+
+### Kurir
+- Konfirmasi paket - Telah diambil oleh pengirim, Proses Pengiriman, Telah Sampai ke penerima
 
 ## Author
 Final Projek MSIB5 - Group 2 (Kelompok 3)

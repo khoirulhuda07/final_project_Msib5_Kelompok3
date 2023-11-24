@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('homepage/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('logo/icon.png')}}" rel="icon">
     <link href="{{asset('homepage/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->

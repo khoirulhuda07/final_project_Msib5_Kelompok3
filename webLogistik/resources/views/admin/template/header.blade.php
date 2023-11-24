@@ -10,7 +10,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="{{asset('admin/img/delivery.png')}}" rel="icon">
+    <link href="{{asset('logo/icon.png')}}" rel="icon">
     <script src="https://kit.fontawesome.com/0b9d20e297.js" crossorigin="anonymous"></script>
 
     <!-- Google Web Fonts -->
@@ -50,7 +50,7 @@
         <div class="sidebar pe-4 pb-3">
             <nav class="navbar bg-light navbar-light">
                 <a href="{{url('admin/dashboard')}}" class="navbar-brand mx-4 mb-3">
-                    <h3 class="text-primary"><i class="fa fa-truck me-2"></i>Logistik</h3>
+                    <img src="{{asset('logo/logo.png')}}" alt="" style="width: 180px">
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
