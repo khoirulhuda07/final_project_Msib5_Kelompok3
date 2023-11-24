@@ -292,7 +292,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/michail2.png')}}" alt=""></div>
+                        <div class="pic"><img src="{{asset('homepage/img/Author/michail.png')}}" alt=""></div>
                         <div class="details">
                             <h4>Michail</h4>
                             <span>Back End Developer</span>
