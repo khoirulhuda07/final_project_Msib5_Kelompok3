@@ -260,7 +260,7 @@
             <div class="row ">
                 <div class="col-lg-3 col-md-6 mx-auto " data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/team-1.jpg')}}" alt=""></div>
+                        <div class="pic"><img src="{{asset('homepage/img/Author/khoirul.png')}}" alt=""></div>
                         <div class="details">
                             <h4>Khoirul Huda</h4>
                             <span>Chief Executive Officer</span>
