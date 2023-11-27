@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div><!-- End Sales Card -->
-                    <div class="col-xl-6">
+                    {{-- <div class="col-xl-6">
                         <div class="card info-card sales-card shadow-sm">
                             <div class="card-body">
                                 <div class="d-flex align-items-center">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div><!-- End Sales Card -->
+                    </div><!-- End Sales Card --> --}}
                     <div class="col-xl-6">
                         <div class="card info-card sales-card shadow-sm">
                             <div class="card-body">
