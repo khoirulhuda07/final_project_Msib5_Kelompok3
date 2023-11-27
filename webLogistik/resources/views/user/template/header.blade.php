@@ -37,7 +37,7 @@
     <div class="d-flex align-items-center justify-content-between">
 
       <a href="{{url('user/home')}}" class="align-items-center mx-2">
-        <img src="{{asset('logo/logo.png')}}" alt="" style="width: 200px">
+        <img src="{{asset('logo/logo.png')}}" alt="Profile" style="width: 200px">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -84,10 +84,20 @@
               <hr class="dropdown-divider">
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              {{-- <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a> --}}
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+              </form>
             </li>
 
           </ul><!-- End Profile Dropdown Items -->
@@ -104,8 +114,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item mb-3">
-        <a href="{{url('user/dompetku')}}" 
-          class="nav-item nav-link text-white bg-primary" style="hover: none">
+        <a href="{{url('user/dompetku')}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
           <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000
         </a>
       </li><!-- End saldo Nav -->
