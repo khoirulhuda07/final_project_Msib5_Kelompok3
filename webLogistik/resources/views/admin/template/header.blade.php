@@ -105,7 +105,15 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="{{route('profile.index')}}" class="dropdown-item">My Profile</a>
-                            <a href="logout.php" class="dropdown-item">Log Out</a>
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Sign Out</span>
+                          </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                              </form>
                         </div>
                     </div>
                 </div>

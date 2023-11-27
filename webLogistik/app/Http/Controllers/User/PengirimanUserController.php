@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Akun;
+use App\Models\User;
 use App\Models\kurir;
 use App\Models\Layanan;
 use App\Models\Paket;
@@ -15,14 +15,15 @@ use App\Models\Penerima;
 use App\Models\Pengiriman;
 use App\Models\Pembayaran;
 use App\Models\Dompet;
-
+use App\Models\Users;
 
 class PengirimanUserController extends Controller
 {
     public function index()
     {
-        $pengiriman = pengiriman::all();
-        $akun = akun::all();
+        $user_id = auth()->id();
+        $pengiriman = pengiriman::where('user_id', $user_id)->get();
+        $akun = users::all();
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
@@ -77,7 +78,7 @@ class PengirimanUserController extends Controller
     {
 
         $pengiriman = pengiriman::all();
-        $akun = akun::all();
+        $akun = users::all();
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();

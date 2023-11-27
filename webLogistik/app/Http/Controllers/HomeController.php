@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,14 @@ class HomeController extends Controller
 
     public function index()
     {
-        return redirect('user/home');
+        if (auth()->user()->level == 'admin') {
+            return redirect('admin/dashboard');
+        } elseif (auth()->user()->level == 'user') {
+            // Logika untuk user
+            return redirect('user/home');
+        } else {
+            return redirect('')->withErrors('username atau password salah')->withInput();
+        }
+        // return redirect('user/home');
     }
 }
