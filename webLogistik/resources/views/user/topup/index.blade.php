@@ -11,27 +11,70 @@
         </ol>
       </nav>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+    <form action="{{route('dompet.store')}}" method="post">
+      @csrf
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Saldo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <fieldset class="row mb-3">
+                <div class="row mb-3 invisible">
+                  <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="waktu" readonly>
+                  </div>
+                </div>
+                <legend class="col-form-label col-sm-2 pt-0">Saldo</legend>
+                <div class="col-sm-10">
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios1" value="10000">
+                    <label class="form-check-label" for="gridRadios1">
+                      10000
+                    </label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios2" value="20000">
+                    <label class="form-check-label" for="gridRadios2">
+                      20000
+                    </label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios3" value="50000">
+                    <label class="form-check-label" for="gridRadios3">
+                      50000
+                    </label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios4" value="100000">
+                    <label class="form-check-label" for="gridRadios4">
+                      100000
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="row mb-3">
+                <label for="bonus" class="col-sm-2 col-form-label">Bonus</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="bonus" readonly>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Top UP</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- end modal -->
+      <!-- end modal -->
+    </form>
     
     <section class="section dashboard">
       <div class="col">
@@ -95,6 +138,15 @@
         </div>
       </div>
     </section>
-
   </main>
+
+  <script>
+    function hitungBonus() {
+      var saldo = document.querySelector("input[name='saldo']:checked").value;
+      var bonus = saldo / 10000;
+      document.getElementById("bonus").value = bonus;
+    }
+
+    document.addEventListener("change", hitungBonus);
+  </script>
 @endsection
