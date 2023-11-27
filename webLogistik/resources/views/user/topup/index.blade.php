@@ -11,24 +11,45 @@
         </ol>
       </nav>
     </div>
-
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal -->
+    
     <section class="section dashboard">
       <div class="col">
-
         <div class="row-lg-8">
           <div class="row">
-
             <div class="col-12">
               <div class="card">
                 <div class="container" style="padding: 20px;">
                   <div class="row">
                     <div class="col-md-9">
                       <h2 class="card-title">Total Saldo</h2>
-                      <h2 style="font-weight: bold;">Rp. 0 </h2>
-                      <p class="card-text">Pelajari lebih lanjut tentang <a href="" style="text-decoration: none;">Dompetku Logistik</a></p>
+                      <h2 style="font-weight: bold;">Rp. 30000 </h2>
+                      <p class="card-text">Poin : 3</p>
                     </div>
                     <div class="col-md-3 text-center">
-                      <a href="{{url('user/dompetku')}}" class="btn btn-danger my-5">Tambah Saldo <i class="bi bi-plus-lg"></i></a>
+                      <button type="button" class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
+                        Tambah Saldo <i class="bi bi-plus-lg"></i>
+                      </button>
                     </div>
                   </div>
                   <hr>

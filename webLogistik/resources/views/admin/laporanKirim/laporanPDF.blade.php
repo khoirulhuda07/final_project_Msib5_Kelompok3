@@ -1,76 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Detail Pengiriman Paket</title>
-  <style>
-body {
-  font-family: sans-serif;
-}
+    <meta charset="UTF-8">
+    <title>Detail Pengiriman Paket</title>
+    <style>
+        html,
+    	body {
+    		height: 100%;
+    	}
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #F5F5F5;
-}
+    	body {
+    		margin: 0;
+    		background: linear-gradient(45deg, #49a09d, #5f2c82);
+    		font-family: sans-serif;
+    		font-weight: 100;
+    	}
 
-th, td {
-  border: 1px solid black;
-  padding: 10px;
-}
+    	h1 {
+			text-align: center;
+		}
 
-th {
-  background-color: #E0E0E0;
-  font-weight: bold;
-}
+		.container {
+			display: flex;
+			justify-items: center;
+			justify-content: center;
+		}
 
-h1 {
-  text-align: center;
-}
+    	table {
+    		width: 800px;
+    		border-collapse: collapse;
+    		overflow: hidden;
+    		box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    	}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+    	th,
+    	td {
+    		padding: 15px;
+    		background-color: rgba(255,255,255,0.2);
+    		color: #fff;
+    	}
 
-li {
-  margin-bottom: 5px;
-}
-  </style>
+    	th {
+    		text-align: left;
+    	}
+
+    	thead {
+    		th {
+    			background-color: #55608f;
+    		}
+    	}
+
+    	tbody {
+    		tr {
+    			&:hover {
+    				background-color: rgba(255,255,255,0.3);
+    			}
+    		}
+    		td {
+    			position: relative;
+    			&:hover {
+    				&:before {
+    					content: "";
+    					position: absolute;
+    					left: 0;
+    					right: 0;
+    					top: -9999px;
+    					bottom: -9999px;
+    					background-color: rgba(255,255,255,0.2);
+    					z-index: -1;
+    				}
+    			}
+    		}
+    	}
+    </style>
 </head>
+
 <body>
     <h1>Detail Pengiriman Paket</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Kode</th>
-                <th>Tanggal</th>
-                <th>Lokasi Penerima</th>
-                <th>Nama Penerima</th>
-                <th>Nama Layanan</th>
-                <th>Detail Paket</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($laporanKirim as $row)
+    <div class="container">
+        <table>
+            <thead>
                 <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$row->kode}}</td>
-                    <td>{{$row->tanggal}}</td>
-                    <td>{{$row->lokasi_tujuan}}/td>
-                    <td>{{$row->penerima->nama}}</td>
-                    <td>{{$row->layanan->nama_layanan}}</td>
-                    <td>
-                        <ul>
-                            <li>Berat: {{$row->paket->berat}} kg</li>
-                            <li>Isi: {{$row->paket->deskripsi}}</li>
-                        </ul>
-                    </td>
+                    <th>No</th>
+                    <th>Kode</th>
+                    <th>Tanggal</th>
+                    <th>Lokasi Penerima</th>
+                    <th>Nama Penerima</th>
+                    <th>Nama Layanan</th>
+                    <th>Detail Paket</th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($laporanKirim as $row)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $row->kode }}</td>
+                        <td>{{ $row->tanggal }}</td>
+                        <td>{{ $row->lokasi_tujuan }}</td>
+                        <td>{{ $row->penerima->nama }}</td>
+                        <td>{{ $row->layanan->nama_layanan }}</td>
+                        <td>
+                            <ul>
+                                <li>Berat: {{ $row->paket->berat }} kg</li>
+                                <li>Isi: {{ $row->paket->deskripsi }}</li>
+                            </ul>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
+
 </html>

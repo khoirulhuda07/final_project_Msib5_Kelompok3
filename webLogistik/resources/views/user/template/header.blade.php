@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('user/img/delivery.png')}}" rel="icon">
+    <link href="{{asset('logo/icon.png')}}" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -30,22 +30,13 @@
     <link href="{{asset('user/css/style.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- =======================================================
-    * Template Name: NiceAdmin
-    * Updated: Sep 18 2023 with Bootstrap v5.3.2
-    * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
   </head>
 
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-
-      <a href="{{url('user/home')}}" class="logo d-flex align-items-center">
-        <img src="{{asset('user/img/logo.png')}}" alt="Profile">
-        <span class="d-none d-lg-block"><i class="fa fa-truck me-2"></i>Logistik</span>
+      <a href="{{url('user/home')}}" class="align-items-center mx-2">
+        <img src="{{asset('logo/logo.png')}}" alt="Profile" style="width: 200px">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
