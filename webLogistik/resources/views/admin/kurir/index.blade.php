@@ -14,7 +14,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <input type="file" name="file">
+                <input type="file" name="file" class="form-control">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
