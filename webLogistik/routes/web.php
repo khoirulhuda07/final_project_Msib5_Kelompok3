@@ -51,54 +51,59 @@ Route::get('/home', [HomepageController::class, 'index']);
 Route::get('login', [LoginController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
 
+Route::middleware(['auth', 'admin'])->group(function () {
+    // Rute untuk admin
+    Route::prefix('admin')->group(function () {
+
+        Route::get('/dashboard', [DashboardController::class, 'index']);
+
+        // Resource Controller
+        Route::resource('akun', AkunController::class);
+        Route::resource('pengiriman', PengirimanController::class);
+        Route::resource('paket', PaketController::class);
+        Route::resource('penerima', PenerimaController::class);
+        Route::resource('pembayaran', PembayaranController::class);
+        Route::resource('kurir', KurirController::class);
+        Route::resource('dompet', DompetController::class);
+        Route::resource('layanan', LayananController::class);
+        Route::resource('paket', PaketController::class);
+        Route::resource('profile', ProfileAdminController::class);
+
+        // Laporan Controller
+        Route::get('/laporan', [LaporanController::class, 'index']);
+        Route::get('/laporan/laporanPDF', [LaporanController::class, 'exportPDF']);
+        Route::get('/laporan/laporanExcel', [LaporanController::class, 'exportPengiriman']);
+
+        // import excel
+        Route::post('/kurir/importKurir', [ImportKurirController::class, 'importKurir']);
+    });
+});
+
+Route::middleware(['auth', 'user'])->group(function () {
+    // Rute untuk user
+    Route::prefix('user')->group(function () {
+
+        Route::get('/home', [HomeUserController::class, 'index']);
+        Route::get('/profile', [ProfileUserController::class, 'index']);
+        // Pengiriman Controller
+        Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
+        Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
+        Route::get('/pengirimanUser/create', [PengirimanUserController::class, 'create']);
+        Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
+        // Pembayaran Controller
+        Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+
+        // Resource Controller
+        Route::resource('transaksi', transaksiController::class);
+
+        // Dompetku Controller
+        Route::get('/dompetku', [TopUpController::class, 'index']);
+        Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
+    });
+});
 
 // User
-Route::prefix('user')->group(function () {
-
-    Route::get('/home', [HomeUserController::class, 'index']);
-    Route::get('/profile', [ProfileUserController::class, 'index']);
-    // Pengiriman Controller
-    Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
-    Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
-    Route::get('/pengirimanUser/create', [PengirimanUserController::class, 'create']);
-    Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
-    // Pembayaran Controller
-    Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
-
-    // Resource Controller
-    Route::resource('transaksi', transaksiController::class);
-
-    // Dompetku Controller
-    Route::get('/dompetku', [TopUpController::class, 'index']);
-    Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
-});
-
-
 // Admin
-Route::prefix('admin')->group(function () {
-
-    Route::get('/dashboard', [DashboardController::class, 'index']);
-
-    // Resource Controller
-    Route::resource('akun', AkunController::class);
-    Route::resource('pengiriman', PengirimanController::class);
-    Route::resource('paket', PaketController::class);
-    Route::resource('penerima', PenerimaController::class);
-    Route::resource('pembayaran', PembayaranController::class);
-    Route::resource('kurir', KurirController::class);
-    Route::resource('dompet', DompetController::class);
-    Route::resource('layanan', LayananController::class);
-    Route::resource('paket', PaketController::class);
-    Route::resource('profile', ProfileAdminController::class);
-
-    // Laporan Controller
-    Route::get('/laporan', [LaporanController::class, 'index']);
-    Route::get('/laporan/laporanPDF', [LaporanController::class, 'exportPDF']);
-    Route::get('/laporan/laporanExcel', [LaporanController::class, 'exportPengiriman']);
-
-    // import excel
-    Route::post('/kurir/importKurir', [ImportKurirController::class, 'importKurir']);
-});
 
 Auth::routes();
 
