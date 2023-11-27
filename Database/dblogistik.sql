@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2023 pada 12.16
+-- Waktu pembuatan: 27 Nov 2023 pada 08.47
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -24,49 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `akun`
---
-
-CREATE TABLE `akun` (
-  `id` int(11) NOT NULL,
-  `fullname` varchar(45) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `level` enum('user','admin','kurir') NOT NULL,
-  `alamat` varchar(45) NOT NULL,
-  `dompet_id` int(11) DEFAULT NULL,
-  `foto` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `akun`
---
-
-INSERT INTO `akun` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `dompet_id`, `foto`) VALUES
-(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', 3, NULL),
-(2, 'User', 'user', 'user@gmail.com', 'user', 'user', 'Indonesia', 4, NULL);
-
---
--- Trigger `akun`
---
-DELIMITER $$
-CREATE TRIGGER `tambah_saldo_akun` BEFORE INSERT ON `akun` FOR EACH ROW BEGIN
-    -- Membuat baris baru di tabel dompet
-    INSERT INTO dompet (saldo, bonus) VALUES ('10000', '1');
-
-    -- Mengambil id dari baris terakhir yang baru dibuat di tabel dompet
-    SET @dompet_id = LAST_INSERT_ID();
-
-    -- Menetapkan nilai dompet_id dengan id dari tabel dompet
-    SET NEW.dompet_id = @dompet_id;
-END
-$$
-DELIMITER ;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `dompet`
 --
 
@@ -83,8 +40,23 @@ CREATE TABLE `dompet` (
 INSERT INTO `dompet` (`id`, `saldo`, `bonus`) VALUES
 (1, 100000, 10),
 (2, 30000, 3),
-(3, 10000, 1),
-(4, 10000, 1);
+(3, 10000, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -161,6 +133,30 @@ INSERT INTO `paket` (`id`, `berat`, `deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pembayaran`
 --
 
@@ -170,14 +166,14 @@ CREATE TABLE `pembayaran` (
   `harga_total` double NOT NULL,
   `keterangan` varchar(45) NOT NULL,
   `pengiriman_id` int(11) NOT NULL,
-  `akun_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengiriman_id`, `akun_id`) VALUES
+INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengiriman_id`, `user_id`) VALUES
 (1, 'dompetku', 5000, 'Pembayaran untuk paket buku tulis', 1, 1),
 (2, 'dompetku', 10000, 'Pembayaran untuk paket buku pelajaran', 2, 1),
 (3, 'COD', 15000, 'Pembayaran untuk paket barang elektronik', 3, 2),
@@ -225,14 +221,14 @@ CREATE TABLE `pengiriman` (
   `paket_id` int(11) NOT NULL,
   `layanan_id` int(11) NOT NULL,
   `penerima_id` int(11) NOT NULL,
-  `akun_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `paket_id`, `layanan_id`, `penerima_id`, `akun_id`) VALUES
+INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `paket_id`, `layanan_id`, `penerima_id`, `user_id`) VALUES
 (1, '1234567890', '2023-11-12', 'Jakarta', 'penjemputan', 1, 1, 1, 1),
 (2, '9876543210', '2023-11-13', 'Bandung', 'pengiriman', 2, 1, 2, 1),
 (3, '0987654321', '2023-11-14', 'Semarang', 'pengiriman', 3, 1, 2, 2),
@@ -243,6 +239,25 @@ INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `p
 (8, '1198765432', '2023-11-19', 'Makassar', 'terkirim', 8, 2, 2, 1),
 (9, '0012345678', '2023-11-20', 'Palembang', 'penjemputan', 9, 3, 3, 2),
 (10, '0283728373', '2023-11-21', 'Padang', 'pengiriman', 10, 2, 3, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `expires_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -272,17 +287,50 @@ END
 $$
 DELIMITER ;
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `fullname` varchar(45) DEFAULT NULL,
+  `username` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `password` varchar(225) NOT NULL,
+  `level` enum('user','admin','kurir') NOT NULL DEFAULT 'user',
+  `alamat` varchar(45) DEFAULT NULL,
+  `foto` varchar(45) DEFAULT NULL,
+  `dompet_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `foto`, `dompet_id`) VALUES
+(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', NULL, 1),
+(2, 'Achbar', 'Achbar', 'achbar@gmail.com', 'achbar', 'user', 'Indonesia', NULL, 2),
+(3, NULL, 'Admin', 'admin@gmail.com', '$2y$12$7elUDjTkTaYXSlrpuTBHTuAstK8OpR4/DHcM9Ic8eNTpiy3NaCiPa', 'user', NULL, NULL, 3);
+
+--
+-- Trigger `users`
+--
+DELIMITER $$
+CREATE TRIGGER `tambah_saldo_user` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
+    INSERT INTO dompet (saldo, bonus) VALUES ('10000', '1');
+
+    SET @dompet_id = LAST_INSERT_ID();
+
+    SET NEW.dompet_id = @dompet_id;
+END
+$$
+DELIMITER ;
+
 --
 -- Indexes for dumped tables
 --
-
---
--- Indeks untuk tabel `akun`
---
-ALTER TABLE `akun`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username_UNIQUE` (`username`),
-  ADD KEY `fk_akun_dompet1_idx` (`dompet_id`);
 
 --
 -- Indeks untuk tabel `dompet`
@@ -316,7 +364,7 @@ ALTER TABLE `paket`
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_pembayaran_pengiriman1_idx` (`pengiriman_id`),
-  ADD KEY `fk_pembayaran_akun1_idx` (`akun_id`);
+  ADD KEY `fk_pembayaran_akun1_idx` (`user_id`);
 
 --
 -- Indeks untuk tabel `penerima`
@@ -333,7 +381,7 @@ ALTER TABLE `pengiriman`
   ADD KEY `fk_pengiriman_paket_idx` (`paket_id`),
   ADD KEY `fk_pengiriman_layanan1_idx` (`layanan_id`),
   ADD KEY `fk_pengiriman_penerima1_idx` (`penerima_id`),
-  ADD KEY `fk_pengiriman_akun1_idx` (`akun_id`);
+  ADD KEY `fk_pengiriman_akun1_idx` (`user_id`);
 
 --
 -- Indeks untuk tabel `topup`
@@ -343,20 +391,22 @@ ALTER TABLE `topup`
   ADD KEY `fk_topup_dompet1_idx` (`dompet_id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indeks untuk tabel `users`
 --
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email_UNIQUE` (`email`),
+  ADD KEY `fk_akun_dompet1_idx` (`dompet_id`);
 
 --
--- AUTO_INCREMENT untuk tabel `akun`
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
-ALTER TABLE `akun`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `dompet`
 --
 ALTER TABLE `dompet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `kurir`
@@ -401,14 +451,14 @@ ALTER TABLE `topup`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT untuk tabel `users`
 --
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Ketidakleluasaan untuk tabel `akun`
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
-ALTER TABLE `akun`
-  ADD CONSTRAINT `fk_akun_dompet1` FOREIGN KEY (`dompet_id`) REFERENCES `dompet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `layanan`
@@ -420,14 +470,14 @@ ALTER TABLE `layanan`
 -- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `fk_pembayaran_akun1` FOREIGN KEY (`akun_id`) REFERENCES `akun` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pembayaran_akun1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pembayaran_pengiriman1` FOREIGN KEY (`pengiriman_id`) REFERENCES `pengiriman` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  ADD CONSTRAINT `fk_pengiriman_akun1` FOREIGN KEY (`akun_id`) REFERENCES `akun` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pengiriman_akun1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_layanan1` FOREIGN KEY (`layanan_id`) REFERENCES `layanan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_paket` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_penerima1` FOREIGN KEY (`penerima_id`) REFERENCES `penerima` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -437,6 +487,12 @@ ALTER TABLE `pengiriman`
 --
 ALTER TABLE `topup`
   ADD CONSTRAINT `fk_topup_dompet1` FOREIGN KEY (`dompet_id`) REFERENCES `dompet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ketidakleluasaan untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `fk_akun_dompet1` FOREIGN KEY (`dompet_id`) REFERENCES `dompet` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

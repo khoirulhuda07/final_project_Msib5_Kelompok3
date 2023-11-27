@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
-use App\Models\Akun;
 use App\Models\Dompet;
+use App\Models\Users;
 
 class AkunController extends Controller
 {
     public function index()
     {
-        $akun = Akun::all();
+        $akun = Users::all();
         return view("admin.akun.index", ['akun' => $akun]);
     }
 
@@ -64,7 +64,7 @@ class AkunController extends Controller
 
         Storage::disk('public')->put($path, file_get_contents($photo));
         
-        $akun = new Akun;
+        $akun = new Users;
         $akun->fullname = $request->fullname;
         $akun->username = $request->username;
         $akun->email = $request->email;
@@ -81,13 +81,13 @@ class AkunController extends Controller
 
     public function show(string $id)
     {
-        $akun = Akun::all()->where('id', $id);
+        $akun = Users::all()->where('id', $id);
         return view('admin.akun.detail', ['akun'=> $akun]);
     }
 
     public function edit(string $id)
     {
-        $akun = Akun::all()->where('id', $id);
+        $akun = Users::all()->where('id', $id);
         $dompet = Dompet::all();
         $jabatan = ['user', 'admin', 'kurir'];
         return view('admin.akun.edit', ['akun'=> $akun], compact('jabatan','dompet'));
@@ -124,7 +124,7 @@ class AkunController extends Controller
         ]
         );
         
-        $akun = Akun::find( $id );
+        $akun = Users::find( $id );
 
         if ($request->hasFile('foto')) {
             $path = storage_path('app/public/photo-user/'.$akun->foto);
@@ -154,7 +154,7 @@ class AkunController extends Controller
 
     public function destroy(string $id)
     {
-        Akun::find($id)->delete();
+        Users::find($id)->delete();
         return redirect('admin/akun')->with('success','Data Berhasil Dihapus!!');
     }
 }
