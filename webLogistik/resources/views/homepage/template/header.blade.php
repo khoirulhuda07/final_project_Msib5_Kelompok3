@@ -10,7 +10,7 @@
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{asset('homepage/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('logo/icon.png')}}" rel="icon">
     <link href="{{asset('homepage/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
@@ -72,8 +72,8 @@
                     <li><a class="nav-link scrollto" href="index.php?#services">Services</a></li>
                     <li><a class="nav-link scrollto" href="index.php?#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="index.php?#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="{{url('lacakpaket')}}">Lacak Paket</a></li>
-                    <li><a class="nav-link scrollto" href="{{route('login.index')}}">Login</a></li>
+                    <li><a class="nav-link scrollto" href="{{url('homepage/lacakpaket')}}">Lacak Paket</a></li>
+                    <li><a class="nav-link scrollto" href="{{url('home')}}">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->

@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\ProfileAdminController;
 
 // User Namespace
 use App\Http\Controllers\transaksiController;
-use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\HomeUserController;
 use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Controllers\User\PengirimanUserController;
 use App\Http\Controllers\User\PembayaranUserController;
@@ -48,14 +48,14 @@ Route::get('/', function () {
 
 
 Route::get('/home', [HomepageController::class, 'index']);
-Route::resource('login', LoginController::class);
+Route::get('login', [LoginController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
 
 
 // User
 Route::prefix('user')->group(function () {
 
-    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/home', [HomeUserController::class, 'index']);
     Route::get('/profile', [ProfileUserController::class, 'index']);
     // Pengiriman Controller
     Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
@@ -99,3 +99,7 @@ Route::prefix('admin')->group(function () {
     // import excel
     Route::post('/kurir/importKurir', [ImportKurirController::class, 'importKurir']);
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

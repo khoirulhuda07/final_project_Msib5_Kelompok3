@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
+use App\Models\Akun;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -17,12 +18,19 @@ class TopUpController extends Controller
 
     public function create()
     {
-        //
+        // $akun = Akun::get();
+        // return view ("user.dompet", compact('akun'));
     }
 
     public function store(Request $request)
     {
-        //
+        // $topup = new TopUp;
+        // $topup->saldo = $request->saldo;
+        // $topup->bonus = $request->bonus;
+        // $topup->dompet_id = $request->dompet_id;
+        // $topup->waktu = $request->waktu;
+
+        // return redirect('user/dompet')->with('success', 'Proses TopUp Berhasil!!');
     }
 
     public function show(string $id)
