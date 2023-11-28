@@ -30,7 +30,6 @@
                     <th scope="col">deskripsi</th>
                     <th scope="col">status</th>
                     
-                    
                   </tr>
                 </thead>
                 <tbody>
@@ -55,7 +54,7 @@
                     <td>{{$d['tujuan']}}</td>
                     <td>{{$d['berat']}} .Kg</td>
                     <td>{{$d['kurir']}}</td> --}}
-                    {{-- <td>{{$p->akun->fullname}}</td> --}}
+                    {{-- <td>{{$p->user->?? 'data tidak ada'}}</td> --}}
                     <td> @if(in_array($p->id , $pp))
                         <button class="btn btn-primary">sudah dibayar</button>
                         @else

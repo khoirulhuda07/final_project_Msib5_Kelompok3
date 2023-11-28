@@ -20,7 +20,7 @@ class HomeController extends Controller
             // Logika untuk user
             return redirect('user/home');
         } else {
-            return redirect('')->withErrors('username atau password salah')->withInput();
+            return redirect('/');
         }
         // return redirect('user/home');
     }

@@ -12,7 +12,8 @@ class PembayaranUserController extends Controller
 {
     public function index()
     {
-        $pembayaran = pembayaran::all();
+        $user_id = auth()->id();
+        $pembayaran = pembayaran::where('user_id', $user_id)->get();
         $pengiriman = pengiriman::all();
         return view("user.pembayaranUser.index", ['pembayaran' => $pembayaran], compact('pengiriman'));
     }
