@@ -24,13 +24,14 @@ class TopUpController extends Controller
 
     public function store(Request $request)
     {
-        // $topup = new TopUp;
-        // $topup->saldo = $request->saldo;
-        // $topup->bonus = $request->bonus;
-        // $topup->dompet_id = $request->dompet_id;
-        // $topup->waktu = $request->waktu;
+        $topup = new TopUp;
+        $topup->saldo = $request->saldo;
+        $topup->bonus = $request->bonus;
+        $topup->dompet_id = $request->dompet_id;
+        $topup->waktu = $request->waktu;
+        $topup->save();
 
-        // return redirect('user/dompet')->with('success', 'Proses TopUp Berhasil!!');
+        return redirect('user/dompet')->with('success', 'Proses TopUp Berhasil!!');
     }
 
     public function show(string $id)
