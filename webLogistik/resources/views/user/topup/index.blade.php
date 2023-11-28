@@ -11,7 +11,7 @@
         </ol>
       </nav>
     </div>
-    <form action="{{route('dompet.store')}}" method="post">
+    <form action="{{url('user/dompetku/store/'.Auth::user()->id)}}" method="post" enctype="multipart/form-data">
       @csrf
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -24,51 +24,41 @@
               </button>
             </div>
             <div class="modal-body">
-              <fieldset class="row mb-3">
-                <div class="row mb-3 invisible">
-                  <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="waktu" readonly>
-                  </div>
+              <div class="row mb-3 invisible">
+                <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
+                <div class="col-sm-10">
+                  <input type="datetime-local" class="form-control" id="waktu" name="waktu" readonly>
                 </div>
+              </div>
+              <fieldset class="row mb-3">
                 <legend class="col-form-label col-sm-2 pt-0">Saldo</legend>
                 <div class="col-sm-10">
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios1" value="10000">
-                    <label class="form-check-label" for="gridRadios1">
-                      10000
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios2" value="20000">
-                    <label class="form-check-label" for="gridRadios2">
-                      20000
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios3" value="50000">
-                    <label class="form-check-label" for="gridRadios3">
-                      50000
-                    </label>
-                  </div>
-                  <div class="custom-control custom-radio custom-control-inline">
-                    <input class="form-check-input" type="radio" name="saldo" id="gridRadios4" value="100000">
-                    <label class="form-check-label" for="gridRadios4">
-                      100000
-                    </label>
-                  </div>
+                  @foreach ($uang as $items)
+                    <div class="custom-control custom-radio custom-control-inline">
+                      <input class="form-check-input" type="radio" name="saldo" id="gridRadios_{{$loop->iteration}}" value="{{$items}}">
+                      <label class="form-check-label" for="gridRadios_{{$loop->iteration}}">
+                        {{$items}}
+                      </label>
+                    </div>
+                  @endforeach
                 </div>
               </fieldset>
               <div class="row mb-3">
                 <label for="bonus" class="col-sm-2 col-form-label">Bonus</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="bonus" readonly>
+                  <input type="text" class="form-control" id="bonus" name="bonus" readonly>
                 </div>
               </div>
             </div>
+            <div class="row mb-3 invisible">
+              <label for="bonus" class="col-sm-2 col-form-label">Dompet id</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="dompet_id" name="dompet_id" readonly value="{{Auth::user()->id}}">
+              </div>
+            </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Top UP</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+              <button type="submit" name="submit" class="btn btn-primary">Top UP</button>
             </div>
           </div>
         </div>
@@ -85,9 +75,11 @@
                 <div class="container" style="padding: 20px;">
                   <div class="row">
                     <div class="col-md-9">
-                      <h2 class="card-title">Total Saldo</h2>
-                      <h2 style="font-weight: bold;">Rp. 30000 </h2>
-                      <p class="card-text">Poin : 3</p>
+                      @foreach ($dompet as $items)
+                        <h2 class="card-title">Total Saldo</h2>
+                        <h2 style="font-weight: bold;">Rp. {{$items->saldo}} </h2>
+                        <p class="card-text">Poin : {{$items->bonus}}</p>
+                      @endforeach
                     </div>
                     <div class="col-md-3 text-center">
                       <button type="button" class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
@@ -108,7 +100,7 @@
                           </form>
                         </div>
                         <div class="col-md-2">
-                          <a href="{{url('user/dompetku/laporanPDF')}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
+                          <a href="{{url('user/dompetku/laporanPDF/'.Auth::user()->id)}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
                         </div>
                       </div>
                     </div>  

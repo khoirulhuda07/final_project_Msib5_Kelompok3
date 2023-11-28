@@ -35,7 +35,7 @@
                                         <td>Rp. {{ $pyr->harga_total }}</td>
                                         <td>{{ $pyr->keterangan }}</td>
                                         <td>{{ $pyr->pengiriman->kode }}</td>
-                                        <td>{{ $pyr->akun->username }}</td>
+                                        <td>{{ $pyr->users->username }}</td>
                                         <td>
                                             <a href="{{ route('pembayaran.show', $pyr->id) }}" class="btn btn-sm btn-info"><i
                                                     class="fas fa-eye"></i></a>

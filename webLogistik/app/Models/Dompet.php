@@ -13,7 +13,7 @@ class Dompet extends Model
     public $timestamps = false;
     
     protected $fillable = ['saldo', 'bonus'] ;
-    public function akun() {
-        return $this->hasOne(Akun::class);
+    public function users() {
+        return $this->hasOne(Users::class);
     }
 }

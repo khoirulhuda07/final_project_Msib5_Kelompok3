@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2023 pada 08.47
+-- Waktu pembuatan: 27 Nov 2023 pada 11.26
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -319,11 +319,13 @@ INSERT INTO `users` (`id`, `fullname`, `username`, `email`, `password`, `level`,
 --
 DELIMITER $$
 CREATE TRIGGER `tambah_saldo_user` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
-    INSERT INTO dompet (saldo, bonus) VALUES ('10000', '1');
+	IF NEW.id IS NOT NULL THEN
+        INSERT INTO dompet (saldo, bonus) VALUES ('10000', '1');
 
-    SET @dompet_id = LAST_INSERT_ID();
+        SET @dompet_id = LAST_INSERT_ID();
 
-    SET NEW.dompet_id = @dompet_id;
+        SET NEW.dompet_id = @dompet_id;
+	END IF;
 END
 $$
 DELIMITER ;

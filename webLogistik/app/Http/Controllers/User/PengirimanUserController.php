@@ -20,6 +20,7 @@ class PengirimanUserController extends Controller
 {
     public function index()
     {
+
         $user_id = auth()->id();
         $pengiriman = pengiriman::where('user_id', $user_id)->get();
         $user = users::all();
@@ -27,7 +28,8 @@ class PengirimanUserController extends Controller
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
         $dompet = dompet::all();
-        return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('dompet', 'pembayaran', 'user', 'kurir', 'layanan'));
+
+        return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('pengiriman', 'dompet', 'pembayaran', 'akun', 'kurir', 'layanan'));
         // $client = new Client();
         // $url = 'http://127.0.0.1:8000/api/pengiriman';
         // $respon = $client->request('GET', $url);
@@ -61,7 +63,7 @@ class PengirimanUserController extends Controller
             $pembayaran->harga_total = $resquest->harga_bayar;
             $pembayaran->keterangan = $resquest->keterangan;
             $pembayaran->pengiriman_id = $resquest->pengiriman_id;
-            $pembayaran->akun_id = $resquest->akun_id;
+            $pembayaran->users_id = $resquest->akun_id;
             $pembayaran->save();
 
             $dompet = dompet::find($id);
@@ -77,7 +79,7 @@ class PengirimanUserController extends Controller
     {
 
         $pengiriman = pengiriman::all();
-        $akun = users::all();
+        $akun = Users::all();
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
@@ -131,7 +133,7 @@ class PengirimanUserController extends Controller
             'paket_id' => $paket->id,
             'layanan_id' => $request->layanan,
             'penerima_id' => $penerima->id,
-            'akun_id' => $request->akun,
+            'users_id' => $request->akun,
 
         ]);
         return redirect('user/pengirimanUser');

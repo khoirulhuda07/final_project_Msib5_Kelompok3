@@ -12,30 +12,25 @@ class Pengiriman extends Model
     protected $table = 'pengiriman';
     public $timestamps = false;
 
-    protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'status', 'paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'];
+    protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'status','paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'] ;
 
-    public function paket()
-    {
-        return $this->belongsTo(paket::class);
+    public function paket() {
+        return $this->belongsTo(paket::class) ;
     }
 
-    public function layanan()
-    {
-        return $this->belongsTo(Layanan::class);
+    public function layanan() {
+        return $this->belongsTo(Layanan::class) ;
     }
 
-    public function akun()
-    {
-        return $this->belongsTo(Users::class);
+    public function users() {
+        return $this->belongsTo(Users::class) ;
     }
 
-    public function penerima()
-    {
-        return $this->belongsTo(Penerima::class);
+    public function penerima() {
+        return $this->belongsTo(Penerima::class) ;
     }
 
-    public function pembayaran()
-    {
-        return $this->hasMany(pembayaran::class, 'pengiriman_id');
+    public function pembayaran() {
+        return $this->hasMany(pembayaran::class, 'pengiriman_id') ;
     }
 }

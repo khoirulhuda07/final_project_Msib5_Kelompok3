@@ -47,7 +47,6 @@
                     <td>{{$p->lokasi_tujuan}}</td>
                     <td>{{$p->paket->berat}} .Kg</td>
                     <td>{{$p->paket->deskripsi}}</td>
-                   
                     {{-- <td>{{$d['kode']}}</td>
                     <td>{{$d['tanggal']}}</td>
                     <td>{{$d['nama']}}</td>
@@ -90,13 +89,13 @@
                                                             </div>
                                                             @enderror
                                                         </div>
-                                                         <input type="text" name="akun_id" value="{{$p->akun_id}}" >
+                                                         <input type="text" name="akun_id" value="{{$p->users->id}}" >
                                                         <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" >
-                                                        {{-- <input type="text" name="id" value="{{$p->akun->dompet->id}}" > --}}
+                                                        <input type="text" name="id" value="{{$p->users->dompet->id}}" >
                                                         <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" >
                                                         <div class="d-none" id="Dompetku{{$p->id}}">
                                                           <div class="form-floating mb-3">
-                                                            {{-- <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$p->akun->dompet->saldo}}" readonly> --}}
+                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$p->users->dompet->saldo}}" readonly>
                                                             <label for="floatingKode">Saldo anda</label>
                                                         </div>
                                                         <div class="form-floating mb-3">

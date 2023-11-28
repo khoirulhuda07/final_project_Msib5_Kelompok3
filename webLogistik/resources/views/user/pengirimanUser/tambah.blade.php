@@ -20,8 +20,8 @@
                         <div class="bg-light rounded h-100 p-4">
                             <!-- input pertama -->
                              <div class="form-floating mb-3 " >
-                                <input type="text" name="berat" class=" form-control  @error('berat') is-invalid @enderror" id="floatingKode" style="transition: all 0.15s linear" placeholder="Masukkan Kode Pengiriman" value="">
-                                <label style="transition: all 0.15s linear" for="floatingKode">berat paket</label>
+                                <input type="text" name="berat" class=" form-control  @error('berat') is-invalid @enderror" id="floatingKode" style="transition: all 0.2s linear" placeholder="Masukkan Kode Pengiriman" value="">
+                                <label style="transition: all 0.2s linear" for="floatingKode">berat paket</label>
                                 @error('berat')
                                 <div classs="invalid-feedback">
                                     {{$message}}
@@ -29,8 +29,8 @@
                                   @enderror                          
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text"style="transition: all 0.15s linear" name="deskripsi" class="form-control  @error('deskripsi') is-invalid @enderror " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
-                                <label style="transition: all 0.15s linear" for="floatingKode">deskripsi</label>
+                                <input type="text" name="deskripsi" class="form-control  @error('deskripsi') is-invalid @enderror " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                <label for="floatingKode">deskripsi</label>
                                 @error('deskripsi')
                                 <div classs="invalid-feedback">
                                     {{$message}}
@@ -43,8 +43,8 @@
                             </div> --}}
                             <!-- input kedua -->
                             <div class="form-floating mb-3">
-                                <input type="date" name="tanggal" style="transition: all 0.15s linear" class="form-control  @error('tanggal') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Tanggal" value="">
-                                <label for="floatingKategori" style="transition: all 0.15s linear">Tanggal</label>
+                                <input type="date" name="tanggal" class="form-control  @error('tanggal') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Tanggal" value="">
+                                <label for="floatingKategori">Tanggal</label>
                                 @error('tanggal')
                                 <div classs="invalid-feedback">
                                 {{$message}}
@@ -54,8 +54,8 @@
 
                             <!-- input ke tiga -->
                             <div class="form-floating mb-3">
-                                <input type="text" style="transition: all 0.15s linear" name="lokasi_tujuan" class="form-control  @error('lokasi_tujuan') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Lokasi Tujuan" value="">
-                                <label for="floatingDeskripsi" style="transition: all 0.15s linear">Lokasi Tujuan</label>
+                                <input type="text" name="lokasi_tujuan" class="form-control  @error('lokasi_tujuan') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Lokasi Tujuan" value="">
+                                <label for="floatingDeskripsi">Lokasi Tujuan</label>
                                 @error('lokasi_tujuan')
                                 <div classs="invalid-feedback">
                                 {{$message}}
@@ -71,7 +71,7 @@
                             </div> --}}
                             <!-- input ke lima -->
                             <div class="form-floating mb-3  ">
-                                <select style="transition: all 0.15s linear" class="form-select @error('layanan') is-invalid @enderror" name="layanan" id="layanan" aria-label="Floating label select example">
+                                <select class="form-select @error('layanan') is-invalid @enderror" name="layanan" id="layanan" aria-label="Floating label select example">
                                     <option selected>--- Nama Layanan ---</option>
                                     @foreach($layanan as $l)
                                     <option value="{{$l->id}}">{{$l->nama_layanan}}</option>
@@ -100,8 +100,8 @@
                                 @enderror 
                             </div>
                             <div class="form-floating mb-3  ">
-                                <input type="text"style="transition: all 0.15s linear" name="no_tlp" class="form-control @error('no_tlp') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
-                                <label style="transition: all 0.15s linear" for="floatingKode">Nomor Telepon</label>
+                                <input type="text" name="no_tlp" class="form-control @error('no_tlp') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                <label for="floatingKode">Nomor Telepon</label>
                                 @error('no_tlp')
                                 <div classs="invalid-feedback">
                                 {{$message}}
@@ -120,7 +120,7 @@
                                 <select class="form-select @error('akun') is-invalid @enderror" name="akun" id="akun" aria-label="Floating label select example">
                                     <option selected>--- Username ---</option>
                                     @foreach($akun as $ak)
-                                    <option value="{{$ak->id}}">{{$ak->fullname}}</option>
+                                    <option value="{{$ak->id}}">{{$ak->username}}</option>
                                     @endforeach
                                 </select>
                                 <label for="username">Username</label>

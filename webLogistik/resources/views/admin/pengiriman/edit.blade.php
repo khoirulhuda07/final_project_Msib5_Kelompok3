@@ -106,7 +106,7 @@
                     <select class="form-select @error('akun_id') is-invalid @enderror" name="akun_id" id="akun" aria-label="Floating label select example">
                         <option selected>--- Username ---</option>
                         @foreach ($akun as $user)
-                        @php $sel = ($user->id == $pn->akun_id) ? 'selected' : ''; @endphp
+                        @php $sel = ($user->id == $pn->users_id) ? 'selected' : ''; @endphp
                             <option value="{{$user->id}}" {{$sel}}>{{$user->username}}</option>
                         @endforeach
                     </select>
