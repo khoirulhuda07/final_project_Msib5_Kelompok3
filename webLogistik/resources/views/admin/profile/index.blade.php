@@ -26,8 +26,13 @@
                             {{-- @else
                             <img src="{{asset('storage/photo-user/'.$user->foto)}}" alt="Profile" class="rounded-circle">
                             @endempty --}}
-                            <h2>Eka Putri</h2>
-                            <h3>Web Designer</h3>
+                            <h2 class="mt-3">
+                                @if (empty(Auth::user()->username))
+                                    {{''}}
+                                @else
+                                    {{Auth::user()->username}}
+                                @endif
+                            </h2>
                             <div class="social-links mt-2">
                                 <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                                 <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -74,7 +79,13 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                    <div class="col-lg-9 col-md-8">Eka Putri</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        @if (empty(Auth::user()->fullname))
+                                            {{''}}
+                                        @else
+                                            {{Auth::user()->fullname}}
+                                        @endif
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -94,7 +105,12 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Address</div>
-                                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                                    <div class="col-lg-9 col-md-8">
+                                    @if (empty(Auth::user()->alamat))
+                                        {{''}}
+                                    @else
+                                        {{Auth::user()->alamat}}
+                                    @endif</div>
                                 </div>
 
                                 <div class="row">
@@ -104,7 +120,13 @@
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
-                                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        @if (empty(Auth::user()->email))
+                                            {{''}}
+                                        @else
+                                            {{Auth::user()->email}}
+                                        @endif
+                                    </div>
                                 </div>
 
                             </div>

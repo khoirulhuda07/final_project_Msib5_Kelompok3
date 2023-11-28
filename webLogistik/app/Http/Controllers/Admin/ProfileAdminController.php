@@ -15,7 +15,7 @@ class ProfileAdminController extends Controller
     public function index()
     {
         $profile = Users::join('dompet', 'dompet_id', '=', 'dompet.id')
-        ->select('akun.*', 'dompet.saldo AS saldo')
+        ->select('users.*', 'dompet.saldo AS saldo')
         ->get();
         return view("admin.profile.index", compact("profile"));
     }
@@ -42,7 +42,7 @@ class ProfileAdminController extends Controller
     public function show(string $id)
     {
         $profile = Users::join('dompet', 'dompet_id', '=', 'dompet.id')
-        ->select('akun.*', 'dompet.saldo AS saldo')
+        ->select('users.*', 'dompet.saldo AS saldo')
         ->where('produk.id', $id)
         ->get();
         return view('admin.profile.index', compact('profile'));

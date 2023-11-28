@@ -58,8 +58,20 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Eka Putri</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0">
+                            @if (empty(Auth::user()->username))
+                                {{''}}
+                            @else
+                                {{Auth::user()->username}}
+                            @endif
+                        </h6>
+                        <span>
+                            @if (empty(Auth::user()->level))
+                                {{''}}
+                            @else
+                                {{Auth::user()->level}}
+                            @endif
+                        </span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -101,19 +113,24 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="{{asset('admin/img/user-1.jpg')}}" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">Eka Putri</span>
+                            <span class="d-none d-lg-inline-flex">
+                                @if (empty(Auth::user()->username))
+                                    {{''}}
+                                @else
+                                    {{Auth::user()->username}}
+                                @endif
+                            </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <a href="{{route('profile.index')}}" class="dropdown-item">My Profile</a>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
-                          </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                              </form>
+                            <a class="dropdown-item d-flex" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <span>Sign Out</span>
+                            </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                         </div>
                     </div>
                 </div>
