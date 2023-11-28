@@ -43,6 +43,22 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```bash
   php artisan storage:link
   ```
+- public pdf di website, ketikan command :
+  ```bash
+  php artisan vendor:publish --provider="Barryvdh\DomPDF\ServiceProvider"
+  ```
+- public excel di website, ketikan command :
+  ```bash
+  php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
+  ```
+- menginstal npm UI di website, ketikan command :
+  ```bash
+  npm install
+  ```
+- menjalanlan UI Laravel di website, ketikan command :
+  ```bash
+  npm run dev
+  ```
 - buatlah nama database baru. Lalu sesuaikan nama database, username, dan password database di file `.env`, ketikan command :
   ```bash
   php artisan migrate

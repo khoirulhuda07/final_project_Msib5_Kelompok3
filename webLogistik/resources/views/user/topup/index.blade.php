@@ -24,13 +24,13 @@
               </button>
             </div>
             <div class="modal-body">
-              <fieldset class="row mb-3">
-                <div class="row mb-3 invisible">
-                  <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" id="waktu" readonly>
-                  </div>
+              <div class="row mb-3 invisible">
+                <label for="waktu" class="col-sm-2 col-form-label">Waktu</label>
+                <div class="col-sm-10">
+                  <input type="datetime-local" class="form-control" id="waktu" readonly>
                 </div>
+              </div>
+              <fieldset class="row mb-3">
                 <legend class="col-form-label col-sm-2 pt-0">Saldo</legend>
                 <div class="col-sm-10">
                   <div class="custom-control custom-radio custom-control-inline">
@@ -59,6 +59,12 @@
                   </div>
                 </div>
               </fieldset>
+              <div class="row mb-3">
+                <label for="bonus" class="col-sm-2 col-form-label">Dompet id</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="dompet_id" readonly value="{{Auth::user()->id}}">
+                </div>
+              </div>
               <div class="row mb-3">
                 <label for="bonus" class="col-sm-2 col-form-label">Bonus</label>
                 <div class="col-sm-10">

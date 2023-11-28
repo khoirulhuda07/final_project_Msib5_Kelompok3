@@ -58,7 +58,7 @@
                     <select class="form-select" name="akun_id" id="akun" aria-label="Floating label select example">
                         <option selected>--- Username ---</option>
                         @foreach ($akun as $user)
-                        @php $sel = ($user->id == $pm->akun_id) ? 'selected' : ''; @endphp
+                        @php $sel = ($user->id == $pm->users_id) ? 'selected' : ''; @endphp
                             <option value="{{$user->id}}"{{$sel}}>{{$user->username}}</option>
                         @endforeach
                     </select>

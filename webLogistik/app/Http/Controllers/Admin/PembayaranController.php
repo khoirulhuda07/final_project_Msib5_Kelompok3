@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Pembayaran;
-use App\Models\Akun;
 use App\Models\Pengiriman;
 
 class PembayaranController extends Controller
@@ -26,7 +26,7 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        $akun = Akun::all();
+        $akun = Users::all();
         $pengiriman = Pengiriman::all();
         $bayar = ['Dompetku', 'COD'];
         return view('admin.pembayaran.create', compact('akun', 'pengiriman', 'bayar'));
@@ -62,7 +62,7 @@ class PembayaranController extends Controller
         $pembayaran->harga_total = $request->harga_total;
         $pembayaran->keterangan = $request->keterangan;
         $pembayaran->pengiriman_id = $request->pengiriman_id;
-        $pembayaran->akun_id = $request->akun_id;
+        $pembayaran->users_id = $request->akun_id;
         $pembayaran->save();
 
         return redirect('admin/pembayaran')->with('success', 'Data Berhasil Ditambahkan!!');
@@ -84,7 +84,7 @@ class PembayaranController extends Controller
     public function edit(string $id)
     {
         // 
-        $akun = Akun::all();
+        $akun = Users::all();
         $pembayaran = pembayaran::all()->where('id', $id);
         $pengiriman = Pengiriman::all();
         $bayar = ['dompetku', 'COD'];
@@ -102,7 +102,7 @@ class PembayaranController extends Controller
         $pembayaran->harga_total = $request->harga_total;
         $pembayaran->keterangan = $request->keterangan;
         $pembayaran->pengiriman_id = $request->pengiriman_id;
-        $pembayaran->akun_id = $request->akun_id;
+        $pembayaran->users_id = $request->akun_id;
         $pembayaran->save();
 
         return redirect('admin/pembayaran')->with('success', 'Data Berhasil Diubah!!');

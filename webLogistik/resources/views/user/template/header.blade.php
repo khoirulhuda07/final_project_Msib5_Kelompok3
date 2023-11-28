@@ -35,6 +35,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
+
       <a href="{{url('user/home')}}" class="align-items-center mx-2">
         <img src="{{asset('logo/logo.png')}}" alt="Profile" style="width: 200px">
       </a>

@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
-use App\Models\Akun;
 use App\Models\Layanan;
 use App\Models\Paket;
 use App\Models\Penerima;
 use App\Models\Pengiriman;
+use App\Models\Users;
 
 class PengirimanController extends Controller
 {
@@ -25,7 +25,7 @@ class PengirimanController extends Controller
         $paket = Paket::all();
         $layanan = Layanan::all();
         $penerima = Penerima::all();
-        $akun = Akun::all();
+        $akun = Users::all();
         $status = ['penjemputan', 'pengiriman', 'terkirim'];
         return view('admin.pengiriman.create', compact('paket', 'layanan', 'penerima', 'akun', 'status'));
     }
@@ -69,7 +69,7 @@ class PengirimanController extends Controller
         $pengiriman->paket_id = $request->paket_id;
         $pengiriman->layanan_id = $request->layanan_id;
         $pengiriman->penerima_id = $request->penerima_id;
-        $pengiriman->akun_id = $request->akun_id;
+        $pengiriman->users_id = $request->akun_id;
         $pengiriman->save();
 
         return redirect('admin/pengiriman')->with('success','Data Berhasil Ditambahkan!!');
@@ -87,7 +87,7 @@ class PengirimanController extends Controller
         $paket = Paket::all();
         $layanan = Layanan::all();
         $penerima = Penerima::all();
-        $akun = Akun::all();
+        $akun = Users::all();
         $status = ['penjemputan', 'pengiriman', 'terkirim'];
         return view('admin.pengiriman.edit', ['pengiriman'=> $pengiriman], compact('paket', 'layanan', 'penerima', 'akun', 'status'));
     }
@@ -129,7 +129,7 @@ class PengirimanController extends Controller
         $pengiriman->paket_id = $request->paket_id;
         $pengiriman->layanan_id = $request->layanan_id;
         $pengiriman->penerima_id = $request->penerima_id;
-        $pengiriman->akun_id = $request->akun_id;
+        $pengiriman->users_id = $request->akun_id;
         $pengiriman->kurir_id = $request->kurir_id;
         $pengiriman->save();
 

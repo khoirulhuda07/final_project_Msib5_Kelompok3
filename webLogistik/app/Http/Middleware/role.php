@@ -13,7 +13,7 @@ class role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, ...$levels): Response
+    public function handle(Request $request, Closure $next, $levels): Response
     {
         if (in_array($request->user()->level, $levels)) {
             return $next($request);

@@ -12,15 +12,13 @@ class Pembayaran extends Model
     protected $table = 'pembayaran';
     public $timestamps = false;
 
-    protected $fillable = ['metode', 'harga_total', 'keterangan', 'pengiriman_id', 'akun_id'];
+    protected $fillable = ['metode', 'harga_total', 'keterangan', 'pengiriman_id', 'akun_id'] ;
 
-    public function pengiriman()
-    {
-        return $this->belongsTo(Pengiriman::class);
+    public function pengiriman() {
+        return $this->belongsTo(Pengiriman::class) ;
     }
 
-    public function akun()
-    {
-        return $this->belongsTo(User::class);
+    public function users() {
+        return $this->belongsTo(Users::class) ;
     }
 }

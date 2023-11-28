@@ -51,8 +51,8 @@ Route::get('/home', [HomepageController::class, 'index']);
 Route::get('login', [LoginController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
 
+// Rute untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
-    // Rute untuk admin
     Route::prefix('admin')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index']);
@@ -79,8 +79,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     });
 });
 
+// Rute untuk user
 Route::middleware(['auth', 'user'])->group(function () {
-    // Rute untuk user
     Route::prefix('user')->group(function () {
 
         Route::get('/home', [HomeUserController::class, 'index']);

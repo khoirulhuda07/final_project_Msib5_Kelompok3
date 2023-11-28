@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,7 +21,6 @@ class HomeController extends Controller
             return redirect('user/home');
         } else {
             return redirect('')->withErrors('username atau password salah')->withInput();
-        }
-        // return redirect('user/home');
+        };
     }
 }

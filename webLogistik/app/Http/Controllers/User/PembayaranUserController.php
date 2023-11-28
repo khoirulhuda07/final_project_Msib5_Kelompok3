@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Pembayaran;
-use App\Models\Akun;
 use App\Models\Pengiriman;
 
 class PembayaranUserController extends Controller
