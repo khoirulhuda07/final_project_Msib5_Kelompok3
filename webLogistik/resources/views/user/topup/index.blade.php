@@ -11,7 +11,7 @@
         </ol>
       </nav>
     </div>
-    <form action="{{route('dompet.store')}}" method="post">
+    <form action="{{url('user/dompet/store')}}" method="post">
       @csrf
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -60,20 +60,20 @@
                 </div>
               </fieldset>
               <div class="row mb-3">
-                <label for="bonus" class="col-sm-2 col-form-label">Dompet id</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="dompet_id" readonly value="{{Auth::user()->id}}">
-                </div>
-              </div>
-              <div class="row mb-3">
                 <label for="bonus" class="col-sm-2 col-form-label">Bonus</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" id="bonus" readonly>
                 </div>
               </div>
             </div>
+            <div class="row mb-3 invisible">
+              <label for="bonus" class="col-sm-2 col-form-label">Dompet id</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="dompet_id" readonly value="{{Auth::user()->id}}">
+              </div>
+            </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
               <button type="submit" class="btn btn-primary">Top UP</button>
             </div>
           </div>

@@ -98,6 +98,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
         // Dompetku Controller
         Route::get('/dompetku', [TopUpController::class, 'index']);
+        Route::post('/dompetku/store', [TopUpController::class, 'store']);
         Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
     });
 });
