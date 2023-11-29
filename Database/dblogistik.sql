@@ -269,7 +269,7 @@ CREATE TABLE `topup` (
   `id` int(11) NOT NULL,
   `saldo` varchar(45) NOT NULL,
   `bonus` varchar(45) DEFAULT NULL,
-  `waktu` timestamp NULL DEFAULT NULL,
+  `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `dompet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
