@@ -77,6 +77,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
+
               <h6>
                 @if (empty(Auth::user()->username))
                   {{''}}
