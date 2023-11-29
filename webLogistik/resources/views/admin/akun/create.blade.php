@@ -50,11 +50,11 @@
           <div class="col-sm-12 col-xl-6">
               <div class="bg-light rounded h-100 p-4">
                   <!-- input ke lima -->
-                  <label>Jabatan</label>
+                  <label>Posisi</label>
                   <div class="form-floating mb-3">
                     @foreach ($jabatan as $jb)
                       <div class="form-check form-check-inline @error('level') is-invalid @enderror">
-                        <input class="form-check-input" type="radio" name="level" id="floatingLevel_{{$loop->iteration}}" value="{{$jb}}">
+                        <input class="form-check-input" type="radio" name="level" id="floatingLevel_{{$loop->iteration}}" value="{{$jb}}" checked disabled>
                         <label class="form-check-label" for="floatingLevel">{{$jb}}</label>
                       </div>
                       @endforeach
@@ -80,20 +80,6 @@
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                   </div>
-              
-                  <!-- input ke delapan -->
-                  <div class="form-floating mb-3">
-                    <select class="form-select @error('dompet_id') is-invalid @enderror" name="dompet_id" id="saldo" aria-label="Floating label select example">
-                        <option selected>--- Saldo Dompet ---</option>
-                        @foreach ($dompet as $dom)
-                            <option value="{{$dom->id}}">{{$dom->saldo}}</option>
-                        @endforeach
-                    </select>
-                    @error('dompet_id')
-                    <div class="invalid-feedback">{{$message}}</div>
-                    @enderror
-                    <label for="saldo">Saldo</label>
-                  </div> 
                   <br>
                     <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>
               </div>

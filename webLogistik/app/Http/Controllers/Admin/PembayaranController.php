@@ -12,18 +12,12 @@ use App\Models\Pengiriman;
 
 class PembayaranController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $pembayaran = Pembayaran::all();
         return view("admin.pembayaran.index", ['pembayaran' => $pembayaran]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $akun = Users::all();
@@ -32,9 +26,6 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.create', compact('akun', 'pengiriman', 'bayar'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate(
@@ -68,9 +59,6 @@ class PembayaranController extends Controller
         return redirect('admin/pembayaran')->with('success', 'Data Berhasil Ditambahkan!!');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
@@ -78,9 +66,6 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.detail', ['pembayaran' => $pembayaran]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         // 
@@ -91,9 +76,6 @@ class PembayaranController extends Controller
         return view('admin.pembayaran.edit', compact('akun', 'pembayaran', 'pengiriman', 'bayar'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
@@ -108,9 +90,6 @@ class PembayaranController extends Controller
         return redirect('admin/pembayaran')->with('success', 'Data Berhasil Diubah!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

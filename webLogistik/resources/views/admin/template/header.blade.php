@@ -54,7 +54,11 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="{{asset('admin/img/user-1.jpg')}}" alt="" style="width: 40px; height: 40px;">
+                        @if (empty(Auth::user()->foto))
+                            <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                        @else
+                            <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                        @endif
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -112,7 +116,11 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="{{asset('admin/img/user-1.jpg')}}" alt="" style="width: 40px; height: 40px;">
+                            @if (empty(Auth::user()->foto))
+                                <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                            @else
+                                <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                            @endif
                             <span class="d-none d-lg-inline-flex">
                                 @if (empty(Auth::user()->username))
                                     {{''}}

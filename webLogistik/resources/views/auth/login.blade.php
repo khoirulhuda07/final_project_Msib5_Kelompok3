@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('homepage.template.apphomepage')
 
 @section('content')
 
@@ -11,14 +11,12 @@
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 " data-aos="fade-left" data-aos-delay="200">
                     <form method="POST" action="{{ route('login') }}">
-                        <!-- Email input -->
                         @csrf
+                        <!-- Email input -->
                         <div class="form-outline mb-4">
-                            <!-- <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
-                            <label class="form-label" for="form3Example3">Email address</label> -->
-                            <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                            <input type="email" id="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
                             placeholder="Enter a valid email address">
-                            <label class="form-label" for="form3Example3">Email address</label>
+                            <label class="form-label" for="email">Email address</label>
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -29,11 +27,9 @@
 
                         <!-- Password input -->
                         <div class="form-outline mb-3">
-                            <!-- <input type="password" id="form3Example4" class="form-control form-control-lg" placeholder="Enter password" />
-                            <label class="form-label" for="form3Example4">Password</label> -->
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"
+                            <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"
                             placeholder="Password">
-                            <label class="form-label" for="form3Example4">Password</label>
+                            <label class="form-label" for="password">Password</label>
 
                             @error('password')
                             <span class="invalid-feedback" role="alert">

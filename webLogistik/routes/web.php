@@ -4,16 +4,18 @@ use Illuminate\Support\Facades\Route;
 
 // Admin Namespace
 use App\Http\Controllers\Admin\DashboardController;
+
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
 use App\Http\Controllers\Admin\ImportKurirController;
-use App\Http\Controllers\Admin\KurirController;
-use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
+
+use App\Http\Controllers\Admin\KurirController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 
 // User Namespace
@@ -48,8 +50,10 @@ Route::get('/', function () {
 
 
 Route::get('/home', [HomepageController::class, 'index']);
-Route::get('login', [LoginController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
+Route::get('/login', function() {
+    return view('auth.login');
+});
 
 // Rute untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -102,9 +106,6 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::get('/dompetku/laporanPDF/{id}', [TopUpController::class, 'exportPDF']);
     });
 });
-
-// User
-// Admin
 
 Auth::routes();
 

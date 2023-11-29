@@ -9,26 +9,17 @@ use App\Models\Penerima;
 
 class PenerimaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $penerima = Penerima::all();
         return view("admin.penerima.index", compact("penerima"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.penerima.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate(
@@ -50,9 +41,6 @@ class PenerimaController extends Controller
         return redirect('admin/penerima')->with('success','Data Berhasil Ditambahkan!!');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
@@ -60,9 +48,6 @@ class PenerimaController extends Controller
         return view('admin.penerima.detail', ['penerima' => $penerima]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
@@ -70,9 +55,6 @@ class PenerimaController extends Controller
         return view('admin.penerima.edit', compact('penerima'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
@@ -84,9 +66,6 @@ class PenerimaController extends Controller
         return redirect('admin/penerima')->with('success','Data Berhasil Diubah!!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
