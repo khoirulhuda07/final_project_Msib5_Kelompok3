@@ -28,13 +28,7 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('homepage/css/style.css')}}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Reveal
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>

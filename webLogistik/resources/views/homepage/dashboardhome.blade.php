@@ -17,10 +17,6 @@
     <div class="hero-slider swiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url('asset/img/hero:carousel/11.jpg');"></div>
-            <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/12.jpg');"></div>
-            <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/13.jpg');"></div>
-            <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/14.jpg');"></div>
-            <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/15.jpg');"></div>
         </div>
     </div>
 
@@ -41,7 +37,9 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 about-img">
-                    <img src="{{asset('homepage/img/about/16.png')}}" alt="">
+                    <!-- <img src="{{asset('homepage/img/about/16.png')}}" alt=""> -->
+                    <img src="https://images2.imgbox.com/67/fd/lSC0bSDi_o.png" alt="image host" />
+
                 </div>
                 <div class="col-lg-6 content" style="margin-top: 130px;">
                     <h2 style="color: #50d8af;">Smart Delivery</h2>
@@ -60,7 +58,8 @@
                     <p>Tanpa proses administrasi yang rumit dan panjang ke pihak ekspedisi, tim kami siap bantu proses pengajuan klaim jadi lebih mudah dan lancar sampai selesai.</p>
                 </div>
                 <div class="col-lg-6 about-img">
-                    <img src="{{asset('homepage/img/about/17.png')}}" alt="">
+                    <!-- <img src="{{asset('homepage/img/about/17.png')}}" alt=""> -->
+                    <img src="https://images2.imgbox.com/55/36/jWbkiTac_o.png" alt="image host" />
                 </div>
             </div>
         </div>
@@ -69,7 +68,8 @@
         <div class="container" data-aos="fade-right">
             <div class="row">
                 <div class="col-lg-6 about-img">
-                    <img src="{{asset('homepage/img/about/18.png')}}" alt="">
+                    <!-- <img src="{{asset('homepage/img/about/18.png')}}" alt=""> -->
+                    <img src="https://images2.imgbox.com/28/ec/LQj3H7Cd_o.png" alt="image host" />
                 </div>
                 <div class="col-lg-6 content" style="margin-top: 130px;">
                     <h2 style="color: #50d8af;">Monitoring</h2>
@@ -146,14 +146,14 @@
 
             <div class="clients-slider swiper" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper align-items-center">
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-1.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-2.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-3.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-4.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-5.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-6.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-7.png')}}" class="img-fluid" alt=""></div>
-                    <div class="swiper-slide"><img src="{{asset('homepage/img/clients/client-8.png')}}" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/ed/93/nSDKDrlX_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/78/ec/cDuUX9hy_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/8b/dc/vArCwMV9_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/ca/15/VBk5jAYn_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/2a/bc/pyC2AKKS_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/5f/50/4ZiW9Ua2_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/c6/ac/Hd4TtMos_o.png" class="img-fluid" alt=""></div>
+                    <div class="swiper-slide"><img src="https://images2.imgbox.com/3d/1a/xGTY5UTS_o.png" class="img-fluid" alt=""></div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -176,14 +176,12 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <p>
-                                <img src="{{asset('homepage/img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
-                                Saya telah menjadi pelanggan
+                                "Saya telah menjadi pelanggan
                                 setia selama beberapa tahun sekarang. Mereka selalu memberikan
                                 pengantaran yang tepat waktu, selalu tiba dalam
-                                kondisi terbaik, dan saya tidak pernah kecewa.
-                                <img src="{{asset('homepage/img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
+                                kondisi terbaik, dan saya tidak pernah kecewa."
                             </p>
-                            <img src="{{asset('homepage/img/testimonial-1.jpg')}}" class="testimonial-img" alt="">
+                            <img src="https://thumbs2.imgbox.com/ea/d3/IG8AKQP3_t.jpg" class="testimonial-img" alt="">
                             <h3>Hilmi</h3>
                             <h4>Leader &amp; Founder</h4>
                         </div>
@@ -192,11 +190,10 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <p>
-                                <img src="{{asset('homepage/img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
-                                Pesanan saya dari tiba dengan cepat dan barang yang diterima juga dalam keadaan baik. Pelayanan yang luar biasa, saya pasti akan kembali jika ingin mengirimkan lagi terima kasih logistik.
-                                <img src="{{asset('homepage/img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
+                                "Pesanan saya dari tiba dengan cepat dan barang yang diterima juga dalam keadaan baik. Pelayanan yang luar
+                                biasa, saya pasti akan kembali jika ingin mengirimkan lagi terima kasih logistik."
                             </p>
-                            <img src="{{asset('homepage/img/testimonial-2.jpg')}}" class="testimonial-img" alt="">
+                            <img src="https://images2.imgbox.com/8e/3b/wNebvJpR_o.jpg" class="testimonial-img" alt="">
                             <h3>Dea</h3>
                             <h4>Designer</h4>
                         </div>
@@ -205,12 +202,10 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <p>
-                                <img src="{{asset('homepage/img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
-                                Sangat puas dengan pelayanan Logistik. Pengiriman tepat waktu pelayanan juga sangat baik dan ramah kepada Customer
-                                dalam hal pengemasan juga sangat baik dan teratur!
-                                <img src="{{asset('homepage/img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
+                                "Sangat puas dengan pelayanan Logistik. Pengiriman tepat waktu pelayanan juga sangat baik dan ramah kepada Customer
+                                dalam hal pengemasan juga sangat baik dan teratur!"
                             </p>
-                            <img src="{{asset('homepage/img/testimonial-3.jpg')}}" class="testimonial-img" alt="">
+                            <img src="https://images2.imgbox.com/da/d8/iSMwRUO1_o.jpg" class="testimonial-img" alt="">
                             <h3>Jena Karlis</h3>
                             <h4>Store Owner</h4>
                         </div>
@@ -219,12 +214,10 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <p>
-                                <img src="{{asset('homepage/img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
-                                Terima kasih kepada pelayanan Logistik atas pengiriman yang efisien. Pesanan saya selalu akurat, dan itu sangat membantu
-                                dalam situasi sibuk harganya juga terjangkau.
-                                <img src="{{asset('homepage/img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
+                                "Terima kasih kepada pelayanan Logistik atas pengiriman yang efisien. Pesanan saya selalu akurat, dan itu sangat membantu
+                                dalam situasi sibuk harganya juga terjangkau."
                             </p>
-                            <img src="{{asset('homepage/img/testimonial-4.jpg')}}" class="testimonial-img" alt="">
+                            <img src="https://images2.imgbox.com/27/c1/G4RCb81o_o.jpg" class="testimonial-img" alt="">
                             <h3>Matt Brandon</h3>
                             <h4>Freelancer</h4>
                         </div>
@@ -233,12 +226,10 @@
                     <div class="swiper-slide">
                         <div class="testimonial-item">
                             <p>
-                                <img src="{{asset('homepage/img/quote-sign-left.png')}}" class="quote-sign-left" alt="">
-                                Saya kagum dengan pelayanan Logistik. Pesanan datang lebih cepat dari yang saya harapkan, dan pelayanan pelanggan mereka
-                                sangat responsif juga selalu ramah terhadap pelanggan.
-                                <img src="{{asset('homepage/img/quote-sign-right.png')}}" class="quote-sign-right" alt="">
+                                "Saya kagum dengan pelayanan Logistik. Pesanan datang lebih cepat dari yang saya harapkan, dan pelayanan pelanggan mereka
+                                sangat responsif juga selalu ramah terhadap pelanggan."
                             </p>
-                            <img src="{{asset('homepage/img/testimonial-5.jpg')}}" class="testimonial-img" alt="">
+                            <img src="https://images2.imgbox.com/1e/d8/YO0FrlVa_o.jpg" class="testimonial-img" alt="">
                             <h3>John Larson</h3>
                             <h4>Entrepreneur</h4>
                         </div>
@@ -260,7 +251,7 @@
             <div class="row ">
                 <div class="col-lg-3 col-md-6 mx-auto " data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/khoirul.png')}}" alt=""></div>
+                        <div class="pic"><img src="https://images2.imgbox.com/ed/70/NB9pAQqA_o.png" alt=""></div>
                         <div class="details">
                             <h4>Khoirul Huda</h4>
                             <span>Chief Executive Officer</span>
@@ -276,7 +267,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/devia.png')}}" alt=""></div>
+                        <div class="pic"><img src="https://images2.imgbox.com/1e/1a/OGCsA1zi_o.png" alt=""></div>
                         <div class="details">
                             <h4>Devia Fitri N</h4>
                             <span>Frond End Developer</span>
@@ -292,7 +283,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/michail.png')}}" alt=""></div>
+                        <div class="pic"><img src="https://images2.imgbox.com/db/30/uTyM552V_o.png" alt=""></div>
                         <div class="details">
                             <h4>Michail</h4>
                             <span>Back End Developer</span>
@@ -310,7 +301,7 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="400">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/angel.png')}}" alt=""></div>
+                        <div class="pic"><img src="https://images2.imgbox.com/5a/4c/opzpBsJP_o.png" alt=""></div>
                         <div class="details">
                             <h4>Angelina Yulfaningtyas</h4>
                             <span>Front End Developer</span>
@@ -326,7 +317,7 @@
 
                 <div class="col-lg-3 col-md-6 mx-auto" data-aos="zoom-in-up" data-aos-delay="500">
                     <div class="member">
-                        <div class="pic"><img src="{{asset('homepage/img/Author/achbar.png')}}" alt=""></div>
+                        <div class="pic"><img src="https://images2.imgbox.com/33/4e/mFYFu3aS_o.png" alt=""></div>
                         <div class="details">
                             <h4>Achbar Wahyudhi</h4>
                             <span> Front End Developer</span>
