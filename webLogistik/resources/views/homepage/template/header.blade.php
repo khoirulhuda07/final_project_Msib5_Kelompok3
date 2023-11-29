@@ -72,7 +72,7 @@
                     <li><a class="nav-link scrollto" href="index.php?#services">Services</a></li>
                     <li><a class="nav-link scrollto" href="index.php?#team">Team</a></li>
                     <li><a class="nav-link scrollto" href="index.php?#contact">Contact</a></li>
-                    <li><a class="nav-link scrollto" href="{{url('homepage/lacakpaket')}}">Lacak Paket</a></li>
+                    <li><a class="nav-link scrollto" href="{{url('lacakpaket')}}">Lacak Paket</a></li>
                     <li><a class="nav-link scrollto" href="{{url('home')}}">Login</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

@@ -16,12 +16,12 @@ class LacakResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'kode'=>$this->kode,
-            'lokasi_tujuan'=>$this->lokasi_tujuan,
-            'tanggal'=>$this->tanggal,
-            'penerima'=>$this->penerima->nama,
-            'kurir'=>$this->kurir->nama_kurir,
-        
+            'kode' => $this->kode,
+            'lokasi_tujuan' => $this->lokasi_tujuan,
+            'tanggal' => $this->tanggal,
+            'penerima' => $this->penerima->nama,
+            'kurir' => $this->layanan->kurir->nama_kurir ?? 'kurir tidak ditemukan',
+
         ];
     }
 }

@@ -10,8 +10,9 @@
                     <img src="{{asset('homepage/img/login/login1.jpg')}}" class="img-fluid" alt="Sample image">
                 </div>
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 " data-aos="fade-left" data-aos-delay="200">
-                    <form>
+                    <form method="POST" action="{{ route('login') }}">
                         <!-- Email input -->
+                        @csrf
                         <div class="form-outline mb-4">
                             <!-- <input type="email" id="form3Example3" class="form-control form-control-lg" placeholder="Enter a valid email address" />
                             <label class="form-label" for="form3Example3">Email address</label> -->
