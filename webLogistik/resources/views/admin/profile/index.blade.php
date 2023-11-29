@@ -20,26 +20,24 @@
 
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-                        {{-- @foreach ($profile as $user)
-                            @empty($user->foto) --}}
-                            <img src="{{asset('admin/photo_user/user-1.jpg')}}" alt="Profile" class="rounded-circle">
-                            {{-- @else
-                            <img src="{{asset('storage/photo-user/'.$user->foto)}}" alt="Profile" class="rounded-circle">
-                            @endempty --}}
-                            <h2 class="mt-3">
-                                @if (empty(Auth::user()->username))
-                                    {{''}}
-                                @else
-                                    {{Auth::user()->username}}
-                                @endif
-                            </h2>
-                            <div class="social-links mt-2">
-                                <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                                <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-                                <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-                                <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        {{-- @endforeach --}}
+                        @if (empty(Auth::user()->foto))
+                            <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
+                        @else
+                            <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
+                        @endif
+                        <h2 class="mt-3">
+                            @if (empty(Auth::user()->username))
+                                {{''}}
+                            @else
+                                {{Auth::user()->username}}
+                            @endif
+                        </h2>
+                        <div class="social-links mt-2">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
                     </div>
                 </div>
 
@@ -138,7 +136,11 @@
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img src="{{asset('admin/photo_user/user-1.jpg')}}" alt="Profile">
+                                            @if (empty(Auth::user()->foto))
+                                                <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
+                                            @else
+                                                <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
+                                            @endif
                                             <div class="pt-2">
                                                 <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                                                 <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>

@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Profiler\Profile;
 use App\Models\Pengiriman;
-use App\Models\Akun;
 use App\Models\Kurir;
 use App\Models\Layanan;
-use App\Models\Paket;
 use App\Models\Penerima;
 use App\Models\Pembayaran;
 use App\Http\Resources\LacakResource;
 use App\Http\Resources\DetailLacakResource;
+use App\Models\Users;
+
 class LacakController extends Controller
 {
     /**
@@ -22,18 +22,19 @@ class LacakController extends Controller
     public function index1(){
         return view("homepage.lacakpaket.index");
     }
+    
     public function index()
     {
         //
         $pengiriman = Pengiriman::all();
-        $akun = akun::all();
-        $kurir = kurir::all();
-        $penerima = penerima::all();
-        $pembayaran = pembayaran::all();
-        $layanan = layanan::all();
+        $akun = Users::all();
+        $kurir = Kurir::all();
+        $penerima = Penerima::all();
+        $pembayaran = Pembayaran::all();
+        $layanan = Layanan::all();
         // return view("homepage.lacakpaket.index");
         //  return response()->json($pengiriman);
-        return LacakResource::collection($pengiriman,$akun,$kurir,$penerima,$pembayaran,$layanan);
+        return LacakResource::collection($pengiriman, $akun, $kurir, $penerima, $pembayaran, $layanan);
     }
 
     /**
@@ -58,9 +59,9 @@ class LacakController extends Controller
     public function show(string $kode)
     {
         //
-        $pengiriman = pengiriman::find($kode);
-        $akun = akun::all();
-        $kurir = kurir::all();
+        $pengiriman = Pengiriman::find($kode);
+        $akun = Users::all();
+        $kurir = Kurir::all();
         return new DetailLacakResource($pengiriman, $akun, $kurir);
     }
 

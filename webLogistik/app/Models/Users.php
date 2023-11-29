@@ -21,7 +21,11 @@ class Users extends Model
         'alamat', 
         'foto', 
         'dompet_id'
-        ] ;
+    ] ;
+
+    protected $casts = [
+        'password' => 'hashed',
+    ];
 
     public function pengiriman() {
         return $this->hasMany(Pengiriman::class);
