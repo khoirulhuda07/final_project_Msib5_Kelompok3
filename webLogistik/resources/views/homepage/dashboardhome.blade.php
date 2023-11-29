@@ -15,13 +15,13 @@
     </div>
 
     <div class="hero-slider swiper">
-        <div class="swiper-wrapper">
+        {{-- <div class="swiper-wrapper">
             <div class="swiper-slide" style="background-image: url('asset/img/hero:carousel/11.jpg');"></div>
             <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/12.jpg');"></div>
             <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/13.jpg');"></div>
             <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/14.jpg');"></div>
             <div class="swiper-slide" style="background-image: url('asset/img/hero-carousel/15.jpg');"></div>
-        </div>
+        </div> --}}
     </div>
 
 </section><!-- End Hero Section -->
