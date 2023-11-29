@@ -10,7 +10,7 @@
           <div class="card" style="border-radius: 15px;">
             <div class="card-body p-5">
               <h2 class="text-uppercase text-center mb-5">Create an account</h2>
-              <!-- <div class="card-header">{{ __('Register') }}</div> -->
+            
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -60,14 +60,7 @@
                 <div class="form-outline mb-4">
                   <!-- <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
                   <label class="form-label" for="form3Example4cdg">Repeat your password</label> -->
-                  <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"
-                  placeholder="Confirm Password">
-
-@error('password')
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $message }}</strong>
-    </span>
-@enderror
+                  <input id="password-confirm" placeholder="confirm Password" type="password" class="form-control form-control-lg" name="password_confirmation" required autocomplete="new-password">
                 </div>
 
                 <div class="form-check d-flex justify-content-center mb-5">
