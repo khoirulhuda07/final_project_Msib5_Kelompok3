@@ -9,19 +9,23 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 use App\Models\Dompet;
 use App\Models\Users;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AkunController extends Controller
 {
     public function index()
     {
-        $akun = Users::all();
+        $akun = DB::table('users')
+        ->where('level', '=', 'kurir')
+        ->get();
         return view("admin.akun.index", ['akun' => $akun]);
     }
 
     public function create()
     {
         $dompet = Dompet::all();
-        $jabatan = ['user', 'admin', 'kurir'];
+        $jabatan = ['kurir'];
         return view('admin.akun.create', compact('dompet', 'jabatan'));
     }
 
@@ -35,7 +39,6 @@ class AkunController extends Controller
             'level'=> 'required ',
             'alamat'=> 'required | max:45',
             'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
-            'dompet_id'=> 'nullable | numeric',
         ],
         [
             'fullname.required' => 'Wajib diisi', 
@@ -44,7 +47,6 @@ class AkunController extends Controller
             'password.required' => 'Wajib diisi', 
             'level.required' => 'Wajib dipilih', 
             'alamat.required' => 'Wajib diisi', 
-            'dompet_id.numeric' => 'Wajib dipilih', 
 
             'fullname.max' => 'Maksimal 45 Karakter',
             'username.max' => 'Maksimal 45 Karakter',
@@ -64,16 +66,24 @@ class AkunController extends Controller
 
         Storage::disk('public')->put($path, file_get_contents($photo));
         
-        $akun = new Users;
-        $akun->fullname = $request->fullname;
-        $akun->username = $request->username;
-        $akun->email = $request->email;
-        $akun->password = $request->password;
-        $akun->level = $request->level;
-        $akun->alamat = $request->alamat;
-        $akun->foto = $fileName;
-        $akun->dompet_id = $request->dompet_id;
-        $akun->save();
+        DB::table('users')->insert([
+            'fullname' => $request['fullname'],
+            'username' => $request['username'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+            'level' => $request['level'],
+            'alamat' => $request['alamat'],
+            'foto' => $fileName,
+        ]);
+        // $akun = new Users;
+        // $akun->fullname = $request->fullname;
+        // $akun->username = $request->username;
+        // $akun->email = $request->email;
+        // $akun->password = Hash::make($request->password);
+        // $akun->level = $request->level;
+        // $akun->alamat = $request->alamat;
+        // $akun->foto = $fileName;
+        // $akun->save();
 
         return redirect('admin/akun')->with('success','Data Berhasil Ditambahkan!!');
 
@@ -89,7 +99,7 @@ class AkunController extends Controller
     {
         $akun = Users::all()->where('id', $id);
         $dompet = Dompet::all();
-        $jabatan = ['user', 'admin', 'kurir'];
+        $jabatan = ['kurir'];
         return view('admin.akun.edit', ['akun'=> $akun], compact('jabatan','dompet'));
     }
 
@@ -99,20 +109,16 @@ class AkunController extends Controller
             'fullname'=> 'required | max:45',
             'username'=> 'required | max:45',
             'email'=> 'required | email',
-            'password'=> 'required',
             'level'=> 'required',
             'alamat'=> 'required | max:45',
             'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
-            'dompet_id'=> 'nullable | numeric',
         ],
         [
             'fullname.required' => 'Wajib diisi', 
             'username.required' => 'Wajib diisi', 
             'email.required' => 'Wajib diisi', 
-            'password.required' => 'Wajib diisi', 
             'level.required' => 'Wajib dipilih', 
-            'alamat.required' => 'Wajib diisi', 
-            'dompet_id.numeric' => 'Wajib dipilih', 
+            'alamat.required' => 'Wajib diisi',  
 
             'fullname.max' => 'Maksimal 45 Karakter',
             'username.max' => 'Maksimal 45 Karakter',
@@ -143,10 +149,8 @@ class AkunController extends Controller
         $akun->fullname = $request->fullname;
         $akun->username = $request->username;
         $akun->email = $request->email;
-        $akun->password = $request->password;
         $akun->level = $request->level;
         $akun->alamat = $request->alamat;
-        $akun->dompet_id = $request->dompet_id;
         $akun->save();
 
         return redirect('admin/akun')->with('success','Data Berhasil Diubah!!');
