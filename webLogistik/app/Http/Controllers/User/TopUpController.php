@@ -7,15 +7,19 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 use App\Models\TopUp;
+use App\Models\Users;
+use Illuminate\Support\Facades\Auth;
 
 class TopUpController extends Controller
 {
-    public function index(string $id)
+    public function index()
     {
-        $topup = TopUp::get()->where('dompet_id', $id);
-        $dompet = Dompet::get()->where('id', $id);
+        $user = Users::findOrFail(Auth::id());
+        $dompet = Dompet::where('id', $user->dompet_id)->first();
+        $topup = TopUp::where('dompet_id', $user->id)->get  ();
         $uang = ['10000', '20000', '50000', '1000000'];
-        return view("user.topup.index",  compact('dompet', 'topup', 'uang'));
+
+        return view("user.topup.index",  compact('dompet', 'topup', 'uang') );
     }
 
     public function create()
@@ -24,7 +28,7 @@ class TopUpController extends Controller
         // return view ("user.dompet", compact('akun'));
     }
 
-    public function store(Request $request, string $id)
+    public function store(Request $request)
     {
         $topup = new TopUp;
         $topup->saldo = $request->saldo;
@@ -33,7 +37,7 @@ class TopUpController extends Controller
         $topup->waktu = $request->waktu;
         $topup->save();
 
-        return redirect('user/dompetku/'.$id)->with('success', 'Proses TopUp Berhasil!!');
+        return back()->with('success', 'Proses TopUp Berhasil!!');
     }
 
     public function show(string $id)

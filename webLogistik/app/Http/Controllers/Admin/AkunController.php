@@ -38,7 +38,6 @@ class AkunController extends Controller
             'password'=> 'required',
             'level'=> 'required ',
             'alamat'=> 'required | max:45',
-            'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
         ],
         [
             'fullname.required' => 'Wajib diisi', 
@@ -54,17 +53,15 @@ class AkunController extends Controller
             
             'email.unique' => 'Email Sudah Terdaftar',
             'email.email' => 'Format harus "nama@gmail.com"',
-            'foto.max' => 'Maksimal 2 MB',
-            'foto.image' => 'File ekstensi harus jpg, jpeg, gif, png, svg',
         ]
         );
 
-        $photo = $request->file('foto');
-        $extension = $photo->getClientOriginalExtension();
-        $fileName = time() . '.' . $extension;
-        $path = 'photo-user/'.$fileName;
+        // $photo = $request->file('foto');
+        // $extension = $photo->getClientOriginalExtension();
+        // $fileName = time() . '.' . $extension;
+        // $path = 'photo-user/'.$fileName;
 
-        Storage::disk('public')->put($path, file_get_contents($photo));
+        // Storage::disk('public')->put($path, file_get_contents($photo));
         
         DB::table('users')->insert([
             'fullname' => $request['fullname'],
@@ -73,7 +70,6 @@ class AkunController extends Controller
             'password' => Hash::make($request['password']),
             'level' => $request['level'],
             'alamat' => $request['alamat'],
-            'foto' => $fileName,
         ]);
         // $akun = new Users;
         // $akun->fullname = $request->fullname;
@@ -111,7 +107,6 @@ class AkunController extends Controller
             'email'=> 'required | email',
             'level'=> 'required',
             'alamat'=> 'required | max:45',
-            'foto'=> 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
         ],
         [
             'fullname.required' => 'Wajib diisi', 
@@ -125,26 +120,24 @@ class AkunController extends Controller
             'alamat.max' => 'Maksimal 45 Karakter',
             
             'email.email' => 'Format harus "nama@gmail.com"',
-            'foto.max' => 'Maksimal 2 MB',
-            'foto.image' => 'File ekstensi harus jpg, jpeg, gif, png, svg',
         ]
         );
         
         $akun = Users::find( $id );
 
-        if ($request->hasFile('foto')) {
-            $path = storage_path('app/public/photo-user/'.$akun->foto);
-            if (file_exists($path)) {
-                Storage::delete($akun->foto);
-            }
-            $photo = $request->file('foto');
-            $extension = $photo->getClientOriginalExtension();
-            $fileName = time() . '.' . $extension;
+        // if (request()->hasFile('foto')) {
+        //     $path = storage_path('app/public/photo-user/'.$akun->foto);
+        //     $photo = $request->file('foto');
+        //     if ($request->foto && file_exists($path)) {
+        //         Storage::delete('app/public/photo-user/'.$akun->foto);
+        //     }
+        //     $extension = $photo->getClientOriginalExtension();
+        //     $fileName = time() . '.' . $extension;
 
-            $photo->move(storage_path('app/public/photo-user'), $fileName);
+        //     $request->foto->move(storage_path('app/public/photo-user'), $fileName);
 
-            $akun->foto = $fileName;
-        }
+        //     $akun->foto = $fileName;
+        // }
 
         $akun->fullname = $request->fullname;
         $akun->username = $request->username;

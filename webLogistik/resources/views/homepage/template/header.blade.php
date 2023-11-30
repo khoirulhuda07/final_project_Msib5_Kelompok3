@@ -74,7 +74,7 @@
                     <li><a class="nav-link scrollto" href="index.php?#contact">Contact</a></li>
 
                     <li><a class="nav-link scrollto" href="{{url('lacakpaket')}}">Lacak Paket</a></li>
-                    <li><a class="nav-link scrollto" href="{{url('login')}}">Login</a></li>
+                    <li><a class="nav-link scrollto" href="{{route('login')}}">Login</a></li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

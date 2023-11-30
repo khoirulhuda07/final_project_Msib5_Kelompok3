@@ -115,7 +115,7 @@
                 onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
                 <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
+                {{__('Sign Out')}}
               </a>
 
               <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -137,7 +137,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item mb-3">
-        <a href="{{url('user/dompetku/'.Auth::user()->id)}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
+        <a href="{{url('user/dompetku/')}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
           <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000
         </a>
       </li><!-- End saldo Nav -->

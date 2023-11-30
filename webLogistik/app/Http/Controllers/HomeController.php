@@ -23,7 +23,6 @@ class HomeController extends Controller
         } else {
             return redirect('/');
         }
-        // return redirect('user/home');
 
     }
 }
