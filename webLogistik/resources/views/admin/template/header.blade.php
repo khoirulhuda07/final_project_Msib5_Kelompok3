@@ -130,7 +130,7 @@
                             </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                            <a href="{{route('profile.index')}}" class="dropdown-item">My Profile</a>
+                            <a href="{{url('admin/profile')}}" class="dropdown-item">My Profile</a>
                             <a class="dropdown-item d-flex" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

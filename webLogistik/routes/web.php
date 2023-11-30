@@ -51,9 +51,9 @@ Route::get('/', function () {
 
 Route::get('/home', [HomepageController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
-Route::get('/login', function() {
-    return view('auth.login');
-});
+// Route::get('/login', function() {
+//     return view('auth.login');
+// });
 
 // Rute untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
@@ -71,7 +71,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::resource('dompet', DompetController::class);
         Route::resource('layanan', LayananController::class);
         Route::resource('paket', PaketController::class);
-        Route::resource('profile', ProfileAdminController::class);
+
+        // profile
+        Route::get('/profile', [ProfileAdminController::class, 'show']);
+        Route::patch('/profile/{id}', [ProfileAdminController::class, 'update']);
 
         // Laporan Controller
         Route::get('/laporan', [LaporanController::class, 'index']);
@@ -98,7 +101,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
 
         // Resource Controller
-        Route::resource('transaksi', transaksiController::class);
+        // Route::resource('transaksi', transaksiController::class);
 
         // Dompetku Controller
         Route::get('/dompetku/{id}', [TopUpController::class, 'index']);
