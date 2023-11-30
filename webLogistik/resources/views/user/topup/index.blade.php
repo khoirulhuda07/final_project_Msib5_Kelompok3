@@ -11,7 +11,7 @@
         </ol>
       </nav>
     </div>
-    <form action="{{url('user/dompetku/store/'.Auth::user()->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('user/dompetku/store')}}" method="post" enctype="multipart/form-data">
       @csrf
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -75,11 +75,9 @@
                 <div class="container" style="padding: 20px;">
                   <div class="row">
                     <div class="col-md-9">
-                      @foreach ($dompet as $items)
                         <h2 class="card-title">Total Saldo</h2>
-                        <h2 style="font-weight: bold;">Rp. {{$items->saldo}} </h2>
-                        <p class="card-text">Poin : {{$items->bonus}}</p>
-                      @endforeach
+                        <h2 style="font-weight: bold;">Rp. {{$dompet->saldo}} </h2>
+                        <p class="card-text">Poin : {{$dompet->bonus}}</p>
                     </div>
                     <div class="col-md-3 text-center">
                       <button type="button" class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
