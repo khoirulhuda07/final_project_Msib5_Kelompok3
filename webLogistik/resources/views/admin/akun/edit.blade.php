@@ -30,6 +30,11 @@
                     @enderror
                     </div>
             
+                    
+                </div>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+                <div class="bg-light rounded h-100 p-4">
                     <!-- input ke tiga -->
                     <div class="form-floating mb-3">
                     <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Email" value="{{$user->email}}">
@@ -39,10 +44,6 @@
                     @enderror
                     </div>
                     
-                </div>
-            </div>
-            <div class="col-sm-12 col-xl-6">
-                <div class="bg-light rounded h-100 p-4">
                     <!-- input ke empat -->
                     <label>Posis</label>
                     <div class="form-floating mb-3">
@@ -63,15 +64,6 @@
                         <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="floatingAlamat" placeholder="Masukkan Alamat" value="{{$user->alamat}}">
                         <label for="floatingAlamat">Alamat</label>
                         @error('alamat')
-                        <div class="invalid-feedback">{{$message}}</div>
-                        @enderror
-                    </div>
-
-                    <!-- input ke enam -->
-                    <div class="form-floating mb-3">
-                        <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" id="floatingfoto" placeholder="Masukkan foto">
-                        <label for="floatingfoto">Foto Profile</label>
-                        @error('foto')
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>

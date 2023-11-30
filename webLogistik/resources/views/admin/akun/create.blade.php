@@ -35,7 +35,11 @@
                   <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
-      
+                
+              </div>
+            </div>
+            <div class="col-sm-12 col-xl-6">
+              <div class="bg-light rounded h-100 p-4">
                 <!-- input ke empat -->
                 <div class="form-floating mb-3">
                   <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="floatingPass" placeholder="Masukkan Password">
@@ -45,43 +49,30 @@
                   @enderror
                 </div>
                 
-              </div>
-          </div>
-          <div class="col-sm-12 col-xl-6">
-              <div class="bg-light rounded h-100 p-4">
-                  <!-- input ke lima -->
-                  <label>Posisi</label>
-                  <div class="form-floating mb-3">
-                    @foreach ($jabatan as $jb)
-                      <div class="form-check form-check-inline @error('level') is-invalid @enderror">
-                        <input class="form-check-input" type="radio" name="level" id="floatingLevel_{{$loop->iteration}}" value="{{$jb}}" checked disabled>
-                        <label class="form-check-label" for="floatingLevel">{{$jb}}</label>
-                      </div>
-                      @endforeach
-                      @error('level')
-                      <div class="invalid-feedback">{{$message}}</div>
-                      @enderror
-                  </div>
-              
-                  <!-- input ke enam -->
-                  <div class="form-floating mb-3">
-                    <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="floatingAlamat" placeholder="Masukkan Alamat">
-                    <label for="floatingAlamat">Alamat</label>
-                    @error('alamat')
+                <!-- input ke lima -->
+                <label>Posisi</label>
+                <div class="form-floating mb-3">
+                  @foreach ($jabatan as $jb)
+                    <div class="form-check form-check-inline @error('level') is-invalid @enderror">
+                      <input class="form-check-input" type="radio" name="level" id="floatingLevel_{{$loop->iteration}}" value="{{$jb}}" checked disabled>
+                      <label class="form-check-label" for="floatingLevel">{{$jb}}</label>
+                    </div>
+                    @endforeach
+                    @error('level')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
-                  </div>
-
-                  <!-- input ke tujuh -->
-                  <div class="form-floating mb-3">
-                    <input type="file" name="foto" class="form-control @error('foto') is-invalid @enderror" id="floatingfoto">
-                    <label for="floatingfoto">Foto Profile</label>
-                    @error('foto')
-                    <div class="invalid-feedback">{{$message}}</div>
-                    @enderror
-                  </div>
-                  <br>
-                    <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            
+                <!-- input ke enam -->
+                <div class="form-floating mb-3">
+                  <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="floatingAlamat" placeholder="Masukkan Alamat">
+                  <label for="floatingAlamat">Alamat</label>
+                  @error('alamat')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
+                </div>
+                <br>
+                  <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
         </div>

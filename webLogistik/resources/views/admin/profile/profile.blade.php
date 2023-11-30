@@ -87,18 +87,25 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Company</div>
-                                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                                    <div class="col-lg-3 col-md-4 label">Username</div>
+                                    <div class="col-lg-9 col-md-8">
+                                    @if (empty(Auth::user()->username))
+                                        {{''}}
+                                    @else
+                                        {{Auth::user()->username}}
+                                    @endif
+                                    </div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Job</div>
-                                    <div class="col-lg-9 col-md-8">Web Designer</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Country</div>
-                                    <div class="col-lg-9 col-md-8">USA</div>
+                                    <div class="col-lg-3 col-md-4 label">Posisi</div>
+                                    <div class="col-lg-9 col-md-8">
+                                    @if (empty(Auth::user()->level))
+                                        {{''}}
+                                    @else
+                                        {{Auth::user()->level}}
+                                    @endif
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -112,8 +119,10 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Phone</div>
-                                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                                    <div class="col-lg-3 col-md-4 label">No Telp</div>
+                                    <div class="col-lg-9 col-md-8">
+
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -132,26 +141,42 @@
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                 <!-- Profile Edit Form -->
-                                <form>
+                                <form action="{{url('admin/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
+                                    @method('PATCH')
+                                    @csrf
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                            @if (empty(Auth::user()->foto))
-                                                <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
-                                            @else
-                                                <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
-                                            @endif
-                                            <div class="pt-2">
-                                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                                                <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                                            </div>
+                                            <input name="foto" type="file" class="form-control @error('foto') is-invalid @enderror" id="profileImage">
+                                            @error('foto')
+                                            <span>
+                                                <strong>{{$message}}</strong>
+                                            </span>
+                                        @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                                            <input name="fullName" type="text" class="form-control @error('fullname') is-invalid @enderror" id="fullName" value="{{$profile->fullname}}">
+                                            @error('fullname')
+                                                <span>
+                                                    <strong>{{$message}}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{$profile->username}}">
+                                            @error('username')
+                                                <span>
+                                                    <strong>{{$message}}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -159,13 +184,6 @@
                                         <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                                         <div class="col-md-8 col-lg-9">
                                             <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
                                         </div>
                                     </div>
 
