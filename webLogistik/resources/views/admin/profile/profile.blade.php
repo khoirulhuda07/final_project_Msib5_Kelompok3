@@ -8,7 +8,7 @@
         <h1>Profile</h1>
         <nav>
             <ol class="breadcrumb bg-white">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active">Profile</li>
             </ol>
         </nav>
@@ -23,7 +23,7 @@
                         @if (empty(Auth::user()->foto))
                             <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
                         @else
-                            <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
+                            <img src="{{asset('admin/img/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" width="69%">
                         @endif
                         <h2 class="mt-3">
                             @if (empty(Auth::user()->username))
@@ -63,7 +63,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Ubah Password</button>
                             </li>
 
                         </ul>
@@ -109,20 +109,13 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Address</div>
+                                    <div class="col-lg-3 col-md-4 label">Alamat</div>
                                     <div class="col-lg-9 col-md-8">
                                     @if (empty(Auth::user()->alamat))
                                         {{''}}
                                     @else
                                         {{Auth::user()->alamat}}
                                     @endif</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">No Telp</div>
-                                    <div class="col-lg-9 col-md-8">
-
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -181,75 +174,18 @@
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
+                                        <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="country" type="text" class="form-control" id="Country" value="USA">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                                            <input name="alamat" type="text" class="form-control" id="Address" value="{{$profile->alamat}}">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                                            <input name="email" type="email" class="form-control" id="Email" value="{{$profile->email}}">
                                         </div>
                                     </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
-                                        </div>
-                                    </div>
-
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
                                     </div>
@@ -301,26 +237,29 @@
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form>
-
+                                <form action="{{url('admin/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
+                                    @method('PATCH')
+                                    @csrf
+                                    <input name="email" type="hidden" class="form-control" id="Email" value="{{$profile->email}}">
+                                    <input name="username" type="hidden" class="form-control " id="username" value="{{$profile->username}}">
                                     <div class="row mb-3">
                                         <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="password" type="password" class="form-control" id="currentPassword">
+                                            <input name="old_password" type="password" class="form-control" id="currentPassword">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                            <input name="password" type="password" class="form-control" id="newPassword">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                            <input name="password_confirmation" type="password" class="form-control" id="renewPassword">
                                         </div>
                                     </div>
 

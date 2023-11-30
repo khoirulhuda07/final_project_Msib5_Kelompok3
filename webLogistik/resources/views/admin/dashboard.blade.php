@@ -34,8 +34,8 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa-solid fa-money-check-dollar fa-2xl" style="color: #387fc2; margin-left: 80px;"></i>
-                <div class="ms-3">
+            <i class="fa-solid fa-money-check-dollar fa-2xl" style="color: #387fc2; margin-left: 50px;"></i>
+                <div class="">
                     <p class="mb-2">Dompet</p>
                     <h5 class="mb-0">Rp.{{$saldo}}</h5>
                 </div>
@@ -73,7 +73,7 @@
 
 <div class="row">
     <div class="col-xl-6">
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4 ml-md-4 mt-md-2" >
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Chart Metode Pembayaran</h6>
             </div>
@@ -88,7 +88,7 @@
     </div>
 
     <div class="col-xl-6">
-        <div class="card shadow mb-4">
+        <div class="card shadow mb-4 mr-md-3 mt-md-2" >
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Chart Jumlah Layanan</h6>
             </div>
@@ -102,6 +102,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     // Kode JavaScript untuk grafik pertama (myPie)

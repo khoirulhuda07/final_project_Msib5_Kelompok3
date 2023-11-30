@@ -15,9 +15,7 @@
     </div>
 
     <div class="hero-slider swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide" style="background-image: url('asset/img/hero:carousel/11.jpg');"></div>
-        </div>
+
     </div>
 
 </section><!-- End Hero Section -->
