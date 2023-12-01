@@ -21,7 +21,7 @@ class LacakController extends Controller
     {
         return view("homepage.lacakpaket.index");
     }
-    
+
     public function index()
     {
         //
@@ -31,9 +31,6 @@ class LacakController extends Controller
         $penerima = Penerima::all();
         $pembayaran = Pembayaran::all();
         $layanan = Layanan::all();
-
-        // return view("homepage.lacakpaket.index");
-        //  return response()->json($pengiriman);
         return LacakResource::collection($pengiriman, $akun, $kurir, $penerima, $pembayaran, $layanan);
     }
 

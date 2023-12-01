@@ -37,10 +37,6 @@
                                   </div>
                                   @enderror                            
                             </div>
-                            {{-- <div class="form-floating mb-3">
-                                <input type="text" name="pengiriman" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
-                                <label for="floatingKode">Kode Pengiriman</label>
-                            </div> --}}
                             <!-- input kedua -->
                             <div class="form-floating mb-3">
                                 <input type="date" name="tanggal" class="form-control  @error('tanggal') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Tanggal" value="">
@@ -62,14 +58,6 @@
                                 </div>
                                 @enderror 
                             </div>
-                            <!-- input ke empat -->
-                            {{-- <div class="form-floating mb-3">
-                                <select class="form-select" name="paket_id" id="Deskirpsi" aria-label="Floating label select example">
-                                    <option selected>--- Deskirpsi Paket ---</option>
-                                </select>
-                                <label for="Deskirpsi">Deskirpsi Paket</label>
-                            </div> --}}
-                            <!-- input ke lima -->
                             <div class="form-floating mb-3  ">
                                 <select class="form-select @error('layanan') is-invalid @enderror" name="layanan" id="layanan" aria-label="Floating label select example">
                                     <option selected>--- Nama Layanan ---</option>
@@ -108,13 +96,6 @@
                                 </div>
                                 @enderror 
                             </div>
-                            {{-- <div class="form-floating mb-3">
-                                <select class="form-select " name="penerima_id" id="nama" aria-label="Floating label select example">
-                                    <option selected>--- Nama Penerima ---</option>
-                                </select>
-                                <label for="nama">Nama Penerima</label>
-                            </div> --}}
-
                             <!-- input ke tujuh -->
                             <div class="form-floating mb-3  ">
                                 <select class="form-select @error('akun') is-invalid @enderror" name="akun" id="akun" aria-label="Floating label select example">

@@ -47,13 +47,6 @@
                     <td>{{$p->lokasi_tujuan}}</td>
                     <td>{{$p->paket->berat}} .Kg</td>
                     <td>{{$p->paket->deskripsi}}</td>
-                    {{-- <td>{{$d['kode']}}</td>
-                    <td>{{$d['tanggal']}}</td>
-                    <td>{{$d['nama']}}</td>
-                    <td>{{$d['tujuan']}}</td>
-                    <td>{{$d['berat']}} .Kg</td>
-                    <td>{{$d['kurir']}}</td> --}}
-                    {{-- <td>{{$p->user->?? 'data tidak ada'}}</td> --}}
                     <td> @if(in_array($p->id , $pp))
                         <button class="btn btn-primary">sudah dibayar</button>
                         @else
