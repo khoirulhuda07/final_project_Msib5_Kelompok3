@@ -35,7 +35,6 @@
                                     <td>{{$user->level}}</td>
                                     <td>{{$user->alamat}}</td>
                                     <td>
-                                        <a href="{{route('akun.show',$user->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                         <a href="{{route('akun.edit',$user->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal{{$user->id}}">
                                             <i class="fas fa-trash"></i>

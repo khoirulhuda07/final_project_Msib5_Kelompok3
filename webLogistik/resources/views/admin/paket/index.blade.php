@@ -31,8 +31,6 @@
                                 <td>{{$pk->berat}} Kg</td>
                                 <td>{{$pk->deskripsi}}</td>
                                 <td>
-                            
-                                    <a href="{{route('paket.show',$pk->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                     <a href="{{route('paket.edit',$pk->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                     <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#exampleModal{{$pk->id}}">
                                         <i class="fas fa-trash"></i>

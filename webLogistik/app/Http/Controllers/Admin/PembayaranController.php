@@ -62,8 +62,6 @@ class PembayaranController extends Controller
     public function show(string $id)
     {
         //
-        $pembayaran = pembayaran::all()->where('id', $id);
-        return view('admin.pembayaran.detail', ['pembayaran' => $pembayaran]);
     }
 
     public function edit(string $id)

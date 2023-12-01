@@ -7,10 +7,10 @@
     <form action="{{route('akun.update',$user->id)}}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
-        <div class="container-fluid pt-4 px-4">
+        <div class="container-fluid pt-4 px-8">
             <h6 class="mb-4">Tambah Data Akun</h6>
             <div class="row g-4">
-                <div class="col-sm-12 col-xl-6">
+                <div class="col-sm-12 col-xl-9">
                 <div class="bg-light rounded h-100 p-4">
                     <!-- input pertama -->
                     <div class="form-floating mb-3">
@@ -30,11 +30,6 @@
                     @enderror
                     </div>
             
-                    
-                </div>
-            </div>
-            <div class="col-sm-12 col-xl-6">
-                <div class="bg-light rounded h-100 p-4">
                     <!-- input ke tiga -->
                     <div class="form-floating mb-3">
                     <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Email" value="{{$user->email}}">
@@ -43,23 +38,8 @@
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
                     </div>
-                    
+            
                     <!-- input ke empat -->
-                    <label>Posis</label>
-                    <div class="form-floating mb-3">
-                        @foreach ($jabatan as $jb)
-                        @php $sel = ($jb == $user->level) ? 'checked' : ''; @endphp
-                        <div class="form-check form-check-inline @error('level') is-invalid @enderror">
-                            <input class="form-check-input" type="radio" name="level" id="floatingLevel_{{$loop->iteration}}" value="{{$jb}}" {{$sel}} disabled>
-                            <label class="form-check-label" for="floatingLevel">{{$jb}}</label>
-                        </div>
-                        @endforeach
-                        @error('level')
-                        <div class="invalid-feedback">{{$message}}</div>
-                        @enderror
-                    </div>
-                
-                    <!-- input ke lima -->
                     <div class="form-floating mb-3">
                         <input type="text" name="alamat" class="form-control @error('alamat') is-invalid @enderror" id="floatingAlamat" placeholder="Masukkan Alamat" value="{{$user->alamat}}">
                         <label for="floatingAlamat">Alamat</label>
@@ -67,9 +47,14 @@
                         <div class="invalid-feedback">{{$message}}</div>
                         @enderror
                     </div>
+                    
+                    <!-- input ke lima -->
+                    <div class="form-floating mb-3 invisible">
+                        <input type="text" name="level" class="form-control" id="floatingLevel" value="{{$user->level}}">
+                        <label for="floatingLevel">Posisi</label>
+                      </div>
                     <br>
                         <button name="proses" value="save" type="submit" class="btn btn-warning">Update</button>
-                </div>
                 </div>
             </div>
         </div>
