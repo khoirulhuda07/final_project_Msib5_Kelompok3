@@ -44,8 +44,6 @@ class PenerimaController extends Controller
     public function show(string $id)
     {
         //
-        $penerima = penerima::all()->where('id', $id);
-        return view('admin.penerima.detail', ['penerima' => $penerima]);
     }
 
     public function edit(string $id)

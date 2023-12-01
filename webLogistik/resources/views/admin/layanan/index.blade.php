@@ -29,7 +29,7 @@
                             <tr>
                                 <th scope="row">{{$loop->iteration}}</th>
                                 <td>{{$lyn->nama_layanan}}</td>
-                                <td>Rp. {{$lyn->biaya}} / Kg</td>
+                                <td>Rp. {{number_format($lyn->biaya, 0, ',', '.')}} / Kg</td>
                                 <td>
                                 <a href="{{route('layanan.show',$lyn->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
                                 <a href="{{route('layanan.edit',$lyn->id)}}" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>

@@ -19,6 +19,7 @@ class AkunController extends Controller
         $akun = DB::table('users')
         ->where('level', '=', 'kurir')
         ->get();
+        
         return view("admin.akun.index", ['akun' => $akun]);
     }
 
@@ -34,9 +35,8 @@ class AkunController extends Controller
         $request->validate([
             'fullname'=> 'required | max:45',
             'username'=> 'required | max:45',
-            'email'=> 'required | email | unique:akun',
+            'email'=> 'required | email | unique:users',
             'password'=> 'required',
-            'level'=> 'required ',
             'alamat'=> 'required | max:45',
         ],
         [
@@ -44,7 +44,6 @@ class AkunController extends Controller
             'username.required' => 'Wajib diisi', 
             'email.required' => 'Wajib diisi', 
             'password.required' => 'Wajib diisi', 
-            'level.required' => 'Wajib dipilih', 
             'alamat.required' => 'Wajib diisi', 
 
             'fullname.max' => 'Maksimal 45 Karakter',
@@ -55,31 +54,15 @@ class AkunController extends Controller
             'email.email' => 'Format harus "nama@gmail.com"',
         ]
         );
-
-        // $photo = $request->file('foto');
-        // $extension = $photo->getClientOriginalExtension();
-        // $fileName = time() . '.' . $extension;
-        // $path = 'photo-user/'.$fileName;
-
-        // Storage::disk('public')->put($path, file_get_contents($photo));
         
-        DB::table('users')->insert([
-            'fullname' => $request['fullname'],
-            'username' => $request['username'],
-            'email' => $request['email'],
-            'password' => Hash::make($request['password']),
-            'level' => $request['level'],
-            'alamat' => $request['alamat'],
+        Users::insert([
+            'fullname' => $request->fullname,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'level' => $request->level,
+            'alamat' => $request->alamat,
         ]);
-        // $akun = new Users;
-        // $akun->fullname = $request->fullname;
-        // $akun->username = $request->username;
-        // $akun->email = $request->email;
-        // $akun->password = Hash::make($request->password);
-        // $akun->level = $request->level;
-        // $akun->alamat = $request->alamat;
-        // $akun->foto = $fileName;
-        // $akun->save();
 
         return redirect('admin/akun')->with('success','Data Berhasil Ditambahkan!!');
 
@@ -87,8 +70,7 @@ class AkunController extends Controller
 
     public function show(string $id)
     {
-        $akun = Users::all()->where('id', $id);
-        return view('admin.akun.detail', ['akun'=> $akun]);
+        // 
     }
 
     public function edit(string $id)
@@ -124,20 +106,6 @@ class AkunController extends Controller
         );
         
         $akun = Users::find( $id );
-
-        // if (request()->hasFile('foto')) {
-        //     $path = storage_path('app/public/photo-user/'.$akun->foto);
-        //     $photo = $request->file('foto');
-        //     if ($request->foto && file_exists($path)) {
-        //         Storage::delete('app/public/photo-user/'.$akun->foto);
-        //     }
-        //     $extension = $photo->getClientOriginalExtension();
-        //     $fileName = time() . '.' . $extension;
-
-        //     $request->foto->move(storage_path('app/public/photo-user'), $fileName);
-
-        //     $akun->foto = $fileName;
-        // }
 
         $akun->fullname = $request->fullname;
         $akun->username = $request->username;

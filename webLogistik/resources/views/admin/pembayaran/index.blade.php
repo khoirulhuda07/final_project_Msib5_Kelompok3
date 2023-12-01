@@ -32,13 +32,11 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $pyr->metode }}</td>
-                                        <td>Rp. {{ $pyr->harga_total }}</td>
+                                        <td>Rp. {{number_format( $pyr->harga_total , 0, ',', '.')}}</td>
                                         <td>{{ $pyr->keterangan }}</td>
                                         <td>{{ $pyr->pengiriman->kode }}</td>
                                         <td>{{ $pyr->users->username }}</td>
                                         <td>
-                                            <a href="{{ route('pembayaran.show', $pyr->id) }}" class="btn btn-sm btn-info"><i
-                                                    class="fas fa-eye"></i></a>
                                             <a href="{{ route('pembayaran.edit', $pyr->id) }}"
                                                 class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                             <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"

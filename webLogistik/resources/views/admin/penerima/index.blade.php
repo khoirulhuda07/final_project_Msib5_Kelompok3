@@ -31,8 +31,6 @@
                                         <td>{{ $pnr->nama }}</td>
                                         <td>{{ $pnr->nomor_telepon }}</td>
                                         <td>
-                                            <a href="{{ route('penerima.show', $pnr->id) }}" class="btn btn-sm btn-info"><i
-                                                    class="fas fa-eye"></i></a>
                                             <a href="{{ route('penerima.edit', $pnr->id) }}"
                                                 class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
                                             @csrf

@@ -57,7 +57,7 @@
                         @if (empty(Auth::user()->foto))
                             <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 40px">
                         @else
-                            <img src="{{asset('admin/img/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                            <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
                         @endif
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
@@ -119,7 +119,7 @@
                             @if (empty(Auth::user()->foto))
                                 <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 40px">
                             @else
-                                <img src="{{asset('admin/img/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                                <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
                             @endif
                             <span class="d-none d-lg-inline-flex">
                                 @if (empty(Auth::user()->username))

@@ -71,15 +71,26 @@ class ProfileAdminController extends Controller
             }
         }
         if (request()->hasFile('foto')) {
-            $path = public_path('admin/img' . $users->foto);
-            if ($request->foto && file_exists($path)) {
-                Storage::delete('admin/img' . $users->foto);
+            // cara kedua
+            // $fileName = $request->file('foto')->store('photo_users');
+            // $path = $users->foto;
+            
+            // if ($path != null) {
+            //     Storage::delete($path);
+            // }
+            // $pathPhoto = $request->file('foto')->store('photo_users');
+            // $users->foto = $pathPhoto;
+
+            // cara pertama
+            $path = 'photo_user/' . $users->foto;
+            if ($path != null) {
+                Storage::delete($path);
             }
             $photo = $request->file('foto');
             $extension = $photo->getClientOriginalExtension();
             $fileName = time() . '.' . $extension;
 
-            $request->foto->move(public_path('admin/img'), $fileName);
+            $request->foto->move(storage_path('app/public/photo_user'), $fileName);
             $users->foto = $fileName;
         }
         $users->alamat = $request->alamat;

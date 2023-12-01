@@ -37,7 +37,7 @@ class TopUpController extends Controller
         $topup->waktu = $request->waktu;
         $topup->save();
 
-        return back()->with('success', 'Proses TopUp Berhasil!!');
+        return back()->with('status', 'Proses TopUp Berhasil!!');
     }
 
     public function show(string $id)

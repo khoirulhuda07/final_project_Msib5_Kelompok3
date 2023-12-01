@@ -42,9 +42,6 @@ class PaketController extends Controller
     public function show(string $id)
     {
         //
-        $paket = Paket::all()
-        ->where('id', $id);
-        return view("admin.paket.detail", ['paket'=> $paket], compact("paket"));
     }
 
     public function edit(string $id)
