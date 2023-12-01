@@ -5,18 +5,18 @@
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa-solid fa-truck-arrow-right fa-2xl" style="color: #387fc2; margin-left: 80px;"></i>
+            <div class="bg-light rounded d-flex align-items-center p-4">
+                <i class="fa-solid fa-truck-arrow-right fa-2xl" style="color: #387fc2;"></i>
                 <div class="ms-3">
                     <p class="mb-2">Pengiriman</p>
                     <h5 class="mb-0">{{$pengiriman}}</h5>
-                    
+
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa-brands fa-cc-amex fa-2xl" style="color: #387fc2; margin-left: 80px;"></i>
+            <div class="bg-light rounded d-flex align-items-center p-4">
+                <i class="fa-brands fa-cc-amex fa-2xl" style="color: #387fc2;"></i>
                 <div class="ms-3">
                     <p class="mb-2">Layanan</p>
                     <h5 class="mb-0">{{$layanan}}</h5>
@@ -24,8 +24,8 @@
             </div>
         </div>
         <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa-solid fa-people-carry-box fa-2xl" style="color: #387fc2; margin-left: 80px;"></i>
+            <div class="bg-light rounded d-flex align-items-center p-4">
+                <i class="fa-solid fa-people-carry-box fa-2xl" style="color: #387fc2;"></i>
                 <div class="ms-3">
                     <p class="mb-2">Kurir</p>
                     <h5 class="mb-0">{{$kurir}}</h5>
@@ -33,9 +33,9 @@
             </div>
         </div>
         <div class="col-sm-6 col-xl-3">
-            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
-            <i class="fa-solid fa-money-check-dollar fa-2xl" style="color: #387fc2; margin-left: 50px;"></i>
-                <div class="">
+            <div class="bg-light rounded d-flex align-items-center p-4">
+                <i class="fa-solid fa-money-check-dollar fa-2xl" style="color: #387fc2;"></i>
+                <div class="ms-3">
                     <p class="mb-2">Dompet</p>
                     <h5 class="mb-0">Rp.{{$saldo}}</h5>
                 </div>
@@ -47,7 +47,7 @@
 
 <div class="row">
     <div class="col-xl-6">
-        <div class="card shadow mb-4 ml-md-4 mt-md-2" >
+        <div class="card shadow mb-4 ml-md-4 mt-md-2">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Chart Metode Pembayaran</h6>
             </div>
@@ -62,7 +62,7 @@
     </div>
 
     <div class="col-xl-6">
-        <div class="card shadow mb-4 mr-md-3 mt-md-2" >
+        <div class="card shadow mb-4 mr-md-3 mt-md-2">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Chart Jumlah Layanan</h6>
             </div>
@@ -81,8 +81,14 @@
 <script>
     // Kode JavaScript untuk grafik pertama (myPie)
 
-    var labels = [@foreach($jpembayaran as $row) '{{$row->metode}}', @endforeach];
-    var data2 = [@foreach($jpembayaran as $row) {{$row->jumlah}}, @endforeach];
+    var labels = [@foreach($jpembayaran as $row)
+        '{{$row->metode}}', @endforeach
+    ];
+    var data2 = [@foreach($jpembayaran as $row) {
+        {
+            $row - > jumlah
+        }
+    }, @endforeach];
 
     document.addEventListener("DOMContentLoaded", () => {
         new Chart(document.querySelector('#myPie'), {
@@ -118,8 +124,14 @@
 
     // Kode JavaScript untuk grafik kedua (myPieChart)
 
-    var label2 = [@foreach($jlayanan as $jly) '{{$jly->nama_layanan}}', @endforeach];
-    var data3 = [@foreach($jlayanan as $jly) {{$jly->jumlah}}, @endforeach];
+    var label2 = [@foreach($jlayanan as $jly)
+        '{{$jly->nama_layanan}}', @endforeach
+    ];
+    var data3 = [@foreach($jlayanan as $jly) {
+        {
+            $jly - > jumlah
+        }
+    }, @endforeach];
 
     document.addEventListener("DOMContentLoaded", () => {
         new Chart(document.querySelector('#myPieChart'), {
@@ -186,76 +198,76 @@
             </table>
         </div>
     </div>
-<!-- Recent Sales End -->
+    <!-- Recent Sales End -->
 
 
-<!-- Widgets Start -->
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-light rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Kalender</h6>
+    <!-- Widgets Start -->
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">
+            <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="h-100 bg-light rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Kalender</h6>
+                    </div>
+                    <div id="calender"></div>
                 </div>
-                <div id="calender"></div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-light rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Data layanan</h6>
-                    <a href="{{route('layanan.index')}}">Show All</a>
-                </div>
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                            <tr class="text-dark">
-                                <th scope="col">#</th>
-                                <th scope="col">Nama Layanan</th>
-                                <th scope="col">Biaya</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($tblayanan as $lyn)
+            <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="h-100 bg-light rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Data layanan</h6>
+                        <a href="{{route('layanan.index')}}">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama Layanan</th>
+                                    <th scope="col">Biaya</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($tblayanan as $lyn)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$lyn->nama_layanan}}</td>
                                     <td>Rp. {{$lyn->biaya}}</td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-light rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Data paket</h6>
-                    <a href="{{route('kurir.index')}}">Show All</a>
-                </div>
-                <div class="table-responsive">
-                    <table class="table text-start align-middle table-bordered table-hover mb-0">
-                        <thead>
-                            <tr class="text-dark">
-                                <th scope="col">#</th>
-                                <th scope="col">Nama Kurir</th>
-                                <th scope="col">Nomor Hp</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($tbkurir as $kr)
+            <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="h-100 bg-light rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Data paket</h6>
+                        <a href="{{route('kurir.index')}}">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-dark">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Nama Kurir</th>
+                                    <th scope="col">Nomor Hp</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($tbkurir as $kr)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$kr->nama_kurir}}</td>
                                     <td>{{$kr->nomor_telepon}}</td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection
