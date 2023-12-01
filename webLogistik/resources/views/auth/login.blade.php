@@ -39,12 +39,7 @@
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center">
-                             <!-- Checkbox -->
-                            <!-- <div class="form-check mb-0">
-                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                                <label class="form-check-label" for="form2Example3">
-                                    Remember me -->
-                                <!-- </label> -->
+                          
                                 <div class="form-check">
                                     <input class="form-check-input me-2" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -52,7 +47,7 @@
                                         {{ __('Remember Me') }}
                                     </label>
                             </div>
-                            <!-- <a href="#!" class="text-body">Forgot password?</a> -->
+                            
                             @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
@@ -61,7 +56,6 @@
                         </div>
 
                         <div class="text-center text-lg-start mt-4 pt-2">
-                            <!-- <button type="button" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button> -->
                             <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">
                                     {{ __('Login') }}
                                 </button>

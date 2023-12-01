@@ -51,10 +51,6 @@ Route::get('/', function () {
 
 Route::get('/home', [HomepageController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
-// Route::get('/login', function() {
-//     return view('auth.login');
-// });
-
 // Rute untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {

@@ -74,7 +74,6 @@ class ProfileAdminController extends Controller
             // cara kedua
             // $fileName = $request->file('foto')->store('photo_users');
             // $path = $users->foto;
-            
             // if ($path != null) {
             //     Storage::delete($path);
             // }

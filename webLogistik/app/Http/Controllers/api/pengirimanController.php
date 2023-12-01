@@ -4,7 +4,6 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Akun;
 use App\Models\kurir;
 use App\Models\Layanan;
 use App\Models\Paket;
@@ -13,6 +12,7 @@ use App\Models\Pengiriman;
 use App\Models\Pembayaran;
 use App\Models\Dompet;
 use App\Http\Resources\viewPengirimanResource;
+use App\Models\Users;
 
 class pengirimanController extends Controller
 {
@@ -23,7 +23,7 @@ class pengirimanController extends Controller
     {
         //
         $pengiriman = pengiriman::all();
-        $akun = akun::all();
+        $akun = users::all();
         $kurir = kurir::all();
         $penerima = penerima::all();
         $layanan = layanan::all();
@@ -31,8 +31,6 @@ class pengirimanController extends Controller
         $dompet = dompet::all();
         $paket = paket::all();
         return viewPengirimanResource::collection($pengiriman, $akun, $penerima, $kurir, $layanan, $pembayaran, $dompet, $paket);
-        // $layanan = layanan::all();
-        // return viewPengirimanResource::collection($layanan);
     }
 
     /**
