@@ -84,7 +84,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Rute untuk user
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::prefix('user')->group(function () {
+    Route::prefix('my')->group(function () {
+
+        // Route::get('/home', [TopUpController::class, 'ceksaldo']);
 
         Route::get('/home', [HomeUserController::class, 'index']);
         Route::get('/profile', [ProfileUserController::class, 'index']);

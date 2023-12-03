@@ -19,7 +19,7 @@ class HomeController extends Controller
             return redirect('admin/dashboard');
         } elseif (auth()->user()->level == 'user') {
             // Logika untuk user
-            return redirect('user/home');
+            return redirect('my/home');
         } else {
             return redirect('/');
         }

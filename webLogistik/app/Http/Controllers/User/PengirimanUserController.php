@@ -22,14 +22,14 @@ class PengirimanUserController extends Controller
     {
 
         $user_id = auth()->id();
-        $pengiriman = pengiriman::where('user_id', $user_id)->get();
+        $pengiriman = pengiriman::where('users_id', $user_id)->get();
         $user = users::all();
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
         $dompet = dompet::all();
 
-        return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('pengiriman', 'dompet', 'pembayaran', 'akun', 'kurir', 'layanan'));
+        return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('pengiriman', 'dompet', 'pembayaran', 'user', 'kurir', 'layanan'));
         // $client = new Client();
         // $url = 'http://127.0.0.1:8000/api/pengiriman';
         // $respon = $client->request('GET', $url);

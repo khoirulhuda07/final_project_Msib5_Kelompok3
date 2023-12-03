@@ -16,16 +16,17 @@ class TopUpController extends Controller
     {
         $user = Users::findOrFail(Auth::id());
         $dompet = Dompet::where('id', $user->dompet_id)->first();
-        $topup = TopUp::where('dompet_id', $user->id)->get  ();
-        $uang = ['10000', '20000', '50000', '1000000'];
+        $topup = TopUp::where('dompet_id', $user->id)->get();
+        $uang = ['10000', '20000', '50000', '100000'];
 
         return view("user.topup.index",  compact('dompet', 'topup', 'uang') );
     }
 
-    public function create()
-    {
-        // $akun = Akun::get();
-        // return view ("user.dompet", compact('akun'));
+    public function cekSaldo() {
+        // $user = Users::findOrFail(Auth::id());
+        // $dompet = Dompet::where('id', $user->dompet_id)->first();
+
+        // return view('user.template.header', compact('dompet'));
     }
 
     public function store(Request $request)
@@ -38,26 +39,6 @@ class TopUpController extends Controller
         $topup->save();
 
         return back()->with('status', 'Proses TopUp Berhasil!!');
-    }
-
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function edit(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
     }
 
     public function exportPDF(string $id) {
