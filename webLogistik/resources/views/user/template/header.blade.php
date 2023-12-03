@@ -134,14 +134,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item mb-3">
-        <a href="{{url('user/dompetku/')}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
-          <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000
+        <a href="{{url('my/dompetku/')}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
+            <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000 
         </a>
       </li><!-- End saldo Nav -->
 
       <li class="nav-item">
 
-        <a class="nav-link collapsed" href="{{url('user/home')}}">
+        <a class="nav-link collapsed" href="{{url('my/home')}}">
 
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
@@ -149,14 +149,14 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{url('user/pengirimanUser')}}">
+        <a class="nav-link collapsed" href="{{url('my/pengirimanUser')}}">
           <i class="ri-send-plane-line"></i>
           <span>Pengiriman</span>
         </a>
       </li><!-- End Blank Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{{url('user/pembayaranUser')}}">
+        <a class="nav-link collapsed" href="{{url('my/pembayaranUser')}}">
           <i class="ri-file-history-line"></i>
           <span>Riwayat Pembayaran</span>
         </a>

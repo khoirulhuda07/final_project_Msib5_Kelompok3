@@ -12,7 +12,7 @@
                 <li class="breadcrumb-item active">Pengiriman</li>
             </ol>
         </nav>
-        <form action="{{url('user/pengirimanUser/pull')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{url('my/pengirimanUser/pull')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">

@@ -21,7 +21,7 @@ return new class extends Migration
             END
         ');
 
-        DB::unprepared('CREATE TRIGGER tambah_saldo_user BEFORE INSERT ON users FOR EACH ROW 
+        DB::unprepared('CREATE TRIGGER tambah_saldo_user BEFORE INSERT ON `users` FOR EACH ROW 
             BEGIN
                 IF NEW.id IS NOT NULL THEN
                     INSERT INTO dompet (saldo, bonus) VALUES (`10000`, `1`);
@@ -33,11 +33,22 @@ return new class extends Migration
             END
         ');
 
-        DB::unprepared('CREATE TRIGGER create_item_kurir AFTER INSERT ON akun FOR EACH ROW
+        DB::unprepared('CREATE TRIGGER create_item_kurir AFTER INSERT ON `users` FOR EACH ROW
             BEGIN
-                IF NEW.level = `kurir`
+                IF NEW.level IN (`kurir`)
                 THEN
                     INSERT INTO kurir (nama_kurir) VALUES (NEW.fullname);
+                END IF;
+            END
+        ');
+
+        DB::unprepared('CREATE TRIGGER potong_saldo AFTER INSERT ON `pembayaran` FOR EACH ROW
+            BEGIN
+                IF NEW.metode IN (`dompetku`) 
+                THEN
+                    UPDATE dompet
+                    SET saldo = saldo - NEW.harga_total
+                    WHERE id = NEW.users_id;
                 END IF;
             END
         ');
@@ -45,6 +56,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        DB::unprepared('DROP TRIGGER "update_saldo_dompet, tambah_akun_dompet, create_item_kurir"');
+        DB::unprepared('DROP TRIGGER "update_saldo_dompet, tambah_user_dompet, create_item_kurir, potong_saldo"');
     }
 };

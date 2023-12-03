@@ -11,7 +11,7 @@
         </ol>
       </nav>
     </div>
-    <form action="{{url('user/dompetku/store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{url('my/dompetku/store')}}" method="post" enctype="multipart/form-data">
       @csrf
       <!-- Modal -->
       <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -98,7 +98,7 @@
                           </form>
                         </div>
                         <div class="col-md-2">
-                          <a href="{{url('user/dompetku/laporanPDF/'.Auth::user()->id)}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
+                          <a href="{{url('my/dompetku/laporanPDF/'.Auth::user()->id)}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
                         </div>
                       </div>
                     </div>  

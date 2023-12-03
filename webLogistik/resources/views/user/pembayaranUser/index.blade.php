@@ -4,18 +4,24 @@
 
 <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1 class="fs-2 text-center">Riwayat Pembayaran anda</h1>
-      <nav>
-      </nav>
-    </div><!-- End Page Title -->
+  <div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{url('my/home')}}">Home</a></li>
+        <li class="breadcrumb-item">Tables</li>
+        <li class="breadcrumb-item active">Riwayat Pembayaran</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
-            <br>
+            <h5 class="card-title ml-4 border-bottom">Riwayat Pembayaran Anda</h5>
             <div class="card-body">
-              <table class=" table-responsive datatable table">
+              <table class=" table datatable">
                 <thead>
                   <tr>
                     <th scope="col">NO</th>

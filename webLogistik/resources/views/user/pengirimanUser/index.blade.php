@@ -3,22 +3,26 @@
 @section('content')
 <main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1 class="fs-2 text-center">Riwayat Pengiriman Anda</h1>
-      <nav>
-        <h3></h3>
-      </nav>
-    </div><!-- End Page Title -->
+  <div class="pagetitle">
+    <h1>Data Tables</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{url('my/home')}}">Home</a></li>
+        <li class="breadcrumb-item active">Riwayat Pengiriman</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
 
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
+            <h5 class="card-title ml-4 border-bottom">Riwayat Pengiriman Anda</h5>
             <div class="card-body">
-              <a href="{{url('user/pengirimanUser/create')}}" class="btn btn-primary mt-3 mb-2">buat pengiriman paket &nbsp;<i class="fa-solid fa-plus"></i></a>
+              <a href="{{url('my/pengirimanUser/create')}}" class="btn btn-primary my-3">buat pengiriman paket &nbsp;<i class="fa-solid fa-plus"></i></a>
             </a>
               <!-- Table with stripped rows -->
-              <table class=" table-responsive datatable table">
+              <table class="table datatable">
                 <thead>
                   <tr>
                     <th scope="col">NO</th>
@@ -159,6 +163,7 @@
       </div>
     </section>
 
-  </main><!-- End #main -->
+  </main>
+  <!-- End #main -->
  
 @endsection
