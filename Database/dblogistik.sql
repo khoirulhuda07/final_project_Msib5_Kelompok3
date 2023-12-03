@@ -166,14 +166,14 @@ CREATE TABLE `pembayaran` (
   `harga_total` double NOT NULL,
   `keterangan` varchar(45) NOT NULL,
   `pengiriman_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pembayaran`
 --
 
-INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengiriman_id`, `user_id`) VALUES
+INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengiriman_id`, `users_id`) VALUES
 (1, 'dompetku', 5000, 'Pembayaran untuk paket buku tulis', 1, 1),
 (2, 'dompetku', 10000, 'Pembayaran untuk paket buku pelajaran', 2, 1),
 (3, 'COD', 15000, 'Pembayaran untuk paket barang elektronik', 3, 2),
@@ -221,14 +221,14 @@ CREATE TABLE `pengiriman` (
   `paket_id` int(11) NOT NULL,
   `layanan_id` int(11) NOT NULL,
   `penerima_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pengiriman`
 --
 
-INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `paket_id`, `layanan_id`, `penerima_id`, `user_id`) VALUES
+INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `paket_id`, `layanan_id`, `penerima_id`, `users_id`) VALUES
 (1, '1234567890', '2023-11-12', 'Jakarta', 'penjemputan', 1, 1, 1, 1),
 (2, '9876543210', '2023-11-13', 'Bandung', 'pengiriman', 2, 1, 2, 1),
 (3, '0987654321', '2023-11-14', 'Semarang', 'pengiriman', 3, 1, 2, 2),
@@ -366,7 +366,7 @@ ALTER TABLE `paket`
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_pembayaran_pengiriman1_idx` (`pengiriman_id`),
-  ADD KEY `fk_pembayaran_akun1_idx` (`user_id`);
+  ADD KEY `fk_pembayaran_akun1_idx` (`users_id`);
 
 --
 -- Indeks untuk tabel `penerima`
@@ -383,7 +383,7 @@ ALTER TABLE `pengiriman`
   ADD KEY `fk_pengiriman_paket_idx` (`paket_id`),
   ADD KEY `fk_pengiriman_layanan1_idx` (`layanan_id`),
   ADD KEY `fk_pengiriman_penerima1_idx` (`penerima_id`),
-  ADD KEY `fk_pengiriman_akun1_idx` (`user_id`);
+  ADD KEY `fk_pengiriman_akun1_idx` (`users_id`);
 
 --
 -- Indeks untuk tabel `topup`
@@ -472,14 +472,14 @@ ALTER TABLE `layanan`
 -- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  ADD CONSTRAINT `fk_pembayaran_akun1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pembayaran_akun1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pembayaran_pengiriman1` FOREIGN KEY (`pengiriman_id`) REFERENCES `pengiriman` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  ADD CONSTRAINT `fk_pengiriman_akun1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pengiriman_akun1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_layanan1` FOREIGN KEY (`layanan_id`) REFERENCES `layanan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_paket` FOREIGN KEY (`paket_id`) REFERENCES `paket` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pengiriman_penerima1` FOREIGN KEY (`penerima_id`) REFERENCES `penerima` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
