@@ -97,8 +97,10 @@
                                 @enderror 
                             </div>
                             <!-- input ke tujuh -->
+
                             <div class="invisible">
                                 <input type="number" name="user" value="{{Auth::user()->id}}">
+
                             </div>
                             <!-- input ke delapan -->
                             <br>

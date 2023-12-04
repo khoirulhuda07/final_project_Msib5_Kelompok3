@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Nov 2023 pada 11.26
+-- Waktu pembuatan: 04 Des 2023 pada 03.11
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dblogistik`
+-- Database: `coba`
 --
 
 -- --------------------------------------------------------
@@ -185,6 +185,21 @@ INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengirim
 (9, 'COD', 180000, 'Pembayaran untuk paket hewan peliharaan', 9, 2),
 (10, 'COD', 100000, 'Pembayaran untuk paket body motor', 10, 2);
 
+--
+-- Trigger `pembayaran`
+--
+DELIMITER $$
+CREATE TRIGGER `potong_saldo` AFTER INSERT ON `pembayaran` FOR EACH ROW BEGIN
+    IF NEW.metode IN ('dompetku') 
+    THEN
+        UPDATE dompet
+        SET saldo = saldo - NEW.harga_total
+        WHERE id = NEW.users_id;
+    END IF;
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -317,6 +332,15 @@ INSERT INTO `users` (`id`, `fullname`, `username`, `email`, `password`, `level`,
 --
 -- Trigger `users`
 --
+DELIMITER $$
+CREATE TRIGGER `create_item_kurir` AFTER INSERT ON `users` FOR EACH ROW BEGIN
+	IF NEW.level IN ('kurir')
+    THEN
+    	INSERT INTO kurir (nama_kurir) VALUES (NEW.fullname);
+    END IF;
+END
+$$
+DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `tambah_saldo_user` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
 	IF NEW.id IS NOT NULL THEN

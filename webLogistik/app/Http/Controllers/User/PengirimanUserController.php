@@ -100,7 +100,6 @@ class PengirimanUserController extends Controller
                 'lokasi_tujuan' => 'required',
                 'layanan' => 'required',
 
-
             ],
             [
                 'berat.required' => 'data harus di isi',
@@ -110,8 +109,6 @@ class PengirimanUserController extends Controller
                 'tanggal.required' => 'data harus diisi',
                 'lokasi_tujuan.required' => 'data harus diisi',
                 'layanan.required' => 'data harus diisi',
-
-
 
             ]
         );
@@ -129,13 +126,16 @@ class PengirimanUserController extends Controller
                 'nomor_telepon' => $request->no_tlp,
             ]
         );
+
         $pengiriman = new pengiriman;
         $pengiriman->kode = $kode;
         $pengiriman->tanggal =  $request->tanggal;
+
         $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
         $pengiriman->paket_id = $paket->id;
         $pengiriman->layanan_id = $request->layanan;
         $pengiriman->penerima_id = $penerima->id;
+
         $pengiriman->user_id =  $pp;
         $pengiriman->save();
         // $pengiriman = pengiriman::create([
