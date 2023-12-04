@@ -85,18 +85,26 @@
                                                               {{$message}}
                                                             </div>
                                                             @enderror
-                                                        </div>
-                                                         <input type="text" name="akun_id" value="{{$p->users->id}}" >
-                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" >
-                                                        <input type="text" name="id" value="{{$p->users->dompet->id}}" >
-                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" >
+                                                          </div>
+                                                          @php
+                                                          $berat = $p->paket->berat;
+                                                          $layanan = $p->layanan->biaya;
+                                                          $total = 500000;
+                                                          @endphp
+                                                         <input type="text" id="berat" value="{{$p->paket->berat}}" hidden>
+                                                         <input type="text" id="biaya" value="{{$p->layanan->biaya}}" hidden>
+                                                         <input type="text" name="akun_id" value="{{Auth::user()->id}}" hidden >
+                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" hidden>
+                                                        <input type="text" name="id" value="{{Auth::user()->id}}" hidden>
+                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" hidden>
                                                         <div class="d-none" id="Dompetku{{$p->id}}">
                                                           <div class="form-floating mb-3">
-                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$p->users->dompet->saldo}}" readonly>
+                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$dompet->saldo}}" readonly>
                                                             <label for="floatingKode">Saldo anda</label>
                                                         </div>
+                                                        
                                                         <div class="form-floating mb-3">
-                                                            <input type="number" name="harga_bayar" class="form-control  @error('harga_bayar') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                                            <input type="number" name="harga_bayar" class="form-control  @error('harga_bayar') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$total}}" readonly>
                                                             <label for="floatingKode">harga bayar</label>
                                                             @error('harga_bayar')
                                                             <div classs="invalid-feedback">
@@ -105,14 +113,18 @@
                                                             @enderror
                                                         </div>
                                                         </div>
+                                                       
                                                         <div class="d-none" id="COD{{$p->id}}">
                                                             <div class="form-floating mb-3" >
-                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="{{$total}}" readonly>
                                                                 <label for="floatingKode">harga yang harus dibayar</label>
                                                             </div>
                                                     </div>
-                                                    <button name="proses" value="simpan" type="submit" class="btn btn-primary ml-auto">Submit</button>
-                                </form>
+                                                   
+                                                    {{-- <button name="proses" value="simpan" type="submit" class="btn btn-primary ml-auto" disabled>Submit</button> --}}
+                                                   
+                                                    <button name="proses" id="submit" value="simpan" type="submit" class="btn btn-primary ml-auto" >Submit</button>
+                                                   </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +133,7 @@
                                 <div class="modal-footer badge-info">
                                  
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            
+                                      @endforeach
                                 </div>
                               </div>
                             </div>
@@ -130,6 +142,7 @@
                             function pilih(id){
                               var dompetElement = document.getElementById("Dompetku" + id);
                               var codElement = document.getElementById("COD" + id);
+                              var submit = $('#submit');
 
                               // Periksa apakah elemen ditemukan sebelum manipulasi
                               if (dompetElement && codElement) {
@@ -143,6 +156,7 @@
                                   // Tampilkan elemen input yang sesuai dengan opsi yang dipilih
                                   if (selectedLayanan === "Dompetku") {
                                       dompetElement.classList.remove("d-none");
+
                                   } else if (selectedLayanan === "COD") {
                                       codElement.classList.remove("d-none");
                                   }
@@ -151,7 +165,7 @@
                         </script>
                     </td>
                   </tr>
-                  @endforeach
+                  
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

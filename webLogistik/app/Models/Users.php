@@ -11,31 +11,34 @@ class Users extends Model
 
     protected $table = 'users';
     public $timestamps = false;
-    
+
     protected $fillable = [
-        'fullname', 
-        'username', 
-        'email', 
-        'password', 
-        'level', 
-        'alamat', 
-        'foto', 
+        'fullname',
+        'username',
+        'email',
+        'password',
+        'level',
+        'alamat',
+        'foto',
         'dompet_id'
-    ] ;
+    ];
 
     protected $casts = [
         'password' => 'hashed',
     ];
 
-    public function pengiriman() {
+    public function pengiriman()
+    {
         return $this->hasMany(Pengiriman::class);
     }
 
-    public function dompet() {
+    public function dompet()
+    {
         return $this->belongsTo(Dompet::class);
     }
 
-    public function pembayaran() {
+    public function pembayaran()
+    {
         return $this->hasMany(Pembayaran::class);
     }
 }
