@@ -159,6 +159,7 @@
 
                                   } else if (selectedLayanan === "COD") {
                                       codElement.classList.remove("d-none");
+                                      submit.
                                   }
                               }
                               };
