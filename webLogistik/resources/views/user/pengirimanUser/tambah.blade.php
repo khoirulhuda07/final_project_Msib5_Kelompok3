@@ -98,8 +98,8 @@
                             </div>
                             <!-- input ke tujuh -->
 
-                            <div class="invisible">
-                                <input type="number" name="user" value="{{Auth::user()->id}}">
+                            <div class="">
+                                <input type="number" name="user" value="{{Auth::user()->id}}" hidden>
 
                             </div>
                             <!-- input ke delapan -->

@@ -81,20 +81,17 @@
 <script>
     // Kode JavaScript untuk grafik pertama (myPie)
 
-    var labels = [@foreach($jpembayaran as $row)
-        '{{$row->metode}}', @endforeach
+    var label12 = [@foreach($jpembayaran as $jp)
+        '{{$jp->metode}}', @endforeach
     ];
-    var data2 = [@foreach($jpembayaran as $row) {
-        {
-            $row - > jumlah
-        }
-    }, @endforeach];
+    var data2 = [@foreach($jpembayaran as $jp)
+        {{$jp->jumlah}}, @endforeach];
 
     document.addEventListener("DOMContentLoaded", () => {
         new Chart(document.querySelector('#myPie'), {
             type: 'doughnut',
             data: {
-                labels: labels,
+                labels: label12,
                 datasets: [{
                     data: data2,
                     backgroundColor: ['#008B8B', '#2E8B57', '#3c9faf'],
@@ -127,11 +124,7 @@
     var label2 = [@foreach($jlayanan as $jly)
         '{{$jly->nama_layanan}}', @endforeach
     ];
-    var data3 = [@foreach($jlayanan as $jly) {
-        {
-            $jly - > jumlah
-        }
-    }, @endforeach];
+    var data3 = [@foreach($jlayanan as $jly) {{$jly -> jumlah}}, @endforeach];
 
     document.addEventListener("DOMContentLoaded", () => {
         new Chart(document.querySelector('#myPieChart'), {

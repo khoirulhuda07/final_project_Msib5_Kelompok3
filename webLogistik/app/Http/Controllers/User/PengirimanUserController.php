@@ -23,7 +23,7 @@ class PengirimanUserController extends Controller
     {
 
         $user_id = Auth()->id();
-        $pengiriman = pengiriman::where('user_id', $user_id)->get();
+        $pengiriman = pengiriman::where('users_id', $user_id)->get();
         $akun = users::all();
         $kurir = kurir::all();
         $layanan = layanan::all();
@@ -53,28 +53,36 @@ class PengirimanUserController extends Controller
                 'harga_bayar.required' => 'data wajib diisi',
             ]
         );
-        try {
-            $id = $resquest->id;
-            $dompet1 = dompet::find($id);
-            $bayar = $resquest->harga_bayar;
-            $sisaSaldo = $dompet1->saldo - $bayar;
+        // try {
+        //     $id = $resquest->id;
+        //     $dompet1 = dompet::find($id);
+        //     $bayar = $resquest->harga_bayar;
+        //     $sisaSaldo = $dompet1->saldo - $bayar;
 
-            $user_id1 = Auth()->id();
-            $pembayaran = new pembayaran;
-            $pembayaran->metode = $resquest->metode;
-            $pembayaran->harga_total = $resquest->harga_bayar;
-            $pembayaran->keterangan = $resquest->keterangan;
-            $pembayaran->pengiriman_id = $resquest->pengiriman_id;
-            $pembayaran->user_id = $user_id1;
-            $pembayaran->save();
+        $user_id1 = Auth()->id();
+        //     $pembayaran = new pembayaran;
+        //     $pembayaran->metode = $resquest->metode;
+        //     $pembayaran->harga_total = $resquest->harga_bayar;
+        //     $pembayaran->keterangan = $resquest->keterangan;
+        //     $pembayaran->pengiriman_id = $resquest->pengiriman_id;
+        //     $pembayaran->user_id = $user_id1;
+        //     $pembayaran->save();
 
-            $dompet = dompet::find($id);
-            $dompet->saldo = $sisaSaldo;
-            $dompet->save();
-            return redirect('user/pengirimanUser');
-        } catch (\Exception $e) {
-            echo 'input :' . $e->getMessage();
-        };
+        //     $dompet = dompet::find($id);
+        //     $dompet->saldo = $sisaSaldo;
+        //     $dompet->save();
+        //     return redirect('user/pengirimanUser');
+        // } catch (\Exception $e) {
+        //     echo 'input :' . $e->getMessage();
+        // };
+        $pembayaran = new pembayaran;
+        $pembayaran->metode = $resquest->metode;
+        $pembayaran->harga_total = $resquest->harga_bayar;
+        $pembayaran->keterangan = $resquest->keterangan;
+        $pembayaran->pengiriman_id = $resquest->pengiriman_id;
+        $pembayaran->users_id = $user_id1;
+        $pembayaran->save();
+        return redirect('my/pengirimanUser')->with('success', 'pembayaran berhasil dilakukan');
     }
 
     public function create()
@@ -136,7 +144,7 @@ class PengirimanUserController extends Controller
         $pengiriman->layanan_id = $request->layanan;
         $pengiriman->penerima_id = $penerima->id;
 
-        $pengiriman->user_id =  $pp;
+        $pengiriman->users_id =  $pp;
         $pengiriman->save();
         // $pengiriman = pengiriman::create([
         //     'kode' => $kode,
