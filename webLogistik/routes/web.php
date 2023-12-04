@@ -31,7 +31,8 @@ use App\Http\Controllers\Homepage\HomepageController;
 use App\Http\Controllers\Homepage\LacakController;
 use App\Http\Controllers\Homepage\LoginController;
 
-
+// kurir namespace
+use App\Http\Controllers\PageKurirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,15 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::get('/dompetku', [TopUpController::class, 'index']);
         Route::post('/dompetku/store', [TopUpController::class, 'store']);
         Route::get('/dompetku/laporanPDF/{id}', [TopUpController::class, 'exportPDF']);
+    });
+});
+
+Route::middleware(['auth', 'kurir'])->group(function () {
+    Route::prefix('kurir')->group(function() {
+        
+        Route::get('/home', [PageKurirController::class, 'index']);
+        Route::get('/maps', [PageKurirController::class, 'maps']);
+        Route::get('/profile', [PageKurirController::class, 'profile']);
     });
 });
 
