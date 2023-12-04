@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Support\Str;
 // use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\kurir;
 use App\Models\Layanan;
 use App\Models\Paket;
@@ -21,15 +22,15 @@ class PengirimanUserController extends Controller
     public function index()
     {
 
-        $user_id = auth()->id();
+        $user_id = Auth()->id();
         $pengiriman = pengiriman::where('users_id', $user_id)->get();
-        $user = users::all();
+        $akun = users::all();
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
-        $dompet = dompet::all();
+        $dompet = dompet::where('id', $user_id)->first();
 
-        return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('pengiriman', 'dompet', 'pembayaran', 'user', 'kurir', 'layanan'));
+        return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('dompet', 'pembayaran', 'akun', 'kurir', 'layanan'));
         // $client = new Client();
         // $url = 'http://127.0.0.1:8000/api/pengiriman';
         // $respon = $client->request('GET', $url);
@@ -52,27 +53,36 @@ class PengirimanUserController extends Controller
                 'harga_bayar.required' => 'data wajib diisi',
             ]
         );
-        try {
-            $id = $resquest->id;
-            $dompet1 = dompet::find($id);
-            $bayar = $resquest->harga_bayar;
-            $sisaSaldo = $dompet1->saldo - $bayar;
+        // try {
+        //     $id = $resquest->id;
+        //     $dompet1 = dompet::find($id);
+        //     $bayar = $resquest->harga_bayar;
+        //     $sisaSaldo = $dompet1->saldo - $bayar;
 
-            $pembayaran = new pembayaran;
-            $pembayaran->metode = $resquest->metode;
-            $pembayaran->harga_total = $resquest->harga_bayar;
-            $pembayaran->keterangan = $resquest->keterangan;
-            $pembayaran->pengiriman_id = $resquest->pengiriman_id;
-            $pembayaran->users_id = $resquest->akun_id;
-            $pembayaran->save();
+        $user_id1 = Auth()->id();
+        //     $pembayaran = new pembayaran;
+        //     $pembayaran->metode = $resquest->metode;
+        //     $pembayaran->harga_total = $resquest->harga_bayar;
+        //     $pembayaran->keterangan = $resquest->keterangan;
+        //     $pembayaran->pengiriman_id = $resquest->pengiriman_id;
+        //     $pembayaran->user_id = $user_id1;
+        //     $pembayaran->save();
 
-            $dompet = dompet::find($id);
-            $dompet->saldo = $sisaSaldo;
-            $dompet->save();
-            return redirect('user/pengirimanUser');
-        } catch (\Exception $e) {
-            echo 'input :' . $e->getMessage();
-        };
+        //     $dompet = dompet::find($id);
+        //     $dompet->saldo = $sisaSaldo;
+        //     $dompet->save();
+        //     return redirect('user/pengirimanUser');
+        // } catch (\Exception $e) {
+        //     echo 'input :' . $e->getMessage();
+        // };
+        $pembayaran = new pembayaran;
+        $pembayaran->metode = $resquest->metode;
+        $pembayaran->harga_total = $resquest->harga_bayar;
+        $pembayaran->keterangan = $resquest->keterangan;
+        $pembayaran->pengiriman_id = $resquest->pengiriman_id;
+        $pembayaran->users_id = $user_id1;
+        $pembayaran->save();
+        return redirect('my/pengirimanUser')->with('success', 'pembayaran berhasil dilakukan');
     }
 
     public function create()
@@ -107,8 +117,10 @@ class PengirimanUserController extends Controller
                 'tanggal.required' => 'data harus diisi',
                 'lokasi_tujuan.required' => 'data harus diisi',
                 'layanan.required' => 'data harus diisi',
+
             ]
         );
+        $pp = Auth::user()->id;
         $kode = $this->generateUniqueCode();
         $paket = paket::create(
             [
@@ -122,16 +134,29 @@ class PengirimanUserController extends Controller
                 'nomor_telepon' => $request->no_tlp,
             ]
         );
-        $pengiriman = new Pengiriman;
+
+        $pengiriman = new pengiriman;
         $pengiriman->kode = $kode;
-        $pengiriman->tanggal = $request->tanggal;
+        $pengiriman->tanggal =  $request->tanggal;
+
         $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
         $pengiriman->paket_id = $paket->id;
         $pengiriman->layanan_id = $request->layanan;
         $pengiriman->penerima_id = $penerima->id;
-        $pengiriman->users_id = $request->users;
+
+        $pengiriman->users_id =  $pp;
         $pengiriman->save();
-        return redirect('my/pengirimanUser')->with('success', 'Berhasil');
+        // $pengiriman = pengiriman::create([
+        //     'kode' => $kode,
+        //     'tanggal' => $request->tanggal,
+        //     'lokasi_tujuan' => $request->lokasi_tujuan,
+        //     'paket_id' => $paket->id,
+        //     'layanan_id' => $request->layanan,
+        //     'penerima_id' => $penerima->id,
+        //     'user_id' => $request->user,
+
+        // ]);
+        return redirect('my/pengirimanUser')->with('success', 'Data Berhasil Ditambahkan!!');
     }
     private function generateUniqueCode()
     {

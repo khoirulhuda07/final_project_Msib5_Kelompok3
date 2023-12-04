@@ -22,7 +22,7 @@
               <a href="{{url('my/pengirimanUser/create')}}" class="btn btn-primary my-3">buat pengiriman paket &nbsp;<i class="fa-solid fa-plus"></i></a>
             </a>
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable table-responsive">
                 <thead>
                   <tr>
                     <th scope="col">NO</th>
@@ -85,18 +85,23 @@
                                                               {{$message}}
                                                             </div>
                                                             @enderror
-                                                        </div>
-                                                         <input type="text" name="akun_id" value="{{$p->users->id}}" >
-                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" >
-                                                        <input type="text" name="id" value="{{$p->users->dompet->id}}" >
-                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" >
+                                                          </div>
+                                                        
+                                                         <input type="number" id="berat{{$p->id}}" value="{{$p->paket->berat}}" hidden>
+                                                         <input type="number" id="biaya{{$p->id}}" value="{{$p->layanan->biaya}}" hidden>
+                                                         <input type="number" id="saldo{{$p->id}}" value="{{$dompet->saldo}}" hidden>
+                                                         <input type="text" name="akun_id" value="{{Auth::user()->id}}" hidden >
+                                                        <input type="text" name="pengiriman_id" id="" value="{{$p->id}}" hidden>
+                                                        <input type="text" name="id" value="{{Auth::user()->id}}" hidden>
+                                                        <input type="text" name="keterangan" value="{{$p->paket->deskripsi}}" hidden>
                                                         <div class="d-none" id="Dompetku{{$p->id}}">
                                                           <div class="form-floating mb-3">
-                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$p->users->dompet->saldo}}" readonly>
+                                                            <input type="text" name="deskripsi" class="form-control " id="floatingKode" value="Rp. {{$dompet->saldo}}" readonly>
                                                             <label for="floatingKode">Saldo anda</label>
                                                         </div>
+                                                        
                                                         <div class="form-floating mb-3">
-                                                            <input type="number" name="harga_bayar" class="form-control  @error('harga_bayar') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                                            <input type="number" id="harga{{$p->id}}" name="harga_bayar" class="form-control  @error('harga_bayar') is-invalid @enderror" id="floatingKode" placeholder="Masukkan Kode Pengiriman"  readonly>
                                                             <label for="floatingKode">harga bayar</label>
                                                             @error('harga_bayar')
                                                             <div classs="invalid-feedback">
@@ -105,14 +110,18 @@
                                                             @enderror
                                                         </div>
                                                         </div>
+                                                       
                                                         <div class="d-none" id="COD{{$p->id}}">
                                                             <div class="form-floating mb-3" >
-                                                                <input type="number" name="" class="form-control " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                                                <input type="number" name="" class="form-control " id="harga1{{$p->id}}" placeholder="Masukkan Kode Pengiriman" readonly>
                                                                 <label for="floatingKode">harga yang harus dibayar</label>
                                                             </div>
                                                     </div>
-                                                    <button name="proses" value="simpan" type="submit" class="btn btn-primary ml-auto">Submit</button>
-                                </form>
+                                                   
+                                                    {{-- <button name="proses" value="simpan" type="submit" class="btn btn-primary ml-auto" disabled>Submit</button> --}}
+                                                   
+                                                    <button name="proses" id="submit{{$p->id}}" value="simpan" type="submit" class="btn btn-primary ml-auto" >Submit</button>
+                                                   </form>
                                                     </div>
                                                 </div>
                                             </div>
@@ -121,7 +130,7 @@
                                 <div class="modal-footer badge-info">
                                  
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            
+                                      @endforeach
                                 </div>
                               </div>
                             </div>
@@ -130,7 +139,16 @@
                             function pilih(id){
                               var dompetElement = document.getElementById("Dompetku" + id);
                               var codElement = document.getElementById("COD" + id);
-
+                              var dompet = document.getElementById("harga" + id);
+                              var dompet1 = document.getElementById("harga1" + id);
+                              var submit =document.getElementById('submit' + id);
+                              var saldo =document.getElementById('saldo' + id).value;
+                              var berat = document.getElementById("berat" + id).value;
+                              var biaya = document.getElementById("biaya" + id).value;
+                              var total = berat * biaya;
+                              dompet.value = total;
+                              dompet1.value = total;
+                              console.log(saldo);
                               // Periksa apakah elemen ditemukan sebelum manipulasi
                               if (dompetElement && codElement) {
                                   // Sembunyikan semua elemen terlebih dahulu
@@ -142,16 +160,20 @@
 
                                   // Tampilkan elemen input yang sesuai dengan opsi yang dipilih
                                   if (selectedLayanan === "Dompetku") {
-                                      dompetElement.classList.remove("d-none");
+                                    dompetElement.classList.remove("d-none");
+                                    if(total > parseFloat(saldo)){
+                                      submit.disabled = true;
+                                    } 
                                   } else if (selectedLayanan === "COD") {
                                       codElement.classList.remove("d-none");
+                                      submit.disabled = false;
                                   }
                               }
                               };
                         </script>
                     </td>
                   </tr>
-                  @endforeach
+                  
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

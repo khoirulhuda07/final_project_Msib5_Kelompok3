@@ -1,3 +1,9 @@
+@php
+use App\Models\Dompet;
+$id = Auth::user()->dompet_id;
+$dompet = dompet::where('id',$id)->get();
+
+@endphp
   <!DOCTYPE html>
   <html lang="en">
 
@@ -135,7 +141,8 @@
 
       <li class="nav-item mb-3">
         <a href="{{url('my/dompetku/')}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
-            <i class="bi bi-wallet" style="color: #f5f5f5;"></i>Rp. 10000 
+            <i class="bi bi-wallet" style="color: #f5f5f5;"></i>@foreach($dompet as $d)
+              {{$d->saldo}} @endforeach
         </a>
       </li><!-- End saldo Nav -->
 

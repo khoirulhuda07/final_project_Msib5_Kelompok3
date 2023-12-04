@@ -97,9 +97,10 @@
                                 @enderror 
                             </div>
                             <!-- input ke tujuh -->
-                            <div class="form-floating mb-3 invisible">
-                                <input type="text" name="users" class="form-control" id="floatinguser" style="transition: all 0.2s linear" value="{{Auth::user()->id}}">
-                                <label style="transition: all 0.2s linear" for="floatinguser">User id</label>                         
+
+                            <div class="">
+                                <input type="number" name="user" value="{{Auth::user()->id}}" hidden>
+
                             </div>
                             <!-- input ke delapan -->
                             <br>
