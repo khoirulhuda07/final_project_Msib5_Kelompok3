@@ -104,7 +104,7 @@ $dompet = dompet::where('id',$id)->get();
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{url('user/profile')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{url('my/profile')}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
