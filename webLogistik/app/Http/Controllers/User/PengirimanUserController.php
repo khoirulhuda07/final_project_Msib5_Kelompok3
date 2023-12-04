@@ -97,7 +97,6 @@ class PengirimanUserController extends Controller
                 'tanggal' => 'required',
                 'lokasi_tujuan' => 'required',
                 'layanan' => 'required',
-                'akun' => ' required',
 
             ],
             [
@@ -108,9 +107,6 @@ class PengirimanUserController extends Controller
                 'tanggal.required' => 'data harus diisi',
                 'lokasi_tujuan.required' => 'data harus diisi',
                 'layanan.required' => 'data harus diisi',
-                'akun.required' => 'data harus diisi',
-
-
             ]
         );
         $kode = $this->generateUniqueCode();
@@ -126,17 +122,16 @@ class PengirimanUserController extends Controller
                 'nomor_telepon' => $request->no_tlp,
             ]
         );
-        $pengiriman = pengiriman::create([
-            'kode' => $kode,
-            'tanggal' => $request->tanggal,
-            'lokasi_tujuan' => $request->lokasi_tujuan,
-            'paket_id' => $paket->id,
-            'layanan_id' => $request->layanan,
-            'penerima_id' => $penerima->id,
-            'users_id' => $request->akun,
-
-        ]);
-        return redirect('user/pengirimanUser');
+        $pengiriman = new Pengiriman;
+        $pengiriman->kode = $kode;
+        $pengiriman->tanggal = $request->tanggal;
+        $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
+        $pengiriman->paket_id = $paket->id;
+        $pengiriman->layanan_id = $request->layanan;
+        $pengiriman->penerima_id = $penerima->id;
+        $pengiriman->users_id = $request->users;
+        $pengiriman->save();
+        return redirect('my/pengirimanUser')->with('success', 'Berhasil');
     }
     private function generateUniqueCode()
     {

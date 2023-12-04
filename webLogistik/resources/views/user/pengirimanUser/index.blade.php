@@ -49,7 +49,7 @@
                     <td>{{$p->kode}}</td>
                     <td>{{$p->tanggal}}</td>
                     <td>{{$p->lokasi_tujuan}}</td>
-                    <td>{{$p->paket->berat}} .Kg</td>
+                    <td>{{$p->paket->berat}} Kg</td>
                     <td>{{$p->paket->deskripsi}}</td>
                     <td> @if(in_array($p->id , $pp))
                         <button class="btn btn-primary">sudah dibayar</button>

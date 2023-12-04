@@ -97,19 +97,9 @@
                                 @enderror 
                             </div>
                             <!-- input ke tujuh -->
-                            <div class="form-floating mb-3  ">
-                                <select class="form-select @error('akun') is-invalid @enderror" name="akun" id="akun" aria-label="Floating label select example">
-                                    <option selected>--- Username ---</option>
-                                    @foreach($akun as $ak)
-                                    <option value="{{$ak->id}}">{{$ak->username}}</option>
-                                    @endforeach
-                                </select>
-                                <label for="username">Username</label>
-                                @error('akun')
-                                <div classs="invalid-feedback">
-                                {{$message}}
-                                </div>
-                                @enderror 
+                            <div class="form-floating mb-3 invisible">
+                                <input type="text" name="users" class="form-control" id="floatinguser" style="transition: all 0.2s linear" value="{{Auth::user()->id}}">
+                                <label style="transition: all 0.2s linear" for="floatinguser">User id</label>                         
                             </div>
                             <!-- input ke delapan -->
                             <br>
