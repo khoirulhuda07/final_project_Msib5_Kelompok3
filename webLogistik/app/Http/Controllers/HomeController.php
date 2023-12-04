@@ -20,6 +20,9 @@ class HomeController extends Controller
         } elseif (auth()->user()->level == 'user') {
             // Logika untuk user
             return redirect('my/home');
+        } elseif (auth()->user()->level == 'kurir') {
+            // Logika untuk kurir
+            return redirect('kurir/home');
         } else {
             return redirect('/');
         }
