@@ -16,7 +16,7 @@
     <div class="alert alert-light " role="alert">
         <div class="text">
             <h4 class="alert-heading">Selamat Datang Di TrackMyShipment</h4>
-            <p class="mt-2">Periksa semua update toko anda disini</p>
+            <p class="mt-2">Periksa semua update barang anda disini</p>
         </div>
     </div>
     <section class="section dashboard">
