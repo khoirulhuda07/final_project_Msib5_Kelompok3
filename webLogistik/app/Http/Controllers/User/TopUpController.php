@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\User;
+
 use App\Http\Controllers\Controller;
 use App\Models\Dompet;
 use Illuminate\Http\Request;
@@ -18,12 +19,13 @@ class TopUpController extends Controller
         $dompet = Dompet::where('id', $user->dompet_id)->first();
         $topup = TopUp::where('dompet_id', $user->id)->get();
         $uang = ['10000', '20000', '50000', '100000'];
-        // $snapToken = 0;
+        $snapToken = 0;
 
-        return view("user.topup.index",  compact('dompet', 'topup', 'uang') );
+        return view("user.topup.index",  compact('dompet', 'snapToken', 'topup', 'uang'));
     }
 
-    public function cekSaldo() {
+    public function cekSaldo()
+    {
         // $user = Users::findOrFail(Auth::id());
         // $dompet = Dompet::where('id', $user->dompet_id)->first();
 
@@ -36,7 +38,7 @@ class TopUpController extends Controller
         // $dompet = Dompet::where('id', $user->dompet_id)->first();
         // $topup = TopUp::where('dompet_id', $user->id)->get();
         // $uang = ['10000', '20000', '50000', '100000'];
-        
+
         $bayar = $request->saldo;
 
         $topup = new TopUp;
@@ -45,7 +47,7 @@ class TopUpController extends Controller
         $topup->dompet_id = $request->dompet_id;
         $topup->waktu = $request->waktu;
         $topup->save();
-        
+
         // // Set your Merchant Server Key
         // \Midtrans\Config::$serverKey = config('midtrans.server_key');
         // // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -72,7 +74,8 @@ class TopUpController extends Controller
         return back()->with('status', 'Proses TopUp Berhasil!!');
     }
 
-    public function exportPDF(string $id) {
+    public function exportPDF(string $id)
+    {
         $saveName = 'Laporan TopUp ' . date('y-m-d') . '.pdf';
         $laporan = TopUp::get()->where('dompet_id', $id);
         $pdf = PDF::loadview('user.topup.laporanPDF', compact('laporan'));

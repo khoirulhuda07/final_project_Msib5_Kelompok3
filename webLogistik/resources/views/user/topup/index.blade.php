@@ -2,10 +2,11 @@
 
 @section('content')
 
-{{-- <!-- MidTrans -->
+<!-- MidTrans -->
 <script type="text/javascript"
 src="https://app.sandbox.midtrans.com/snap/snap.js"
-data-client-key="{{config('midtrans.client_key')}}"></script> --}}
+data-client-key="{{config('midtrans.client_key')}}"></script>
+
 
 <main id="main" class="main">
 
@@ -64,10 +65,62 @@ data-client-key="{{config('midtrans.client_key')}}"></script> --}}
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              <button type="submit" name="submit" class="btn btn-primary" id="pay-button">Pilih pembayaran</button>
+              <button type="submit" id="" name="submit" class="btn btn-primary" id="pay-button">Pilih pembayaran</button>
+              <button type="button" id="pay-button"> bayar</button>
             </div>
           </div>
         </div>
+        {{-- <script type="text/javascript">
+         // For example trigger on button clicked, or any time you need
+          // var payButton = document.getElementById('pay-button');
+           function modal() {
+            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+            window.snap.pay('TRANSACTION_TOKEN_HERE', {
+              onSuccess: function(result){
+                /* You may add your own implementation here */
+                alert("payment success!"); console.log(result);
+              },
+              onPending: function(result){
+                /* You may add your own implementation here */
+                alert("wating your payment!"); console.log(result);
+              },
+              onError: function(result){
+                /* You may add your own implementation here */
+                alert("payment failed!"); console.log(result);
+              },
+              onClose: function(){
+                /* You may add your own implementation here */
+                alert('you closed the popup without finishing the payment');
+              }
+            })
+          };
+      </script> --}}
+      <script type="text/javascript">
+        // For example trigger on button clicked, or any time you need
+        var payButton = document.getElementById('pay-button');
+        payButton.addEventListener('click', function () {
+          // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+          window.snap.pay('{{$snapToken}}', {
+            onSuccess: function(result){
+              /* You may add your own implementation here */
+              alert("payment success!"); console.log(result);
+            },
+            onPending: function(result){
+              /* You may add your own implementation here */
+              alert("wating your payment!"); console.log(result);
+            },
+            onError: function(result){
+              /* You may add your own implementation here */
+              alert("payment failed!"); console.log(result);
+            },
+            onClose: function(){
+              /* You may add your own implementation here */
+              alert('you closed the popup without finishing the payment');
+            }
+          })
+        });
+      </script>
+    
       </div>
       <!-- end modal -->
     </form>
@@ -86,7 +139,7 @@ data-client-key="{{config('midtrans.client_key')}}"></script> --}}
                         <p class="card-text">Poin : {{$dompet->bonus}}</p>
                     </div>
                     <div class="col-md-3 text-center">
-                      <button type="button" class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
+                      <button type="button"  class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
                         Tambah Saldo <i class="bi bi-plus-lg"></i>
                       </button>
                     </div>
@@ -147,30 +200,7 @@ data-client-key="{{config('midtrans.client_key')}}"></script> --}}
     document.addEventListener("change", hitungBonus);
   </script>
 
-  {{-- <!-- MidTrans -->
-  <script type="text/javascript">
-    // For example trigger on button clicked, or any time you need
-    var payButton = document.getElementById('pay-button');
-    payButton.addEventListener('click', function () {
-      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-      window.snap.pay('{{$snapToken}}', {
-        onSuccess: function(result){
-          /* You may add your own implementation here */
-          alert("payment success!"); console.log(result);
-        },
-        onPending: function(result){
-          /* You may add your own implementation here */
-          alert("wating your payment!"); console.log(result);
-        },
-        onError: function(result){
-          /* You may add your own implementation here */
-          alert("payment failed!"); console.log(result);
-        },
-        onClose: function(){
-          /* You may add your own implementation here */
-          alert('you closed the popup without finishing the payment');
-        }
-      })
-    });
-  </script> --}}
+   <!-- MidTrans -->
+
+ 
 @endsection
