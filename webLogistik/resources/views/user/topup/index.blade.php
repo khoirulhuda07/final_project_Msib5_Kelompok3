@@ -1,6 +1,12 @@
 @extends('user.template.appuser')
 
 @section('content')
+
+{{-- <!-- MidTrans -->
+<script type="text/javascript"
+src="https://app.sandbox.midtrans.com/snap/snap.js"
+data-client-key="{{config('midtrans.client_key')}}"></script> --}}
+
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -58,7 +64,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              <button type="submit" name="submit" class="btn btn-primary">Top UP</button>
+              <button type="submit" name="submit" class="btn btn-primary" id="pay-button">Pilih pembayaran</button>
             </div>
           </div>
         </div>
@@ -130,6 +136,7 @@
     </section>
   </main>
 
+  <!-- Hitung bonus -->
   <script>
     function hitungBonus() {
       var saldo = document.querySelector("input[name='saldo']:checked").value;
@@ -139,4 +146,31 @@
 
     document.addEventListener("change", hitungBonus);
   </script>
+
+  {{-- <!-- MidTrans -->
+  <script type="text/javascript">
+    // For example trigger on button clicked, or any time you need
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
+      window.snap.pay('{{$snapToken}}', {
+        onSuccess: function(result){
+          /* You may add your own implementation here */
+          alert("payment success!"); console.log(result);
+        },
+        onPending: function(result){
+          /* You may add your own implementation here */
+          alert("wating your payment!"); console.log(result);
+        },
+        onError: function(result){
+          /* You may add your own implementation here */
+          alert("payment failed!"); console.log(result);
+        },
+        onClose: function(){
+          /* You may add your own implementation here */
+          alert('you closed the popup without finishing the payment');
+        }
+      })
+    });
+  </script> --}}
 @endsection

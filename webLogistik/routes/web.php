@@ -106,6 +106,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
         // Dompetku Controller
         Route::get('/dompetku', [TopUpController::class, 'index']);
+        Route::get('/dompetku/form', [TopUpController::class, 'show']);
         Route::post('/dompetku/store', [TopUpController::class, 'store']);
         Route::get('/dompetku/laporanPDF/{id}', [TopUpController::class, 'exportPDF']);
     });
