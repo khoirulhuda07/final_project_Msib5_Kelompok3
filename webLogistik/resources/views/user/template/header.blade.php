@@ -104,7 +104,7 @@ $dompet = dompet::where('id',$id)->get();
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{url('user/profile')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{url('my/profile')}}">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -161,7 +161,12 @@ $dompet = dompet::where('id',$id)->get();
           <span>Pengiriman</span>
         </a>
       </li><!-- End Blank Page Nav -->
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url('my/lacak')}}">
+          <i class="ri-send-plane-line"></i>
+          <span>Lacak Paket</span>
+        </a>
+      </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{url('my/pembayaranUser')}}">
           <i class="ri-file-history-line"></i>

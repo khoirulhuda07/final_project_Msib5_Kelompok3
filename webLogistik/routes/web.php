@@ -25,6 +25,7 @@ use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Controllers\User\PengirimanUserController;
 use App\Http\Controllers\User\PembayaranUserController;
 use App\Http\Controllers\User\TopUpController;
+use App\Http\Controllers\User\pageLacakController;
 
 // homepae namaspace
 use App\Http\Controllers\Homepage\HomepageController;
@@ -32,7 +33,7 @@ use App\Http\Controllers\Homepage\LacakController;
 use App\Http\Controllers\Homepage\LoginController;
 
 // kurir namespace
-use App\Http\Controllers\PageKurirController;
+use App\Http\Controllers\kurir\homeKurirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -98,6 +99,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
         // Pembayaran Controller
         Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+        Route::get('/lacak', [pageLacakController::class, 'index1']);
 
         // Resource Controller
         // Route::resource('transaksi', transaksiController::class);
@@ -110,11 +112,11 @@ Route::middleware(['auth', 'user'])->group(function () {
 });
 
 Route::middleware(['auth', 'kurir'])->group(function () {
-    Route::prefix('kurir')->group(function() {
-        
-        Route::get('/home', [PageKurirController::class, 'index']);
-        Route::get('/maps', [PageKurirController::class, 'maps']);
-        Route::get('/profile', [PageKurirController::class, 'profile']);
+    Route::prefix('kurir')->group(function () {
+
+        Route::get('/home', [homeKurirController::class, 'index']);
+        Route::get('/maps', [homeKurirController::class, 'maps']);
+        Route::get('/profile', [homeKurirController::class, 'profile']);
     });
 });
 
