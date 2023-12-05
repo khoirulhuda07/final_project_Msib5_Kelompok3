@@ -24,7 +24,6 @@ class LacakController extends Controller
 
     public function index()
     {
-        //
         $pengiriman = Pengiriman::all();
         $akun = Users::all();
         $kurir = Kurir::all();
