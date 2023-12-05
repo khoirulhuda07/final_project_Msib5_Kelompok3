@@ -15,11 +15,11 @@ use App\Models\Users;
 
 class pageLacakController extends Controller
 {
-    //
     public function index1()
     {
         return view('User.lacakpaket.index');
     }
+    
     public function index()
     {
         $pengiriman = Pengiriman::all();
