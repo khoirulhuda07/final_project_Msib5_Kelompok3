@@ -17,7 +17,6 @@ class PaketController extends Controller
 
     public function create()
     {
-        //
         return view('admin.paket.create');
     }
 
@@ -46,7 +45,6 @@ class PaketController extends Controller
 
     public function edit(string $id)
     {
-        //
         $paket = Paket::all()
         ->where('id', $id);
         return view("admin.paket.edit", compact("paket"));
@@ -72,7 +70,6 @@ class PaketController extends Controller
 
     public function destroy(string $id)
     {
-        //
         Paket::find($id)->delete();
         return redirect('admin/paket')->with('success','Data Berhasil Dihapus!!');
     }
