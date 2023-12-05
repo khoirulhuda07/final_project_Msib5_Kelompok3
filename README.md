@@ -36,10 +36,15 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```bash
   composer install
   ```
+- menginstal npm UI di website, ketikan command :
+  ```bash
+  npm install
+  ```
 - Generate app key, ketikan command :
   ```bash
   php artisan key:generate
   ```
+### Command Public Package (Wajib)
 - menjalankan storage di website, ketikan command :
   ```bash
   php artisan storage:link
@@ -52,14 +57,16 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```bash
   php artisan vendor:publish --provider="Maatwebsite\Excel\ExcelServiceProvider" --tag=config
   ```
-- menginstal npm UI di website, ketikan command :
+### Command Run Website
+- menjalanlan Laravel di website, ketikan command :
   ```bash
-  npm install
+  php artisan serve
   ```
 - menjalanlan UI Laravel di website, ketikan command :
   ```bash
   npm run dev
   ```
+### Command Database
 - buatlah nama database baru. Lalu sesuaikan nama database, username, dan password database di file `.env`, ketikan command :
   ```bash
   php artisan migrate
@@ -86,12 +93,15 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
 ### User
 - Halaman Dashboard
 - Form Pengiriman & metode pembayaran
-- Top Up Saldo 
+- Transaksi Pengiriman
+- Lacak Pengiriman
+- Top Up Saldo & Laporan Transaksi
 
 ### Admin
 - Halaman Dashboard
 - Data table (Nama Layanan, Jadwal Kurir, Pengiriman Paket)
 - Eksport laporan pengiriman
+- Import & eksport excel document
 
 ### Kurir
 - Konfirmasi paket - Telah diambil oleh pengirim, Proses Pengiriman, Telah Sampai ke penerima
