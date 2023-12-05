@@ -27,7 +27,11 @@
                         @else
                         <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
                         @endif
-                        <h2>Kevin Anderson</h2>
+                        <h2> @if (empty(Auth::user()->username))
+                            {{''}}
+                            @else
+                            {{Auth::user()->username}}
+                            @endif</h2>
                     </div>
                 </div>
 
@@ -56,34 +60,46 @@
                         <div class="tab-content pt-2">
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                <h5 class="card-title">About</h5>
-                                <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-
+                        
                                 <h5 class="card-title">Profile Details</h5>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
-                                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                                    <div class="col-lg-9 col-md-8"> 
+                                    @if (empty(Auth::user()->fullname))
+                                        {{''}}
+                                        @else
+                                        {{Auth::user()->fullname}}
+                                        @endif</div>
                                 </div>
-
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Pekerjaan</div>
-                                    <div class="col-lg-9 col-md-8">Web Designer</div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-3 col-md-4 label">Negara</div>
-                                    <div class="col-lg-9 col-md-8">USA</div>
+                                    <div class="col-lg-3 col-md-4 label ">Username</div>
+                                    <div class="col-lg-9 col-md-8"> 
+                                    @if (empty(Auth::user()->username))
+                                        {{''}}
+                                        @else
+                                        {{Auth::user()->username}}
+                                        @endif</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Alamat</div>
-                                    <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                                    <div class="col-lg-9 col-md-8">
+                                        @if (empty(Auth::user()->alamat))
+                                        {{''}}
+                                        @else
+                                        {{Auth::user()->alamat}}
+                                        @endif</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
-                                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                                    <div class="col-lg-9 col-md-8">
+                                    @if (empty(Auth::user()->email))
+                                        {{''}}
+                                        @else
+                                        {{Auth::user()->email}}
+                                        @endif</div>
                                 </div>
 
                             </div>
@@ -91,48 +107,58 @@
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                 <!-- Profile Edit Form -->
-                                <form>
+                                <form action="{{url('my/profile/'.$profile)}}" method="post" enctype="multipart/form-data">
+                                    @method('PATCH')
+                                    @csrf
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img src="assets/img/profile-img.jpg" alt="Profile">
-                                            <div class="pt-2">
+                                        <input name="foto" type="file" class="form-control @error('foto') is-invalid @enderror" id="profileImage">
+                                            @error('foto')
+                                            <span>
+                                                <strong>{{$message}}</strong>
+                                            </span>
+                                            @enderror
+                                            <!-- <div class="pt-2">
                                                 <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                                                 <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
-                                            </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="fullName" type="text" class="form-control @error('fullname') is-invalid @enderror" id="fullName" value="">
+                                            <!-- @error('fullname')
+                                            <span>
+                                                <strong>{{$message}}</strong>
+                                            </span>
+                                            @enderror -->
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
+                                        <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="Job" class="col-md-4 col-lg-3 col-form-label">Pekerjaaan</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Country" class="col-md-4 col-lg-3 col-form-label">Negara</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="country" type="text" class="form-control" id="Country" value="USA">
+                                            <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="">
+                                            <!-- @error('username')
+                                            <span>
+                                                <strong>{{$message}}</strong>
+                                            </span>
+                                            @enderror -->
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                                        <input name="address" type="text" class="form-control" id="Address" value="">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                                        <input name="email" type="email" class="form-control" id="Email" value="">
                                         </div>
                                     </div>
 
@@ -144,8 +170,9 @@
                             </div>
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form>
-
+                                <form action="{{url('my/profile/'.$profile)}}" method="post" enctype="multipart/form-data">
+                                @method('PATCH')
+                                @csrf
                                     <div class="row mb-3">
                                         <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                                         <div class="col-md-8 col-lg-9">
