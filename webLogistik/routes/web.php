@@ -92,6 +92,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
         Route::get('/home', [HomeUserController::class, 'index']);
         Route::get('/profile', [ProfileUserController::class, 'index']);
+         Route::patch('/profile/{id}', [ProfileUserController::class, 'update']);
         // Pengiriman Controller
         Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
         Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
