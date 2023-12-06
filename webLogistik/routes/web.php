@@ -117,6 +117,7 @@ Route::middleware(['auth', 'kurir'])->group(function () {
     Route::prefix('kurir')->group(function () {
 
         Route::get('/home', [homeKurirController::class, 'index']);
+        Route::post('/home/store/{id}', [homeKurirController::class, 'store']);
         Route::get('/maps', [homeKurirController::class, 'maps']);
         Route::get('/profile', [homeKurirController::class, 'profile']);
     });
