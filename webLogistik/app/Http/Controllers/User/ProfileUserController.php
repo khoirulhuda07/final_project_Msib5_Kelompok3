@@ -4,6 +4,10 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpKernel\Profiler\Profile;
+
 
 class ProfileUserController extends Controller
 {
@@ -44,15 +48,15 @@ class ProfileUserController extends Controller
     //         }
     //     }
     //     if (request()->hasFile('foto')) {
-    //         $path = public_path('admin/img' . $users->foto);
+    //         $path = public_path('user/img' . $users->foto);
     //         if ($request->foto && file_exists($path)) {
-    //             Storage::delete('admin/img' . $users->foto);
+    //             Storage::delete('user/img' . $users->foto);
     //         }
     //         $photo = $request->file('foto');
     //         $extension = $photo->getClientOriginalExtension();
     //         $fileName = time() . '.' . $extension;
 
-    //         $request->foto->move(public_path('admin/img'), $fileName);
+    //         $request->foto->move(public_path('user/img'), $fileName);
     //         $users->foto = $fileName;
     //     }
     //     $users->alamat = $request->alamat;
@@ -60,5 +64,4 @@ class ProfileUserController extends Controller
 
     //     return back()->with('status', 'profile Update!');
     // }
-
 }

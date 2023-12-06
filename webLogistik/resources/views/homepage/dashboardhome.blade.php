@@ -7,9 +7,9 @@
     <div class="hero-content" data-aos="fade-up">
         <h2><span>Real-Time</span><br>Together Logistik</h2>
         <div>
-            <a href="#about" class="btn-get-started scrollto rounded-3">
-                <i class="fa-solid fa-square-phone fa-xl p-2"></i>Staff Kami</a>
-            <a href="#portfolio" class="btn-projects scrollto rounded-3">
+            <a href="https://wa.me/6285602622966/?text=Hallo saya ingin bertanya kepada admin?" class="btn-get-started scrollto rounded-3">
+                <i class="fa-solid fa-square-phone fa-xl p-2"></i>Staff Admin</a>
+            <a href="https://wa.me/6285866007415/?text=Hallo saya ingin bertanya kepada customer service?" class="btn-projects scrollto rounded-3">
                 <i class="fa-solid fa-square-phone fa-xl p-2"></i>Customer Service</a>
         </div>
     </div>
@@ -358,7 +358,7 @@
                     <div class="contact-phone">
                         <i class="bi bi-phone"></i>
                         <h3>Phone Number</h3>
-                        <p><a href="tel:+155895548855">+62 5589 55488 55</a></p>
+                        <p><a href="tel:+155895548855">+6285602622966</a></p>
                     </div>
                 </div>
 
