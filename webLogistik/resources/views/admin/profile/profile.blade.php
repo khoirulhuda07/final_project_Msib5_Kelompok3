@@ -124,7 +124,7 @@
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                 <!-- Profile Edit Form -->
-                                <form action="{{url('admin/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{url('my/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
                                     @method('PATCH')
                                     @csrf
                                     <div class="row mb-3">
@@ -185,7 +185,7 @@
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form action="{{url('admin/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{url('my/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
                                     @method('PATCH')
                                     @csrf
                                     <input name="email" type="hidden" class="form-control" id="Email" value="{{$profile->email}}">

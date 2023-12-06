@@ -68,9 +68,9 @@ $dompet = dompet::where('id',$id)->get();
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             @if (empty(Auth::user()->foto))
-              <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 36px">
+            <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
             @else
-              <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 36px">
+            <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" width="69%">
             @endif
             <span class="d-none d-md-block dropdown-toggle ps-2">
               @if (empty(Auth::user()->username))

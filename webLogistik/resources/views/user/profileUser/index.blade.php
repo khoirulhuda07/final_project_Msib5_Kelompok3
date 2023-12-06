@@ -25,7 +25,7 @@
                         @if (empty(Auth::user()->foto))
                         <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
                         @else
-                        <img src="{{asset('storage/photo-user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle">
+                        <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" width="69%">
                         @endif
                         <h2> @if (empty(Auth::user()->username))
                             {{''}}
@@ -66,7 +66,7 @@
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
                                     <div class="col-lg-9 col-md-8"> 
-                                    @if (empty(Auth::user()->fullname))
+                                        @if (empty(Auth::user()->fullname))
                                         {{''}}
                                         @else
                                         {{Auth::user()->fullname}}
@@ -107,7 +107,7 @@
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                 <!-- Profile Edit Form -->
-                                <form action="{{url('my/profile/'.$profile)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{url('my/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
                                     @method('PATCH')
                                     @csrf
                                     <div class="row mb-3">
@@ -128,37 +128,37 @@
                                     <div class="row mb-3">
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="fullName" type="text" class="form-control @error('fullname') is-invalid @enderror" id="fullName" value="">
-                                            <!-- @error('fullname')
+                                            <input name="fullName" type="text" class="form-control @error('fullname') is-invalid @enderror" id="fullName" value="{{$profile->fullname}}">
+                                            @error('fullname')
                                             <span>
                                                 <strong>{{$message}}</strong>
                                             </span>
-                                            @enderror -->
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="username" class="col-md-4 col-lg-3 col-form-label">Username</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="">
-                                            <!-- @error('username')
+                                            <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" id="username" value="{{$profile->username}}">
+                                            @error('username')
                                             <span>
                                                 <strong>{{$message}}</strong>
                                             </span>
-                                            @enderror -->
+                                            @enderror
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                                         <div class="col-md-8 col-lg-9">
-                                        <input name="address" type="text" class="form-control" id="Address" value="">
+                                            <input name="alamat" type="text" class="form-control" id="Address" value="{{$profile->alamat}}">
                                         </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                        <input name="email" type="email" class="form-control" id="Email" value="">
+                                            <input name="email" type="email" class="form-control" id="Email" value="{{$profile->email}}">
                                         </div>
                                     </div>
 
@@ -170,27 +170,29 @@
                             </div>
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form action="{{url('my/profile/'.$profile)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{url('my/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
                                 @method('PATCH')
                                 @csrf
+                                <input name="email" type="hidden" class="form-control" id="Email" value="{{$profile->email}}">
+                                    <input name="username" type="hidden" class="form-control " id="username" value="{{$profile->username}}">
                                     <div class="row mb-3">
                                         <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="password" type="password" class="form-control" id="currentPassword">
+                                            <input name="old_password" type="password" class="form-control" id="currentPassword">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                            <input name="password" type="password" class="form-control" id="newPassword">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                            <input name="password_confirmation" type="password" class="form-control" id="renewPassword">
                                         </div>
                                     </div>
 
