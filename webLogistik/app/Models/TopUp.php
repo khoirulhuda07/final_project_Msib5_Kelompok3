@@ -12,7 +12,7 @@ class TopUp extends Model
     protected $table = 'topup';
     public $timestamps = false;
     
-    protected $fillable = ['saldo', 'bonus', 'waktu', 'dompet_id'] ;
+    protected $fillable = ['topup_no','saldo', 'bonus', 'topup_status', 'topup_link', 'waktu', 'dompet_id'] ;
     public function users() {
         return $this->hasOne(Users::class);
     }
