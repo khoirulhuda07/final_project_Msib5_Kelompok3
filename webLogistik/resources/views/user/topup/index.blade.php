@@ -1,13 +1,6 @@
 @extends('user.template.appuser')
 
 @section('content')
-
-<!-- MidTrans -->
-<script type="text/javascript"
-src="https://app.sandbox.midtrans.com/snap/snap.js"
-data-client-key="{{config('midtrans.client_key')}}"></script>
-
-
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -65,62 +58,10 @@ data-client-key="{{config('midtrans.client_key')}}"></script>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              <button type="submit" id="" name="submit" class="btn btn-primary" id="pay-button">Pilih pembayaran</button>
-              <button type="button" id="pay-button"> bayar</button>
+              <button type="submit" id="" name="submit" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </div>
-        {{-- <script type="text/javascript">
-         // For example trigger on button clicked, or any time you need
-          // var payButton = document.getElementById('pay-button');
-           function modal() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-            window.snap.pay('TRANSACTION_TOKEN_HERE', {
-              onSuccess: function(result){
-                /* You may add your own implementation here */
-                alert("payment success!"); console.log(result);
-              },
-              onPending: function(result){
-                /* You may add your own implementation here */
-                alert("wating your payment!"); console.log(result);
-              },
-              onError: function(result){
-                /* You may add your own implementation here */
-                alert("payment failed!"); console.log(result);
-              },
-              onClose: function(){
-                /* You may add your own implementation here */
-                alert('you closed the popup without finishing the payment');
-              }
-            })
-          };
-      </script> --}}
-      <script type="text/javascript">
-        // For example trigger on button clicked, or any time you need
-        var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function () {
-          // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token
-          window.snap.pay('{{$snapToken}}', {
-            onSuccess: function(result){
-              /* You may add your own implementation here */
-              alert("payment success!"); console.log(result);
-            },
-            onPending: function(result){
-              /* You may add your own implementation here */
-              alert("wating your payment!"); console.log(result);
-            },
-            onError: function(result){
-              /* You may add your own implementation here */
-              alert("payment failed!"); console.log(result);
-            },
-            onClose: function(){
-              /* You may add your own implementation here */
-              alert('you closed the popup without finishing the payment');
-            }
-          })
-        });
-      </script>
-    
       </div>
       <!-- end modal -->
     </form>
@@ -164,18 +105,26 @@ data-client-key="{{config('midtrans.client_key')}}"></script>
                     <thead>
                       <tr>
                         <th scope="col">#</th>
+                        <th scope="col">ID Transaksi</th>
                         <th scope="col">Waktu</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Jumlah TopUp</th>
                         <th scope="col">Bonus Poin</th>
+                        <th scope="col">Pembayaran</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($topup as $row)
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>
+                          <td>{{$row->topup_no}}</td>
                           <td>{{$row->waktu}}</td>
+                          <td>{{$row->topup_status}}</td>
                           <td>{{$row->saldo}}</td>
                           <td>{{$row->bonus}}</td>
+                          <td>
+                            <a href="{{$row->topup_link}}" class="btn btn-info btn-sm">Bayar</a>
+                          </td>
                         </tr>
                       @endforeach
                     </tbody>
@@ -200,7 +149,4 @@ data-client-key="{{config('midtrans.client_key')}}"></script>
     document.addEventListener("change", hitungBonus);
   </script>
 
-   <!-- MidTrans -->
-
- 
 @endsection
