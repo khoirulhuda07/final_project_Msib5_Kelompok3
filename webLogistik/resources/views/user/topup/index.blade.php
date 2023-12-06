@@ -98,7 +98,7 @@
                           </form>
                         </div>
                         <div class="col-md-2">
-                          <a href="{{url('my/dompetku/laporanPDF/'.Auth::user()->id)}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
+                          <a href="{{url('my/dompetku/laporanPDF')}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
                         </div>
                       </div>
                     </div>  
@@ -123,7 +123,7 @@
                           <td>{{$row->saldo}}</td>
                           <td>{{$row->bonus}}</td>
                           <td>
-                            <a href="{{$row->topup_link}}" class="btn btn-info btn-sm">Bayar</a>
+                            <a href="{{url('my/dompetku/payment/'.$row->topup_no)}}" class="btn btn-info btn-sm">Bayar</a>
                           </td>
                         </tr>
                       @endforeach
