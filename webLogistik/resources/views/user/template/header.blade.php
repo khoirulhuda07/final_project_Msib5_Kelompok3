@@ -98,6 +98,7 @@ $dompet = dompet::where('id',$id)->get();
               {{Auth::user()->level}}
               @endif
             </span>
+
           </li>
           <li>
             <hr class="dropdown-divider">
@@ -113,7 +114,6 @@ $dompet = dompet::where('id',$id)->get();
             <hr class="dropdown-divider">
           </li>
           <li>
-
             <a class="dropdown-item d-flex align-items-center" href="{{ route('logout') }}" onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
               <i class="bi bi-box-arrow-right"></i>
@@ -153,7 +153,6 @@ $dompet = dompet::where('id',$id)->get();
         <span>Dashboard</span>
       </a>
     </li><!-- End Dashboard Nav -->
-
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{url('my/pengirimanUser')}}">
         <i class="ri-send-plane-line"></i>
@@ -167,7 +166,6 @@ $dompet = dompet::where('id',$id)->get();
         <span>Riwayat Pembayaran</span>
       </a>
     </li><!-- End Error 404 Page Nav -->
-
   </ul>
 
 </aside><!-- End Sidebar-->

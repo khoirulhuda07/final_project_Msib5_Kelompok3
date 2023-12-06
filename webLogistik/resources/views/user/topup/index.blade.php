@@ -58,7 +58,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-              <button type="submit" name="submit" class="btn btn-primary">Top UP</button>
+              <button type="submit" id="" name="submit" class="btn btn-primary">Submit</button>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@
                         <p class="card-text">Poin : {{$dompet->bonus}}</p>
                     </div>
                     <div class="col-md-3 text-center">
-                      <button type="button" class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
+                      <button type="button"  class="btn btn-danger my-5" data-toggle="modal" data-target="#exampleModalCenter">
                         Tambah Saldo <i class="bi bi-plus-lg"></i>
                       </button>
                     </div>
@@ -105,18 +105,26 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
+                        <th scope="col">ID Transaksi</th>
                         <th scope="col">Waktu</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Jumlah TopUp</th>
                         <th scope="col">Bonus Poin</th>
+                        <th scope="col">Pembayaran</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($topup as $row)
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>
+                          <td>{{$row->topup_no}}</td>
                           <td>{{$row->waktu}}</td>
+                          <td>{{$row->topup_status}}</td>
                           <td>{{$row->saldo}}</td>
                           <td>{{$row->bonus}}</td>
+                          <td>
+                            <a href="{{$row->topup_link}}" class="btn btn-info btn-sm">Bayar</a>
+                          </td>
                         </tr>
                       @endforeach
                     </tbody>
@@ -130,6 +138,7 @@
     </section>
   </main>
 
+  <!-- Hitung bonus -->
   <script>
     function hitungBonus() {
       var saldo = document.querySelector("input[name='saldo']:checked").value;
@@ -139,4 +148,5 @@
 
     document.addEventListener("change", hitungBonus);
   </script>
+
 @endsection

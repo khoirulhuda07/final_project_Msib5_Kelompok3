@@ -17,7 +17,7 @@ class PengirimanController extends Controller
     public function index()
     {
         $pengiriman = Pengiriman::all();
-        return view("admin.pengiriman.index", ['pengiriman'=> $pengiriman]);
+        return view("admin.pengiriman.index", ['pengiriman' => $pengiriman]);
     }
 
     public function create()
@@ -32,33 +32,34 @@ class PengirimanController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'kode'=> 'required | max:45 | unique:pengiriman',
-            'tanggal'=> 'required',
-            'lokasi_tujuan'=> 'required | max:45',
-            'status'=> 'required',
-            'paket_id'=> 'required | numeric',
-            'layanan_id'=> 'required | numeric',
-            'penerima_id'=> 'required | numeric',
-            'akun_id'=> 'required | numeric',
-            'kurir_id'=> 'required | numeric',
-        ],
-        [
-            'kode.required' => 'Wajib diisi', 
-            'tanggal.required' => 'Wajib diisi', 
-            'lokasi_tujuan.required' => 'Wajib diisi', 
-            
-            'status.required' => 'Wajib dipilih', 
-            'paket_id.numeric' => 'Wajib dipilih', 
-            'layanan_id.numeric' => 'Wajib dipilih', 
-            'penerima_id.numeric' => 'Wajib dipilih', 
-            'akun_id.numeric' => 'Wajib dipilih', 
+        $request->validate(
+            [
+                'kode' => 'required | max:45 | unique:pengiriman',
+                'tanggal' => 'required',
+                'lokasi_tujuan' => 'required | max:45',
+                'status' => 'required',
+                'paket_id' => 'required | numeric',
+                'layanan_id' => 'required | numeric',
+                'penerima_id' => 'required | numeric',
+                'akun_id' => 'required | numeric',
 
-            'kode.max' => 'Maksimal 45 Karakter',
-            'lokasi_tujuan.max' => 'Maksimal 45 Karakter',
-            
-            'kode.unique' => 'Data Sudah Ada',
-        ]
+            ],
+            [
+                'kode.required' => 'Wajib diisi',
+                'tanggal.required' => 'Wajib diisi',
+                'lokasi_tujuan.required' => 'Wajib diisi',
+
+                'status.required' => 'Wajib dipilih',
+                'paket_id.numeric' => 'Wajib dipilih',
+                'layanan_id.numeric' => 'Wajib dipilih',
+                'penerima_id.numeric' => 'Wajib dipilih',
+                'akun_id.numeric' => 'Wajib dipilih',
+
+                'kode.max' => 'Maksimal 45 Karakter',
+                'lokasi_tujuan.max' => 'Maksimal 45 Karakter',
+
+                'kode.unique' => 'Data Sudah Ada',
+            ]
         );
 
         $pengiriman = new Pengiriman;
@@ -72,13 +73,13 @@ class PengirimanController extends Controller
         $pengiriman->users_id = $request->akun_id;
         $pengiriman->save();
 
-        return redirect('admin/pengiriman')->with('success','Data Berhasil Ditambahkan!!');
+        return redirect('admin/pengiriman')->with('success', 'Data Berhasil Ditambahkan!!');
     }
 
     public function show(string $id)
     {
         $pengiriman = Pengiriman::all()->where('id', $id);
-        return view("admin.pengiriman.detail", ['pengiriman'=> $pengiriman]);
+        return view("admin.pengiriman.detail", ['pengiriman' => $pengiriman]);
     }
 
     public function edit(string $id)
@@ -89,39 +90,40 @@ class PengirimanController extends Controller
         $penerima = Penerima::all();
         $akun = Users::all();
         $status = ['penjemputan', 'pengiriman', 'terkirim'];
-        return view('admin.pengiriman.edit', ['pengiriman'=> $pengiriman], compact('paket', 'layanan', 'penerima', 'akun', 'status'));
+        return view('admin.pengiriman.edit', ['pengiriman' => $pengiriman], compact('paket', 'layanan', 'penerima', 'akun', 'status'));
     }
 
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'kode'=> 'required | max:45',
-            'tanggal'=> 'required',
-            'lokasi_tujuan'=> 'required | max:45',
-            'status'=> 'required',
-            'paket_id'=> 'required | numeric',
-            'layanan_id'=> 'required | numeric',
-            'penerima_id'=> 'required | numeric',
-            'akun_id'=> 'required | numeric',
-        ],
-        [
-            'kode.required' => 'Wajib diisi', 
-            'tanggal.required' => 'Wajib diisi', 
-            'lokasi_tujuan.required' => 'Wajib diisi', 
+        $request->validate(
+            [
+                'kode' => 'required | max:45',
+                'tanggal' => 'required',
+                'lokasi_tujuan' => 'required | max:45',
+                'status' => 'required',
+                'paket_id' => 'required | numeric',
+                'layanan_id' => 'required | numeric',
+                'penerima_id' => 'required | numeric',
+                'akun_id' => 'required | numeric',
+            ],
+            [
+                'kode.required' => 'Wajib diisi',
+                'tanggal.required' => 'Wajib diisi',
+                'lokasi_tujuan.required' => 'Wajib diisi',
 
-            'status.required' => 'Wajib dipilih', 
-            'paket_id.numeric' => 'Wajib dipilih', 
-            'layanan_id.numeric' => 'Wajib dipilih', 
-            'penerima_id.numeric' => 'Wajib dipilih', 
-            'akun_id.numeric' => 'Wajib dipilih', 
-            'kurir_id.numeric' => 'Wajib dipilih', 
+                'status.required' => 'Wajib dipilih',
+                'paket_id.numeric' => 'Wajib dipilih',
+                'layanan_id.numeric' => 'Wajib dipilih',
+                'penerima_id.numeric' => 'Wajib dipilih',
+                'akun_id.numeric' => 'Wajib dipilih',
+                'kurir_id.numeric' => 'Wajib dipilih',
 
-            'kode.max' => 'Maksimal 45 Karakter',
-            'lokasi_tujuan.max' => 'Maksimal 45 Karakter',
-        ]
+                'kode.max' => 'Maksimal 45 Karakter',
+                'lokasi_tujuan.max' => 'Maksimal 45 Karakter',
+            ]
         );
 
-        $pengiriman = Pengiriman::find( $id );
+        $pengiriman = Pengiriman::find($id);
         $pengiriman->kode = $request->kode;
         $pengiriman->tanggal = $request->tanggal;
         $pengiriman->lokasi_tujuan = $request->lokasi_tujuan;
@@ -133,12 +135,12 @@ class PengirimanController extends Controller
         $pengiriman->kurir_id = $request->kurir_id;
         $pengiriman->save();
 
-        return redirect('admin/pengiriman')->with('success','Data Berhasil Diubah!!');
+        return redirect('admin/pengiriman')->with('success', 'Data Berhasil Diubah!!');
     }
 
     public function destroy(string $id)
     {
         Pengiriman::find($id)->delete();
-        return redirect('admin/pengiriman')->with('success','Data Berhasil Dihapus!!');
+        return redirect('admin/pengiriman')->with('success', 'Data Berhasil Dihapus!!');
     }
 }

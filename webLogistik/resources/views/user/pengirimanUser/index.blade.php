@@ -57,6 +57,8 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$p->id}}">belum bayar</button>
                         @endif
                         <div class="modal fade" id="exampleModal{{$p->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <form action="" method="POST">
+                            @csrf
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header badge-info">
@@ -65,9 +67,9 @@
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
+
                                 <div class="modal-body bg-secondary-light">
-                                    <form action="" method="POST">
-                                        @csrf
+                                   
                                         <div class="container-fluid">
                                             <div class="row">
                                                 <div class="col-12">
@@ -120,20 +122,21 @@
                                                    
                                                     {{-- <button name="proses" value="simpan" type="submit" class="btn btn-primary ml-auto" disabled>Submit</button> --}}
                                                    
-                                                    <button name="proses" id="submit{{$p->id}}" value="simpan" type="submit" class="btn btn-primary ml-auto" >Submit</button>
-                                                   </form>
+                                                   
+                                                  
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                 </div>
                                 <div class="modal-footer badge-info">
-                                 
+                                  <button name="proses" id="submit{{$p->id}}" value="simpan" type="submit" class="btn btn-primary ml-auto" >Submit</button>
                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                       @endforeach
                                 </div>
                               </div>
                             </div>
+                          </form>
                           </div>
                           <script>
                             function pilih(id){

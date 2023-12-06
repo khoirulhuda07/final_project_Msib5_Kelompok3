@@ -66,7 +66,6 @@ class PembayaranController extends Controller
 
     public function edit(string $id)
     {
-        // 
         $akun = Users::all();
         $pembayaran = pembayaran::all()->where('id', $id);
         $pengiriman = Pengiriman::all();
@@ -76,7 +75,6 @@ class PembayaranController extends Controller
 
     public function update(Request $request, string $id)
     {
-        //
         $pembayaran = pembayaran::find($id);
         $pembayaran->metode = $request->metode;
         $pembayaran->harga_total = $request->harga_total;
@@ -90,7 +88,6 @@ class PembayaranController extends Controller
 
     public function destroy(string $id)
     {
-        //
         $pembayaran = pembayaran::find($id);
         $pembayaran->delete();
         return redirect('admin/pembayaran')->with('success', 'Data Berhasil Dihapus!!');

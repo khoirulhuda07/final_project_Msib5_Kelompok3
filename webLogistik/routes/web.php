@@ -25,6 +25,7 @@ use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Controllers\User\PengirimanUserController;
 use App\Http\Controllers\User\PembayaranUserController;
 use App\Http\Controllers\User\TopUpController;
+use App\Http\Controllers\User\pageLacakController;
 
 // homepae namaspace
 use App\Http\Controllers\Homepage\HomepageController;
@@ -32,7 +33,7 @@ use App\Http\Controllers\Homepage\LacakController;
 use App\Http\Controllers\Homepage\LoginController;
 
 // kurir namespace
-use App\Http\Controllers\PageKurirController;
+use App\Http\Controllers\kurir\homeKurirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
         Route::get('/home', [HomeUserController::class, 'index']);
         Route::get('/profile', [ProfileUserController::class, 'index']);
+         Route::patch('/profile/{id}', [ProfileUserController::class, 'update']);
         // Pengiriman Controller
         Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
         Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
@@ -98,23 +100,26 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
         // Pembayaran Controller
         Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+        Route::get('/lacak', [pageLacakController::class, 'index1']);
 
         // Resource Controller
         // Route::resource('transaksi', transaksiController::class);
 
         // Dompetku Controller
-        Route::get('/dompetku', [TopUpController::class, 'index']);
+        Route::get('/dompetku', [TopUpController::class, 'index'])->name('my.dompetku');
         Route::post('/dompetku/store', [TopUpController::class, 'store']);
+        // Route::post('/dompetku/callback', [TopUpController::class, 'callback']);
         Route::get('/dompetku/laporanPDF/{id}', [TopUpController::class, 'exportPDF']);
     });
 });
 
 Route::middleware(['auth', 'kurir'])->group(function () {
-    Route::prefix('kurir')->group(function() {
-        
-        Route::get('/home', [PageKurirController::class, 'index']);
-        Route::get('/maps', [PageKurirController::class, 'maps']);
-        Route::get('/profile', [PageKurirController::class, 'profile']);
+    Route::prefix('kurir')->group(function () {
+
+        Route::get('/home', [homeKurirController::class, 'index']);
+        Route::post('/home/store/{id}', [homeKurirController::class, 'store']);
+        Route::get('/maps', [homeKurirController::class, 'maps']);
+        Route::get('/profile', [homeKurirController::class, 'profile']);
     });
 });
 
