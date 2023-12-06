@@ -141,7 +141,7 @@ $dompet = dompet::where('id',$id)->get();
     <li class="nav-item mb-3">
       <a href="{{url('my/dompetku/')}}" class="nav-item nav-link text-white bg-primary" style="hover: none">
         <i class="bi bi-wallet" style="color: #f5f5f5;"></i>@foreach($dompet as $d)
-        {{$d->saldo}} @endforeach
+        Rp. {{number_format($d->saldo, 0, ',', '.')}} @endforeach
       </a>
     </li><!-- End saldo Nav -->
 

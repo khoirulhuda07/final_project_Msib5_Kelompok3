@@ -100,6 +100,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
         // Pembayaran Controller
         Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+        Route::get('/pembayaranUser/laporanPDF', [PembayaranUserController::class, 'exportPDF']);
         Route::get('/lacak', [pageLacakController::class, 'index1']);
 
         // Resource Controller
@@ -108,8 +109,9 @@ Route::middleware(['auth', 'user'])->group(function () {
         // Dompetku Controller
         Route::get('/dompetku', [TopUpController::class, 'index'])->name('my.dompetku');
         Route::post('/dompetku/store', [TopUpController::class, 'store']);
-        // Route::post('/dompetku/callback', [TopUpController::class, 'callback']);
-        Route::get('/dompetku/laporanPDF/{id}', [TopUpController::class, 'exportPDF']);
+        Route::get('/dompetku/payment/{id}', [TopUpController::class, 'payment']);
+        // Route::post('/dompetku/call-back', [TopUpController::class, 'callback']);
+        Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
     });
 });
 
