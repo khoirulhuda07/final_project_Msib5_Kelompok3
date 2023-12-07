@@ -27,19 +27,19 @@ class TopUpController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->all();
         $external_id = Str::random(10);
-        $bayar = $request->saldo;
-        
-        $topup = new TopUp;
-        $topup->topup_no = $external_id;
-        $topup->saldo = $bayar;
-        $topup->bonus = $request->bonus;
-        $topup->dompet_id = $request->dompet_id;
-        $topup->topup_status = 'UnPaid';
-        $topup->waktu = $request->waktu;
-        $topup->save();
-        
-        return back();
+
+        $topup = TopUp::create([
+            'topup_no' => $external_id,
+            'saldo' => $data['saldo'],
+            'bonus' => $data['bonus'],
+            'dompet_id' => $data['dompet_id'],
+            'topup_status' => 'PENDING',
+            'waktu' =>$data['waktu'],
+        ]);
+
+        return redirect()->route('my.dompet.payment', $topup->topup_no);
     }
 
     public function payment($id)
@@ -66,19 +66,20 @@ class TopUpController extends Controller
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
         
+        $topup = $topupID;
+        $topup->topup_token = $snapToken;
+        $topup->save();
+        
         return view("user.topup.payment",  compact('topupID', 'snapToken'));
     }
 
-    public function callback(Request $request) {
-        // $server_key = config('midtrans.server_key');
-        // $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$server_key);
+    public function success($id) {
+        $topupID = TopUp::where('topup_no', $id)->first();
+        $topup = $topupID;
+        $topup->topup_status = 'SUCCESS';
+        $topup->save();
 
-        // if ($hashed == $request->signature_key) {
-        //     if ($request->transaction_status == 'capture') {
-        //         $topup = TopUp::find($request->oder_id);
-        //         $topup->update(['topup_status' => 'Paid']);
-        //     }
-        // }
+        return view('user.topup.success');
     }
 
     public function exportPDF()

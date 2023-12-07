@@ -60,7 +60,6 @@
         <thead>
           <tr>
             <th>No</th>
-            <th>ID Transaksi</th>
             <th>Waktu</th>
             <th>Status</th>
             <th>Jumlah TopUp</th>
@@ -71,7 +70,6 @@
           <@foreach ($laporan as $row)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$row->topup_no}}</td>
                 <td>{{$row->waktu}}</td>
                 <td>{{$row->topup_status}}</td>
                 <td>{{$row->saldo}}</td>
