@@ -1,5 +1,7 @@
 @extends('user.template.appuser')
 
+@section('title', 'Laporan Riwayat Topup Saldo Dompetku')
+
 @section('content')
 <main id="main" class="main">
 
@@ -105,26 +107,28 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">ID Transaksi</th>
                         <th scope="col">Waktu</th>
                         <th scope="col">Status</th>
                         <th scope="col">Jumlah TopUp</th>
                         <th scope="col">Bonus Poin</th>
-                        <th scope="col">Pembayaran</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($topup as $row)
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>
-                          <td>{{$row->topup_no}}</td>
                           <td>{{$row->waktu}}</td>
-                          <td>{{$row->topup_status}}</td>
+                          <td>
+                            @if ($row['topup_status'] == 'PENDING')
+                                <span class="badge bg-warning text-dark">{{ $row['topup_status'] }}</span>
+                            @elseif ($row['topup_status'] == 'SUCCESS')
+                                <span class="badge bg-success">{{ $row['topup_status'] }}</span>
+                            @else
+                                <span class="badge bg-danger">{{ $row['topup_status'] }}</span>
+                            @endif
+                          </td>
                           <td>{{$row->saldo}}</td>
                           <td>{{$row->bonus}}</td>
-                          <td>
-                            <a href="{{url('my/dompetku/payment/'.$row->topup_no)}}" class="btn btn-info btn-sm">Bayar</a>
-                          </td>
                         </tr>
                       @endforeach
                     </tbody>

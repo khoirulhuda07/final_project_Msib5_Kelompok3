@@ -109,8 +109,8 @@ Route::middleware(['auth', 'user'])->group(function () {
         // Dompetku Controller
         Route::get('/dompetku', [TopUpController::class, 'index'])->name('my.dompetku');
         Route::post('/dompetku/store', [TopUpController::class, 'store']);
-        Route::get('/dompetku/payment/{id}', [TopUpController::class, 'payment']);
-        // Route::post('/dompetku/call-back', [TopUpController::class, 'callback']);
+        Route::get('/dompetku/payment/{id}', [TopUpController::class, 'payment'])->name('my.dompet.payment');
+        Route::get('/dompetku/success/{id}', [TopUpController::class, 'success']);
         Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
     });
 });
