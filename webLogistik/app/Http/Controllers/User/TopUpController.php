@@ -47,6 +47,8 @@ class TopUpController extends Controller
         $topupID = TopUp::where('topup_no', $id)->first();
 
         $bayar = $topupID->saldo;
+        $pajak = 2000;
+        $total = $bayar + $pajak;
 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
         \Midtrans\Config::$isProduction = false;
@@ -56,7 +58,7 @@ class TopUpController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
-                'gross_amount' => $bayar,
+                'gross_amount' => $total,
             ),
             'customer_details' => array(
                 'first_name' => auth()->user()->username,
@@ -68,9 +70,10 @@ class TopUpController extends Controller
         
         $topup = $topupID;
         $topup->topup_token = $snapToken;
+        $topup->total = $total;
         $topup->save();
         
-        return view("user.topup.payment",  compact('topupID', 'snapToken'));
+        return view("user.topup.payment",  compact('topupID', 'snapToken', 'bayar', 'pajak', 'total'));
     }
 
     public function success($id) {
@@ -78,6 +81,12 @@ class TopUpController extends Controller
         $topup = $topupID;
         $topup->topup_status = 'SUCCESS';
         $topup->save();
+
+        $dompetID = Dompet::where('id', $topup->dompet_id)->first();
+        $dompet = $dompetID;
+        $dompet->saldo = $dompet->saldo + $topup->saldo;
+        $dompet->bonus = $dompet->bonus + $topup->bonus;
+        $dompet->save();
 
         return view('user.topup.success');
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Des 2023 pada 08.32
+-- Waktu pembuatan: 08 Des 2023 pada 06.42
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `coba`
+-- Database: `latihan`
 --
 
 -- --------------------------------------------------------
@@ -45,22 +45,6 @@ INSERT INTO `dompet` (`id`, `saldo`, `bonus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
---
-
-CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Struktur dari tabel `kurir`
 --
 
@@ -68,17 +52,16 @@ CREATE TABLE `kurir` (
   `id` int(11) NOT NULL,
   `nama_kurir` varchar(45) NOT NULL,
   `nomor_telepon` varchar(45) DEFAULT NULL,
-  `jadwal` varchar(45) DEFAULT NULL
+  `jadwal` varchar(45) DEFAULT NULL,
+  `layanan_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `kurir`
 --
 
-INSERT INTO `kurir` (`id`, `nama_kurir`, `nomor_telepon`, `jadwal`) VALUES
-(1, 'Joni', '081234567890', 'Senin - Jumat, 08.00 - 17.00 WIB'),
-(2, 'Susi', '082145678901', 'Sabtu - Minggu, 09.00 - 18.00 WIB'),
-(3, 'Budi', '083856789012', 'Senin - Minggu, 24 jam');
+INSERT INTO `kurir` (`id`, `nama_kurir`, `nomor_telepon`, `jadwal`, `layanan_id`) VALUES
+(1, 'Achbar', '081234567890', 'Senin - Jumat, 08.00 - 17.00 WIB', 1);
 
 -- --------------------------------------------------------
 
@@ -89,18 +72,15 @@ INSERT INTO `kurir` (`id`, `nama_kurir`, `nomor_telepon`, `jadwal`) VALUES
 CREATE TABLE `layanan` (
   `id` int(11) NOT NULL,
   `nama_layanan` varchar(45) NOT NULL,
-  `biaya` double NOT NULL,
-  `kurir_id` int(11) NOT NULL
+  `biaya` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `layanan`
 --
 
-INSERT INTO `layanan` (`id`, `nama_layanan`, `biaya`, `kurir_id`) VALUES
-(1, 'Reguler', 5000, 1),
-(2, 'Express', 10000, 2),
-(3, 'Same Day', 20000, 3);
+INSERT INTO `layanan` (`id`, `nama_layanan`, `biaya`) VALUES
+(1, 'Reguler', 5000);
 
 -- --------------------------------------------------------
 
@@ -123,36 +103,7 @@ INSERT INTO `paket` (`id`, `berat`, `deskripsi`) VALUES
 (2, 2, 'Buku Pelajaran'),
 (3, 3, 'Elektronik'),
 (4, 4, 'Makanan'),
-(5, 5, 'Pakaian'),
-(6, 6, 'Alat GMY'),
-(7, 7, 'Mainan '),
-(8, 8, 'Tanaman'),
-(9, 9, 'Hewan Peliharaan'),
-(10, 10, 'Body Motor');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `password_resets`
---
-
-CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `password_reset_tokens`
---
-
-CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(5, 5, 'Pakaian');
 
 -- --------------------------------------------------------
 
@@ -178,27 +129,7 @@ INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengirim
 (2, 'dompetku', 10000, 'Pembayaran untuk paket buku pelajaran', 2, 1),
 (3, 'COD', 15000, 'Pembayaran untuk paket barang elektronik', 3, 2),
 (4, 'COD', 20000, 'Pembayaran untuk paket makanan', 4, 2),
-(5, 'COD', 25000, 'Pembayaran untuk paket pakaian', 5, 2),
-(6, 'dompetku', 120000, 'Pembayaran untuk paket dokumen', 6, 1),
-(7, 'dompetku', 70000, 'Pembayaran untuk paket mainan', 7, 1),
-(8, 'dompetku', 80000, 'Pembayaran untuk paket tanaman', 8, 1),
-(9, 'COD', 180000, 'Pembayaran untuk paket hewan peliharaan', 9, 2),
-(10, 'COD', 100000, 'Pembayaran untuk paket body motor', 10, 2);
-
---
--- Trigger `pembayaran`
---
-DELIMITER $$
-CREATE TRIGGER `potong_saldo` AFTER INSERT ON `pembayaran` FOR EACH ROW BEGIN
-    IF NEW.metode IN ('dompetku') 
-    THEN
-        UPDATE dompet
-        SET saldo = saldo - NEW.harga_total
-        WHERE id = NEW.users_id;
-    END IF;
-END
-$$
-DELIMITER ;
+(5, 'COD', 25000, 'Pembayaran untuk paket pakaian', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -248,31 +179,7 @@ INSERT INTO `pengiriman` (`id`, `kode`, `tanggal`, `lokasi_tujuan`, `status`, `p
 (2, '9876543210', '2023-11-13', 'Bandung', 'pengiriman', 2, 1, 2, 1),
 (3, '0987654321', '2023-11-14', 'Semarang', 'pengiriman', 3, 1, 2, 2),
 (4, '1987654320', '2023-11-15', 'Surabaya', 'terkirim', 4, 1, 1, 2),
-(5, '0198765432', '2023-11-16', 'Yogyakarta', 'penjemputan', 5, 1, 3, 2),
-(6, '1098765432', '2023-11-17', 'Medan', 'terkirim', 6, 3, 1, 1),
-(7, '0098765432', '2023-11-18', 'Bali', 'pengiriman', 7, 2, 2, 1),
-(8, '1198765432', '2023-11-19', 'Makassar', 'terkirim', 8, 2, 2, 1),
-(9, '0012345678', '2023-11-20', 'Palembang', 'penjemputan', 9, 3, 3, 2),
-(10, '0283728373', '2023-11-21', 'Padang', 'pengiriman', 10, 2, 3, 2);
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `personal_access_tokens`
---
-
-CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+(5, '0198765432', '2023-11-16', 'Yogyakarta', 'penjemputan', 5, 1, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -282,28 +189,15 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `topup` (
   `id` int(11) NOT NULL,
-  `topup_no` varchar(50) DEFAULT NULL,
-  `saldo` varchar(45) NOT NULL,
-  `bonus` varchar(45) DEFAULT NULL,
-  `topup_status` varchar(50) DEFAULT NULL,
+  `topup_no` varchar(45) DEFAULT NULL,
+  `saldo` double NOT NULL,
+  `bonus` double DEFAULT NULL,
+  `topup_status` varchar(45) DEFAULT NULL,
   `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `topup_token` varchar(80) DEFAULT NULL,
+  `total` double DEFAULT NULL,
   `dompet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Trigger `topup`
---
-DELIMITER $$
-CREATE TRIGGER `update_saldo_dompet` AFTER INSERT ON `topup` FOR EACH ROW BEGIN 
-
-INSERT INTO dompet 
-SET id = NEW.dompet_id, saldo = NEW.saldo, bonus = NEW.bonus
-ON DUPLICATE KEY UPDATE saldo = saldo + NEW.saldo, bonus = bonus + NEW.bonus;
-
-END
-$$
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -328,34 +222,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `foto`, `dompet_id`) VALUES
-(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', 'huda', 'admin', 'Indonesia', NULL, 1),
-(2, 'Achbar', 'Achbar', 'achbar@gmail.com', 'achbar', 'user', 'Indonesia', NULL, 2),
-(3, NULL, 'Admin', 'admin@gmail.com', '$2y$12$7elUDjTkTaYXSlrpuTBHTuAstK8OpR4/DHcM9Ic8eNTpiy3NaCiPa', 'user', NULL, NULL, 3);
-
---
--- Trigger `users`
---
-DELIMITER $$
-CREATE TRIGGER `create_item_kurir` AFTER INSERT ON `users` FOR EACH ROW BEGIN
-	IF NEW.level IN ('kurir')
-    THEN
-    	INSERT INTO kurir (nama_kurir) VALUES (NEW.fullname);
-    END IF;
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `tambah_saldo_user` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
-	IF NEW.id IS NOT NULL THEN
-        INSERT INTO dompet (saldo, bonus) VALUES ('10000', '1');
-
-        SET @dompet_id = LAST_INSERT_ID();
-
-        SET NEW.dompet_id = @dompet_id;
-	END IF;
-END
-$$
-DELIMITER ;
+(1, 'Khoirul Huda', 'huda', 'huda@gmail.com', '$2y$12$bedxw3sxUuaNxGplxaUHD.dq8FRRfof.Ux35lYuJ3WBc/0Mpmp.ym', 'user', 'Bandung', NULL, 1),
+(2, 'Achbar', 'Achbar', 'achbar@gmail.com', '$2y$12$bedxw3sxUuaNxGplxaUHD.dq8FRRfof.Ux35lYuJ3WBc/0Mpmp.ym', 'kurir', 'Semarang', NULL, 2),
+(3, 'Michail', 'Michail', 'michail@gmail.com', '$2y$12$bedxw3sxUuaNxGplxaUHD.dq8FRRfof.Ux35lYuJ3WBc/0Mpmp.ym', 'admin', 'Jakarta', NULL, 3);
 
 --
 -- Indexes for dumped tables
@@ -371,15 +240,15 @@ ALTER TABLE `dompet`
 -- Indeks untuk tabel `kurir`
 --
 ALTER TABLE `kurir`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_kurir_layanan1_idx` (`layanan_id`);
 
 --
 -- Indeks untuk tabel `layanan`
 --
 ALTER TABLE `layanan`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nama_layanan_UNIQUE` (`nama_layanan`),
-  ADD KEY `fk_layanan_kurir1_idx` (`kurir_id`);
+  ADD UNIQUE KEY `nama_layanan_UNIQUE` (`nama_layanan`);
 
 --
 -- Indeks untuk tabel `paket`
@@ -441,25 +310,25 @@ ALTER TABLE `dompet`
 -- AUTO_INCREMENT untuk tabel `kurir`
 --
 ALTER TABLE `kurir`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `paket`
 --
 ALTER TABLE `paket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `penerima`
@@ -471,7 +340,7 @@ ALTER TABLE `penerima`
 -- AUTO_INCREMENT untuk tabel `pengiriman`
 --
 ALTER TABLE `pengiriman`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `topup`
@@ -490,10 +359,10 @@ ALTER TABLE `users`
 --
 
 --
--- Ketidakleluasaan untuk tabel `layanan`
+-- Ketidakleluasaan untuk tabel `kurir`
 --
-ALTER TABLE `layanan`
-  ADD CONSTRAINT `fk_layanan_kurir1` FOREIGN KEY (`kurir_id`) REFERENCES `kurir` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `kurir`
+  ADD CONSTRAINT `fk_kurir_layanan1` FOREIGN KEY (`layanan_id`) REFERENCES `layanan` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ketidakleluasaan untuk tabel `pembayaran`

@@ -5,15 +5,16 @@ use Illuminate\Support\Facades\Route;
 // Admin Namespace
 use App\Http\Controllers\Admin\DashboardController;
 
+
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
-use App\Http\Controllers\Admin\ImportKurirController;
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\PaketController;
 use App\Http\Controllers\Admin\PembayaranController;
 use App\Http\Controllers\Admin\PenerimaController;
 use App\Http\Controllers\Admin\PengirimanController;
 
+use App\Http\Controllers\Admin\ImportLayananController;
 use App\Http\Controllers\Admin\KurirController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\ProfileAdminController;
@@ -82,7 +83,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('/laporan/laporanExcel', [LaporanController::class, 'exportPengiriman']);
 
         // import excel
-        Route::post('/kurir/importKurir', [ImportKurirController::class, 'importKurir']);
+        Route::post('layanan/importLayanan', [ImportLayananController::class, 'importLayanan']);
     });
 });
 

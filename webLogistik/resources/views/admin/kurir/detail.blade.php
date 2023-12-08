@@ -52,6 +52,18 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-5 m-auto">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text " id="inputGroup-sizing-default">Layanan Pengiriman</span>
+                    </div>
+                    @foreach ($kurir as $k)
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{$k->layanan->nama_layanan}}">
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 @endsection

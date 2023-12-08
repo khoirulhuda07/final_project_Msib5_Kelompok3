@@ -17,6 +17,6 @@ class Layanan extends Model
         return $this->hasMany(Pengiriman::class, 'layanan_id');
     }
     public function kurir() {
-        return $this->belongsTo(Kurir::class);
+        return $this->hasMany(Kurir::class, 'layanan_id');
     }
 }

@@ -31,22 +31,6 @@
                                     </div>
                                 @enderror
                               </div>
-                              <!-- input ke lima -->
-                              <div class="form-floating mb-3">
-                                  <select class="form-select @error('kurir_id') is-invalid @enderror" name="kurir_id"
-                                      id="nama_kurir" aria-label="Floating label select example">
-                                      <option selected>--- nama kurir ---</option>
-                                      @foreach ($kurir as $items)
-                                          @php $sel = ($items->id == $lyn->kurir_id) ? 'selected' : ''; @endphp
-                                          <option value="{{ $items->id }}" {{ $sel }}>{{ $items->nama_kurir }}
-                                          </option>
-                                      @endforeach
-                                  </select>
-                                  @error('kurir_id')
-                                      <div class="invalid-feedback">{{ $message }}</div>
-                                  @enderror
-                                  <label for="nama_kurir">nama kurir</label>
-                              </div>
                               <br>
                               <button name="proses" value="save" type="submit" class="btn btn-warning">Update</button>
                         </div>

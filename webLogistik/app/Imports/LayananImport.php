@@ -2,23 +2,20 @@
 
 namespace App\Imports;
 
-use App\Models\Kurir;
+use App\Models\Layanan;
 use illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class KurirImport implements ToCollection, WithHeadingRow
+class LayananImport implements ToCollection, WithHeadingRow
 {
-    /**
-    */
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
 
-            Kurir::create([
-                'nama_kurir' => $row['nama'],
-                'nomor_telepon'=> $row['nomor'],
-                'jadwal'=> $row['jadwal'],
+            Layanan::create([
+                'nama_layanan' => $row['nama'],
+                'biaya'=> $row['biaya']
             ]);
 
         }
