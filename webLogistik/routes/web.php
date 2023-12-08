@@ -26,6 +26,7 @@ use App\Http\Controllers\User\PengirimanUserController;
 use App\Http\Controllers\User\PembayaranUserController;
 use App\Http\Controllers\User\TopUpController;
 use App\Http\Controllers\User\pageLacakController;
+use App\Http\Controllers\User\cekOngkosController;
 
 // homepae namaspace
 use App\Http\Controllers\Homepage\HomepageController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\Homepage\LoginController;
 
 // kurir namespace
 use App\Http\Controllers\kurir\homeKurirController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +94,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
         Route::get('/home', [HomeUserController::class, 'index']);
         Route::get('/profile', [ProfileUserController::class, 'index']);
-         Route::patch('/profile/{id}', [ProfileUserController::class, 'update']);
+        Route::patch('/profile/{id}', [ProfileUserController::class, 'update']);
         // Pengiriman Controller
         Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
         Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
@@ -102,6 +104,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
         Route::get('/pembayaranUser/laporanPDF', [PembayaranUserController::class, 'exportPDF']);
         Route::get('/lacak', [pageLacakController::class, 'index1']);
+        Route::get('/cek', [cekOngkosController::class, 'index']);
 
         // Resource Controller
         // Route::resource('transaksi', transaksiController::class);

@@ -18,7 +18,7 @@
   <script src="{{asset('user/vendor/simple-datatables/simple-datatables.js')}}"></script>
   <script src="{{asset('user/vendor/tinymce/tinymce.min.js')}}"></script>
   <script src="{{asset('user/vendor/php-email-form/validate.js')}}"></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <!-- Template Main JS File -->
