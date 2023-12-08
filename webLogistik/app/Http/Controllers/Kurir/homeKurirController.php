@@ -17,36 +17,30 @@ class homeKurirController extends Controller
         $user = Users::findOrFail(Auth::id());
         $pengiriman = Pengiriman::get();
         $TLpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
-            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->join('kurir', 'kurir.layanan_id', '=', 'layanan.id')
             ->where('kurir.nama_kurir', $user->fullname)
             ->count();
         $penerima = Pengiriman::join('penerima', 'penerima.id', '=', 'pengiriman.penerima_id')
             ->join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
-            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->join('kurir', 'kurir.layanan_id', '=', 'layanan.id')
             ->select('pengiriman.lokasi_tujuan AS tujuan', 'penerima.nama AS nama', 'penerima.nomor_telepon AS nomor', 'pengiriman.status AS status', 'pengiriman.id AS id')
             ->where('kurir.nama_kurir', $user->fullname)
             ->get();
         $PBpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
-            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->join('kurir', 'kurir.layanan_id', '=', 'layanan.id')
             ->where('kurir.nama_kurir', $user->fullname)
             ->where('status', 'penjemputan')
             ->count();
         $SLpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
-            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->join('kurir', 'kurir.layanan_id', '=', 'layanan.id')
             ->where('kurir.nama_kurir', $user->fullname)
             ->where('status', 'terkirim')
             ->count();
         $BLpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
-            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->join('kurir', 'kurir.layanan_id', '=', 'layanan.id')
             ->where('kurir.nama_kurir', $user->fullname)
             ->where('status', 'pengiriman')
             ->count();
-
-        // if ($penerima->status == 'pengiriman') {
-        //     $status = ['pengiriman', 'terkirim'];
-        // } else {
-        //     $status = ['penjemputan', 'pengiriman'];
-        // }
             
         return view("kurir.home",  compact('TLpengiriman', 'penerima', 'PBpengiriman', 'BLpengiriman', 'SLpengiriman'));
     }

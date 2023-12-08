@@ -21,6 +21,7 @@
                                 <th class="text-bold" scope="col">Nama</th>
                                 <th class="text-bold" scope="col">Nomor HP</th>
                                 <th class="text-bold" scope="col">Jadwal</th>
+                                <th class="text-bold" scope="col">Layanan Pengiriman</th>
                                 <th class="text-bold" scope="col">Aksi</th>
                                 
                             </tr>
@@ -32,6 +33,7 @@
                                     <td>{{$k->nama_kurir}}</td>
                                     <td>{{$k->nomor_telepon}}</td>
                                     <td>{{$k->jadwal}}</td>
+                                    <td>{{$k->layanan->nama_layanan}}</td>
                                     <td>
                                 
                                     <a href="{{route('kurir.show',$k->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
