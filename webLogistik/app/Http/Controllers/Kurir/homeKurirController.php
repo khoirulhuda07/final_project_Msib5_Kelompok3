@@ -21,12 +21,43 @@ class homeKurirController extends Controller
             ->where('kurir.nama_kurir', $user->fullname)
             ->count();
         $penerima = Pengiriman::join('penerima', 'penerima.id', '=', 'pengiriman.penerima_id')
-            ->select('pengiriman.lokasi_tujuan AS tujuan', 'penerima.nama AS nama', 'penerima.nomor_telepon AS nomor')
+            ->join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
+            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->select('pengiriman.lokasi_tujuan AS tujuan', 'penerima.nama AS nama', 'penerima.nomor_telepon AS nomor', 'pengiriman.status AS status', 'pengiriman.id AS id')
+            ->where('kurir.nama_kurir', $user->fullname)
             ->get();
-        $BLpengiriman = Pengiriman::where('status', 'terkirim')->count();
-        $SLpengiriman = Pengiriman::where('status', 'pengiriman')->count();
+        $PBpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
+            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->where('kurir.nama_kurir', $user->fullname)
+            ->where('status', 'penjemputan')
+            ->count();
+        $SLpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
+            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->where('kurir.nama_kurir', $user->fullname)
+            ->where('status', 'terkirim')
+            ->count();
+        $BLpengiriman = Pengiriman::join('layanan', 'layanan.id', '=', 'pengiriman.layanan_id')
+            ->join('kurir', 'kurir.id', '=', 'layanan.kurir_id')
+            ->where('kurir.nama_kurir', $user->fullname)
+            ->where('status', 'pengiriman')
+            ->count();
 
-        return view("kurir.home",  compact('TLpengiriman', 'penerima', 'BLpengiriman', 'SLpengiriman'));
+        // if ($penerima->status == 'pengiriman') {
+        //     $status = ['pengiriman', 'terkirim'];
+        // } else {
+        //     $status = ['penjemputan', 'pengiriman'];
+        // }
+            
+        return view("kurir.home",  compact('TLpengiriman', 'penerima', 'PBpengiriman', 'BLpengiriman', 'SLpengiriman'));
+    }
+
+    public function store(Request $request, string $id)
+    {
+        $pengiriman = Pengiriman::find($id);
+        $pengiriman->status = $request->status;
+        $pengiriman->save();
+
+        return back();
     }
 
     public function maps()
@@ -37,7 +68,7 @@ class homeKurirController extends Controller
     public function profile()
     {
         $user = Users::findOrFail(Auth::id());
-        $kurir = Kurir::where('nama_kurir', 'joni')->first();
+        $kurir = Kurir::where('nama_kurir', $user->fullname)->first();
 
         return view('Kurir.profile', compact('kurir'));
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Des 2023 pada 08.32
+-- Waktu pembuatan: 04 Des 2023 pada 03.11
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -282,12 +282,9 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `topup` (
   `id` int(11) NOT NULL,
-  `topup_no` varchar(50) DEFAULT NULL,
   `saldo` varchar(45) NOT NULL,
   `bonus` varchar(45) DEFAULT NULL,
-  `topup_status` varchar(50) DEFAULT NULL,
   `waktu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `topup_token` varchar(80) DEFAULT NULL,
   `dompet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

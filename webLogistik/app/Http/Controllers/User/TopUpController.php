@@ -27,53 +27,66 @@ class TopUpController extends Controller
 
     public function store(Request $request)
     {
-        $secret_key = 'Basic '.config('xendit.key_auth');
+        $data = $request->all();
         $external_id = Str::random(10);
 
-        $bayar = $request->saldo;
-
-        $data_request = Http::withHeaders([
-            'Authorization' => $secret_key
-        ])->post('https://api.xendit.co/v2/invoices', [
-            'external_id' => $external_id,
-            'amount' => $bayar
+        $topup = TopUp::create([
+            'topup_no' => $external_id,
+            'saldo' => $data['saldo'],
+            'bonus' => $data['bonus'],
+            'dompet_id' => $data['dompet_id'],
+            'topup_status' => 'PENDING',
+            'waktu' =>$data['waktu'],
         ]);
+
+        return redirect()->route('my.dompet.payment', $topup->topup_no);
+    }
+
+    public function payment($id)
+    {
+        $topupID = TopUp::where('topup_no', $id)->first();
+
+        $bayar = $topupID->saldo;
+
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$isProduction = false;
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $bayar,
+            ),
+            'customer_details' => array(
+                'first_name' => auth()->user()->username,
+                'email' => auth()->user()->email,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
         
-        $response = $data_request->object();
-        
-        $topup = new TopUp;
-        $topup->topup_no = $external_id;
-        $topup->saldo = $bayar;
-        $topup->bonus = $request->bonus;
-        $topup->dompet_id = $request->dompet_id;
-        $topup->topup_status = $response->status;
-        $topup->topup_link = $response->invoice_url;
-        $topup->waktu = $request->waktu;
+        $topup = $topupID;
+        $topup->topup_token = $snapToken;
         $topup->save();
         
-        return redirect()->route('my.dompetku');
+        return view("user.topup.payment",  compact('topupID', 'snapToken'));
     }
 
-    public function callback()
-    {
-        // $data = request()->all();
+    public function success($id) {
+        $topupID = TopUp::where('topup_no', $id)->first();
+        $topup = $topupID;
+        $topup->topup_status = 'SUCCESS';
+        $topup->save();
 
-        // dd($data);
-
-        // $status = $data['status'];
-        // $external_id = $data['external_id'];
-
-        // TopUp::where('topup_no', $external_id)->update([
-        //     'payment_status' => $status
-        // ]);
-
-        // return response()->json($data);
+        return view('user.topup.success');
     }
 
-    public function exportPDF(string $id)
+    public function exportPDF()
     {
         $saveName = 'Laporan TopUp ' . date('y-m-d') . '.pdf';
-        $laporan = TopUp::get()->where('dompet_id', $id);
+        $user_id = auth()->id();
+        $laporan = TopUp::get()->where('dompet_id', $user_id);
         $pdf = PDF::loadview('user.topup.laporanPDF', compact('laporan'));
 
         return $pdf->download($saveName);

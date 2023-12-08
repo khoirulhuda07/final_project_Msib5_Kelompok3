@@ -21,6 +21,7 @@
           <div class="card">
             <h5 class="card-title ml-4 border-bottom">Riwayat Pembayaran Anda</h5>
             <div class="card-body">
+              <a href="{{url('my/pembayaranUser/laporanPDF')}}" class="btn btn-outline-secondary">Download <i class="ri-download-line"></i></a>
               <table class=" table datatable">
                 <thead>
                   <tr>

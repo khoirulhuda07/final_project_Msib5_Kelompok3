@@ -100,6 +100,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
         // Pembayaran Controller
         Route::get('/pembayaranUser', [PembayaranUserController::class, 'index']);
+        Route::get('/pembayaranUser/laporanPDF', [PembayaranUserController::class, 'exportPDF']);
         Route::get('/lacak', [pageLacakController::class, 'index1']);
 
         // Resource Controller
@@ -108,8 +109,9 @@ Route::middleware(['auth', 'user'])->group(function () {
         // Dompetku Controller
         Route::get('/dompetku', [TopUpController::class, 'index'])->name('my.dompetku');
         Route::post('/dompetku/store', [TopUpController::class, 'store']);
-        // Route::post('/dompetku/callback', [TopUpController::class, 'callback']);
-        Route::get('/dompetku/laporanPDF/{id}', [TopUpController::class, 'exportPDF']);
+        Route::get('/dompetku/payment/{id}', [TopUpController::class, 'payment'])->name('my.dompet.payment');
+        Route::get('/dompetku/success/{id}', [TopUpController::class, 'success']);
+        Route::get('/dompetku/laporanPDF', [TopUpController::class, 'exportPDF']);
     });
 });
 
@@ -117,6 +119,7 @@ Route::middleware(['auth', 'kurir'])->group(function () {
     Route::prefix('kurir')->group(function () {
 
         Route::get('/home', [homeKurirController::class, 'index']);
+        Route::post('/home/store/{id}', [homeKurirController::class, 'store']);
         Route::get('/maps', [homeKurirController::class, 'maps']);
         Route::get('/profile', [homeKurirController::class, 'profile']);
     });

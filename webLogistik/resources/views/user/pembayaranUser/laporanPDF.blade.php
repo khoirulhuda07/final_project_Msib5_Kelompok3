@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan TopUp Saldo Dompet</title>
+    <title>Laporan Pembayaran</title>
     <style>
       * {
           /* Change your font family */
@@ -55,25 +55,25 @@
     </style>
 </head>
 <body>
-  <h1>TopUp Saldo Dompet</h1>
+  <h1>Riwayat Pembayaran</h1>
     <table class="content-table">
         <thead>
           <tr>
-            <th>No</th>
-            <th>Waktu</th>
-            <th>Status</th>
-            <th>Jumlah TopUp</th>
-            <th>Bonus Poin</th>
-          </tr>
+            <th>NO</th>
+            <th>metode pembayaran</th>
+            <th>harga bayar</th>
+            <th>keterangan</th>
+            <th>NO resi</th>
+        </tr>
         </thead>
         <tbody>
           <@foreach ($laporan as $row)
             <tr>
                 <td>{{$loop->iteration}}</td>
-                <td>{{$row->waktu}}</td>
-                <td>{{$row->topup_status}}</td>
-                <td>{{$row->saldo}}</td>
-                <td>{{$row->bonus}}</td>
+                <td>{{$row->metode}}</td>
+                <td>{{$row->harga_total}}</td>
+                <td>{{$row->keterangan}}</td>
+                <td>{{$row->pengiriman->kode}}</td>
             </tr>
           @endforeach
         </tbody>
