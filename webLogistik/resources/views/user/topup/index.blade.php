@@ -107,18 +107,20 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Waktu</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Jumlah TopUp</th>
-                        <th scope="col">Bonus Poin</th>
+                        <th scope="col" class="text-center">Waktu</th>
+                        <th scope="col" class="text-center">Status</th>
+                        <th scope="col" class="text-center">Jumlah TopUp</th>
+                        <th scope="col" class="text-center">Bonus Poin</th>
+                        <th scope="col" class="text-center">Total</th>
+                        <th scope="col" class="text-center">Pembayaran</th>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach ($topup as $row)
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>
-                          <td>{{$row->waktu}}</td>
-                          <td>
+                          <td class="text-center">{{$row->waktu}}</td>
+                          <td class="text-center">
                             @if ($row['topup_status'] == 'PENDING')
                                 <span class="badge bg-warning text-dark">{{ $row['topup_status'] }}</span>
                             @elseif ($row['topup_status'] == 'SUCCESS')
@@ -127,8 +129,16 @@
                                 <span class="badge bg-danger">{{ $row['topup_status'] }}</span>
                             @endif
                           </td>
-                          <td>{{$row->saldo}}</td>
-                          <td>{{$row->bonus}}</td>
+                          <td class="text-center">{{$row->saldo}}</td>
+                          <td class="text-center">{{$row->bonus}}</td>
+                          <td class="text-center">{{$row->total}}</td>
+                          <td class="text-center">
+                            @if ($row['topup_status'] == 'PENDING')
+                              <a href="{{url('my/dompetku/payment', $row->topup_no)}}" class="btn btn-info btn-sm">Bayar</a>
+                            @else
+                              <a href="#" class="btn btn-info btn-sm" hidden>Bayar</a>
+                            @endif
+                          </td>
                         </tr>
                       @endforeach
                     </tbody>

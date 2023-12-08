@@ -12,8 +12,8 @@ class Kurir extends Model
     protected $table = 'kurir';
     public $timestamps = false;
     
-    protected $fillable = ['nama_kurir', 'nomor_telepon', 'jadwal'] ;
+    protected $fillable = ['nama_kurir', 'nomor_telepon', 'jadwal', 'layanan_id'] ;
     public function layanan() {
-        return $this->hasMany(Layanan::class, 'kurir_id');
+        return $this->belongsTo(Layanan::class);
     }
 }

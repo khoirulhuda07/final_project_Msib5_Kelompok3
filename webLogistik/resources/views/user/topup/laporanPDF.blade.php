@@ -64,6 +64,7 @@
             <th>Status</th>
             <th>Jumlah TopUp</th>
             <th>Bonus Poin</th>
+            <th>Total</th>
           </tr>
         </thead>
         <tbody>
@@ -74,6 +75,7 @@
                 <td>{{$row->topup_status}}</td>
                 <td>{{$row->saldo}}</td>
                 <td>{{$row->bonus}}</td>
+                <td>{{$row->total}}</td>
             </tr>
           @endforeach
         </tbody>

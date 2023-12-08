@@ -28,6 +28,22 @@
                   <input type="text" name="jadwal" class="form-control" id="floatingKategori" placeholder="Masukkan Jadwal" value="{{$k->jadwal}}">
                   <label for="floatingKategori">Jadwal</label>
                 </div>
+                <!-- input keempat -->
+                <div class="form-floating mb-3">
+                    <select class="form-select @error('layanan_id') is-invalid @enderror" name="layanan_id"
+                        id="nama_layanan" aria-label="Floating label select example">
+                        <option selected>--- nama kurir ---</option>
+                        @foreach ($layanan as $items)
+                            @php $sel = ($items->id == $k->layanan_id) ? 'selected' : ''; @endphp
+                            <option value="{{ $items->id }}" {{ $sel }}>{{ $items->nama_layanan }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('layanan_id')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                    <label for="nama_layanan">nama kurir</label>
+                </div>
                 <br>
                     <button name="proses" value="save" type="submit" class="btn btn-primary">Submit</button>
               </div>

@@ -6,18 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Kurir;
+use App\Models\Layanan;
 
 class KurirController extends Controller
 {
     public function index()
     {
         $kurir = Kurir::all();
-        return view("admin.kurir.index", compact("kurir"));
+        return view("admin.kurir.index", ['kurir' => $kurir]);
     }
 
     public function create()
     {
-        return view('admin.kurir.create');
+        $layanan = Layanan::get();
+        return view('admin.kurir.create', compact('layanan'));
     }
 
     public function store(Request $request)
@@ -27,11 +29,13 @@ class KurirController extends Controller
                 'nama' => 'required |  max:45',
                 'no_tlp' => 'required | numeric',
                 'jadwal' => 'required | max:45',
+                'layanan_id' => 'required|numeric',
             ],
             [
                 'nama.required' => 'Wajib diisi',
                 'no_tlp.required' => 'Wajib diisi',
                 'jadwal.required' => 'Wajib diisi',
+                'layanan_id.numeric' => 'Wajib Dipilih',
 
                 'no_tlp.numeric' => 'Harus Angka',
                 'nama.unique' => 'Nama Sudah Terdaftar',
@@ -44,6 +48,7 @@ class KurirController extends Controller
         $kurir->nama_kurir = $request->nama;
         $kurir->nomor_telepon =  $request->no_tlp;
         $kurir->jadwal = $request->jadwal;
+        $kurir->layanan_id = $request->layanan_id;
         $kurir->save();
         return redirect('admin/kurir')->with('success', 'Data Berhasil Ditambahkan!!');
     }
@@ -52,14 +57,15 @@ class KurirController extends Controller
     {
         $kurir = kurir::all()
             ->where('id', $id);
-        return view("admin.kurir.detail", compact("kurir"));
+        return view("admin.kurir.detail", ['kurir' => $kurir]);
     }
 
     public function edit(string $id)
     {
         $kurir = kurir::all()
             ->where('id', $id);
-        return view("admin.kurir.edit", compact("kurir"));
+        $layanan = Layanan::get();
+        return view("admin.kurir.edit", compact("kurir", "layanan"));
     }
 
     public function update(Request $request, string $id)
@@ -69,11 +75,13 @@ class KurirController extends Controller
                 'nama' => 'required | max:45',
                 'no_tlp' => 'required | numeric',
                 'jadwal' => 'required | max:45',
+                'kurir_id' => 'required|numeric',
             ],
             [
                 'nama.required' => 'Wajib diisi',
                 'no_tlp.required' => 'Wajib diisi',
                 'jadwal.required' => 'Wajib diisi',
+                'kurir_id.numeric' => 'Wajib Dipilih',
 
                 'no_tlp.numeric' => 'Harus Angka',
                 'nama.max' => 'Maksimal 45 Karakter',
@@ -85,6 +93,7 @@ class KurirController extends Controller
         $kurir->nama_kurir = $request->nama;
         $kurir->nomor_telepon =  $request->no_tlp;
         $kurir->jadwal = $request->jadwal;
+        $kurir->layanan_id = $request->layanan_id;
         $kurir->save();
         return redirect('admin/kurir')->with('success', 'Data Berhasil Diubah!!');
     }

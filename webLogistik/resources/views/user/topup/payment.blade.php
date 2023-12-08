@@ -19,15 +19,11 @@
           <h2>Payment</h2>
           <p>TrackMyShipment</p>
         </div>
-        @php
-            $pajak = 2000;
-            $total = $topupID->saldo + $pajak;
-        @endphp
         <form>
           <div class="products">
             <h3 class="title">Checkout</h3>
             <div class="item">
-              <span class="price">Rp. {{number_format($topupID->saldo, 0, ',', '.')}}</span>
+              <span class="price">Rp. {{number_format($bayar, 0, ',', '.')}}</span>
               <p class="item-name">Saldo</p>
             </div>
             <div class="item">

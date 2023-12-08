@@ -69,7 +69,7 @@
 	            </a>
 	        </li>
 	        <li class="nav-item dropup">
-	            <a href="{{url('kurir/profile')}}" class="nav-link text-center" role="button" id="dropdownMenuProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+	            <a href="{{url('kurir/profile')}}" class="nav-link text-center">
 	                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor"
 	                    xmlns="http://www.w3.org/2000/svg">
 	                    <path fill-rule="evenodd"
