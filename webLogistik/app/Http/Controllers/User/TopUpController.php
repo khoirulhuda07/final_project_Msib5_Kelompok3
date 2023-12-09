@@ -50,28 +50,33 @@ class TopUpController extends Controller
         $pajak = 2000;
         $total = $bayar + $pajak;
 
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        \Midtrans\Config::$isProduction = false;
-        \Midtrans\Config::$isSanitized = true;
-        \Midtrans\Config::$is3ds = true;
-
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => $total,
-            ),
-            'customer_details' => array(
-                'first_name' => auth()->user()->username,
-                'email' => auth()->user()->email,
-            ),
-        );
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-        
         $topup = $topupID;
-        $topup->topup_token = $snapToken;
-        $topup->total = $total;
-        $topup->save();
+
+        if ($topup->topup_token == null) {
+            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            \Midtrans\Config::$isProduction = false;
+            \Midtrans\Config::$isSanitized = true;
+            \Midtrans\Config::$is3ds = true;
+    
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => rand(),
+                    'gross_amount' => $total,
+                ),
+                'customer_details' => array(
+                    'first_name' => auth()->user()->username,
+                    'email' => auth()->user()->email,
+                ),
+            );
+    
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            
+            $topup->topup_token = $snapToken;
+            $topup->total = $total;
+            $topup->save();
+        } else {
+            $snapToken = $topup->topup_token;
+        }
         
         return view("user.topup.payment",  compact('topupID', 'snapToken', 'bayar', 'pajak', 'total'));
     }
