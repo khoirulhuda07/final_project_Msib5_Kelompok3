@@ -34,10 +34,10 @@
         </div>
         <div class="col-sm-6 col-xl-3">
             <div class="bg-light rounded d-flex align-items-center p-4">
-                <i class="fa-solid fa-money-check-dollar fa-2xl" style="color: #387fc2;"></i>
+                <i class="fa-solid fa-cube fa-2xl" style="color: #387fc2;"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Dompet</p>
-                    <h5 class="mb-0">Rp.{{$saldo}}</h5>
+                    <p class="mb-2">Paket</p>
+                    <h5 class="mb-0">{{$saldo}}</h5>
                 </div>
             </div>
         </div>
@@ -236,7 +236,7 @@
             <div class="col-sm-12 col-md-6 col-xl-4">
                 <div class="h-100 bg-light rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Data paket</h6>
+                        <h6 class="mb-0">Data Kurir</h6>
                         <a href="{{route('kurir.index')}}">Show All</a>
                     </div>
                     <div class="table-responsive">
