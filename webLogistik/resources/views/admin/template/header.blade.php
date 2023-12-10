@@ -80,7 +80,7 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="{{url('admin/dashboard')}}" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="{{route('pengiriman.create')}}" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Form</a>
+                    <a href="{{route('pengiriman.index')}}" class="nav-item nav-link"><i class="fa-solid fa-truck-ramp-box me-2"></i>Pengiriman</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-table me-2"></i>Data</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -93,7 +93,6 @@
                             <a href="{{route('dompet.index')}}" class="dropdown-item">Dompet</a>
                         </div>
                     </div>
-                    <a href="{{route('pengiriman.index')}}" class="nav-item nav-link"><i class="fa-solid fa-truck-ramp-box me-2"></i>Pengiriman</a>
                     <a href="{{url('admin/laporan')}}" class="nav-item nav-link"><i class="fa-solid fa-book-open-reader me-2"></i>Laporan</a>
                 </div>
             </nav>

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Pengiriman;
 use App\Models\Layanan;
 use App\Models\Kurir;
+use App\Models\Paket;
 use App\Models\Pembayaran;
 
 class DashboardController extends Controller
@@ -19,7 +20,7 @@ class DashboardController extends Controller
         $layanan = Layanan::count();
         $kurir = Kurir::count();
         $pembayaran = Pembayaran::count();
-        $saldo = DB::table('dompet')->sum('saldo');
+        $saldo = Paket::count();
 
         $tbpengiriman = Pengiriman::join("paket", "pengiriman.paket_id", "=", "paket.id")
         ->select('pengiriman.*', 'paket.berat AS paket_berat', 'paket.deskripsi AS paket_deskripsi')
