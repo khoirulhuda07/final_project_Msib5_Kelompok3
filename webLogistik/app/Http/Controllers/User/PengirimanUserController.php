@@ -24,7 +24,7 @@ class PengirimanUserController extends Controller
 
         $user_id = Auth()->id();
         $pengiriman = pengiriman::where('users_id', $user_id)->get();
-        $akun = users::all();
+        $akun = users::where('user_id');
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
@@ -100,7 +100,7 @@ class PengirimanUserController extends Controller
     {
         $request->validate(
             [
-                'berat' => 'required',
+                'berat' => 'required|numeric',
                 'deskripsi' => 'required',
                 'penerima' => 'required',
                 'no_tlp' => 'required',
@@ -111,6 +111,7 @@ class PengirimanUserController extends Controller
             ],
             [
                 'berat.required' => 'data harus di isi',
+                'berat.numeric' => 'data harus desimal',
                 'deskripsi.required' => 'data harus diisi',
                 'penerima.required' => 'data harus diisi',
                 'no_tlp.required' => 'data harus diisi',

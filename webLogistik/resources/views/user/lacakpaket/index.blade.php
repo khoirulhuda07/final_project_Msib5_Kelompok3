@@ -85,6 +85,7 @@ Swal.fire({
               $('#nama').val(h[i].penerima);
               $('#tanggal').val(h[i].tanggal);
               $('#kurir').val(h[i].kurir);
+              $('#status').val(h[i].status);
               $('#tujuan').val(h[i].lokasi_tujuan);
               kondisi = true;
             }

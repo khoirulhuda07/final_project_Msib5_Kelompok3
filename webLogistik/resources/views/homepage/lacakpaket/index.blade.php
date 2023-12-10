@@ -22,7 +22,7 @@
                         <div class="row">
                           <div class="col-md-12 form-group">
                             <label  class="fw-bold text-primary ">Status Paket Anda Sekarang</label>
-                            <input type="text" name="name" class="form-control" id="statua"  readonly>
+                            <input type="text" name="name" class="form-control" id="status"  readonly>
                           </div>
                           <div class="col-md-6 form-group mt-3 mt-md-0">
                             <label  class="fw-bold text-primary ">nama Penerima</label>
@@ -84,6 +84,7 @@ Swal.fire({
               $('#nama').val(h[i].penerima);
               $('#tanggal').val(h[i].tanggal);
               $('#kurir').val(h[i].kurir);
+              $('#status').val(h[i].status);
               $('#tujuan').val(h[i].lokasi_tujuan);
               kondisi = true;
             };

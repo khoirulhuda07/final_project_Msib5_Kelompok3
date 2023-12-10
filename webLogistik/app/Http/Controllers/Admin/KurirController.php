@@ -75,13 +75,13 @@ class KurirController extends Controller
                 'nama' => 'required | max:45',
                 'no_tlp' => 'required | numeric',
                 'jadwal' => 'required | max:45',
-                'kurir_id' => 'required|numeric',
+                ''
             ],
             [
                 'nama.required' => 'Wajib diisi',
                 'no_tlp.required' => 'Wajib diisi',
                 'jadwal.required' => 'Wajib diisi',
-                'kurir_id.numeric' => 'Wajib Dipilih',
+
 
                 'no_tlp.numeric' => 'Harus Angka',
                 'nama.max' => 'Maksimal 45 Karakter',
