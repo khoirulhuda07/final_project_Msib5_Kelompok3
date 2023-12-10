@@ -24,11 +24,11 @@ class PengirimanUserController extends Controller
 
         $user_id = Auth()->id();
         $pengiriman = pengiriman::where('users_id', $user_id)->get();
-        $akun = users::all();
+        $akun = users::where('user_id');
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
-        $dompet = dompet::where('id', $user_id)->first();
+        $dompet = dompet::where('id',)->first();
 
         return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('dompet', 'pembayaran', 'akun', 'kurir', 'layanan'));
         // $client = new Client();
