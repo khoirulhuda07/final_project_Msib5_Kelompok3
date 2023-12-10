@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Des 2023 pada 06.42
+-- Waktu pembuatan: 10 Des 2023 pada 08.42
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -90,7 +90,7 @@ INSERT INTO `layanan` (`id`, `nama_layanan`, `biaya`) VALUES
 
 CREATE TABLE `paket` (
   `id` int(11) NOT NULL,
-  `berat` int(11) NOT NULL,
+  `berat` double NOT NULL,
   `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -130,6 +130,21 @@ INSERT INTO `pembayaran` (`id`, `metode`, `harga_total`, `keterangan`, `pengirim
 (3, 'COD', 15000, 'Pembayaran untuk paket barang elektronik', 3, 2),
 (4, 'COD', 20000, 'Pembayaran untuk paket makanan', 4, 2),
 (5, 'COD', 25000, 'Pembayaran untuk paket pakaian', 5, 2);
+
+--
+-- Trigger `pembayaran`
+--
+DELIMITER $$
+CREATE TRIGGER `potong_saldo` AFTER INSERT ON `pembayaran` FOR EACH ROW BEGIN
+    IF NEW.metode IN ('dompetku') 
+    THEN
+        UPDATE dompet
+        SET saldo = saldo - NEW.harga_total
+        WHERE id = NEW.users_id;
+    END IF;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -199,6 +214,20 @@ CREATE TABLE `topup` (
   `dompet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Trigger `topup`
+--
+DELIMITER $$
+CREATE TRIGGER `update_saldo_dompet` AFTER INSERT ON `topup` FOR EACH ROW BEGIN 
+
+INSERT INTO dompet 
+SET id = NEW.dompet_id, saldo = NEW.saldo, bonus = NEW.bonus
+ON DUPLICATE KEY UPDATE saldo = saldo + NEW.saldo, bonus = bonus + NEW.bonus;
+
+END
+$$
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -223,8 +252,33 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `fullname`, `username`, `email`, `password`, `level`, `alamat`, `foto`, `dompet_id`) VALUES
 (1, 'Khoirul Huda', 'huda', 'huda@gmail.com', '$2y$12$bedxw3sxUuaNxGplxaUHD.dq8FRRfof.Ux35lYuJ3WBc/0Mpmp.ym', 'user', 'Bandung', NULL, 1),
-(2, 'Achbar', 'Achbar', 'achbar@gmail.com', '$2y$12$bedxw3sxUuaNxGplxaUHD.dq8FRRfof.Ux35lYuJ3WBc/0Mpmp.ym', 'kurir', 'Semarang', NULL, 2),
-(3, 'Michail', 'Michail', 'michail@gmail.com', '$2y$12$bedxw3sxUuaNxGplxaUHD.dq8FRRfof.Ux35lYuJ3WBc/0Mpmp.ym', 'admin', 'Jakarta', NULL, 3);
+(2, 'Achbar', 'Achbar', 'achbar@gmail.com', '$2y$12$xsak/ThtDeYZQE19NBPineACLVAh1B2T9/H/enLU1sIERlSPa./lG', 'kurir', 'Semarang', NULL, 2),
+(3, 'Michail', 'Michail', 'michail@gmail.com', '$2y$12$DdhaeFU8nHOZC4XHj7qd0.JwYze46R98xGsDvKFhoeC2VAhKnAsS2', 'admin', 'Jakarta', NULL, 3);
+
+--
+-- Trigger `users`
+--
+DELIMITER $$
+CREATE TRIGGER `create_item_kurir` AFTER INSERT ON `users` FOR EACH ROW BEGIN
+	IF NEW.level IN ('kurir')
+    THEN
+    	INSERT INTO kurir (nama_kurir) VALUES (NEW.fullname);
+    END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `tambah_saldo_user` BEFORE INSERT ON `users` FOR EACH ROW BEGIN
+	IF NEW.id IS NOT NULL THEN
+        INSERT INTO dompet (saldo, bonus) VALUES ('10000', '1');
+
+        SET @dompet_id = LAST_INSERT_ID();
+
+        SET NEW.dompet_id = @dompet_id;
+	END IF;
+END
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
