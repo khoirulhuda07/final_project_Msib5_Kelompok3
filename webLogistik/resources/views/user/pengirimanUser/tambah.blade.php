@@ -21,7 +21,7 @@
                             <!-- input pertama -->
                              <div class="form-floating mb-3 " >
                                 <input type="text" name="berat" class=" form-control  @error('berat') is-invalid @enderror" id="floatingKode" style="transition: all 0.2s linear" placeholder="Masukkan Kode Pengiriman" value="">
-                                <label style="transition: all 0.2s linear" for="floatingKode">berat paket</label>
+                                <label style="transition: all 0.15s linear" for="floatingKode">berat paket</label>
                                 @error('berat')
                                 <div classs="invalid-feedback">
                                     {{$message}}
@@ -29,18 +29,18 @@
                                   @enderror                          
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" name="deskripsi" class="form-control  @error('deskripsi') is-invalid @enderror " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
-                                <label for="floatingKode">deskripsi</label>
+                                <input type="text" name="deskripsi"  class="form-control  @error('deskripsi') is-invalid @enderror " id="floatingKode" placeholder="Masukkan Kode Pengiriman" value="">
+                                <label style="transition: all 0.15s linear"  for="floatingKode">deskripsi</label>
                                 @error('deskripsi')
-                                <div classs="invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{$message}}
                                   </div>
                                   @enderror                            
                             </div>
                             <!-- input kedua -->
-                            <div class="form-floating mb-3">
-                                <input type="date" name="tanggal" class="form-control  @error('tanggal') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Tanggal" value="">
-                                <label for="floatingKategori">Tanggal</label>
+                            <div class="form-floating mb-3 d-none">
+                                <input type="text" name="tanggal" id="waktu111"class="form-control  @error('tanggal') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Tanggal" value="">
+                                <label style="transition: all 0.15s linear"  for="floatingKategori">Tanggal</label>
                                 @error('tanggal')
                                 <div classs="invalid-feedback">
                                 {{$message}}
@@ -51,7 +51,7 @@
                             <!-- input ke tiga -->
                             <div class="form-floating mb-3">
                                 <input type="text" name="lokasi_tujuan" class="form-control  @error('lokasi_tujuan') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Lokasi Tujuan" value="">
-                                <label for="floatingDeskripsi">Lokasi Tujuan</label>
+                                <label style="transition: all 0.15s linear"  for="floatingDeskripsi">Lokasi Tujuan</label>
                                 @error('lokasi_tujuan')
                                 <div classs="invalid-feedback">
                                 {{$message}}
@@ -110,6 +110,24 @@
                     </div>
                 </div>
             </div>
+            
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+        // Mendapatkan elemen input tanggal
+        var tanggalInput = document.getElementById('waktu111');
+
+        // Mendapatkan tanggal saat ini
+        var today = new Date();
+
+        // Format tanggal menjadi YYYY-MM-DD
+        var formattedDate = today.toISOString().slice(0, 10);
+
+        // Mengisi nilai input tanggal dengan tanggal saat ini
+        tanggalInput.value = formattedDate;
+    });
+</script>
+
+           
 
          
 </main><!-- End #main -->

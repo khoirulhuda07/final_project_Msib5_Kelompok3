@@ -98,7 +98,7 @@ Route::middleware(['auth', 'user'])->group(function () {
         Route::patch('/profile/{id}', [ProfileUserController::class, 'update']);
         // Pengiriman Controller
         Route::get('/pengirimanUser', [PengirimanUserController::class, 'index']);
-        Route::post('/pengirimanUser', [PengirimanUserController::class, 'store']);
+        Route::post('/pengirimanUser/update', [PengirimanUserController::class, 'store']);
         Route::get('/pengirimanUser/create', [PengirimanUserController::class, 'create']);
         Route::post('/pengirimanUser/pull', [PengirimanUserController::class, 'pul']);
         // Pembayaran Controller

@@ -28,7 +28,7 @@ class PengirimanUserController extends Controller
         $kurir = kurir::all();
         $layanan = layanan::all();
         $pembayaran = pembayaran::all();
-        $dompet = dompet::where('id',)->first();
+        $dompet = dompet::where('id', $user_id)->first();
 
         return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('dompet', 'pembayaran', 'akun', 'kurir', 'layanan'));
         // $client = new Client();
@@ -100,7 +100,7 @@ class PengirimanUserController extends Controller
     {
         $request->validate(
             [
-                'berat' => 'required',
+                'berat' => 'required|numeric',
                 'deskripsi' => 'required',
                 'penerima' => 'required',
                 'no_tlp' => 'required',
@@ -111,6 +111,7 @@ class PengirimanUserController extends Controller
             ],
             [
                 'berat.required' => 'data harus di isi',
+                'berat.numeric' => 'data harus desimal',
                 'deskripsi.required' => 'data harus diisi',
                 'penerima.required' => 'data harus diisi',
                 'no_tlp.required' => 'data harus diisi',
