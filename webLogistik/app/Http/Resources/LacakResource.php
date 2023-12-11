@@ -17,6 +17,7 @@ class LacakResource extends JsonResource
     {
         return [
             'kode' => $this->kode,
+            'status' => $this->status,
             'lokasi_tujuan' => $this->lokasi_tujuan,
             'tanggal' => $this->tanggal,
             'penerima' => $this->penerima->nama,

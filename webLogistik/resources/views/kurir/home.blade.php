@@ -28,6 +28,7 @@
                     <thead>
                         <tr>
                             <td>Penerima</td>
+                            <td>Status</td>
                             <td class="text-center">Action</td>
                         </tr>
                     </thead>
@@ -41,14 +42,23 @@
                                         <br /> <abbr title="Phone"></abbr> {{$items->nomor}}
                                     </p>
                                 </td>
+                                <td>
+                                    @if ($items['status'] == 'penjemputan')
+                                        <h4><span class="badge bg-primary text-light py-2">{{ $items['status'] }}</span></h4>
+                                    @elseif ($items['status'] == 'pengiriman')
+                                        <h4><span class="badge bg-warning text-dark py-2">{{ $items['status'] }}</span></h4>
+                                    @else
+                                        <h4><span class="badge bg-success text-light py-2">{{ $items['status'] }}</span></h4>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     @if ($items->status == 'terkirim')
                                         <button type="button"  class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter{{$items->id}}" disabled>
-                                            Details
+                                            Ubah Status
                                         </button>
                                     @else
                                         <button type="button"  class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter{{$items->id}}">
-                                            Details
+                                            Ubah Status
                                         </button>
                                     @endif
                                     {{-- Modal --}}

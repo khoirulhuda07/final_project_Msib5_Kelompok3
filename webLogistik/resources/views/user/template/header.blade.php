@@ -159,6 +159,19 @@ $dompet = dompet::where('id',$id)->get();
         <span>Pengiriman</span>
       </a>
     </li><!-- End Blank Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{{url('my/lacak')}}">
+        <i class="ri-send-plane-line"></i>
+        <span>lacak paket</span>
+      </a>
+    </li><!-- End Blank Page Nav -->
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{{url('my/cek')}}">
+        <i class="ri-send-plane-line"></i>
+        <span>cek ongkos kirim</span>
+      </a>
+    </li><!-- End Blank Page Nav -->
+
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{url('my/pembayaranUser')}}">
