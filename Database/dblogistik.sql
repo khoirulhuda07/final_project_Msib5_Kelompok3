@@ -214,20 +214,6 @@ CREATE TABLE `topup` (
   `dompet_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Trigger `topup`
---
-DELIMITER $$
-CREATE TRIGGER `update_saldo_dompet` AFTER INSERT ON `topup` FOR EACH ROW BEGIN 
-
-INSERT INTO dompet 
-SET id = NEW.dompet_id, saldo = NEW.saldo, bonus = NEW.bonus
-ON DUPLICATE KEY UPDATE saldo = saldo + NEW.saldo, bonus = bonus + NEW.bonus;
-
-END
-$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
