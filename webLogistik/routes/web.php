@@ -126,6 +126,7 @@ Route::middleware(['auth', 'kurir'])->group(function () {
         Route::post('/home/store/{id}', [homeKurirController::class, 'store']);
         Route::get('/maps', [homeKurirController::class, 'maps']);
         Route::get('/profile', [homeKurirController::class, 'profile']);
+        Route::post('/profile/update', [homeKurirController::class, 'update']);
     });
 });
 
