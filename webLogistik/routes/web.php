@@ -129,6 +129,10 @@ Route::middleware(['auth', 'kurir'])->group(function () {
     });
 });
 
+
+// route sementara api
+Route::get('layananapi', [LayananController::class, 'apiLayanan']);
+Route::get('layananapi/ {id}', [LayananController::class, 'apiLayananDetail']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

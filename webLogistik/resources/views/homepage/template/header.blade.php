@@ -6,15 +6,13 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>HomePage-Logistik</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
 
     <!-- Favicons -->
     <link href="{{asset('logo/icon.png')}}" rel="icon">
     <link href="{{asset('homepage/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('homepage/vendor/aos/aos.css')}}" rel="stylesheet">
@@ -28,13 +26,7 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('homepage/css/style.css')}}" rel="stylesheet">
 
-    <!-- =======================================================
-  * Template Name: Reveal
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/reveal-bootstrap-corporate-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body>
