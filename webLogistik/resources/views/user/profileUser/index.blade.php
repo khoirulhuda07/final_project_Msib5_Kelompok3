@@ -31,7 +31,8 @@
                             {{''}}
                             @else
                             {{Auth::user()->username}}
-                            @endif</h2>
+                            @endif
+                        </h2>
                     </div>
                 </div>
 
@@ -60,26 +61,28 @@
                         <div class="tab-content pt-2">
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                        
+
                                 <h5 class="card-title">Profile Details</h5>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
-                                    <div class="col-lg-9 col-md-8"> 
+                                    <div class="col-lg-9 col-md-8">
                                         @if (empty(Auth::user()->fullname))
                                         {{''}}
                                         @else
                                         {{Auth::user()->fullname}}
-                                        @endif</div>
+                                        @endif
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Username</div>
-                                    <div class="col-lg-9 col-md-8"> 
-                                    @if (empty(Auth::user()->username))
+                                    <div class="col-lg-9 col-md-8">
+                                        @if (empty(Auth::user()->username))
                                         {{''}}
                                         @else
                                         {{Auth::user()->username}}
-                                        @endif</div>
+                                        @endif
+                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -89,17 +92,19 @@
                                         {{''}}
                                         @else
                                         {{Auth::user()->alamat}}
-                                        @endif</div>
+                                        @endif
+                                    </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
                                     <div class="col-lg-9 col-md-8">
-                                    @if (empty(Auth::user()->email))
+                                        @if (empty(Auth::user()->email))
                                         {{''}}
                                         @else
                                         {{Auth::user()->email}}
-                                        @endif</div>
+                                        @endif
+                                    </div>
                                 </div>
 
                             </div>
@@ -113,7 +118,7 @@
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                        <input name="foto" type="file" class="form-control @error('foto') is-invalid @enderror" id="profileImage">
+                                            <input name="foto" type="file" class="form-control @error('foto') is-invalid @enderror" id="profileImage">
                                             @error('foto')
                                             <span>
                                                 <strong>{{$message}}</strong>
@@ -171,26 +176,26 @@
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
                                 <form action="{{url('my/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
-                                @method('PATCH')
-                                @csrf
-                                <input name="email" type="hidden" class="form-control" id="Email" value="{{$profile->email}}">
+                                    @method('PATCH')
+                                    @csrf
+                                    <input name="email" type="hidden" class="form-control" id="Email" value="{{$profile->email}}">
                                     <input name="username" type="hidden" class="form-control " id="username" value="{{$profile->username}}">
                                     <div class="row mb-3">
-                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
+                                        <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label"> Password Sekarang</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="old_password" type="password" class="form-control" id="currentPassword">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
+                                        <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Password Baru</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="password" type="password" class="form-control" id="newPassword">
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
-                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-enter New Password</label>
+                                        <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Masukkan kembali Password Baru</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="password_confirmation" type="password" class="form-control" id="renewPassword">
                                         </div>

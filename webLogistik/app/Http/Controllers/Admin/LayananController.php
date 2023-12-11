@@ -84,4 +84,37 @@ class LayananController extends Controller
         layanan::find($id)->delete();
         return redirect('admin/layanan')->with('success', 'Data Berhasil Dihapus!!');
     }
+
+    public function apiLayanan()
+    {
+        $layanan = Layanan::all();
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Data Layanan',
+                'data' => $layanan
+            ],
+            200
+        );
+    }
+
+    public function apiLayananDetail($id)
+    {
+        $layanan = Layanan::find($id);
+        if ($layanan) {
+            return response()->json(
+                [
+                    'success' => true,
+                    'message' => 'Data Layanan',
+                    'data' => $layanan
+                ],
+                200
+            );
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Detail Layanan Tidak Ditemukan'
+            ], 400);
+        }
+    }
 }
