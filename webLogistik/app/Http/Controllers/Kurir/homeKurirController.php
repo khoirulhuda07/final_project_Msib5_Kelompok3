@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Pengiriman;
 use App\Models\Kurir;
 use App\Models\Users;
+use Illuminate\Support\Facades\Storage;
 
 class homeKurirController extends Controller
 {
@@ -77,9 +78,26 @@ class homeKurirController extends Controller
         //
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        $users = Users::findOrFail(Auth::id());
+
+        if (request()->hasFile('foto')) {
+            // cara pertama
+            $path = 'photo_user/' . $users->foto;
+            if ($path != null) {
+                Storage::delete($path);
+            }
+            $photo = $request->file('foto');
+            $extension = $photo->getClientOriginalExtension();
+            $fileName = time() . '.' . $extension;
+
+            $request->foto->move(storage_path('app/public/photo_user'), $fileName);
+            $users->foto = $fileName;
+        }
+        $users->save();
+
+        return back()->with('status', 'Foto profile Update!');
     }
 
     public function destroy(string $id)
