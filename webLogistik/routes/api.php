@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\KurirController;
+use App\Http\Controllers\api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homepage\LacakController;
@@ -19,6 +20,9 @@ use App\Models\Kurir;
 |
 */
 
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::get('/layanan', [LayananController::class, 'index']);
 Route::get('/layanan/{id}', [LayananController::class, 'show']);
 Route::post('/layanan-create', [LayananController::class, 'store']);
@@ -34,6 +38,7 @@ Route::get('/lacak/{kode}', [LacakController::class, 'show']);
 Route::get('/pengiriman', [pengirimanController::class, 'index']);
 Route::post('/pengiriman', [pengirimanController::class, 'store']);
 Route::put('/pengiriman/{id}', [pengirimanController::class, 'update']);
+
 // Route::get('/lacak', function(){
 //     dd('test api');
 // });
