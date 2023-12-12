@@ -23,7 +23,9 @@
                         @if (empty(Auth::user()->foto))
                         <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
                         @else
-                        <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" width="69%">
+                        
+                        <img class="rounded-circle" class="mx-5" src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile"  width="69%">
+                    
                         @endif
                         <h2 class="mt-3">
                             @if (empty(Auth::user()->username))
@@ -124,7 +126,7 @@
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                 <!-- Profile Edit Form -->
-                                <form action="{{url('my/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
+                                <form action="{{url('admin/profile/'.$profile->id)}}" method="post" enctype="multipart/form-data">
                                     @method('PATCH')
                                     @csrf
                                     <div class="row mb-3">
@@ -222,6 +224,33 @@
 
                     </div>
                 </div>
+                <script>
+                    // Fungsi untuk merotasi gambar
+                    function rotateImage() {
+                      var img = document.getElementById('image');
+                  
+                      // Periksa orientasi gambar saat ini
+                      var currentRotation = parseInt(img.getAttribute('data-rotation') || 0);
+                  
+                      // Hanya terapkan rotasi jika gambar awalnya landscape
+                      if (currentRotation % 180 === 0) {
+                        // Setel rotasi ke 90 derajat setiap kali fungsi dipanggil
+                        var newRotation = currentRotation + 90;
+                  
+                        // Terapkan rotasi menggunakan CSS
+                        img.style.transform = 'rotate(' + newRotation + 'deg)';
+                  
+                        // Simpan rotasi saat ini ke atribut data
+                        img.setAttribute('data-rotation', newRotation);
+                      }
+                    }
+                  
+                    // Panggil fungsi rotateImage() misalnya saat tombol diklik
+                    // var rotateButton = document.createElement('button');
+                    window.onload = function() {
+                    rotateImage();
+                }
+                  </script>
 
             </div>
         </div>
