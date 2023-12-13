@@ -15,7 +15,7 @@ class Pengiriman extends Model
     protected $fillable = ['kode', 'tanggal', 'lokasi_tujuan', 'status','paket_id', 'layanan_id', 'penerima_id', 'akun_id', 'kurir_id'] ;
 
     public function paket() {
-        return $this->belongsTo(paket::class) ;
+        return $this->belongsTo(Paket::class) ;
     }
 
     public function layanan() {

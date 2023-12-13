@@ -17,7 +17,7 @@ class pageLacakController extends Controller
 {
     public function index1()
     {
-        return view('User.lacakpaket.index');
+        return view('user.lacakpaket.index');
     }
     
     public function index()
