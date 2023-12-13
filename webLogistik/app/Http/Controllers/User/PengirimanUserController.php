@@ -25,11 +25,11 @@ class PengirimanUserController extends Controller
 
         $user_id = Auth()->id();
         $pengiriman = pengiriman::where('users_id', $user_id)->get();
-        $akun = users::where('user_id');
+        $akun = Users::where('user_id');
         $kurir = kurir::all();
-        $layanan = layanan::all();
-        $pembayaran = pembayaran::all();
-        $dompet = dompet::where('id', $user_id)->first();
+        $layanan = Layanan::all();
+        $pembayaran = Pembayaran::all();
+        $dompet = Dompet::where('id', $user_id)->first();
 
         return view("user.pengirimanUser.index", ['pengiriman' => $pengiriman], compact('dompet', 'pembayaran', 'akun', 'kurir', 'layanan'));
         // $client = new Client();
@@ -76,7 +76,7 @@ class PengirimanUserController extends Controller
         // } catch (\Exception $e) {
         //     echo 'input :' . $e->getMessage();
         // };
-        $pembayaran = new pembayaran;
+        $pembayaran = new Pembayaran;
         $pembayaran->metode = $resquest->metode;
         $pembayaran->harga_total = $resquest->harga_bayar;
         $pembayaran->keterangan = $resquest->keterangan;
@@ -89,12 +89,12 @@ class PengirimanUserController extends Controller
     public function create()
     {
 
-        $pengiriman = pengiriman::all();
+        $pengiriman = Pengiriman::all();
         $akun = Users::all();
         $kurir = kurir::all();
-        $layanan = layanan::all();
-        $pembayaran = pembayaran::all();
-        $dompet = dompet::all();
+        $layanan = Layanan::all();
+        $pembayaran = Pembayaran::all();
+        $dompet = Dompet::all();
         return view('user.pengirimanUser.tambah', compact('akun', 'kurir', 'layanan', 'pembayaran', 'dompet'));
     }
     public function pul(Request $request)
@@ -124,20 +124,20 @@ class PengirimanUserController extends Controller
         );
         $pp = Auth::user()->id;
         $kode = $this->generateUniqueCode();
-        $paket = paket::create(
+        $paket = Paket::create(
             [
                 'berat' => $request->berat,
                 'deskripsi' => $request->deskripsi
             ]
         );
-        $penerima = penerima::create(
+        $penerima = Penerima::create(
             [
                 'nama' => $request->penerima,
                 'nomor_telepon' => $request->no_tlp,
             ]
         );
 
-        $pengiriman = new pengiriman;
+        $pengiriman = new Pengiriman;
         $pengiriman->kode = $kode;
         $pengiriman->tanggal =  $request->tanggal;
 

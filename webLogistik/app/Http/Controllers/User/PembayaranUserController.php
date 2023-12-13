@@ -14,8 +14,8 @@ class PembayaranUserController extends Controller
     public function index()
     {
         $user_id = auth()->id();
-        $pembayaran = pembayaran::where('users_id', $user_id)->get();
-        $pengiriman = pengiriman::all();
+        $pembayaran = Pembayaran::where('users_id', $user_id)->get();
+        $pengiriman = Pengiriman::all();
         return view("user.pembayaranUser.index", ['pembayaran' => $pembayaran], compact('pengiriman'));
     }
 
@@ -23,8 +23,8 @@ class PembayaranUserController extends Controller
     {
         $saveName = 'Laporan Riwayat Pembayaran ' . date('y-m-d') . '.pdf';
         $user_id = auth()->id();
-        $laporan = pembayaran::where('users_id', $user_id)->get();
-        $pengiriman = pengiriman::all();
+        $laporan = Pembayaran::where('users_id', $user_id)->get();
+        $pengiriman = Pengiriman::all();
 
         $pdf = PDF::loadview('user.pembayaranUser.laporanPDF', compact('laporan', 'pengiriman'));
 

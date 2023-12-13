@@ -65,7 +65,7 @@ class homeKurirController extends Controller
         $user = Users::findOrFail(Auth::id());
         $kurir = Kurir::where('nama_kurir', $user->fullname)->first();
 
-        return view('Kurir.profile', compact('kurir'));
+        return view('kurir.profile', compact('kurir'));
     }
 
     public function show(string $id)

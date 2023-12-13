@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 // Admin Namespace
 use App\Http\Controllers\Admin\DashboardController;
@@ -35,8 +36,7 @@ use App\Http\Controllers\Homepage\LacakController;
 use App\Http\Controllers\Homepage\LoginController;
 
 // kurir namespace
-use App\Http\Controllers\kurir\homeKurirController;
-
+use App\Http\Controllers\Kurir\homeKurirController;
 
 /*
 |--------------------------------------------------------------------------
@@ -137,3 +137,9 @@ Route::get('layananapi/ {id}', [LayananController::class, 'apiLayananDetail']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// membuat link storage
+Route::get('/storage-link', function() {
+    Artisan::call('storage:link');
+    dd(Artisan::output());
+});
