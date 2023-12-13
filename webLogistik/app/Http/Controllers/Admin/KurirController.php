@@ -13,7 +13,8 @@ class KurirController extends Controller
     public function index()
     {
         $kurir = Kurir::all();
-        return view("admin.kurir.index", ['kurir' => $kurir]);
+        $layanan = Layanan::all();
+        return view("admin.kurir.index", ['kurir' => $kurir], compact('layanan'));
     }
 
     public function create()

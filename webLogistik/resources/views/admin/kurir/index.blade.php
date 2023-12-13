@@ -33,7 +33,7 @@
                                     <td>{{$k->nama_kurir}}</td>
                                     <td>{{$k->nomor_telepon}}</td>
                                     <td>{{$k->jadwal}}</td>
-                                    <td>{{$k->layanan->nama_layanan}}</td>
+                                    <td>{{$k->layanan->nama_layanan ?? 'belum ada'}}</td>
                                     <td>
                                 
                                     <a href="{{route('kurir.show',$k->id)}}" class="btn btn-sm btn-info"><i class="fas fa-eye"></i></a>
