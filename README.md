@@ -81,7 +81,11 @@ Logistik adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasu
   ```
 
 ## Akun Login
+akun user : email = huda@gmail.com, pw = 12345678
 
+akun admin : email = michail@gmail.com, pw = 12345678
+
+akun kurir : email = achbar@gmail.com, pw = 12345678
 
 ## Fitur
 ### Front End

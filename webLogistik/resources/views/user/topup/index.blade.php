@@ -92,10 +92,11 @@
                     <div class="search-bar">
                       <div class="row mb-3">
                         <div class="col-md-10">
-                          <form class="search-form d-flex align-items-center" method="POST" action="#">
+                          <form class="search-form d-flex align-items-center" method="GET" action="/my/dompetku/cari">
                             <div class="input-group">
                               <span class="input-group-text" id="inputGroupPrepend2">ID Transaksi</span>
-                              <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" placeholder="Cari di sini">
+                              <input type="text" class="form-control" id="validationDefaultUsername" aria-describedby="inputGroupPrepend2" placeholder="Cari di sini" name="cari" value="{{ old('cari') }}">
+                              <input type="submit" value="CARI" class="input-group-text">
                             </div>
                           </form>
                         </div>
@@ -108,6 +109,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col" class="text-center">Waktu</th>
+                        <th scope="col" class="text-center">Id Transaksi</th>
                         <th scope="col" class="text-center">Status</th>
                         <th scope="col" class="text-center">Jumlah TopUp</th>
                         <th scope="col" class="text-center">Bonus Poin</th>
@@ -119,21 +121,22 @@
                       @foreach ($topup as $row)
                         <tr>
                           <th scope="row">{{$loop->iteration}}</th>
+                          <td class="text-center">{{$row->topup_no}}</td>
                           <td class="text-center">{{$row->waktu}}</td>
                           <td class="text-center">
-                            @if ($row['topup_status'] == 'PENDING')
-                                <span class="badge bg-warning text-dark">{{ $row['topup_status'] }}</span>
-                            @elseif ($row['topup_status'] == 'SUCCESS')
-                                <span class="badge bg-success">{{ $row['topup_status'] }}</span>
+                            @if ($row->topup_status == 'PENDING')
+                                <span class="badge bg-warning text-dark">{{ $row->topup_status }}</span>
+                            @elseif ($row->topup_status == 'SUCCESS')
+                                <span class="badge bg-success">{{ $row->topup_status }}</span>
                             @else
-                                <span class="badge bg-danger">{{ $row['topup_status'] }}</span>
+                                <span class="badge bg-danger">{{ $row->topup_status }}</span>
                             @endif
                           </td>
                           <td class="text-center">{{$row->saldo}}</td>
                           <td class="text-center">{{$row->bonus}}</td>
                           <td class="text-center">{{$row->total}}</td>
                           <td class="text-center">
-                            @if ($row['topup_status'] == 'PENDING')
+                            @if ($row->topup_status == 'PENDING')
                               <a href="{{url('my/dompetku/payment', $row->topup_no)}}" class="btn btn-info btn-sm">Bayar</a>
                             @else
                               <a href="#" class="btn btn-info btn-sm" hidden>Bayar</a>
