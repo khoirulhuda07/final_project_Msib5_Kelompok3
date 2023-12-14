@@ -3,9 +3,10 @@
 use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\KurirController;
 use App\Http\Controllers\api\AuthController;
+use App\Http\Controllers\api\LacakController as ApiLacakController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\homepage\LacakController;
+use App\Http\Controllers\api\LacakController;
 use App\Http\Controllers\api\pengirimanController;
 use App\Models\Kurir;
 
