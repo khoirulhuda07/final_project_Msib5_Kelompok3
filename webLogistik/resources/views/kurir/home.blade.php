@@ -44,11 +44,11 @@
                                 </td>
                                 <td>
                                     @if ($items['status'] == 'penjemputan')
-                                        <h4><span class="badge bg-primary text-light py-2">{{ $items['status'] }}</span></h4>
+                                        <h4><span class="badge bg-primary text-light py-2">Penjemputan</span></h4>
                                     @elseif ($items['status'] == 'pengiriman')
-                                        <h4><span class="badge bg-warning text-dark py-2">{{ $items['status'] }}</span></h4>
+                                        <h4><span class="badge bg-warning text-dark py-2">Pengiriman</span></h4>
                                     @else
-                                        <h4><span class="badge bg-success text-light py-2">{{ $items['status'] }}</span></h4>
+                                        <h4><span class="badge bg-success text-light py-2">Telah Sampai</span></h4>
                                     @endif
                                 </td>
                                 <td class="text-center">
