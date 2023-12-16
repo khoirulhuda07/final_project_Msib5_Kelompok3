@@ -66,6 +66,7 @@
                     <li><a class="nav-link scrollto" href="index.php?#contact">Contact</a></li>
 
                     <li><a class="nav-link scrollto" href="{{url('lacakpaket')}}">Lacak Paket</a></li>
+                    <li><a class="nav-link scrollto" href="{{url('cek')}}">Cek Ongkos Kirim</a></li>
                     <li><a class="nav-link scrollto" href="{{route('login')}}">Login</a></li>
 
                 </ul>

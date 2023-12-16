@@ -13,6 +13,7 @@ use App\Models\Pengiriman;
 use App\Models\Pembayaran;
 use App\Models\Dompet;
 use App\Models\Users;
+use Illuminate\Support\Facades\DB;
 
 class LacakController extends Controller
 {

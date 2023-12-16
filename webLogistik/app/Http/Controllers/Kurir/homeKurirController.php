@@ -42,7 +42,7 @@ class homeKurirController extends Controller
             ->where('kurir.nama_kurir', $user->fullname)
             ->where('status', 'pengiriman')
             ->count();
-            
+
         return view("kurir.home",  compact('TLpengiriman', 'penerima', 'PBpengiriman', 'BLpengiriman', 'SLpengiriman'));
     }
 
