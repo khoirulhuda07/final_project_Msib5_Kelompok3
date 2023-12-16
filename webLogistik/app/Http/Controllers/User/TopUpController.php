@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Dompet;
 use App\Models\TopUp;
@@ -23,6 +24,21 @@ class TopUpController extends Controller
         $uang = ['10000', '20000', '50000', '100000'];
 
         return view("user.topup.index",  compact('dompet', 'topup', 'uang'));
+    }
+
+    public function cari(Request $request)
+    {
+        $cari = $request->cari;
+        
+        $topup = DB::table('topup')
+        ->where('topup_no', 'LIKE', $cari)
+        ->get();
+
+        $user = Users::findOrFail(Auth::id());
+        $dompet = Dompet::where('id', $user->dompet_id)->first();
+        $uang = ['10000', '20000', '50000', '100000'];
+
+        return view("user.topup.index", ['topup' => $topup], compact('dompet', 'uang'));
     }
 
     public function store(Request $request)

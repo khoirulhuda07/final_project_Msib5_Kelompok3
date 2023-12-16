@@ -1,5 +1,0 @@
-akun user : user = huda@gmail.com, pw = 12345678
-
-akun admin: user = michail@gmail.com, pw = 12345678
-
-akun kurir user = achbar@gmail.com, pw = 12345678
