@@ -1,5 +1,7 @@
 @extends('kurir.template.app')
 
+@section('title', 'Home')
+
 @section('konten')
 <div class="container-fluid my-5 py-5">
     <div class="row">

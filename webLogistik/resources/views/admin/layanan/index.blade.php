@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Table Data Layanan')
+
 @section('content')
 <form action="{{ url('admin/layanan/importLayanan') }}" method="POST" enctype="multipart/form-data">
   @csrf

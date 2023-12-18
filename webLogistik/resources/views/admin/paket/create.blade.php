@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Tambah Data Paket')
+
 @section('content')
 
 <form action="{{route('paket.store')}}" method="POST" enctype="multipart/form-data">

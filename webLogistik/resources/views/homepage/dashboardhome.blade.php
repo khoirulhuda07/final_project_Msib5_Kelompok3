@@ -1,5 +1,7 @@
 @extends('homepage.template.apphomepage')
 
+@section('title', 'TrackMyShip - Pengiriman Cepat dan Terjangkau')
+
 @section('content')
 <!-- ======= hero Section ======= -->
 <section id="hero">

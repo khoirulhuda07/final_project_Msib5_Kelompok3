@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Laporan Pengiriman')
+
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Laporan Pengiriman</h1>

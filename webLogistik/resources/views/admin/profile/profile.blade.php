@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Profile')
+
 @section('content')
 
 <main id="main" class="main">

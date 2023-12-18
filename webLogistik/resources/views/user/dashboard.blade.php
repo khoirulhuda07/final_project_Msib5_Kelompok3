@@ -1,5 +1,7 @@
 @extends('user.template.appuser')
 
+@section('title', 'Dashboard - TrackMyShipment')
+
 @section('content')
 <main id="main" class="main">
 

@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Tambah Akun Kurir')
+
 <!-- form start -->
 @section('content')
 <form action="{{route('akun.store')}}" method="POST" enctype="multipart/form-data">

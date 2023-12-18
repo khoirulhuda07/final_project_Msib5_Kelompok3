@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Edit Data Paket')
+
 @section('content')
 @foreach ($paket as $pk)
 <form action="{{route('paket.update',$pk->id)}}" method="POST" enctype="multipart/form-data">

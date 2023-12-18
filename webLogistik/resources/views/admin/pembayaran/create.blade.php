@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Tambah Data Pembayaran')
+
 <!-- form start -->
 @section('content')
 <form action="{{route('pembayaran.store')}}" method="POST" enctype="multipart/form-data">

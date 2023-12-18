@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Edit Data Pembayaran')
+
 <!-- form start -->
 @section('content')
 @foreach($pembayaran as $pm)
