@@ -1,5 +1,7 @@
 @extends('user.template.appuser')
 
+@section('title', 'Profile')
+
 @section('content')
 
 <main id="main" class="main">
@@ -25,7 +27,7 @@
                         @if (empty(Auth::user()->foto))
                         <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
                         @else
-                        <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" width="69%">
+                        <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="aspect-ratio: 1/1; object-fit: cover;" width="69%">
                         @endif
                         <h2> @if (empty(Auth::user()->username))
                             {{''}}

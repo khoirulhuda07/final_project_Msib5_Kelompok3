@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Profile')
+
 @section('content')
 
 <main id="main" class="main">
@@ -24,7 +26,7 @@
                         <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle">
                         @else
                         
-                        <img class="rounded-circle" class="mx-5" src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile"  width="69%">
+                        <img class="rounded-circle" class="mx-5" src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" style="aspect-ratio: 1/1; object-fit: cover;" width="69%">
                     
                         @endif
                         <h2 class="mt-3">

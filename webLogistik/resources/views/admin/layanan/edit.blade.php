@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Edit Data Layanan')
+
 @section('content')
     @foreach ($layanan as $lyn)
         <form action="{{ route('layanan.update', $lyn->id) }}" method="POST" enctype="multipart/form-data">

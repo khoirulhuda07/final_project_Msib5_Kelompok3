@@ -1,5 +1,7 @@
 @extends('user.template.appuser')
 
+@section('title', 'Riwayat Pembayaran Paket')
+
 @section('content')
 
 <main id="main" class="main">

@@ -17,28 +17,28 @@ class PenerimaController extends Controller
 
     public function create()
     {
-        return view('admin.penerima.create');
+        // return view('admin.penerima.create');
     }
 
     public function store(Request $request)
     {
-        $request->validate(
-            [
-                'nama' => 'required|max:45',
-                'nomor_telepon' => 'required|max:45',
-            ],
-            [
-                'nama.required' => 'Wajib diisi',
-                'nomor_telepon.required' => 'wajib diisi',
-            ]
-        );
+        // $request->validate(
+        //     [
+        //         'nama' => 'required|max:45',
+        //         'nomor_telepon' => 'required|max:45',
+        //     ],
+        //     [
+        //         'nama.required' => 'Wajib diisi',
+        //         'nomor_telepon.required' => 'wajib diisi',
+        //     ]
+        // );
 
-        $penerima = new Penerima;
-        $penerima->nama = $request->nama;
-        $penerima->nomor_telepon = $request->nomor_telepon;
-        $penerima->save();
+        // $penerima = new Penerima;
+        // $penerima->nama = $request->nama;
+        // $penerima->nomor_telepon = $request->nomor_telepon;
+        // $penerima->save();
 
-        return redirect('admin/penerima')->with('success','Data Berhasil Ditambahkan!!');
+        // return redirect('admin/penerima')->with('success','Data Berhasil Ditambahkan!!');
     }
 
     public function show(string $id)
@@ -48,23 +48,23 @@ class PenerimaController extends Controller
 
     public function edit(string $id)
     {
-        $penerima = penerima::all()->where('id', $id);
-        return view('admin.penerima.edit', compact('penerima'));
+        // $penerima = penerima::all()->where('id', $id);
+        // return view('admin.penerima.edit', compact('penerima'));
     }
 
     public function update(Request $request, string $id)
     {
-        $penerima = penerima::find($id);
-        $penerima->nama = $request->nama;
-        $penerima->nomor_telepon = $request->no_tlp;
-        $penerima->save();
+        // $penerima = penerima::find($id);
+        // $penerima->nama = $request->nama;
+        // $penerima->nomor_telepon = $request->no_tlp;
+        // $penerima->save();
 
-        return redirect('admin/penerima')->with('success','Data Berhasil Diubah!!');
+        // return redirect('admin/penerima')->with('success','Data Berhasil Diubah!!');
     }
 
     public function destroy(string $id)
     {
-        penerima::find($id)->delete();
-        return redirect('admin/penerima')->with('success','Data Berhasil Dihapus!!');
+        // penerima::find($id)->delete();
+        // return redirect('admin/penerima')->with('success','Data Berhasil Dihapus!!');
     }
 }

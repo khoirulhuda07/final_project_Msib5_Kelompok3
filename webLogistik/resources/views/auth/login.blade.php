@@ -1,5 +1,7 @@
 @extends('homepage.template.apphomepage')
 
+@section('title', 'TrackMyShipment - Login')
+
 @section('content')
 
 <main id="main">

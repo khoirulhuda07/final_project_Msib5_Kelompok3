@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Table Data Akun Kurir')
+
 @section('content')
 <div class="container-fluid pt-4 px-4">
     <h1 class="mt-4">Akun</h1>
@@ -18,7 +20,7 @@
                     <table id="datapegawai" class="table">
                         <thead>
                             <tr>
-                                <th class="text-bold" scope="col">No</th>
+                                <th class="text-bold" scope="col">#</th>
                                 <th class="text-bold" scope="col">Nama Lengkap</th>
                                 <th class="text-bold" scope="col">Email</th>
                                 <th class="text-bold" scope="col">Posisi</th>

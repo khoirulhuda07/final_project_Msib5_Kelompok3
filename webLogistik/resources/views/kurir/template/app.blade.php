@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="{{asset('logo/icon.png')}}" rel="icon">
-	<title>Kurir - TrackMyShipment</title>
+	<title>@yield('title')</title>
 	<style type="text/css">
 		  #logo-main {
 		    display: block;

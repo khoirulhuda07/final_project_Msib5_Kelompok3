@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>TrackMyShip - Pengiriman Cepat dan Terjangkau</title>
+    <title>@yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -57,7 +57,7 @@
                         @if (empty(Auth::user()->foto))
                             <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 40px">
                         @else
-                            <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                            <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="aspect-ratio: 1/1; object-fit: cover;" width="40px">
                         @endif
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
@@ -118,7 +118,7 @@
                             @if (empty(Auth::user()->foto))
                                 <img src="{{asset('admin/photo_user/no_photo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 40px">
                             @else
-                                <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="width: 40px">
+                                <img src="{{asset('storage/photo_user/'.Auth::user()->foto)}}" alt="Profile" class="rounded-circle" style="aspect-ratio: 1/1; object-fit: cover;" width="40px">
                             @endif
                             <span class="d-none d-lg-inline-flex">
                                 @if (empty(Auth::user()->username))
