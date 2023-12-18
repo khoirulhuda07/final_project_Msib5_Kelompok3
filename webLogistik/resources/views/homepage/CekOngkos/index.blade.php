@@ -1,8 +1,7 @@
-@extends('user.template.appuser')
-
-@section('title', 'Check Ongkos')
+@extends('homepage.template.apphomepage')
 
 @section('content')
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{-- <link rel="stylesheet" href="{{asset('user/style.css')}}"> --}}
@@ -27,7 +26,7 @@
             </div>
         </div>
         <div class="row mt-3">
-            <div class="col-md-6 mx-auto">
+            <div style="display: flex; justify-content: center" class="col-12 mx-auto">
                 <button class="btn btn-warning btn-block" onclick="handleButtonClick()">Cari</button>
             </div>
         </div>
@@ -148,7 +147,7 @@
         function display1(data1) {
             const content1 = data1.map((item1) => {
                 return (
-                    "<li class='list-group-item' onclick='selectionInput1(this)'>" + item1.kota + "</li>"
+                    "<li class='list-group-item list-group-item-action' onclick='selectionInput1(this)'>" + item1.kota + "</li>"
                 );
             });
 

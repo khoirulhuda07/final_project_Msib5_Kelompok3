@@ -33,8 +33,8 @@
                             <input type="text" class="form-control" name="subject" id="tanggal" readonly>
                           </div>
                           <div class="col-md-6 form-group mt-3 mt-md-0">
-                            <label class="fw-bold text-primary ">Kurir</label>
-                            <input type="text" class="form-control"  name="subject" id="kurir" readonly>
+                            <label class="fw-bold text-primary ">layanan</label>
+                            <input type="text" class="form-control"  name="subject" id="layanan" readonly>
                           </div>
                           <div class="col-md-6 form-group mt-3 mt-md-0">
                             <label  class="fw-bold text-primary ">Tujuan Pengiriman</label>
@@ -83,7 +83,7 @@ Swal.fire({
               $('#cn').removeClass("d-none");
               $('#nama').val(h[i].penerima);
               $('#tanggal').val(h[i].tanggal);
-              $('#kurir').val(h[i].kurir);
+              $('#layanan').val(h[i].layanan);
               $('#status').val(h[i].status);
               $('#tujuan').val(h[i].lokasi_tujuan);
               kondisi = true;

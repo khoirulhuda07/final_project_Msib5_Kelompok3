@@ -35,6 +35,10 @@ use App\Http\Controllers\User\cekOngkosController;
 use App\Http\Controllers\Homepage\HomepageController;
 use App\Http\Controllers\Homepage\LacakController;
 
+use App\Http\Controllers\Homepage\LoginController;
+use App\Http\Controllers\Homepage\CekController;
+
+
 // kurir namespace
 use App\Http\Controllers\Kurir\homeKurirController;
 
@@ -58,6 +62,7 @@ Route::get('/send-email', [SendEmail::class, 'index']);
 
 Route::get('/home', [HomepageController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);
+Route::get('/cek', [CekController::class, 'index']);
 // Rute untuk admin
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {
@@ -142,7 +147,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // membuat link storage
-Route::get('/storage-link', function() {
+Route::get('/storage-link', function () {
     Artisan::call('storage:link');
     dd(Artisan::output());
 });

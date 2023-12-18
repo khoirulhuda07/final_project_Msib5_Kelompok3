@@ -62,12 +62,12 @@ class LayananController extends Controller
             [
                 'nama' => 'required|max:45',
                 'biaya' => 'required|numeric',
-                'kurir_id' => 'required|numeric',
+
             ],
             [
                 'nama.required' => 'Layanan barang harus diisi',
                 'biaya.required' => 'Biaya Layanan harus diisi',
-                'kurir_id.numeric' => 'Wajib Dipilih',
+
             ]
         );
         //

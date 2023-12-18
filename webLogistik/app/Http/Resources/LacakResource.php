@@ -21,7 +21,7 @@ class LacakResource extends JsonResource
             'lokasi_tujuan' => $this->lokasi_tujuan,
             'tanggal' => $this->tanggal,
             'penerima' => $this->penerima->nama,
-            'kurir' => $this->kurir->nama_kurir ?? 'kurir tidak ditemukan',
+            'layanan' => $this->layanan->nama_layanan,
 
         ];
     }
