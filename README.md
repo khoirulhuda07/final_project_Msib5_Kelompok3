@@ -1,4 +1,4 @@
-<p align="center"><a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3" target="_blank"><img src="https://thumbs2.imgbox.com/87/94/k8efiwky_t.png" width="400" alt="TrackMyShipment Logo"></a></p>
+<p align="center"><a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3" target="_blank"><img src="https://thumbs2.imgbox.com/2a/c9/ZXlYT2E5_t.png" width="400" alt="TrackMyShipment Logo"></a></p>
 
 <p align="center">
 <a href="https://laravel.com/docs/10.x/testing"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
