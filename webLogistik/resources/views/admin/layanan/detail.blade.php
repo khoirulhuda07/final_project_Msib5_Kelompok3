@@ -1,4 +1,5 @@
 @extends('admin.template.appadmin')
+@section('title', 'Detail Data Layanan')
 @section('content')
 <main id="main" class="main">
     <div class="pagetitle mt-4">

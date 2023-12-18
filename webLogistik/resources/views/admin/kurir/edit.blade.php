@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Edit Data Kurir')
+
 <!-- form start -->
 @section('content')
 @foreach($kurir as $k)

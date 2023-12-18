@@ -1,6 +1,6 @@
 @extends('user.template.appuser')
 
-@section('title', 'Laporan Riwayat Topup Saldo Dompetku')
+@section('title', 'Dompetku')
 
 @section('content')
 <main id="main" class="main">
@@ -108,8 +108,8 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col" class="text-center">Waktu</th>
                         <th scope="col" class="text-center">Id Transaksi</th>
+                        <th scope="col" class="text-center">Waktu</th>
                         <th scope="col" class="text-center">Status</th>
                         <th scope="col" class="text-center">Jumlah TopUp</th>
                         <th scope="col" class="text-center">Bonus Poin</th>

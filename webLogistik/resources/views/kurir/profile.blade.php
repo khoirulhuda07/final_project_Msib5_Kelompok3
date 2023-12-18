@@ -1,5 +1,7 @@
 @extends('kurir.template.app')
 
+@section('title', 'Profile')
+
 @section('konten')
 <form action="{{url('kurir/profile/update')}}" method="post" enctype="multipart/form-data">
     @csrf

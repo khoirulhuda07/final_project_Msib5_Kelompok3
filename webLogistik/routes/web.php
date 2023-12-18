@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 
+// API Email
+use App\Http\Controllers\SendEmail;
+
 // Admin Namespace
 use App\Http\Controllers\Admin\DashboardController;
-
 
 use App\Http\Controllers\Admin\AkunController;
 use App\Http\Controllers\Admin\DompetController;
@@ -21,7 +23,6 @@ use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\ProfileAdminController;
 
 // User Namespace
-use App\Http\Controllers\transaksiController;
 use App\Http\Controllers\User\HomeUserController;
 use App\Http\Controllers\User\ProfileUserController;
 use App\Http\Controllers\User\PengirimanUserController;
@@ -33,8 +34,10 @@ use App\Http\Controllers\User\cekOngkosController;
 // homepae namaspace
 use App\Http\Controllers\Homepage\HomepageController;
 use App\Http\Controllers\Homepage\LacakController;
+
 use App\Http\Controllers\Homepage\LoginController;
 use App\Http\Controllers\Homepage\CekController;
+
 
 // kurir namespace
 use App\Http\Controllers\Kurir\homeKurirController;
@@ -54,6 +57,8 @@ Route::get('/', function () {
     return view('homepage.dashboardhome');
 });
 
+
+Route::get('/send-email', [SendEmail::class, 'index']);
 
 Route::get('/home', [HomepageController::class, 'index']);
 Route::get('/lacakpaket', [LacakController::class, 'index1']);

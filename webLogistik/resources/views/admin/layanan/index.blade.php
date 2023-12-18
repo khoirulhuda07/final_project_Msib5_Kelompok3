@@ -1,5 +1,7 @@
 @extends('admin.template.appadmin')
 
+@section('title', 'Table Data Layanan')
+
 @section('content')
 <form action="{{ url('admin/layanan/importLayanan') }}" method="POST" enctype="multipart/form-data">
   @csrf
@@ -43,7 +45,7 @@
                     <table id="datapegawai" class="table">
                         <thead>
                             <tr>
-                                <th class="text-bold" scope="col">No</th>
+                                <th class="text-bold" scope="col">#</th>
                                 <th class="text-bold" scope="col">Nama Layanan</th>
                                 <th class="text-bold" scope="col">Biaya</th>
                                 <th class="text-bold" scope="col">Action</th>

@@ -1,5 +1,7 @@
 @extends('kurir.template.app')
 
+@section('title', 'Maps')
+
 @section('konten')
 <div class="container-fluid mt-5 pt-5">
     <div class="row">
