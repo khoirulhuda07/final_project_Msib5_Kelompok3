@@ -19,7 +19,7 @@
                     <table id="datapegawai" class="table">
                         <thead>
                             <tr>
-                                <th class="text-bold" scope="col">No</th>
+                                <th class="text-bold" scope="col">#</th>
                                 <th class="text-bold" scope="col">Kode</th>
                                 <th class="text-bold" scope="col">Tanggal</th>
                                 <th class="text-bold" scope="col">Lokasi Tujuan</th>
