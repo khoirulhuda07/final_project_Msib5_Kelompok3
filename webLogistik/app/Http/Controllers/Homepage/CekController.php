@@ -10,6 +10,6 @@ class CekController extends Controller
     //
     public function index()
     {
-        return view('CekOngkos.index');
+        return view('homepage.CekOngkos.index');
     }
 }

@@ -82,6 +82,11 @@
                                     <td>Rp. 20.000</td>
                                     <td id="sumday"></td>
                                 </tr>
+                                <tr>
+                                    <td>Cargo</td>
+                                    <td>Rp. 15.000</td>
+                                    <td id="cargo"></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -347,12 +352,15 @@
         let leguler = 5000 * berat;
         let sumday = 20000 * berat;
         let express = 10000 * berat;
+        let cargo = 15000 * berat;
         let layana1 = formatter.format(roundedCost + express);
         let layanan2 = formatter.format(roundedCost + sumday);
         let layanan3 = formatter.format(roundedCost + leguler);
+        let layana4 = formatter.format(roundedCost + cargo);
         $("#express").html(layana1);
         $("#sumday").html(layanan2);
         $('#reguler').html(layanan3);
+        $('#cargo').html(layana4);
         // console.log(berat);
         $('#tabel12').removeClass('d-none');
 

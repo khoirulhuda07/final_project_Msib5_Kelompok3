@@ -30,13 +30,13 @@ class KurirController extends Controller
                 'nama' => 'required |  max:45',
                 'no_tlp' => 'required | numeric',
                 'jadwal' => 'required | max:45',
-                'layanan_id' => 'required|numeric',
+
             ],
             [
                 'nama.required' => 'Wajib diisi',
                 'no_tlp.required' => 'Wajib diisi',
                 'jadwal.required' => 'Wajib diisi',
-                'layanan_id.numeric' => 'Wajib Dipilih',
+
 
                 'no_tlp.numeric' => 'Harus Angka',
                 'nama.unique' => 'Nama Sudah Terdaftar',
@@ -76,7 +76,7 @@ class KurirController extends Controller
                 'nama' => 'required | max:45',
                 'no_tlp' => 'required | numeric',
                 'jadwal' => 'required | max:45',
-                ''
+
             ],
             [
                 'nama.required' => 'Wajib diisi',

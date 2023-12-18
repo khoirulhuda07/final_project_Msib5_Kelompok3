@@ -21,26 +21,35 @@
                 </div>
         
                 <!-- input kedua -->
-                <div class="form-floating mb-3">
-                  <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="floatingKategori" placeholder="Masukkan Username">
+                <div class="form-floating mb-3 d-none">
+                  <input type="text" name="" class="form-control @error('username') is-invalid @enderror" id="floating" placeholder="Masukkan Username" value="pppp">
                   <label for="floatingKategori">Username</label>
                   @error('username')
                   <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
+                <div class="form-floating mb-3">
+                  <input type="text" name="username" class="form-control @error('username') is-invalid @enderror" id="floating" placeholder="Masukkan Username" value="">
+                  <label for="floatingKategori">Username</label>
+                  @error('username')
+                  <div class="invalid-feedback">{{$message}}</div>
+                  @enderror
+                </div>
+
         
                 <!-- input ke tiga -->
                 <div class="form-floating mb-3">
-                  <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Email">
-                  <label for="floatingDeskripsi">Email</label>
+                  <input type="text" name="email" class="form-control @error('email') is-invalid @enderror" id="floatingDeskripsi" placeholder="Masukkan Email" value="">
+                  <label for="floatingDeskripsi"></label>
                   @error('email')
                   <div class="invalid-feedback">{{$message}}</div>
                   @enderror
                 </div>
+               
                 
                 <!-- input ke empat -->
                 <div class="form-floating mb-3">
-                  <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="floatingPass" placeholder="Masukkan Password">
+                  <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="floatingPass" placeholder="Masukkan Password" value="">
                   <label for="floatingPass">Password</label>
                   @error('password')
                   <div class="invalid-feedback">{{$message}}</div>
