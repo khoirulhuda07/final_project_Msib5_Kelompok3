@@ -96,19 +96,20 @@ akun kurir : email = achbar@gmail.com, pw = 12345678
 
 ### User
 - Halaman Dashboard
-- Form Pengiriman & metode pembayaran
-- Transaksi Pengiriman
+- Transaksi Pengiriman & metode pembayaran
+- Transaksi/Laporan Pembayaran 
 - Lacak Pengiriman
+- Cek ongkos Kirim
 - Top Up Saldo & Laporan Transaksi
 
 ### Admin
 - Halaman Dashboard
-- Data table (Nama Layanan, Jadwal Kurir, Pengiriman Paket)
-- Eksport laporan pengiriman
-- Import & eksport excel document
+- Data table (Nama Layanan, Jadwal Kurir, Data Akun Kurir)
+- Exports laporan pengiriman
+- Import & exports excel document
 
 ### Kurir
-- Konfirmasi paket - Telah diambil oleh pengirim, Proses Pengiriman, Telah Sampai ke penerima
+- Konfirmasi paket - Status 'Penjemputan', Proses 'Pengiriman', 'Telah Sampai' ke penerima
 
 ## Author
 Final Projek MSIB5 - Group 2 (Kelompok 3)
