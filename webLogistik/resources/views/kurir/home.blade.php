@@ -3,6 +3,9 @@
 @section('title', 'Home')
 
 @section('konten')
+<link href="{{asset('admin/css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+
 <div class="container-fluid my-5 py-5">
     <div class="row">
         <div class="col-md-12">
@@ -93,7 +96,15 @@
                                                         </label>
                                                         </div>
                                                     @endforeach
+                                                </div>
+                                                @if ($items->status == 'pengiriman')
+                                                    <div class="row mb-3 my-3">
+                                                        <label for="bukti" class="col-sm-2 col-form-label">Bukti</label>
+                                                        <div class="col-sm-10">
+                                                        <input type="file" class="form-control" id="bukti" name="bukti_foto" readonly>
+                                                        </div>
                                                     </div>
+                                                @endif
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
