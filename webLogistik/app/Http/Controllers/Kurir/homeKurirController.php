@@ -48,7 +48,25 @@ class homeKurirController extends Controller
 
     public function store(Request $request, string $id)
     {
+        request()->validate(
+            [
+                'bukti_foto' => 'nullable | image | mimes:jpg,jpeg,gif,png,svg | max:2048',
+            ],
+            [
+                'bukti_foto.max' => 'Maksimal 2 MB',
+                'bukti_foto.image' => 'File ekstensi harus jpg, jpeg, gif, png, svg',
+            ]
+        );
+
         $pengiriman = Pengiriman::find($id);
+
+        $photo = $request->file('bukti_foto');
+        $extension = $photo->getClientOriginalExtension();
+        $fileName = time() . '.' . $extension;
+
+        $request->bukti_foto->move(storage_path('app/public/bukti_foto'), $fileName);
+        
+        $pengiriman->bukti_foto = $fileName;
         $pengiriman->status = $request->status;
         $pengiriman->save();
 
