@@ -62,7 +62,7 @@
                                 <select class="form-select @error('layanan') is-invalid @enderror" name="layanan" id="layanan" aria-label="Floating label select example">
                                     <option selected>--- Nama Layanan ---</option>
                                     @foreach($layanan as $l)
-                                    <option value="{{$l->id}}">{{$l->nama_layanan}}</option>
+                                    <option value="{{$l->id}}">{{$l->nama_layanan}} - Rp. {{$l->biaya}}</option>
                                     @endforeach
                                 </select>
                                 <label for="layanan">Nama Layanan</label>
