@@ -1,11 +1,6 @@
 <p align="center"><a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3" target="_blank"><img src="https://thumbs2.imgbox.com/87/94/k8efiwky_t.png" width="400" alt="TrackMyShipment Logo"></a></p>
 
-<p align="center">
-<a href="https://laravel.com/docs/10.x/testing"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://github.com/khoirulhuda07/final_project_Msib5_Kelompok3/archive/refs/heads/master.zip"><img src="https://img.shields.io/badge/download-5-green" alt="Total Downloads"></a>
-<img src="https://img.shields.io/badge/packagist-v1.0.1-blue" alt="Latest Stable Version">
-<img src="https://img.shields.io/badge/license-MIT-green" alt="License">
-</p>
+
 
 # About Logistik
 TrackMyShipment adalah aplikasi pengiriman yang menawarkan berbagai keunggulan, termasuk pengiriman yang efisien, pengiriman yang cepat, dan tarif pengiriman yang mudah. Aplikasi ini adalah pilihan yang tepat untuk Anda yang ingin mengirim barang dengan mudah, cepat, dan efisien.
